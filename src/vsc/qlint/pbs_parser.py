@@ -8,8 +8,11 @@ class PbsParser(object):
     '''Parser for PBS torque job files'''
 
     def __init__(self, pbs_directive='#PBS'):
-        self._pbs_directive = '#{0}'.format(pbs_directive)
-        self._pbs_extract = re.compile(r'{0}\s+(.+)')
+        self._pbs_directive = pbs_directive
+        regex = r'\s*{0}\s+(.+)$'.format(pbs_directive)
+        self._pbs_extract = re.compile(regex)
+        self._pbs_option_parser = PbsOptionParser()
+        self._state = None
         self._line_nr = 0
         self._shebang = None
         self._pbs = []
@@ -50,6 +53,12 @@ class PbsParser(object):
         '''returns True if the line is a shebang'''
         return line.startswith('#!')
 
+    def is_spaced_pbs(self, line):
+        '''checks whether an extra space is added between hash and text
+           in PBS directive, only for default directive string'''
+        return self._pbs_directive == '#PBS' and re.match(r'\s*#\s+PBS\s+',
+                                                          line)
+
     def is_pbs(self, line):
         '''returns True if the line is a PBS directive'''
         return re.match(self._pbs_directive, line)
@@ -64,40 +73,56 @@ class PbsParser(object):
         message = 'line {0}: {1}'.format(self._line_nr, msg)
         self._errors.append(message)
 
+    def parse_shebang(self, line):
+        '''parse shebang part of PBS file'''
+        if self.is_shebang(line):
+            self._shebang = line.strip()
+            self._state = 'pbs'
+        else:
+            self.warning('missing shebang')
+            self._state = 'pbs'
+            self.parse_pbs(line)
+
+    def parse_pbs(self, line):
+        '''parse PBS directives part of a PBS file'''
+        if self.is_shebang(line):
+            self.warning('shebang out of place')
+        elif self.is_spaced_pbs(line):
+            self.warning('PBS directive should not contain spaces')
+        elif self.is_pbs(line):
+            match = self._pbs_extract.match(line)
+            if match:
+                try:
+                    self.parse_pbs(match.group(1))
+                except InvalidPbsDirectiveError as error:
+                    self.error(error.message)
+            else:
+                self.error('malformed PBS directive')
+        else:
+            self._state = 'script'
+            self.parse_script(line)
+    
+    def parse_script(self, line):
+        '''parse shell script part of a PBS file'''
+        if self.is_shebang(line):
+            self.warning('shebang out of place')
+        if self.is_pbs(line):
+            self.warning('PBS directive out of place')
+        self._script.append(line)
+
     def parse_file(self, pbs_file):
         '''parse a PBS file'''
-        state = 'start'
+        self._state = 'start'
         self._line_nr = 0
         for line in pbs_file:
             self._line_nr += 1
             self.check_encoding(line)
-            if state == 'start':
-                if self.is_shebang(line):
-                    self._shebang = line.strip()
-                else:
-                    self.warning('missing shebang')
-                state = 'pbs'
-            elif state == 'pbs':
-                if self.is_shebang(line):
-                    self.warning('shebang out of place')
-                if self.is_pbs(line):
-                    match = self._pbs_extract.match(line)
-                    if match:
-                        try:
-                            self.parse_pbs(match.group(1))
-                        except InvalidPbsDirectiveError as error:
-                            self.error(error.message)
-                    else:
-                        self.error('malformed PBS directive')
-                else:
-                    self._script.append(line)
-                    state = 'script'
+            if self._state == 'start':
+                self.parse_shebang(line)
+            elif self._state == 'pbs':
+                self.parse_pbs(line)
             else:
-                if self.is_shebang(line):
-                    self.warning('shebang out of place')
-                if self.is_pbs(line):
-                    self.warning('PBS directive out of place')
-                self._script.append(line)
+                self.parse_script(line)
         if state == 'start':
             self.error('no PBS direcives or script in file')
         elif state == 'pbs':
@@ -105,5 +130,5 @@ class PbsParser(object):
 
     def parse_pbs(self, directive):
         '''parses a PBS option and stores it'''
-        pass
+        self._pbs_option_parser.parse_args(directive)
 

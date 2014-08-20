@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 '''class for parsing PBS options'''
 
-import re
-
 class InvalidPbsDirectiveError(Exception):
     '''Error indicating an invalid PBS directive'''
 
@@ -11,22 +9,24 @@ class InvalidPbsDirectiveError(Exception):
         self.message = msg
 
 
+from argparse import ArgumentParser
+import re
+
 class PbsOptionParser(object):
     '''Parser for PBS options, either command line or directives'''
 
     def __init__(self):
         '''constructor'''
         self._options = {}
-        self._option_re = re.compile(r'^\s*-([A-Za-z])\s*(.+)\s*$')
+        self._arg_parser = ArgumentParser()
+        self._arg_parser.add_argument('-l', action='append')
+        self._arg_parser.add_argument('-j')
+        self._arg_parser.add_argument('-m')
+        self._arg_parser.add_argument('-N')
 
-    def parse(self, option_str):
+    def parse_args(self, option_line):
         '''parse options string'''
-        match = self._option_re(option_str)
-        if match:
-            self.handle_option(match.group(1), match.group(2))
-        else:
-            msg = "option '{0}' does not parse".format(option_str)
-            raise InvalidPbsDirectiveError(msg)
+        options, rest = self._arg_parser.parse_known_args(optoins_line)
 
     def handle_option(self, option, value):
         if option == 'l':
