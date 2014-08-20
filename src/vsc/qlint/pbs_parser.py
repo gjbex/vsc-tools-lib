@@ -2,7 +2,8 @@
 '''class for parsing PBS files'''
 
 import re
-from pbs_option_parser import InvalidPbsDirectiveError, PbsOptionParser
+from vsc.qlint.pbs_option_parser import (InvalidPbsDirectiveError,
+                                         PbsOptionParser)
 
 class PbsParser(object):
     '''Parser for PBS torque job files'''
@@ -26,7 +27,7 @@ class PbsParser(object):
         return self._shebang
 
     @property
-    def warnins(self):
+    def warnings(self):
         '''return warnings generated during parsing'''
         return self._warnings
 
@@ -48,6 +49,13 @@ class PbsParser(object):
             self.error(error.messsage)
         if line.endswith('\r\n') or line.endswith('\r'):
             self.error('non-Unix line ending')
+
+    def is_comment(self, line):
+        '''returns True if the line is a comment'''
+        return (re.match(r'\s*#', line) and
+                    not (self.is_shebang(line) or
+                         self.is_spaced_pbs(line) or
+                         self.is_pbs(line)))
 
     def is_shebang(self, line):
         '''returns True if the line is a shebang'''
@@ -77,6 +85,8 @@ class PbsParser(object):
         '''parse shebang part of PBS file'''
         if self.is_shebang(line):
             self._shebang = line.strip()
+            if self._line_nr > 1:
+                self.warning('shebang out of place')
             self._state = 'pbs'
         else:
             self.warning('missing shebang')
@@ -93,7 +103,7 @@ class PbsParser(object):
             match = self._pbs_extract.match(line)
             if match:
                 try:
-                    self.parse_pbs(match.group(1))
+                    self.parse_pbs_options(match.group(1))
                 except InvalidPbsDirectiveError as error:
                     self.error(error.message)
             else:
@@ -116,6 +126,8 @@ class PbsParser(object):
         self._line_nr = 0
         for line in pbs_file:
             self._line_nr += 1
+            if self.is_comment(line):
+                continue
             self.check_encoding(line)
             if self._state == 'start':
                 self.parse_shebang(line)
@@ -123,12 +135,12 @@ class PbsParser(object):
                 self.parse_pbs(line)
             else:
                 self.parse_script(line)
-        if state == 'start':
-            self.error('no PBS direcives or script in file')
-        elif state == 'pbs':
+        if self._state == 'start':
+            self.error('no PBS direcives nor script in file')
+        elif self._state == 'pbs':
             self.error('no script in file')
 
-    def parse_pbs(self, directive):
+    def parse_pbs_options(self, directive):
         '''parses a PBS option and stores it'''
         self._pbs_option_parser.parse_args(directive)
 
