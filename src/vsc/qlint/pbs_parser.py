@@ -1,16 +1,8 @@
 #!/usr/bin/env python
-'''classes for parsing PBS files and command line options, including
-   exceptions'''
-
-class InvalidPbsDirectiveError(Exception):
-    '''Error indicating an invalid PBS directive'''
-
-    def __init__(self, msg):
-        super(InvalidPbsDirectiveError, self).__init__(self)
-        self.message = msg
-
+'''class for parsing PBS files'''
 
 import re
+from pbs_option_parser import InvalidPbsDirectiveError, PbsOptionParser
 
 class PbsParser(object):
     '''Parser for PBS torque job files'''
@@ -45,6 +37,15 @@ class PbsParser(object):
         with open(file_name, 'r') as pbs_file:
             self.parse_file(pbs_file)
 
+    def check_encoding(self, line):
+        '''checks ASCII encoding and line endings'''
+        try:
+            line.decode('ascii')
+        except UnicodeDecodeError as error:
+            self.error(error.messsage)
+        if line.endswith('\r\n') or line.endswith('\r'):
+            self.error('non-Unix line ending')
+
     def is_shebang(self, line):
         '''returns True if the line is a shebang'''
         return line.startswith('#!')
@@ -69,6 +70,7 @@ class PbsParser(object):
         self._line_nr = 0
         for line in pbs_file:
             self._line_nr += 1
+            self.check_encoding(line)
             if state == 'start':
                 if self.is_shebang(line):
                     self._shebang = line.strip()
