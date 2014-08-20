@@ -26,23 +26,27 @@ class PbsOptionParser(object):
 
     def parse_args(self, option_line):
         '''parse options string'''
-        options, rest = self._arg_parser.parse_known_args(optoins_line)
+        options, rest = self._arg_parser.parse_known_args(option_line)
+        for option, value in options.__dict__.items():
+            self.handle_option(option, value)
 
     def handle_option(self, option, value):
-        if option == 'l':
+        '''option dispatch method'''
+        if option == 'l' and value is not None:
             pass
-        elif option == 'N':
-            self.check_N(val)
-        elif option == 'q':
+        elif option == 'N' and value is not None:
+            self.check_N(value)
+        elif option == 'q' and value is not None:
             pass
-        elif option == 'A':
+        elif option == 'A' and value is not None:
             pass
-        elif option == 'j':
+        elif option == 'j' and value is not None:
             self.check_j(value)
-        elif option == 'm':
+        elif option == 'm' and value is not None:
             self.check_m(value)
-        else:
-            self._options[option].append(value)
+        if option not in self._options:
+            self._options[option] = []
+        self._options[option].append(value)
 
     def check_j(self, val):
         '''check -j option, vals can be oe, eo, e, o, n'''
