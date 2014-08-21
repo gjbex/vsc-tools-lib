@@ -2,8 +2,7 @@
 '''class for parsing PBS files'''
 
 import re
-from vsc.qlint.pbs_option_parser import (InvalidPbsDirectiveError,
-                                         PbsOptionParser)
+from vsc.qlint.pbs_option_parser import PbsOptionParser
 
 class PbsParser(object):
     '''Parser for PBS torque job files'''
@@ -89,11 +88,9 @@ class PbsParser(object):
         elif self.is_pbs(line):
             match = self._pbs_extract.match(line)
             if match:
-                try:
-                    self.parse_pbs_options(match.group(1))
-                except InvalidPbsDirectiveError as error:
-                    self.reg_event('invalid_pbs_dir',
-                                   {'msg': error.message})
+                self._pbs_option_parser.parse_args(match.group(1))
+                for event in self._pbs_option_parser.events:
+                    self.reg_event(event['event'], event['extra'])
             else:
                 self.reg_event('malformed_pbs_dir')
         else:
@@ -129,8 +126,4 @@ class PbsParser(object):
             self.reg_event('no_script')
         elif self._state == 'pbs':
             self.reg_event('no_script')
-
-    def parse_pbs_options(self, directive):
-        '''parses a PBS option and stores it'''
-        self._pbs_option_parser.parse_args(directive)
 

@@ -48,6 +48,21 @@
         "category": "error",
         "message": "no statements found",
         "remedy": "add some work to the job"
+    },
+    "invalid_join": {
+        "category": "error",
+        "message": "value '{val}' is invalid for the -j join option",
+        "remedy": "see the qsub man page for valid values"
+    },
+    "invalid_mail_event": {
+        "category": "error",
+        "message": "value '{val}' is invalid for the -m mail event option",
+        "remedy": "see the qsub man page for valid values"
+    },
+    "invalid_name": {
+        "category": "error",
+        "message": "value '{val}' is invalid job name",
+        "remedy": "see the qsub man page for valid values"
     }
 }
 

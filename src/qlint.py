@@ -31,7 +31,7 @@ if __name__ == '__main__':
         sys.exit(CAN_NOT_OPEN_PBS)
     for event in pbs_parser.events:
         eid = event['id']
-        if id in event_defs:
+        if eid in event_defs:
             msg_tmpl = event_defs[eid]['message']
             msg = msg_tmpl.format(**event['extra'])
             rem_tmpl = event_defs[eid]['remedy']
