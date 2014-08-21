@@ -30,11 +30,6 @@ class PbsParser(object):
         '''return events generated during parsing'''
         return self._events
 
-    def parse(self, file_name):
-        '''parses a PBS file specified by name'''
-        with open(file_name, 'r') as pbs_file:
-            self.parse_file(pbs_file)
-
     def check_encoding(self, line):
         '''checks ASCII encoding and line endings'''
         try:
