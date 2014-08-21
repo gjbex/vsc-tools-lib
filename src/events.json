@@ -1,0 +1,53 @@
+{
+    "dos_format": {
+        "category": "error",
+        "message": "PBS file is DOS file format",
+        "remedy": "convert using dos2unix"
+    },
+    "mac_format": {
+        "category": "error",
+        "message": "PBS file is Mac file format",
+        "remedy": "convert using mac2unix"
+    },
+    "non_ascii": {
+        "category": "error",
+        "message": "PBS file contains non-ASCII characters",
+        "remedy": "remove or replace those characters"
+    },
+    "misplaced_shebang": {
+        "category": "warning",
+        "message": "shebang line should be the first line, this is ignored",
+        "remedy": "move line to the top of the file, or remove"
+    },
+    "missing_shebang": {
+        "category": "warning",
+        "message": "missing shebang, it should be the first line of the script",
+        "remedy": "add a shebang line at the top of the file, i.e., '#!/bin/bash -l'"
+    },
+    "space_in_pbs_dir': {
+        "category": "warning",
+        "message": "PBS directive contains a space",
+        "remedy": "remove space, i.e., use #PBS"
+    },
+    "invalid_pbs_dir": {
+        "category": "error",
+        "message": "{msg}",
+        "remedy": ""
+    },
+    "malformed_pbs_dir": {
+        "category": "error",
+        "message": "malformed PBS directive",
+        "remedy": "directive should have the form '#PBS <option> <value>', see qsub man page for more information"
+    },
+    'misplace_pbs_dir": {
+        "category": "warning",
+        "message": "PBS directive should be at the file, just below the shebang, this is ignored",
+        "remedy": "move line to its intended location, or remove it"
+    },
+    "no_script": {
+        "category": "error",
+        "message": "no statements found",
+        "remedy": "add some work to the job"
+    }
+}
+

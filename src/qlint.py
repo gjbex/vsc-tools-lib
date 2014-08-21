@@ -9,7 +9,6 @@ if __name__ == '__main__':
     options, rest = arg_parser.parse_known_args()
     pbs_parser = PbsParser()
     pbs_parser.parse(options.pbs_file)
-    for error in pbs_parser.errors:
-        print 'E: {0}'.format(error)
-    for warning in pbs_parser.warnings:
-        print 'W: {0}'.format(warning)
+    for event in pbs_parser.events:
+        print 'event line {0}: {1}'.format(event['line'],
+                                           event['event'])
