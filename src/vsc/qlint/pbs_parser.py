@@ -69,7 +69,7 @@ class PbsParser(object):
 
     def reg_event(self, event, extra={}):
         '''register a event'''
-        self._events.append({'event': event,
+        self._events.append({'id': event,
                              'line': self._line_nr,
                              'extra': extra})
 
