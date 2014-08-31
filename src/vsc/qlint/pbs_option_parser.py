@@ -19,6 +19,7 @@ class PbsOptionParser(object):
         self._arg_parser.add_argument('-m')
         self._arg_parser.add_argument('-N')
         self._arg_parser.add_argument('-A')
+        self._arg_parser.add_argument('-q')
         self._events = []
 
     @property
@@ -49,9 +50,9 @@ class PbsOptionParser(object):
         elif option == 'A':
             self.check_A(value.strip())
         elif option == 'q':
-            pass
+            self.check_q(value.strip())
         elif option == 'A':
-            pass
+            self.check_A(value.strip())
         elif option == 'j':
             self.check_j(value.strip())
         elif option == 'm':
@@ -63,7 +64,12 @@ class PbsOptionParser(object):
     def check_A(self, val):
         '''check whether a valid project name was specified'''
         if not re.match(r'[A-Za-z]\w*$', val):
-            self.reg_event('invalid_project', {'val': val})
+            self.reg_event('invalid_project_name', {'val': val})
+
+    def check_q(self, val):
+        '''check whether a valid queue name was specified'''
+        if not re.match(r'[A-Za-z]\w*$', val):
+            self.reg_event('invalid_queue_name', {'val': val})
 
     def check_j(self, val):
         '''check -j option, vals can be oe, eo, e, o, n'''
@@ -78,7 +84,7 @@ class PbsOptionParser(object):
     def check_N(self, val):
         '''check -N is a valid job name'''
         if not re.match(r'[A-Za-z]\w{,14}$', val):
-            self.reg_event('invalid_name', {'val': val})
+            self.reg_event('invalid_job_name', {'val': val})
 
     def check_l(self, vals):
         '''check and handle resource options'''

@@ -59,14 +59,19 @@
         "message": "value '{val}' is invalid for the -m mail event option",
         "remedy": "see the qsub man page for valid values"
     },
-    "invalid_name": {
+    "invalid_job_name": {
         "category": "error",
         "message": "value '{val}' is invalid job name",
         "remedy": "see the qsub man page for valid values"
     },
-    "invalid_project": {
+    "invalid_project_name": {
         "category": "error",
         "message": "value '{val}' is invalid project name",
+        "remedy": "see the qsub man page for valid values"
+    },
+    "invalid_queue_name": {
+        "category": "error",
+        "message": "value '{val}' is invalid queue name",
         "remedy": "see the qsub man page for valid values"
     },
     "invalid_walltime_format": {
