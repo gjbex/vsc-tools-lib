@@ -10,6 +10,9 @@ Errors:
   * Invalid values for join (-j)
   * Invalid values for mail event (-m)
   * Malformed job name (-N)
+  * Invalid walltime format (-l walltime=...)
+  * Non-numerical ppn or gpus specification
+  * Invalid memory and process memory specification
 
 Warnings:
   * Missing shebang

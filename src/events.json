@@ -63,6 +63,36 @@
         "category": "error",
         "message": "value '{val}' is invalid job name",
         "remedy": "see the qsub man page for valid values"
+    },
+    "invalid_walltime_format": {
+        "category": "error",
+        "message": "'{time}' is not a valid walltime",
+        "remedy": "walltime should be specified as [[HH:]MM:]SS"
+    },
+    "invalid_cputime_format": {
+        "category": "error",
+        "message": "'{time}' is not a valid cputime",
+        "remedy": "cputime should be specified as [[HH:]MM:]SS"
+    },
+    "ppn_no_number": {
+        "category": "error",
+        "message": "ppn '{number}' is not a number",
+        "remedy": "ppn (processes per node) should be a positive integer"
+    },
+    "gpus_no_number": {
+        "category": "error",
+        "message": "gpus '{number}' is not a number",
+        "remedy": "gpus (GPUs per node) should be a positive integer"
+    },
+    "invalid_mem_format": {
+        "category": "error",
+        "message": "'{size}' is not a valid memory specification",
+        "remedy": "memory is specified as a number, with units kb, mb, gb, or tb"
+    },
+    "invalid_pmem_format": {
+        "category": "error",
+        "message": "'{size}' is not a valid process memory specification",
+        "remedy": "process memory is specified as a number, with units kb, mb, gb, or tb"
     }
 }
 
