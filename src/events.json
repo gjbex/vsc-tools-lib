@@ -64,6 +64,11 @@
         "message": "value '{val}' is invalid job name",
         "remedy": "see the qsub man page for valid values"
     },
+    "invalid_project": {
+        "category": "error",
+        "message": "value '{val}' is invalid project name",
+        "remedy": "see the qsub man page for valid values"
+    },
     "invalid_walltime_format": {
         "category": "error",
         "message": "'{time}' is not a valid walltime",

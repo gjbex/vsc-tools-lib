@@ -10,6 +10,7 @@ Errors:
   * Invalid values for join (-j)
   * Invalid values for mail event (-m)
   * Malformed job name (-N)
+  * Malformed project name (-A)
   * Invalid walltime format (-l walltime=...)
   * Non-numerical ppn or gpus specification
   * Invalid memory and process memory specification

@@ -18,6 +18,7 @@ class PbsOptionParser(object):
         self._arg_parser.add_argument('-j')
         self._arg_parser.add_argument('-m')
         self._arg_parser.add_argument('-N')
+        self._arg_parser.add_argument('-A')
         self._events = []
 
     @property
@@ -45,6 +46,8 @@ class PbsOptionParser(object):
             self.check_l(value)
         elif option == 'N':
             self.check_N(value.strip())
+        elif option == 'A':
+            self.check_A(value.strip())
         elif option == 'q':
             pass
         elif option == 'A':
@@ -56,6 +59,11 @@ class PbsOptionParser(object):
         if option not in self._options:
             self._options[option] = []
         self._options[option].append(value)
+
+    def check_A(self, val):
+        '''check whether a valid project name was specified'''
+        if not re.match(r'[A-Za-z]\w*$', val):
+            self.reg_event('invalid_project', {'val': val})
 
     def check_j(self, val):
         '''check -j option, vals can be oe, eo, e, o, n'''
