@@ -4,7 +4,8 @@
 from argparse import ArgumentParser
 import re
 
-from vsc.utils  import walltime2seconds, size2bytes
+from vsc.utils import walltime2seconds, size2bytes
+from vsc.utils import InvalidWalltimeError
 
 
 class PbsOptionParser(object):
@@ -17,6 +18,7 @@ class PbsOptionParser(object):
         self._arg_parser.add_argument('-l', action='append')
         self._arg_parser.add_argument('-j')
         self._arg_parser.add_argument('-m')
+        self._arg_parser.add_argument('-M')
         self._arg_parser.add_argument('-N')
         self._arg_parser.add_argument('-A')
         self._arg_parser.add_argument('-q')
@@ -57,6 +59,8 @@ class PbsOptionParser(object):
             self.check_j(value.strip())
         elif option == 'm':
             self.check_m(value.strip())
+        elif option == 'M':
+            self.check_M(value.strip())
 
     def check_A(self, val):
         '''check whether a valid project name was specified'''
@@ -74,17 +78,21 @@ class PbsOptionParser(object):
 
     def check_j(self, val):
         '''check -j option, vals can be oe, eo, e, o, n'''
-        if re.match(r'^[oe]+|n$', val):
+        if re.match(r'(?:^[oe]+$)|(?:^n$)', val):
             self._job.join = val
         else:
             self.reg_event('invalid_join', {'val': val})
 
     def check_m(self, val):
-        '''check -m option, vals can be any combination of b, e, a, or n'''
-        if re.match(r'[bea]{1,3}|n$', val):
+        '''check -m option, val can be any combination of b, e, a, or n'''
+        if re.match(r'(?:^[bea]{1,3}$)|(?:^n$)', val):
             self._job.mail_events = val
         else:
             self.reg_event('invalid_mail_event', {'val': val})
+
+    def check_M(self, val):
+        '''check -M option'''
+        self._job.mail_addresses = val.split(',')
 
     def check_N(self, val):
         '''check -N is a valid job name'''
@@ -103,7 +111,7 @@ class PbsOptionParser(object):
                 if val.startswith('walltime=') or val.startswith('cput='):
                     attr_name, attr_value = val.split('=')
                     try:
-                        seconds = seconds2walltime(attr_value)
+                        seconds = walltime2seconds(attr_value)
                         resource_spec[attr_name] = seconds
                     except InvalidWalltimeError as error:
                         self.reg_event('invalid_{0}_format'.format(attr_name),

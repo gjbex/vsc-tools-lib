@@ -106,3 +106,23 @@ class PbsJob(object):
         '''adds a line to the script, retains line number information'''
         self._script.append((line_nr, line))
 
+    def attrs_to_str(self):
+        '''return job attributes as a string, mainly for debug purposes'''
+        attr_str = ''
+        attr_str += "name = '{0}'".format(self.name)
+        attr_str += "\nproject = '{0}'".format(self.project)
+        attr_str += "\nresources:"
+        for resource_name, resource_spec in self.resource_specs.items():
+            if resource_name == 'nodes':
+                for node_spec in resource_spec:
+                    for f_name, f_val in node_spec.items():
+                        attr_str += "\n\t{0} = '{1}'".format(f_name, f_val)
+            else:
+                attr_str += "\n\t{0} = '{1}'".format(resource_name,
+                                                     resource_spec)
+        attr_str += "\nqueue = {0}".format(self.queue)
+        attr_str += "\njoin = '{0}'".format(self.join)
+        attr_str += "\nmail:"
+        attr_str += "\n\tevents = '{0}'".format(self.mail_events)
+        attr_str += "\n\taddresses = '{0}'".format(','.join(self.mail_addresses))
+        return attr_str
