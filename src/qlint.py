@@ -38,7 +38,7 @@ if __name__ == '__main__':
             rem = rem_tmpl.format(**event['extra'])
             if event_defs[eid]['category'] == 'error':
                 cat = 'E'
-            elif event_defs[id]['category'] == 'warning':
+            elif event_defs[eid]['category'] == 'warning':
                 cat = 'W'
             output_fmt = ('{cat} line {line:d}:\n'
                           '    problem: {msg}\n'

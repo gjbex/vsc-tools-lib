@@ -10,9 +10,9 @@ from vsc.utils  import walltime2seconds, size2bytes
 class PbsOptionParser(object):
     '''Parser for PBS options, either command line or directives'''
 
-    def __init__(self):
+    def __init__(self, job):
         '''constructor'''
-        self._options = {}
+        self._job = job
         self._arg_parser = ArgumentParser()
         self._arg_parser.add_argument('-l', action='append')
         self._arg_parser.add_argument('-j')
@@ -57,33 +57,40 @@ class PbsOptionParser(object):
             self.check_j(value.strip())
         elif option == 'm':
             self.check_m(value.strip())
-        if option not in self._options:
-            self._options[option] = []
-        self._options[option].append(value)
 
     def check_A(self, val):
         '''check whether a valid project name was specified'''
-        if not re.match(r'[A-Za-z]\w*$', val):
+        if re.match(r'[A-Za-z]\w*$', val):
+            self._job.project = val
+        else:
             self.reg_event('invalid_project_name', {'val': val})
 
     def check_q(self, val):
         '''check whether a valid queue name was specified'''
-        if not re.match(r'[A-Za-z]\w*$', val):
+        if re.match(r'[A-Za-z]\w*$', val):
+            self._job.queue = val
+        else:
             self.reg_event('invalid_queue_name', {'val': val})
 
     def check_j(self, val):
         '''check -j option, vals can be oe, eo, e, o, n'''
-        if not re.match(r'^[oe]+|n$', val):
+        if re.match(r'^[oe]+|n$', val):
+            self._job.join = val
+        else:
             self.reg_event('invalid_join', {'val': val})
 
     def check_m(self, val):
         '''check -m option, vals can be any combination of b, e, a, or n'''
-        if not re.match(r'[bea]{1,3}|n$', val):
+        if re.match(r'[bea]{1,3}|n$', val):
+            self._job.mail_events = val
+        else:
             self.reg_event('invalid_mail_event', {'val': val})
 
     def check_N(self, val):
         '''check -N is a valid job name'''
-        if not re.match(r'[A-Za-z]\w{,14}$', val):
+        if re.match(r'[A-Za-z]\w{,14}$', val):
+            self._job.name = val
+        else:
             self.reg_event('invalid_job_name', {'val': val})
 
     def check_l(self, vals):
@@ -149,5 +156,5 @@ class PbsOptionParser(object):
                         else:
                             attr_name, attr_value = attr_str, None
                         self._resources[attr_name] = attr_value
+        self._job.add_resource_specs(resource_spec)
 
-        

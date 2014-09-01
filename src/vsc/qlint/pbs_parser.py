@@ -2,27 +2,27 @@
 '''class for parsing PBS files'''
 
 import re
+from vsc.pbs.job import PbsJob
 from vsc.qlint.pbs_option_parser import PbsOptionParser
 
 class PbsParser(object):
     '''Parser for PBS torque job files'''
 
     def __init__(self, pbs_directive='#PBS'):
+        self._job = PbsJob()
         self._pbs_directive = pbs_directive
         regex = r'\s*{0}\s+(.+)$'.format(pbs_directive)
         self._pbs_extract = re.compile(regex)
-        self._pbs_option_parser = PbsOptionParser()
+        self._pbs_option_parser = PbsOptionParser(self._job)
         self._state = None
         self._line_nr = 0
-        self._shebang = None
         self._pbs = []
-        self._script = []
         self._events = []
 
     @property
-    def shebang(self):
-        '''return shebang to use for file'''
-        return self._shebang
+    def job(self):
+        '''returns a PbsJob object representing the job script'''
+        return self._job
 
     @property
     def events(self):
@@ -70,7 +70,7 @@ class PbsParser(object):
     def parse_shebang(self, line):
         '''parse shebang part of PBS file'''
         if self.is_shebang(line):
-            self._shebang = line.strip()
+            self._job.shebang = line.strip()
             if self._line_nr > 1:
                 self.reg_event('misplaced_shebang')
             self._state = 'pbs'
@@ -103,7 +103,7 @@ class PbsParser(object):
             self.reg_event('misplaced_shebang')
         if self.is_pbs(line):
             self.reg_event('misplace_pbs_dir')
-        self._script.append(line)
+        self._job.add_script_line(self._line_nr, line)
 
     def parse_file(self, pbs_file):
         '''parse a PBS file'''
