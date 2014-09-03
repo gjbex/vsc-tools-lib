@@ -6,7 +6,7 @@
 #PBS -lwalltime=72:00:00
 #PBS -j oe
 #PBS -m ae
-#PBS -M gjb@uhasselt.b
+#PBS -M gjb@uhasselt.be
 
 cd $PBS_O_WORKDIR
 echo "hello world!"

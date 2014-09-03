@@ -2,7 +2,7 @@
 '''class for parsing PBS options'''
 
 from argparse import ArgumentParser
-import re
+import re, validate_email
 
 from vsc.utils import walltime2seconds, size2bytes
 from vsc.utils import InvalidWalltimeError
@@ -93,6 +93,9 @@ class PbsOptionParser(object):
     def check_M(self, val):
         '''check -M option'''
         self._job.mail_addresses = val.split(',')
+        for address in self._job.mail_addresses:
+            if not validate_email.validate_email(address):
+                self.reg_event('invalid_mail_address', {'address': address})
 
     def check_N(self, val):
         '''check -N is a valid job name'''
@@ -158,11 +161,6 @@ class PbsOptionParser(object):
                         node_specs.append(node_spec)
                     resource_spec['nodes'] = node_specs
                 else:
-                    for attr_str in val.split(':'):
-                        if '=' in attr_str:
-                            attr_name, attr_value = attr_str.split('=')
-                        else:
-                            attr_name, attr_value = attr_str, None
-                        self._resources[attr_name] = attr_value
+                    self.reg_event('unknown_resource_spec',{'spec': val})
         self._job.add_resource_specs(resource_spec)
 

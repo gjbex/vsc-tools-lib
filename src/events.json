@@ -103,6 +103,16 @@
         "category": "error",
         "message": "'{size}' is not a valid process memory specification",
         "remedy": "process memory is specified as a number, with units kb, mb, gb, or tb"
+    },
+    "invalid_mail_address": {
+        "category": "warning",
+        "message": "'{address}' does not seem to be a valid email address",
+        "remedy": "check email address"
+    },
+    "unknown_resource_spec": {
+        "category": "warning",
+        "message": "'{spec}' is an unknown resource identifier for -l",
+        "remedy": "check the documentation on resource specfiicatinos"
     }
 }
 
