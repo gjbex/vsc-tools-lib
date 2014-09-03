@@ -13,6 +13,8 @@ if __name__ == '__main__':
     arg_parser.add_argument('pbs_file', help='PBS file to check')
     arg_parser.add_argument('--events', default='events.json',
                             help='event defintion file to use')
+    arg_parser.add_argument('--show_job', action='store_true',
+                            help='show job parameters')
     options, rest = arg_parser.parse_known_args()
     try:
         with open(options.events) as event_file:
@@ -49,3 +51,6 @@ if __name__ == '__main__':
             msg = "### internal error: unknown event id '{0}'\n"
             sys.stderr.write(msg.format(id))
             sys.exit(UNDEFINED_EVENT)
+    if options.show_job:
+        print pbs_parser.job.attrs_to_str()
+
