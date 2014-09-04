@@ -107,7 +107,7 @@ class PbsOptionParser(object):
         self._job.mail_addresses = val.split(',')
         uid = os.getlogin()
         for address in self._job.mail_addresses:
-            if not validate_email.validate_email(address) or address != ukd:
+            if not validate_email.validate_email(address) or address != uid:
                 self.reg_event('invalid_mail_address', {'address': address})
 
     def check_N(self, val):
@@ -117,6 +117,61 @@ class PbsOptionParser(object):
         else:
             self.reg_event('invalid_job_name', {'val': val})
 
+    def check_time_res(self, val, resource_spec):
+        '''check a time resource'''
+        attr_name, attr_value = val.split('=')
+        try:
+            seconds = walltime2seconds(attr_value)
+            resource_spec[attr_name] = seconds
+        except InvalidWalltimeError as error:
+            self.reg_event('invalid_{0}_format'.format(attr_name),
+                           {'time': attr_value})
+
+    def check_mem_res(self, val, resource_spec):
+        '''check memory resource'''
+        attr_name, attr_value = val.split('=')
+        match = re.match(r'(\d+)([kmgt])[bw]', attr_value)
+        if match:
+            amount = int(match.group(1))
+            order = match.group(2)
+            resource_spec[attr_name] = size2bytes(amount, order)
+        else:
+            self.reg_event('invalid_{0}_format'.format(attr_name),
+                           {'size': attr_value})
+
+    def check_nodes_res(self, val, resource_spec):
+        '''check nodes resource'''
+        attr_name, attr_value = val.split('=', 1)
+# if present, multiple node specifications are separated by '+'
+        node_spec_strs = attr_value.split('+')
+        node_specs = []
+        for node_spec_str in node_spec_strs:
+            node_spec = {'features': []}
+            spec_strs = node_spec_str.split(':')
+# if a node spec starts with a number, that's the number of nodes,
+# otherwise it can be a hostname or a feature, but number of nodes is 1
+            if spec_strs[0].isdigit():
+                node_spec['nodes'] = int(spec_strs[0])
+            else:
+                node_spec['nodes'] = 1
+# note that this might be wrong, it may actually be a feature, but
+# that is a semantic check, not syntax
+                node_spec['host'] = spec_strs[0]
+# now deal with the remaining specifications, ppn, gpus and features
+            for spec_str in spec_strs[1:]:
+                if (spec_str.startswith('ppn=') or
+                    spec_str.startswith('gpus=')):
+                    key, value = spec_str.split('=')
+                    if value.isdigit():
+                        node_spec[key] = int(value)
+                    else:
+                        self.reg_event('{0}_no_number'.format(key),
+                                       {'number': value})
+                else:
+                    node_spec['features'].append(spec_str)
+            node_specs.append(node_spec)
+        resource_spec['nodes'] = node_specs
+
     def check_l(self, vals):
         '''check and handle resource options'''
         resource_spec = {}
@@ -125,54 +180,11 @@ class PbsOptionParser(object):
 # values can be combined by using ','
             for val in (x.strip() for x in val_str.split(',')):
                 if val.startswith('walltime=') or val.startswith('cput='):
-                    attr_name, attr_value = val.split('=')
-                    try:
-                        seconds = walltime2seconds(attr_value)
-                        resource_spec[attr_name] = seconds
-                    except InvalidWalltimeError as error:
-                        self.reg_event('invalid_{0}_format'.format(attr_name),
-                                       {'time': attr_value})
+                    self.check_time_res(val, resource_spec)
                 elif val.startswith('mem=') or val.startswith('pmem='):
-                    attr_name, attr_value = val.split('=')
-                    match = re.match(r'(\d+)([kmgt])[bw]', attr_value)
-                    if match:
-                        amount = int(match.group(1))
-                        order = match.group(2)
-                        resource_spec[attr_name] = size2bytes(amount, order)
-                    else:
-                        self.reg_event('invalid_{0}_format'.format(attr_name),
-                                       {'size': attr_value})
+                    self.check_mem_res(val, resource_spec)
                 elif val.startswith('nodes='):
-                    attr_name, attr_value = val.split('=', 1)
-# if present, multiple node specifications are separated by '+'
-                    node_spec_strs = attr_value.split('+')
-                    node_specs = []
-                    for node_spec_str in node_spec_strs:
-                        node_spec = {'features': []}
-                        spec_strs = node_spec_str.split(':')
-# if a node spec starts with a number, that's the number of nodes,
-# otherwise it can be a hostname or a feature, but number of nodes is 1
-                        if spec_strs[0].isdigit():
-                            node_spec['nodes'] = int(spec_strs[0])
-                        else:
-                            node_spec['nodes'] = 1
-# note that this might be wrong, it may actually be a feature, but
-# that is a semantic check, not syntax
-                            node_spec['host'] = spec_strs[0]
-# now deal with the remaining specifications, ppn, gpus and features
-                        for spec_str in spec_strs[1:]:
-                            if (spec_str.startswith('ppn=') or
-                                spec_str.startswith('gpus=')):
-                                key, value = spec_str.split('=')
-                                if value.isdigit():
-                                    node_spec[key] = int(value)
-                                else:
-                                    self.reg_event('{0}_no_number'.format(key),
-                                                   {'number': value})
-                            else:
-                                node_spec['features'].append(spec_str)
-                        node_specs.append(node_spec)
-                    resource_spec['nodes'] = node_specs
+                    self.check_nodes_res(val, resource_spec)
                 else:
                     self.reg_event('unknown_resource_spec',{'spec': val})
         self._job.add_resource_specs(resource_spec)
