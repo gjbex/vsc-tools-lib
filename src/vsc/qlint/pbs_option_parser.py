@@ -93,7 +93,7 @@ class PbsOptionParser(object):
 
     def check_m(self, val):
         '''check -m option, val can be any combination of b, e, a, or n'''
-        if re.match(r'(?:^[bea]{1,3}$)|(?:^n$)', val):
+        if re.match(r'^[bea]+$', val) or val == 'n':
             self._job.mail_events = val
         else:
             self.reg_event('invalid_mail_event', {'val': val})
