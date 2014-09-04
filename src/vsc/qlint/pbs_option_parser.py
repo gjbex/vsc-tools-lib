@@ -2,7 +2,7 @@
 '''class for parsing PBS options'''
 
 from argparse import ArgumentParser
-import re, validate_email
+import os, re, validate_email
 
 from vsc.utils import walltime2seconds, size2bytes
 from vsc.utils import InvalidWalltimeError
@@ -16,12 +16,14 @@ class PbsOptionParser(object):
         self._job = job
         self._arg_parser = ArgumentParser()
         self._arg_parser.add_argument('-A')
+        self._arg_parser.add_argument('-e')
         self._arg_parser.add_argument('-j')
         self._arg_parser.add_argument('-k')
         self._arg_parser.add_argument('-l', action='append')
         self._arg_parser.add_argument('-m')
         self._arg_parser.add_argument('-M')
         self._arg_parser.add_argument('-N')
+        self._arg_parser.add_argument('-o')
         self._arg_parser.add_argument('-q')
         self._events = []
 
@@ -48,6 +50,8 @@ class PbsOptionParser(object):
         '''option dispatch method'''
         if option == 'A':
             self.check_A(value.strip())
+        elif option == 'e' or option == 'o':
+            self.check_oe(value.strip(), option)
         elif option == 'j':
             self.check_j(value.strip())
         elif option == 'k':
@@ -89,7 +93,7 @@ class PbsOptionParser(object):
         if re.match(r'^[eo]+$', val) or val == 'n':
             self._job.keep = val
         else:
-            self.reg_event('invalid_join', {'val': val})
+            self.reg_event('invalid_keep', {'val': val})
 
     def check_m(self, val):
         '''check -m option, val can be any combination of b, e, a, or n'''
@@ -101,8 +105,9 @@ class PbsOptionParser(object):
     def check_M(self, val):
         '''check -M option'''
         self._job.mail_addresses = val.split(',')
+        uid = os.getlogin()
         for address in self._job.mail_addresses:
-            if not validate_email.validate_email(address):
+            if not validate_email.validate_email(address) or address != ukd:
                 self.reg_event('invalid_mail_address', {'address': address})
 
     def check_N(self, val):
@@ -172,3 +177,6 @@ class PbsOptionParser(object):
                     self.reg_event('unknown_resource_spec',{'spec': val})
         self._job.add_resource_specs(resource_spec)
 
+    def check_oe(self, val, option):
+        '''check for valid -o or -e paths'''
+        pass

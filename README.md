@@ -8,6 +8,7 @@ Errors:
   * Non-unix line endings
   * Non-ASCII charactersa
   * Invalid values for join (-j)
+  * Invalid values for keep (-k)
   * Invalid values for mail event (-m)
   * Malformed job name (-N)
   * Malformed project name (-A)
@@ -21,4 +22,5 @@ Warnings:
   * Space in directive, i.e., '# PBS', rather than '#PBS'
   * PBS directives after first script statement
   * Missing script
+  * Invalid mail addresses (-M)
 

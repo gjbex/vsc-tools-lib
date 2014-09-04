@@ -52,7 +52,12 @@
     "invalid_join": {
         "category": "error",
         "message": "value '{val}' is invalid for the -j join option",
-        "remedy": "see the qsub man page for valid values"
+        "remedy": "values can be 'oe', 'eo', or 'n', see qsub documentation"
+    },
+    "invalid_keep": {
+        "category": "error",
+        "message": "value '{val}' is invalid for the -k keep option",
+        "remedy": "values can be 'o', 'e', 'oe', 'eo', or 'n', see qsub documentation"
     },
     "invalid_mail_event": {
         "category": "error",
