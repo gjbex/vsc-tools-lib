@@ -11,6 +11,7 @@ class PbsJob(object):
         self._queue = None
         self._project = None
         self._join = None
+        self._keep = None
         self._shebang = None
         self._script = []
 
@@ -88,6 +89,16 @@ class PbsJob(object):
         self._join = join
 
     @property
+    def keep(self):
+        '''return I/O keep'''
+        return self._keep
+
+    @keep.setter
+    def keep(self, keep):
+        '''set I/O keep for job'''
+        self._keep = keep
+
+    @property
     def shebang(self):
         '''returns the job's shebang, None if not set'''
         return self._shebang
@@ -122,6 +133,7 @@ class PbsJob(object):
                                                      resource_spec)
         attr_str += "\nqueue = {0}".format(self.queue)
         attr_str += "\njoin = '{0}'".format(self.join)
+        attr_str += "\nkeep = '{0}'".format(self.keep)
         attr_str += "\nmail:"
         attr_str += "\n\tevents = '{0}'".format(self.mail_events)
         attr_str += "\n\taddresses = '{0}'".format(','.join(self.mail_addresses))

@@ -17,6 +17,7 @@ class PbsOptionParser(object):
         self._arg_parser = ArgumentParser()
         self._arg_parser.add_argument('-A')
         self._arg_parser.add_argument('-j')
+        self._arg_parser.add_argument('-k')
         self._arg_parser.add_argument('-l', action='append')
         self._arg_parser.add_argument('-m')
         self._arg_parser.add_argument('-M')
@@ -49,6 +50,8 @@ class PbsOptionParser(object):
             self.check_A(value.strip())
         elif option == 'j':
             self.check_j(value.strip())
+        elif option == 'k':
+            self.check_k(value.strip())
         elif option == 'l':
             self.check_l(value)
         elif option == 'm':
@@ -78,6 +81,13 @@ class PbsOptionParser(object):
         '''check -j option, vals can be oe, eo, n'''
         if val == 'oe' or val == 'eo' or val == 'n':
             self._job.join = val
+        else:
+            self.reg_event('invalid_join', {'val': val})
+
+    def check_k(self, val):
+        '''check -k option, val can be e, o, oe, eo, or n'''
+        if re.match(r'^[eo]+$', val) or val == 'n':
+            self._job.keep = val
         else:
             self.reg_event('invalid_join', {'val': val})
 

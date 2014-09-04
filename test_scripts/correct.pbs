@@ -5,6 +5,7 @@
 #PBS -l pmem=4gb
 #PBS -lwalltime=72:00:00
 #PBS -j oe
+#PBS -k o
 #PBS -m ae
 #PBS -M gjb@uhasselt.be
 
