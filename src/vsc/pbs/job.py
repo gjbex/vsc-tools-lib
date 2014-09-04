@@ -12,6 +12,8 @@ class PbsJob(object):
         self._project = None
         self._join = None
         self._keep = None
+        self._error = None
+        self._output = None
         self._shebang = None
         self._script = []
 
@@ -99,6 +101,26 @@ class PbsJob(object):
         self._keep = keep
 
     @property
+    def error(self):
+        '''return path for job's standard error'''
+        return self._error
+
+    @error.setter
+    def error(self, error):
+        '''set path for job's standard error'''
+        self._error = error
+
+    @property
+    def output(self):
+        '''return path for job's standard output'''
+        return self._output
+
+    @output.setter
+    def output(self, output):
+        '''set path for job's standard output'''
+        self._output = output
+
+    @property
     def shebang(self):
         '''returns the job's shebang, None if not set'''
         return self._shebang
@@ -134,7 +156,10 @@ class PbsJob(object):
         attr_str += "\nqueue = {0}".format(self.queue)
         attr_str += "\njoin = '{0}'".format(self.join)
         attr_str += "\nkeep = '{0}'".format(self.keep)
+        attr_str += "\nerror = '{0}'".format(self.error)
+        attr_str += "\noutput = '{0}'".format(self.output)
         attr_str += "\nmail:"
         attr_str += "\n\tevents = '{0}'".format(self.mail_events)
         attr_str += "\n\taddresses = '{0}'".format(','.join(self.mail_addresses))
         return attr_str
+
