@@ -15,12 +15,12 @@ class PbsOptionParser(object):
         '''constructor'''
         self._job = job
         self._arg_parser = ArgumentParser()
-        self._arg_parser.add_argument('-l', action='append')
+        self._arg_parser.add_argument('-A')
         self._arg_parser.add_argument('-j')
+        self._arg_parser.add_argument('-l', action='append')
         self._arg_parser.add_argument('-m')
         self._arg_parser.add_argument('-M')
         self._arg_parser.add_argument('-N')
-        self._arg_parser.add_argument('-A')
         self._arg_parser.add_argument('-q')
         self._events = []
 
@@ -45,22 +45,20 @@ class PbsOptionParser(object):
 
     def handle_option(self, option, value):
         '''option dispatch method'''
-        if option == 'l':
-            self.check_l(value)
-        elif option == 'N':
-            self.check_N(value.strip())
-        elif option == 'A':
-            self.check_A(value.strip())
-        elif option == 'q':
-            self.check_q(value.strip())
-        elif option == 'A':
+        if option == 'A':
             self.check_A(value.strip())
         elif option == 'j':
             self.check_j(value.strip())
+        elif option == 'l':
+            self.check_l(value)
         elif option == 'm':
             self.check_m(value.strip())
         elif option == 'M':
             self.check_M(value.strip())
+        elif option == 'N':
+            self.check_N(value.strip())
+        elif option == 'q':
+            self.check_q(value.strip())
 
     def check_A(self, val):
         '''check whether a valid project name was specified'''
@@ -77,8 +75,8 @@ class PbsOptionParser(object):
             self.reg_event('invalid_queue_name', {'val': val})
 
     def check_j(self, val):
-        '''check -j option, vals can be oe, eo, e, o, n'''
-        if re.match(r'(?:^[oe]+$)|(?:^n$)', val):
+        '''check -j option, vals can be oe, eo, n'''
+        if val == 'oe' or val == 'eo' or val == 'n':
             self._job.join = val
         else:
             self.reg_event('invalid_join', {'val': val})
