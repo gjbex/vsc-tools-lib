@@ -180,9 +180,12 @@ class PbsOptionParser(object):
         for val_str in (x.strip() for x in vals):
 # values can be combined by using ','
             for val in (x.strip() for x in val_str.split(',')):
-                if val.startswith('walltime=') or val.startswith('cput='):
+                if (val.startswith('walltime=') or
+                    val.startswith('cput=') or
+                    val.startswith('pcput=')):
                     self.check_time_res(val, resource_spec)
-                elif val.startswith('mem=') or val.startswith('pmem='):
+                elif (val.startswith('mem=') or val.startswith('pmem=') or
+                      val.startswith('vmem=') or val.startswith('pvmem=')):
                     self.check_mem_res(val, resource_spec)
                 elif val.startswith('nodes='):
                     self.check_nodes_res(val, resource_spec)
