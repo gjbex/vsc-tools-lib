@@ -191,4 +191,12 @@ class PbsOptionParser(object):
 
     def check_oe(self, val, option):
         '''check for valid -o or -e paths'''
-        pass
+        if ':' in val:
+            host, path = val.split(':', 1)
+        else:
+            host = None
+            path = val
+        if option == 'e':
+            self._job.set_error(path, host)
+        else:
+            self._job.set_output(path, host)

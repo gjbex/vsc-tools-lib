@@ -1,5 +1,7 @@
 '''module to represent and manipulate PBS jobs'''
 
+import os
+
 class PbsJob(object):
     '''Class representing a PBS job'''
 
@@ -12,8 +14,10 @@ class PbsJob(object):
         self._project = None
         self._join = None
         self._keep = None
-        self._error = None
-        self._output = None
+        _, host, _, _, _ = os.uname()
+        cwd = os.getcwd()
+        self._error = {'host': host, 'path': cwd}
+        self._output = {'host': host, 'path': cwd}
         self._shebang = None
         self._script = []
 
@@ -103,22 +107,28 @@ class PbsJob(object):
     @property
     def error(self):
         '''return path for job's standard error'''
-        return self._error
+        return self._error['host'], self._error['path']
 
-    @error.setter
-    def error(self, error):
+    def set_error(self, path, host=None):
         '''set path for job's standard error'''
-        self._error = error
+        if not os.path.isabs(path):
+            path = os.path.join(self._error['path'], path)
+        self._error['path'] = path
+        if host:
+            self._error['host'] = host
 
     @property
     def output(self):
         '''return path for job's standard output'''
-        return self._output
+        return self._output['host'], self._output['path']
 
-    @output.setter
-    def output(self, output):
+    def set_output(self, path, host=None):
         '''set path for job's standard output'''
-        self._output = output
+        if not os.path.isabs(path):
+            path = os.path.join(self._output['path'], path)
+        self._output['path'] = path
+        if host:
+            self._output['host'] = host
 
     @property
     def shebang(self):
