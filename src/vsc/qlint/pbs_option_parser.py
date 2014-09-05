@@ -107,7 +107,8 @@ class PbsOptionParser(object):
         self._job.mail_addresses = val.split(',')
         uid = os.getlogin()
         for address in self._job.mail_addresses:
-            if not validate_email.validate_email(address) or address != uid:
+            if (not validate_email.validate_email(address) and
+                address != uid):
                 self.reg_event('invalid_mail_address', {'address': address})
 
     def check_N(self, val):
