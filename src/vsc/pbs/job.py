@@ -12,12 +12,14 @@ class PbsJob(object):
         self._mail_specs = {'events': None, 'addresses': []}
         self._queue = None
         self._project = None
-        self._join = None
-        self._keep = None
         _, host, _, _, _ = os.uname()
         cwd = os.getcwd()
-        self._error = {'host': host, 'path': cwd}
-        self._output = {'host': host, 'path': cwd}
+        self._io_specs = {
+            'keep': 'oe',
+            'join': 'n',
+            'error': {'host': host, 'path': cwd},
+            'output': {'host': host, 'path': cwd}
+        }
         self._shebang = None
         self._script = []
 
@@ -87,48 +89,50 @@ class PbsJob(object):
     @property
     def join(self):
         '''return I/O join'''
-        return self._join
+        return self._io_specs['join']
 
     @join.setter
     def join(self, join):
         '''set I/O join for job'''
-        self._join = join
+        self._io_specs['join'] = join
 
     @property
     def keep(self):
         '''return I/O keep'''
-        return self._keep
+        return self._io_specs['keep']
 
     @keep.setter
     def keep(self, keep):
         '''set I/O keep for job'''
-        self._keep = keep
+        self._io_specs['keep'] = keep
 
     @property
     def error(self):
         '''return path for job's standard error'''
-        return self._error['host'], self._error['path']
+        return (self._io_specs['error']['host'],
+                self._io_specs['error']['path'])
 
     def set_error(self, path, host=None):
         '''set path for job's standard error'''
         if not os.path.isabs(path):
-            path = os.path.join(self._error['path'], path)
-        self._error['path'] = path
+            path = os.path.join(self._io_specs['error']['path'], path)
+        self._io_specs['error']['path'] = path
         if host:
-            self._error['host'] = host
+            self._io_specs['error']['host'] = host
 
     @property
     def output(self):
         '''return path for job's standard output'''
-        return self._output['host'], self._output['path']
+        return (self._io_specs['output']['host'],
+                self._io_specs['output']['path'])
 
     def set_output(self, path, host=None):
         '''set path for job's standard output'''
         if not os.path.isabs(path):
-            path = os.path.join(self._output['path'], path)
-        self._output['path'] = path
+            path = os.path.join(self._io_specs['output']['path'], path)
+        self._io_specs['output']['path'] = path
         if host:
-            self._output['host'] = host
+            self._io_specs['output']['host'] = host
 
     @property
     def shebang(self):
@@ -164,12 +168,14 @@ class PbsJob(object):
                 attr_str += "\n\t{0} = '{1}'".format(resource_name,
                                                      resource_spec)
         attr_str += "\nqueue = {0}".format(self.queue)
-        attr_str += "\njoin = '{0}'".format(self.join)
-        attr_str += "\nkeep = '{0}'".format(self.keep)
-        attr_str += "\nerror = '{0}'".format(self.error)
-        attr_str += "\noutput = '{0}'".format(self.output)
+        attr_str += '\nI/O:'
+        attr_str += "\n\tjoin = '{0}'".format(self.join)
+        attr_str += "\n\tkeep = '{0}'".format(self.keep)
+        attr_str += "\n\terror = '{0}'".format(self.error)
+        attr_str += "\n\toutput = '{0}'".format(self.output)
         attr_str += "\nmail:"
         attr_str += "\n\tevents = '{0}'".format(self.mail_events)
-        attr_str += "\n\taddresses = '{0}'".format(','.join(self.mail_addresses))
+        address_str = ','.join(self.mail_addresses)
+        attr_str += "\n\taddresses = '{0}'".format(address_str)
         return attr_str
 
