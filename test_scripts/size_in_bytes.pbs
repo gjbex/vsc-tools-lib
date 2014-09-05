@@ -1,0 +1,5 @@
+#!/bin/bash -l
+#PBS -l mem=4096b
+
+echo "hello world!"
+

@@ -131,7 +131,7 @@ class PbsOptionParser(object):
     def check_mem_res(self, val, resource_spec):
         '''check memory resource'''
         attr_name, attr_value = val.split('=')
-        match = re.match(r'(\d+)([kmgt])[bw]', attr_value)
+        match = re.match(r'(\d+)([kmgt])?[bw]', attr_value)
         if match:
             amount = int(match.group(1))
             order = match.group(2)

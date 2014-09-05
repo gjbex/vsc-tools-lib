@@ -83,6 +83,8 @@ def size2bytes(amount, order):
     12288
     >>> size2bytes(12, 't')
     13194139533312L
+    >>> size2bytes(12, None)
+    12
     >>> size2bytes(12, 'q')
     Traceback (most recent call last):
         ...
@@ -97,6 +99,7 @@ def size2bytes(amount, order):
         'm': 1024**2,
         'g': 1024**3,
         't': 1024**4,
+        None: 1,
     }
     try:
         return int(amount)*conversion[order]
