@@ -118,6 +118,16 @@
         "category": "warning",
         "message": "'{spec}' is an unknown resource identifier for -l",
         "remedy": "check the documentation on resource specfiicatinos"
+    },
+    "multiple_procs_specs": {
+        "category": "error",
+        "message": "more than one procs resource specification was given",
+        "remedy": "provide only a single procs resource specified per job"
+    },
+    "non_integer_procs": {
+        "category": "error",
+        "message": "'{procs}' is not integer for procs resource specification",
+        "remedy": "number of processors should be integer"
     }
 }
 

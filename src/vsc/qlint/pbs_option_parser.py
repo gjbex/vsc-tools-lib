@@ -40,7 +40,7 @@ class PbsOptionParser(object):
     def parse_args(self, option_line):
         '''parse options string'''
         self._events = []
-        args = self._arg_parser.convert_arg_line_to_args(option_line)
+        args = option_line.split()
         options, rest = self._arg_parser.parse_known_args(args)
         for option, value in options.__dict__.items():
             if value:
@@ -173,10 +173,20 @@ class PbsOptionParser(object):
             node_specs.append(node_spec)
         resource_spec['nodes'] = node_specs
 
+    def check_procs_res(self, val, resource_spec):
+        '''check procs resource specification'''
+        attr_name, attr_value = val.split('=')
+        if attr_name in resource_spec:
+            self.reg_event('multiple_procs_specs')
+        if not attr_value.isdigit():
+            self.reg_event('non_integer_procs', {'procs': attr_value})
+        resource_spec[attr_name] = int(attr_value)
+
     def check_l(self, vals):
         '''check and handle resource options'''
         resource_spec = {}
 # there can be multiple -l options on one line or on the command line
+        print vals
         for val_str in (x.strip() for x in vals):
 # values can be combined by using ','
             for val in (x.strip() for x in val_str.split(',')):
@@ -189,6 +199,8 @@ class PbsOptionParser(object):
                     self.check_mem_res(val, resource_spec)
                 elif val.startswith('nodes='):
                     self.check_nodes_res(val, resource_spec)
+                elif val.startswith('procs='):
+                    self.check_procs_res(val, resource_spec)
                 else:
                     self.reg_event('unknown_resource_spec',{'spec': val})
         self._job.add_resource_specs(resource_spec)

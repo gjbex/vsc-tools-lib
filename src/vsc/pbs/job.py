@@ -5,11 +5,10 @@ import os
 class PbsJob(object):
     '''Class representing a PBS job'''
 
-    def __init__(self):
+    def __init__(self, name=None):
         '''Constructor for a PBS job object'''
-        self._name = None
+        self._name = name
         self._resource_specs = {}
-        self._mail_specs = {'events': None, 'addresses': []}
         self._queue = None
         self._project = None
         _, host, _, _, _ = os.uname()
@@ -19,6 +18,10 @@ class PbsJob(object):
             'join': 'n',
             'error': {'host': host, 'path': cwd},
             'output': {'host': host, 'path': cwd}
+        }
+        self._mail_specs = {
+            'events': None,
+            'addresses': [os.getlogin()]
         }
         self._shebang = None
         self._script = []
