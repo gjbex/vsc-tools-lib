@@ -102,12 +102,12 @@
     "invalid_mem_format": {
         "category": "error",
         "message": "'{size}' is not a valid memory specification",
-        "remedy": "memory is specified as a number, with units kb, mb, gb, or tb"
+        "remedy": "memory is specified as a number, with units b, kb, mb, gb, or tb"
     },
     "invalid_pmem_format": {
         "category": "error",
         "message": "'{size}' is not a valid process memory specification",
-        "remedy": "process memory is specified as a number, with units kb, mb, gb, or tb"
+        "remedy": "process memory is specified as a number, with units b, kb, mb, gb, or tb"
     },
     "invalid_mail_address": {
         "category": "warning",

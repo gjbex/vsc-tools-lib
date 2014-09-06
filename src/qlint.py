@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 
-CAN_NOT_OPEN_EVENT_FILE = 1
-CAN_NOT_OPEN_PBS = 2
-UNDEFINED_EVENT = 3
+NO_ERRORS_EXIT = 0
+ERRORS_EXIT = 1
+WARNINGS_EXIT = 2
+CAN_NOT_OPEN_EVENT_FILE = 11
+CAN_NOT_OPEN_PBS = 12
+UNDEFINED_EVENT = 13
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
@@ -15,6 +18,10 @@ if __name__ == '__main__':
                             help='event defintion file to use')
     arg_parser.add_argument('--show_job', action='store_true',
                             help='show job parameters')
+    arg_parser.add_argument('--quiet', action='store_true',
+                            help='do not show summary')
+    arg_parser.add_argument('--warnings_as_errors', action='store_true',
+                            help='non zero exit code on warnings')
     options, rest = arg_parser.parse_known_args()
     try:
         with open(options.events) as event_file:
@@ -31,6 +38,8 @@ if __name__ == '__main__':
         msg = "### error: can not open PBS file '{0}'\n"
         sys.stderr.write(msg.format(options.events))
         sys.exit(CAN_NOT_OPEN_PBS)
+    nr_warnings = 0
+    nr_errors = 0
     for event in pbs_parser.events:
         eid = event['id']
         if eid in event_defs:
@@ -40,8 +49,10 @@ if __name__ == '__main__':
             rem = rem_tmpl.format(**event['extra'])
             if event_defs[eid]['category'] == 'error':
                 cat = 'E'
+                nr_errors += 1
             elif event_defs[eid]['category'] == 'warning':
                 cat = 'W'
+                nr_warnings += 1
             output_fmt = ('{cat} line {line:d}:\n'
                           '    problem: {msg}\n'
                           '    remedy:  {rem}')
@@ -51,6 +62,15 @@ if __name__ == '__main__':
             msg = "### internal error: unknown event id '{0}'\n"
             sys.stderr.write(msg.format(id))
             sys.exit(UNDEFINED_EVENT)
+    if not options.quiet:
+        print '{err:d} errors, {warn:d} warnings'.format(warn=nr_warnings,
+                                                         err=nr_errors)
     if options.show_job:
         print pbs_parser.job.attrs_to_str()
+    if nr_errors > 0:
+        sys.exit(ERRORS_EXIT)
+    elif options.warnings_as_errors and nr_warnings > 0:
+        sys.exit(WARNINGS_EXIT)
+    else:
+        sys.exit(NO_ERRORS_EXIT)
 

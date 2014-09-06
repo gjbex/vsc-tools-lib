@@ -186,7 +186,6 @@ class PbsOptionParser(object):
         '''check and handle resource options'''
         resource_spec = {}
 # there can be multiple -l options on one line or on the command line
-        print vals
         for val_str in (x.strip() for x in vals):
 # values can be combined by using ','
             for val in (x.strip() for x in val_str.split(',')):

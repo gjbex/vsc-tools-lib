@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''class for parsing PBS files'''
 
-import re
+import os, re
 from vsc.pbs.job import PbsJob
 from vsc.qlint.pbs_option_parser import PbsOptionParser
 
@@ -18,6 +18,29 @@ class PbsParser(object):
         self._line_nr = 0
         self._pbs = []
         self._events = []
+
+    def parse_file(self, pbs_file):
+        '''parse a PBS file'''
+        self._job.name = os.path.basename(pbs_file.name)
+        self._state = 'start'
+        self._line_nr = 0
+        for line in pbs_file:
+            self._line_nr += 1
+            self.check_encoding(line)
+            if self.is_comment(line):
+                continue
+            if len(line.strip()) == 0:
+                continue
+            if self._state == 'start':
+                self.parse_shebang(line)
+            elif self._state == 'pbs':
+                self.parse_pbs(line)
+            else:
+                self.parse_script(line)
+        if self._state == 'start':
+            self.reg_event('no_script')
+        elif self._state == 'pbs':
+            self.reg_event('no_script')
 
     @property
     def job(self):
@@ -104,26 +127,4 @@ class PbsParser(object):
         if self.is_pbs(line):
             self.reg_event('misplace_pbs_dir')
         self._job.add_script_line(self._line_nr, line)
-
-    def parse_file(self, pbs_file):
-        '''parse a PBS file'''
-        self._state = 'start'
-        self._line_nr = 0
-        for line in pbs_file:
-            self._line_nr += 1
-            self.check_encoding(line)
-            if self.is_comment(line):
-                continue
-            if len(line.strip()) == 0:
-                continue
-            if self._state == 'start':
-                self.parse_shebang(line)
-            elif self._state == 'pbs':
-                self.parse_pbs(line)
-            else:
-                self.parse_script(line)
-        if self._state == 'start':
-            self.reg_event('no_script')
-        elif self._state == 'pbs':
-            self.reg_event('no_script')
 
