@@ -34,6 +34,10 @@ class NodeStatus(object):
         '''returns node's properties'''
         return self._properties
 
+    def has_property(self, property):
+        '''returns True if the NodeStatus has the given property'''
+        return property in self._properties
+
     @property
     def ntype(self):
         '''returns node's ntype'''
