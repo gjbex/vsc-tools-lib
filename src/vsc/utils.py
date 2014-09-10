@@ -109,6 +109,14 @@ def size2bytes(amount, order):
         raise InvalidSizeError("'{0}' is not a valid order "
                                "of magnitude".format(order))
 
+def hostname2rackinfo(hostname):
+    '''Determine rack number, IRU and node number from hostname'''
+    match = re.match(r'r(\d+)i(\d+)n(\d+)', hostname)
+    if match:
+        return int(match.group(1)), int(match.group(2)), int(match.group(3))
+    else:
+        return None, None, None
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()

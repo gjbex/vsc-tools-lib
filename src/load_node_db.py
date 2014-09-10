@@ -24,8 +24,8 @@ if __name__ == '__main__':
     with open(options.file, 'r') as node_file:
         nodes = pbsnodes_parser.parse_file(node_file)
     node_insert_cmd = '''INSERT INTO nodes
-                             (hostname, partition_id, np, mem) VALUES
-                             (?, ?, ?, ?)'''
+                             (hostname, partition_id, rack, iru, np, mem) VALUES
+                             (?, ?, ?, ?, ?, ?)'''
     prop_insert_cmd = '''INSERT INTO properties
                              (node_id, property) VALUES
                              (?, ?)'''
@@ -34,10 +34,13 @@ if __name__ == '__main__':
         for partition, id in partitions.items():
             if node.has_property(partition):
                 partition_id = id
+        rack, iru, _ = vsc.utils.hostname2rackinfo(node.hostname)
         if partition_id:
             if node.status:
                 cursor.execute(node_insert_cmd, (node.hostname,
                                                  partition_id,
+                                                 rack,
+                                                 iru,
                                                  node.np,
                                                  node.memory))
                 node_id = cursor.lastrowid
