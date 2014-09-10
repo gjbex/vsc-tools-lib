@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 
-mem_features = ['mem64', 'mem128']
-
 if __name__ == '__main__':
     from argparse import ArgumentParser
     import re, sqlite3, sys
 
     from vsc.pbs.node import PbsnodesParser
-    from vsc.pbs.utils import compute_features
-    import vsc.utils
+    from vsc.pbs.utils import compute_features, create_partition_computer
+    from vsc.utils import hostname2rackinfo
 
     arg_parser = ArgumentParser(description=('loads a database with node '
                                              'information'))
@@ -18,11 +16,7 @@ if __name__ == '__main__':
     options = arg_parser.parse_args()
     conn = sqlite3.connect(options.db)
     cursor = conn.cursor()
-    cursor.execute('''SELECT partition_id, partition_name
-                          FROM partitions;''')
-    partitions = {}
-    for row in cursor:
-        partitions[row[1]] = row[0]
+    compute_partition = create_partition_computer(cursor)
     pbsnodes_parser = PbsnodesParser()
     with open(options.file, 'r') as node_file:
         nodes = pbsnodes_parser.parse_file(node_file)
@@ -37,11 +31,8 @@ if __name__ == '__main__':
                                 (node_id, feature) VALUES
                                 (?, ?)'''
     for node in nodes:
-        partition_id = None
-        for partition, id in partitions.items():
-            if node.has_property(partition):
-                partition_id = id
-        rack, iru, _ = vsc.utils.hostname2rackinfo(node.hostname)
+        partition_id = compute_partition(node)
+        rack, iru, _ = hostname2rackinfo(node.hostname)
         if partition_id:
             if node.status:
                 cursor.execute(node_insert_cmd, (node.hostname,
