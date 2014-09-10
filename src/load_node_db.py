@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-import sqlite3, sys
-
-from vsc.pbs.node import PbsnodesParser
-
 if __name__ == '__main__':
     from argparse import ArgumentParser
+    import re, sqlite3, sys
+
+    from vsc.pbs.node import PbsnodesParser
+    import vsc.utils
 
     arg_parser = ArgumentParser(description=('loads a database with node '
                                              'information'))
@@ -23,9 +23,12 @@ if __name__ == '__main__':
     pbsnodes_parser = PbsnodesParser()
     with open(options.file, 'r') as node_file:
         nodes = pbsnodes_parser.parse_file(node_file)
-    insert_cmd = '''INSERT INTO nodes
-                        (hostname, partition_id, np, mem) VALUES
-                        (?, ?, ?, ?)'''
+    node_insert_cmd = '''INSERT INTO nodes
+                             (hostname, partition_id, np, mem) VALUES
+                             (?, ?, ?, ?)'''
+    prop_insert_cmd = '''INSERT INTO properties
+                             (node_id, property) VALUES
+                             (?, ?)'''
     for node in nodes:
         partition_id = None
         for partition, id in partitions.items():
@@ -33,10 +36,13 @@ if __name__ == '__main__':
                 partition_id = id
         if partition_id:
             if node.status:
-                cursor.execute(insert_cmd, (node.hostname, partition_id,
-                                            node.np,
-                                            node.status['physmem']))
+                cursor.execute(node_insert_cmd, (node.hostname,
+                                                 partition_id,
+                                                 node.np,
+                                                 node.memory))
                 node_id = cursor.lastrowid
+                for property in node.properties:
+                    cursor.execute(prop_insert_cmd, (node_id, property))
             else:
                 msg = 'E: node {0} has no status\n'.format(node.hostname)
                 sys.stderr.write(msg)

@@ -1,5 +1,9 @@
 '''Module to represent cluster nodes'''
 
+import re
+
+import vsc.utils
+
 class NodeStatus(object):
     '''Class representing node status as reported by pbsnodes'''
 
@@ -13,12 +17,23 @@ class NodeStatus(object):
         self._jobs = None
         self._status = None
         self._note = None
+        self._memory = 0
 
     @property
     def hostname(self):
         '''returns node's hostname'''
         return self._hostname
 
+    @property
+    def memory(self):
+        '''returns the node's memory in bytes as integer'''
+        if self._memory == 0 and self._status:
+            match = re.match(r'(\d+)([kgt]?)b', self._status['physmem'])
+            if match:
+                self._memory = vsc.utils.size2bytes(int(match.group(1)),
+                                                    match.group(2))
+        return self._memory
+        
     @property
     def state(self):
         '''returns node's state'''

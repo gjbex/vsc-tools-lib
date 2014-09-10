@@ -16,8 +16,8 @@ if __name__ == '__main__':
     conn = sqlite3.connect(options.db)
     cursor = conn.cursor()
     partitions_cmd = '''CREATE TABLE partitions
-                            (partition_id integer PRIMARY KEY AUTOINCREMENT,
-                             partition_name text NOT NULL,
+                            (partition_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                             partition_name TEXT NOT NULL,
                              UNIQUE(partition_name))'''
     partitions_idx = '''CREATE INDEX partition_idx
                             ON partitions(partition_name)'''
@@ -29,32 +29,32 @@ if __name__ == '__main__':
         cursor.execute(partitions_insert, (partition, ))
     conn.commit()
     nodes_cmd = '''CREATE TABLE nodes
-                       (node_id integer PRIMARY KEY AUTOINCREMENT,
-                        hostname text NOT NULL,
-                        partition_id integer,
-                        rack integer,
-                        iru integer,
-                        np integer NOT NULL,
-                        ngpus integer,
-                        mem text NOT NULL,
+                       (node_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        hostname TEXT NOT NULL,
+                        partition_id INTEGER,
+                        rack INTEGER,
+                        iru INTEGER,
+                        np INTEGER NOT NULL,
+                        ngpus INTEGER,
+                        mem INTEGER NOT NULL,
                         FOREIGN KEY(partition_id)
                             REFERENCES partitions(partition_id),
                         UNIQUE(hostname, partition_id))'''
     nodes_idx = '''CREATE INDEX node_idx
                        ON nodes(hostname, partition_id)'''
     features_cmd = '''CREATE TABLE features
-                          (feature_id integer PRIMARY KEY AUTOINCREMENT,
-                           node_id integer,
-                           feature text NOT NULL,
+                          (feature_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                           node_id INTEGER NOT NULL,
+                           feature TEXT NOT NULL,
                            FOREIGN KEY(node_id)
                                REFERENCES nodes(node_id),
                            UNIQUE(node_id, feature))'''
     features_idx = '''CREATE INDEX feature_idx
                           ON features(node_id, feature)'''
     properties_cmd = '''CREATE TABLE properties
-                          (property_id integer PRIMARY KEY AUTOINCREMENT,
-                           node_id integer,
-                           property text NOT NULL,
+                          (property_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                           node_id INTEGER NOT NULL,
+                           property TEXT NOT NULL,
                            FOREIGN KEY (node_id)
                                REFERENCES nodes (node_id),
                            UNIQUE (node_id, property))'''
