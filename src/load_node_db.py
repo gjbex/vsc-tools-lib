@@ -15,7 +15,8 @@ if __name__ == '__main__':
     options = arg_parser.parse_args()
     conn = sqlite3.connect(options.db)
     cursor = conn.cursor()
-    cursor.execute('''SELECT id, name FROM partitions;''')
+    cursor.execute('''SELECT partition_id, partition_name
+                          FROM partitions;''')
     partitions = {}
     for row in cursor:
         partitions[row[1]] = row[0]
@@ -23,7 +24,8 @@ if __name__ == '__main__':
     with open(options.file, 'r') as node_file:
         nodes = pbsnodes_parser.parse_file(node_file)
     insert_cmd = '''INSERT INTO nodes
-                        (name, partition_id, np, mem) VALUES (?, ?, ?, ?)'''
+                        (hostname, partition_id, np, mem) VALUES
+                        (?, ?, ?, ?)'''
     for node in nodes:
         partition_id = None
         for partition, id in partitions.items():
@@ -34,6 +36,7 @@ if __name__ == '__main__':
                 cursor.execute(insert_cmd, (node.hostname, partition_id,
                                             node.np,
                                             node.status['physmem']))
+                node_id = cursor.lastrowid
             else:
                 msg = 'E: node {0} has no status\n'.format(node.hostname)
                 sys.stderr.write(msg)
