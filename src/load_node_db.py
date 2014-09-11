@@ -5,7 +5,7 @@ if __name__ == '__main__':
     import re, sqlite3, sys
 
     from vsc.pbs.node import PbsnodesParser
-    from vsc.pbs.utils import compute_features, create_partition_computer
+    from vsc.pbs.utils import compute_features, compute_partition
     from vsc.utils import hostname2rackinfo
 
     arg_parser = ArgumentParser(description=('loads a database with node '
@@ -13,13 +13,22 @@ if __name__ == '__main__':
     arg_parser.add_argument('--file', help='node file')
     arg_parser.add_argument('--db', default='nodes.db',
                             help='file to store the database in')
+    arg_parser.add_argument('--partitions', default='thinking,gpu,phi',
+                            help='partitions defined for the cluster')
     options = arg_parser.parse_args()
+    partition_list = options.partitions.split(',')
+    partitions = {}
     conn = sqlite3.connect(options.db)
     cursor = conn.cursor()
-    compute_partition = create_partition_computer(cursor)
     pbsnodes_parser = PbsnodesParser()
     with open(options.file, 'r') as node_file:
         nodes = pbsnodes_parser.parse_file(node_file)
+    partition_insert_cmd = '''INSERT INTO partitions
+                                  (partition_name) VALUES (?);'''
+    for partition_name in partition_list:
+        cursor.execute(partition_insert_cmd, (partition_name, ))
+        partitions[partition_name] = cursor.lastrowid
+    conn.commit()
     node_insert_cmd = '''INSERT INTO nodes
                              (hostname, partition_id, rack, iru, np, mem)
                          VALUES
@@ -31,7 +40,7 @@ if __name__ == '__main__':
                                 (node_id, feature) VALUES
                                 (?, ?)'''
     for node in nodes:
-        partition_id = compute_partition(node)
+        partition_id = compute_partition(node, partitions)
         rack, iru, _ = hostname2rackinfo(node.hostname)
         if partition_id:
             if node.status:
