@@ -4,12 +4,14 @@ NO_ERRORS_EXIT = 0
 ERRORS_EXIT = 1
 WARNINGS_EXIT = 2
 CAN_NOT_OPEN_EVENT_FILE = 11
-CAN_NOT_OPEN_PBS = 12
-UNDEFINED_EVENT = 13
+CAN_NOT_OPEN_CONF_FILE = 12
+CAN_NOT_OPEN_CLUSTER_DB_FILE = 13
+CAN_NOT_OPEN_PBS = 14
+UNDEFINED_EVENT = 15
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
-    import json, sys
+    import json, os, sqlite3, sys
     from vsc.qlint.pbs_parser import PbsParser
 
     arg_parser = ArgumentParser(description='PBS script syntax checker')
@@ -18,6 +20,8 @@ if __name__ == '__main__':
                             help='event defintion file to use')
     arg_parser.add_argument('--show_job', action='store_true',
                             help='show job parameters')
+    arg_parser.add_argument('--conf', default='config.json',
+                            help='configuration file')
     arg_parser.add_argument('--quiet', action='store_true',
                             help='do not show summary')
     arg_parser.add_argument('--warnings_as_errors', action='store_true',
@@ -30,6 +34,18 @@ if __name__ == '__main__':
         msg = "### error: can not open event file '{0}'\n"
         sys.stderr.write(msg.format(options.events))
         sys.exit(CAN_NOT_OPEN_EVENT_FILE)
+    try:
+        with open(options.conf, 'r') as conf_file:
+            conf = json.load(conf_file)
+    except EnvironmentError as error:
+        msg = "### error: can not open configuration file '{0}'\n"
+        sys.stderr.write(msg.format(options.conf))
+        sys.exit(CAN_NOT_OPEN_CONF_FILE)
+    if not os.path.isfile(conf['cluster_db']):
+        msg = "### error: can not open cluser DB '{0}'\n"
+        sys.stderr.write(msg.format(conf['cluster_db']))
+        sys.exit(CAN_NOT_OPEN_CLUSTER_DB_FILE)
+    cluster_db_conn = sqlite3.connect(conf['cluster_db'])
     pbs_parser = PbsParser()
     try:
         with open(options.pbs_file, 'r') as pbs_file:

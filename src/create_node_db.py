@@ -8,8 +8,7 @@ db_desc = {
             '''CREATE TABLE partitions
                    (partition_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     partition_name TEXT NOT NULL,
-                    UNIQUE(partition_name))'''
-        ,
+                    UNIQUE(partition_name))''',
         'index': [
             '''CREATE INDEX partition_idx
                    ON partitions(partition_name)'''
@@ -28,8 +27,7 @@ db_desc = {
                     mem INTEGER NOT NULL,
                     FOREIGN KEY(partition_id)
                         REFERENCES partitions(partition_id),
-                    UNIQUE(hostname, partition_id))'''
-        ,
+                    UNIQUE(hostname, partition_id))''',
         'index': [
             '''CREATE INDEX node_idx
                    ON nodes(hostname, partition_id)'''
@@ -42,8 +40,7 @@ db_desc = {
                     node_id INTEGER NOT NULL,
                     property TEXT NOT NULL,
                     FOREIGN KEY (node_id) REFERENCES nodes (node_id),
-                    UNIQUE (node_id, property))'''
-        ,
+                    UNIQUE (node_id, property))''',
         'index': [
             '''CREATE INDEX property_idx
                    ON properties (node_id, property)'''
@@ -56,11 +53,21 @@ db_desc = {
                     node_id INTEGER NOT NULL,
                     feature TEXT NOT NULL,
                     FOREIGN KEY(node_id) REFERENCES nodes(node_id),
-                    UNIQUE(node_id, feature))'''
-        ,
+                    UNIQUE(node_id, feature))''',
         'index': [
             '''CREATE INDEX feature_idx
                    ON features(node_id, feature)'''
+        ],
+    },
+    'qos_levels': {
+        'create':
+            '''CREATE TABLE qos_levels
+                   (qos_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    qos TEXT NOT NULL,
+                    UNIQUE(qos))''',
+        'index': [
+            '''CREATE INDEX qos_idx
+                   ON qos_levels(qos)'''
         ],
     },
 }
