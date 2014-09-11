@@ -41,11 +41,11 @@ if __name__ == '__main__':
         msg = "### error: can not open configuration file '{0}'\n"
         sys.stderr.write(msg.format(options.conf))
         sys.exit(CAN_NOT_OPEN_CONF_FILE)
-    if not os.path.exists(conf['cluster_db']):
+    if not os.path.isfile(conf['cluster_db']):
         msg = "### error: can not open cluser DB '{0}'\n"
         sys.stderr.write(msg.format(conf['cluster_db']))
         sys.exit(CAN_NOT_OPEN_CLUSTER_DB_FILE)
-    cluster_db = sqlite3.connect(conf['cluster_db'])
+    cluster_db_conn = sqlite3.connect(conf['cluster_db'])
     pbs_parser = PbsParser()
     try:
         with open(options.pbs_file, 'r') as pbs_file:
