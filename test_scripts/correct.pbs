@@ -4,6 +4,7 @@
 #PBS -l nodes=2:ppn=4
 #PBS -l pmem=4gb
 #PBS -lwalltime=72:00:00
+#PBS -lqos=debugging
 #PBS -j oe
 #PBS -k o
 #PBS -m ae

@@ -108,7 +108,7 @@ class PbsOptionParser(object):
         uid = os.getlogin()
         for address in self._job.mail_addresses:
             if (not validate_email.validate_email(address) and
-                address != uid):
+                    address != uid):
                 self.reg_event('invalid_mail_address', {'address': address})
 
     def check_N(self, val):
@@ -124,9 +124,14 @@ class PbsOptionParser(object):
         try:
             seconds = walltime2seconds(attr_value)
             resource_spec[attr_name] = seconds
-        except InvalidWalltimeError as error:
+        except InvalidWalltimeError:
             self.reg_event('invalid_{0}_format'.format(attr_name),
                            {'time': attr_value})
+
+    def check_generic_res(self, val, resource_spec):
+        '''check a generic resource'''
+        attr_name, attr_value = val.split('=')
+        resource_spec[attr_name] = attr_value
 
     def check_mem_res(self, val, resource_spec):
         '''check memory resource'''
@@ -142,7 +147,7 @@ class PbsOptionParser(object):
 
     def check_nodes_res(self, val, resource_spec):
         '''check nodes resource'''
-        attr_name, attr_value = val.split('=', 1)
+        _, attr_value = val.split('=', 1)
 # if present, multiple node specifications are separated by '+'
         node_spec_strs = attr_value.split('+')
         node_specs = []
@@ -161,7 +166,7 @@ class PbsOptionParser(object):
 # now deal with the remaining specifications, ppn, gpus and features
             for spec_str in spec_strs[1:]:
                 if (spec_str.startswith('ppn=') or
-                    spec_str.startswith('gpus=')):
+                        spec_str.startswith('gpus=')):
                     key, value = spec_str.split('=')
                     if value.isdigit():
                         node_spec[key] = int(value)
@@ -190,8 +195,8 @@ class PbsOptionParser(object):
 # values can be combined by using ','
             for val in (x.strip() for x in val_str.split(',')):
                 if (val.startswith('walltime=') or
-                    val.startswith('cput=') or
-                    val.startswith('pcput=')):
+                        val.startswith('cput=') or
+                        val.startswith('pcput=')):
                     self.check_time_res(val, resource_spec)
                 elif (val.startswith('mem=') or val.startswith('pmem=') or
                       val.startswith('vmem=') or val.startswith('pvmem=')):
@@ -200,8 +205,12 @@ class PbsOptionParser(object):
                     self.check_nodes_res(val, resource_spec)
                 elif val.startswith('procs='):
                     self.check_procs_res(val, resource_spec)
+                elif (val.startswith('partition=') or
+                      val.startswith('feature') or
+                      val.startswith('qos')):
+                    self.check_generic_res(val, resource_spec)
                 else:
-                    self.reg_event('unknown_resource_spec',{'spec': val})
+                    self.reg_event('unknown_resource_spec', {'spec': val})
         self._job.add_resource_specs(resource_spec)
 
     def check_oe(self, val, option):
