@@ -77,7 +77,7 @@ def seconds2walltime(seconds):
     hours = seconds//60
     return '{h:02d}:{m:02d}:{s:02d}'.format(h=hours, m=mins, s=secs)
 
-def size2bytes(amount, order):
+def size2bytes(amount, order=None):
     '''given a number and and order, compute size
     >>> size2bytes(12, 'k')
     12288
@@ -93,6 +93,10 @@ def size2bytes(amount, order):
     Traceback (most recent call last):
         ...
     InvalidSizeError
+    >>> size2bytes('12kb')
+    12288
+    >>> size2bytes('12 tw')
+    13194139533312L
     '''
     conversion = {
         'k': 1024,
@@ -101,6 +105,14 @@ def size2bytes(amount, order):
         't': 1024**4,
         None: 1,
     }
+    if (type(amount) == str and ('b' in amount or 'w' in amount) and
+        order is None):
+        match = re.match(r'(\d+)\s*([kmgt]?)(?:b|w)$', amount)
+        if match:
+            amount = match.group(1)
+            order = match.group(2)
+        else:
+            raise InvalidSizeError("'{0}' is not an integer".format(amount))
     try:
         return int(amount)*conversion[order]
     except ValueError:

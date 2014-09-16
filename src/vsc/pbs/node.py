@@ -28,12 +28,30 @@ class NodeStatus(object):
     def memory(self):
         '''returns the node's memory in bytes as integer'''
         if self._memory == 0 and self._status:
-            match = re.match(r'(\d+)([kgt]?)b', self._status['physmem'])
-            if match:
-                self._memory = vsc.utils.size2bytes(int(match.group(1)),
-                                                    match.group(2))
+            self._memory = vsc.utils.size2bytes(self._status['physmem'])
         return self._memory
         
+    @property
+    def cpuload(self):
+        '''Returns load average, None if no status information was
+           available'''
+        if self._status and self._status['loadave']:
+            loadave = float(self._status['loadave'])
+            ncpus = int(self._status['ncpus'])
+            return loadave/ncpus
+        return None
+
+    @property
+    def memload(self):
+        '''Returns the memory load, None if no status information was
+           available'''
+        if (self._status and self._status['availmem'] and
+            self._status['physmem']):
+            physmem = vsc.utils.size2bytes(self._status['physmem'])
+            availmem = vsc.utils.size2bytes(self._status['availmem'])
+            return 1.0 - float(availmem)/float(physmem)
+        return None
+
     @property
     def state(self):
         '''returns node's state'''
@@ -51,7 +69,10 @@ class NodeStatus(object):
 
     def has_property(self, property):
         '''returns True if the NodeStatus has the given property'''
-        return property in self._properties
+        if self._properties:
+            return property in self._properties
+        else:
+            return False
 
     @property
     def ntype(self):
@@ -140,11 +161,11 @@ class PbsnodesParser(object):
         '''Constructor'''
         pass
 
-    def parse_file(self, node_file):
-        '''parse a file that contains pbsnodes output'''
+    def parse(self, node_output):
+        '''parse output as produced by pbsnodes'''
         nodes = []
         state = 'init'
-        for line in node_file:
+        for line in node_output.split('\n'):
             if state == 'init' and re.match(r'^\w', line):
                 node_str = line
                 state = 'in_node'
@@ -154,6 +175,11 @@ class PbsnodesParser(object):
                 state = 'init'
                 nodes.append(self.parse_node(node_str.strip()))
         return nodes
+
+    def parse_file(self, node_file):
+        '''parse a file that contains pbsnodes output'''
+        node_output = ''.join(node_file.readlines())
+        return self.parse(node_output)
 
     def parse_node(self, node_str):
         '''parse a string containing pbsnodes information of single node'''
