@@ -42,7 +42,7 @@ def init_plot(z, x, y, options):
 def update_plot(z, x, y, options):
     stream = py.Stream(options.stream_id)
     stream.open()
-    heatmap = Heatmap(z=z, x=x, y=y, stream=stream)
+    heatmap = Heatmap(z=z, x=x, y=y)
     layout = Layout(
         annotations=create_annotations(options)
     )
@@ -113,6 +113,8 @@ if __name__ == '__main__':
         try:
             node_output = subprocess.check_output([options.pbsnodes])
             nodes = parser.parse(node_output)
+            if options.verbose:
+                print '{0:d} nodes found'.format(len(nodes))
         except CalledProcessError:
             sys.stderr.write('### error: could not execute pbsnodes\n')
             sys.exit(1)

@@ -170,7 +170,7 @@ class PbsnodesParser(object):
                 node_str = line
                 state = 'in_node'
             elif state == 'in_node' and len(line.strip()):
-                node_str += line
+                node_str += '\n' + line
             else:
                 state = 'init'
                 nodes.append(self.parse_node(node_str.strip()))
