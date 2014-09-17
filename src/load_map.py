@@ -115,7 +115,7 @@ if __name__ == '__main__':
             nodes = parser.parse(node_output)
             if options.verbose:
                 print '{0:d} nodes found'.format(len(nodes))
-        except CalledProcessError:
+        except subprocess.CalledProcessError:
             sys.stderr.write('### error: could not execute pbsnodes\n')
             sys.exit(1)
     x_labels, y_labels = compute_xy_labels(options)
