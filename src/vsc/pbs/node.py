@@ -30,7 +30,7 @@ class NodeStatus(object):
         if self._memory == 0 and self._status:
             self._memory = vsc.utils.size2bytes(self._status['physmem'])
         return self._memory
-        
+
     @property
     def cpuload(self):
         '''Returns load average, None if no status information was
@@ -46,7 +46,7 @@ class NodeStatus(object):
         '''Returns the memory load, None if no status information was
            available'''
         if (self._status and self._status['availmem'] and
-            self._status['physmem']):
+                self._status['physmem']):
             physmem = vsc.utils.size2bytes(self._status['physmem'])
             availmem = vsc.utils.size2bytes(self._status['availmem'])
             return 1.0 - float(availmem)/float(physmem)
@@ -67,10 +67,10 @@ class NodeStatus(object):
         '''returns node's properties'''
         return self._properties
 
-    def has_property(self, property):
+    def has_property(self, prop):
         '''returns True if the NodeStatus has the given property'''
         if self._properties:
-            return property in self._properties
+            return prop in self._properties
         else:
             return False
 
@@ -83,6 +83,16 @@ class NodeStatus(object):
     def jobs(self):
         '''returns node's jobs'''
         return self._jobs
+
+    @property
+    def job_ids(self):
+        '''returns a set of jobs IDs, empty if node is free'''
+        job_ids = set()
+        for job_id in self.jobs.values():
+            match = re.match(r'(\d+)', job_id)
+            if match:
+                job_ids.add(match.group(1))
+        return job_ids
 
     @property
     def status(self):
@@ -151,8 +161,6 @@ class NodeStatus(object):
             node_str += '\n\t{0} = {1}'.format('note', self.note)
         return node_str
 
-
-import re
 
 class PbsnodesParser(object):
     '''Implements a parser for pbsnodes output'''
