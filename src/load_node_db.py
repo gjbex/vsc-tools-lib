@@ -17,6 +17,8 @@ if __name__ == '__main__':
                              help='partitions defined for the cluster')
     arg_parser.add_argument('--qos_levels', default='debugging',
                              help='QOS defined for the cluster')
+    arg_parser.add_argument('--jobs', action='store_true',
+                            help='create job-related tables')
     options = arg_parser.parse_args()
     partition_list = options.partitions.split(',')
     qos_levels = options.qos_levels.split(',')
@@ -47,6 +49,9 @@ if __name__ == '__main__':
     feature_insert_cmd = '''INSERT INTO features
                                 (node_id, feature) VALUES
                                 (?, ?)'''
+    running_job_insert_cmd = '''INSERT INTO running_jobs
+                                (job_id, node_id) VALUES
+                                (?, ?)'''
     for node in nodes:
         partition_id = compute_partition(node, partitions)
         rack, iru, _ = hostname2rackinfo(node.hostname)
@@ -63,6 +68,9 @@ if __name__ == '__main__':
                     cursor.execute(prop_insert_cmd, (node_id, property))
                 for feature in compute_features(node):
                     cursor.execute(feature_insert_cmd, (node_id, feature))
+                if options.jobs:
+                    for job_id in node.job_ids:
+                        cursor.execute(running_job_insert_cmd, (job_id, node_id))
             else:
                 msg = 'E: node {0} has no status\n'.format(node.hostname)
                 sys.stderr.write(msg)

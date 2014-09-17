@@ -2,7 +2,7 @@
 
 import sqlite3, sys
 
-db_desc = {
+DB_DESC = {
     'partitions': {
         'create':
             '''CREATE TABLE partitions
@@ -70,6 +70,33 @@ db_desc = {
                    ON qos_levels(qos)'''
         ],
     },
+    'jobs': {
+        'create':
+            '''CREATE TABLE jobs
+                   (job_id INTEGER PRIMARY KEY,
+                    user TEXT NOT NULL,
+                    procs INTEGER NOT NULL,
+                    remaining INTEGER,
+                    start_time TEXT,
+                    wclimit INTEGER,
+                    queuetime TEXT)''',
+        'index': [
+            '''CREATE INDEX job_idx
+                   ON jobs(job_id, user)''',
+        ],
+    },
+    'running_jobs': {
+        'create':
+            '''CREATE TABLE running_jobs
+                   (job_id INTEGER,
+                    node_id INTEGER,
+                    FOREIGN KEY(job_id) REFERENCES jobs(job_id),
+                    FOREIGN KEY(node_id) REFERENCES nodes(node_id))''',
+        'index': [
+            '''CREATE INDEX running_job_idx
+                   ON running_jobs(job_id, node_id)''',
+        ],
+    },
 }
 
 def init_table(conn, table_name, table_desc, force=False):
@@ -87,11 +114,12 @@ def init_table(conn, table_name, table_desc, force=False):
         sys.stderr.write(msg.format(table_name, error.message))
     cursor.close()
 
-def init_db(conn, db_desc, force=False):
+def init_db(conn, db_desc, force=False, create_jobs_tables=False):
     '''Create tables and indices in the connection's database, drop tables
        first when using force'''
     for table_name, table_desc in db_desc.items():
-        init_table(conn, table_name, table_desc, force)
+        if not table_name.endswith('jobs') or create_jobs_tables:
+            init_table(conn, table_name, table_desc, force)
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
@@ -100,8 +128,11 @@ if __name__ == '__main__':
                                              'store node information'))
     arg_parser.add_argument('--db', default='nodes.db',
                             help='file to store the database in')
+    arg_parser.add_argument('--jobs', action='store_true',
+                            help='create job-related tables')
     arg_parser.add_argument('--force', action='store_true',
                             help='when database exists, first drop tables')
     options = arg_parser.parse_args()
     conn = sqlite3.connect(options.db)
-    init_db(conn, db_desc, options.force)
+    init_db(conn, DB_DESC, force=options.force, create_jobs_tables=options.jobs)
+
