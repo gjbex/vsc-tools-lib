@@ -45,7 +45,7 @@ class JobStatus(object):
     @property
     def remaining(self):
         '''Returns time remaining for a running job'''
-        if self._state == 'RUNNING':
+        if self._state == 'Running':
             return self._time
         else:
             raise InconsistantAttributesError('non-running job has no '
@@ -54,7 +54,7 @@ class JobStatus(object):
     @property
     def starttime(self):
         '''Returns start time of a running job'''
-        if self._state == 'RUNNING':
+        if self._state == 'Running':
             return self._date
         else:
             raise InconsistantAttributesError('non-running job has no '
@@ -63,7 +63,7 @@ class JobStatus(object):
     @property
     def wclimit(self):
         '''Returns walltime limit of a non-running job'''
-        if self._state != 'RUNNING':
+        if self._state != 'Running':
             return self._time
         else:
             raise InconsistantAttributesError('running job has no '
@@ -72,7 +72,7 @@ class JobStatus(object):
     @property
     def queuetime(self):
         '''Returns time non-running job was queued'''
-        if self._state != 'RUNNING':
+        if self._state != 'Running':
             return self._date
         else:
             raise InconsistantAttributesError('running job has no '
@@ -84,11 +84,11 @@ class JobStatus(object):
         job_str += '\n\tuser: {0}'.format(self.username)
         job_str += '\n\tstate: {0}'.format(self.state)
         job_str += '\n\tprocs: {0}'.format(self.state)
-        if self.state == 'RUNNING':
+        if self.state == 'Running':
             job_str += '\n\tremaining: {0}'.format(self.remaining)
         else:
             job_str += '\n\twclimit: {0}'.format(self.wclimit)
-        if self.state == 'RUNNING':
+        if self.state == 'Running':
             job_str += '\n\tstarted: {0}'.format(self.starttime)
         else:
             job_str += '\n\tqueued: {0}'.format(self.queuetime)
