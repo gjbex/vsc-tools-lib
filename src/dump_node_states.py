@@ -33,7 +33,7 @@ if __name__ == '__main__':
     fields = ['hostname', 'partition', 'rack', 'iru', 'np', 'mem',
                  'cpuload', 'memload', 'jobs']
     fmt_str = ';'.join(['{{{0}}}'.format(x) for x in fields])
-    print fmt_str
+    print ';'.join(fields)
     for node in nodes:
         partition_id = compute_partition(node, partitions)
         rack, iru, _ = hostname2rackinfo(node.hostname)
