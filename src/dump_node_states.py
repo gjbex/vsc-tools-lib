@@ -15,6 +15,8 @@ if __name__ == '__main__':
                              help='partitions defined for the cluster')
     arg_parser.add_argument('--pbsnodes', default='/usr/local/bin/pbsnodes',
                             help='pbsnodes command to use')
+    arg_parser.add_argument('--verbose', action='storetrue',
+                            help='show run time information')
     options = arg_parser.parse_args()
     partitions = options.partitions.split(',')
     pbsnodes_parser = PbsnodesParser()
