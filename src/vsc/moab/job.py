@@ -48,8 +48,7 @@ class JobStatus(object):
         if self._state == 'Running':
             return self._time
         else:
-            raise InconsistantAttributesError('non-running job has no '
-                                              'remaining time')
+            raise InconsistantAttributesError('non-running job has no remaining time')
         
     @property
     def starttime(self):
@@ -57,8 +56,7 @@ class JobStatus(object):
         if self._state == 'Running':
             return self._date
         else:
-            raise InconsistantAttributesError('non-running job has no '
-                                              'starting time')
+            raise InconsistantAttributesError('non-running job has no starting time')
         
     @property
     def wclimit(self):
@@ -66,8 +64,7 @@ class JobStatus(object):
         if self._state != 'Running':
             return self._time
         else:
-            raise InconsistantAttributesError('running job has no '
-                                              'wall clock limit')
+            raise InconsistantAttributesError('running job has no wall clock limit')
         
     @property
     def queuetime(self):
@@ -75,8 +72,7 @@ class JobStatus(object):
         if self._state != 'Running':
             return self._date
         else:
-            raise InconsistantAttributesError('running job has no '
-                                              'queue time')
+            raise InconsistantAttributesError('running job has no queue time')
 
     def __str__(self):
         '''Returns string representation of a job status'''
