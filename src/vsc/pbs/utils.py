@@ -13,8 +13,14 @@ def compute_features(node):
 def compute_partition(node, partitions):
     '''Compute partition for a node based on its properties'''
     partition_id = None
-    for partition, id in partitions.items():
-        if node.has_property(partition):
-            partition_id = id
+    if type(partitions) == dict:
+        for partition, id in partitions.items():
+            if node.has_property(partition):
+                partition_id = id
+                break
+    elif type(partitions) == list:
+        for partition in partitions:
+            if node.has_property(partition):
+                partition_id = partition
+                break
     return partition_id
-

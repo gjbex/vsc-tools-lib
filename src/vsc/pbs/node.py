@@ -88,10 +88,11 @@ class NodeStatus(object):
     def job_ids(self):
         '''returns a set of jobs IDs, empty if node is free'''
         job_ids = set()
-        for job_id in self.jobs.values():
-            match = re.match(r'(\d+)', job_id)
-            if match:
-                job_ids.add(match.group(1))
+        if self.jobs:
+            for job_id in self.jobs.values():
+                match = re.match(r'(\d+)', job_id)
+                if match:
+                    job_ids.add(match.group(1))
         return job_ids
 
     @property
