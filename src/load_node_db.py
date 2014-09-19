@@ -82,13 +82,13 @@ if __name__ == '__main__':
                                     (job_id, node_id) VALUES
                                     (?, ?)'''
     active_jobs_insert_cmd = '''INSERT INTO jobs
-                                    (job_id, username, state, procs,
+                                    (job_id, user, state, procs,
                                      remaining, starttime) VALUES
-                                    (?, ?, ? ?, ?, ?)'''
+                                    (?, ?, ?, ?, ?, ?)'''
     nonactive_jobs_insert_cmd = '''INSERT INTO jobs
-                                       (job_id, username, state, procs,
+                                       (job_id, user, state, procs,
                                         wclimit, queuetime) VALUES
-                                       (?, ?, ? ?, ?, ?)'''
+                                       (?, ?, ?, ?, ?, ?)'''
     for node in nodes:
         partition_id = compute_partition(node, partitions)
         rack, iru, _ = hostname2rackinfo(node.hostname)
@@ -123,7 +123,7 @@ if __name__ == '__main__':
                 for job in jobs[job_state]:
                     cursor.execute(nonactive_jobs_insert_cmd,
                                        (job.id, job.username, job.state,
-                                        job.procs, job.remaining, job.starttime))
+                                        job.procs, job.wclimit, job.queuetime))
         conn.commit()    
     cursor.close()
 

@@ -75,14 +75,17 @@ DB_DESC = {
             '''CREATE TABLE jobs
                    (job_id INTEGER PRIMARY KEY,
                     user TEXT NOT NULL,
+                    state TEXT NOT NULL,
                     procs INTEGER NOT NULL,
                     remaining INTEGER,
-                    start_time TEXT,
+                    starttime TEXT,
                     wclimit INTEGER,
                     queuetime TEXT)''',
         'index': [
             '''CREATE INDEX job_idx
                    ON jobs(job_id, user)''',
+            '''CREATE INDEX job_state_idx
+                   ON jobs(state)''',
         ],
     },
     'running_jobs': {
