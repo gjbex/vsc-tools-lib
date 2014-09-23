@@ -44,18 +44,19 @@ if __name__ == '__main__':
         except subprocess.CalledProcessError:
             sys.stderr.write('### error: could not execute pbsnodes\n')
             sys.exit(1)
-    if options.showq_file:
-        with open(options.showq_file, 'r') as job_file:
-            jobs = showq_parser.parse_file(job_file)
-    else:
-        try:
-            job_output = subprocess.check_output([options.showq])
-            jobs = showq_parser.parse(job_output)
-            if options.verbose:
-                print '{0:d} nodes found'.format(len(jobs))
-        except subprocess.CalledProcessError:
-            sys.stderr.write('### error: could not execute showq\n')
-            sys.exit(1)
+    if options.jobs:
+        if options.showq_file:
+            with open(options.showq_file, 'r') as job_file:
+                jobs = showq_parser.parse_file(job_file)
+        else:
+            try:
+                job_output = subprocess.check_output([options.showq])
+                jobs = showq_parser.parse(job_output)
+                if options.verbose:
+                    print '{0:d} nodes found'.format(len(jobs))
+            except subprocess.CalledProcessError:
+                sys.stderr.write('### error: could not execute showq\n')
+                sys.exit(1)
     partition_insert_cmd = '''INSERT INTO partitions
                                   (partition_name) VALUES (?)'''
     partitions = {}

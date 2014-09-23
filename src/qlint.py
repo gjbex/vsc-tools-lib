@@ -12,7 +12,7 @@ UNDEFINED_EVENT = 15
 if __name__ == '__main__':
     from argparse import ArgumentParser
     import json, os, sqlite3, sys
-    from vsc.qlint.pbs_parser import PbsParser
+    from vsc.pbs.script_parser import PbsScriptParser
 
     arg_parser = ArgumentParser(description='PBS script syntax checker')
     arg_parser.add_argument('pbs_file', help='PBS file to check')
@@ -46,7 +46,7 @@ if __name__ == '__main__':
         sys.stderr.write(msg.format(conf['cluster_db']))
         sys.exit(CAN_NOT_OPEN_CLUSTER_DB_FILE)
     cluster_db_conn = sqlite3.connect(conf['cluster_db'])
-    pbs_parser = PbsParser()
+    pbs_parser = PbsScriptParser()
     try:
         with open(options.pbs_file, 'r') as pbs_file:
             pbs_parser.parse_file(pbs_file)

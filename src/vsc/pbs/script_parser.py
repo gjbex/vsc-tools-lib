@@ -3,9 +3,9 @@
 
 import os, re
 from vsc.pbs.job import PbsJob
-from vsc.qlint.pbs_option_parser import PbsOptionParser
+from vsc.pbs.option_parser import PbsOptionParser
 
-class PbsParser(object):
+class PbsScriptParser(object):
     '''Parser for PBS torque job files'''
 
     def __init__(self, pbs_directive='#PBS'):
