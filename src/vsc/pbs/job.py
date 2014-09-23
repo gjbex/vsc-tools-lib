@@ -8,7 +8,9 @@ class PbsJob(object):
     def __init__(self, name=None):
         '''Constructor for a PBS job object'''
         self._name = name
-        self._resource_specs = {}
+        self._resource_specs = {
+            'partition': 'thinking'
+        }
         self._queue = None
         self._project = None
         _, host, _, _, _ = os.uname()
@@ -60,6 +62,14 @@ class PbsJob(object):
     def resource_specs(self):
         '''returns the job's resource specifications'''
         return self._resource_specs
+
+    def resource_spec(self, spec):
+        '''returns the resource specification specified, None if that
+           was not specified'''
+        if spec in self._resource_specs:
+            return self._resource_specs[spec]
+        else:
+            return None
 
     def add_resource_specs(self, resource_specs):
         '''Add resources to specification'''
