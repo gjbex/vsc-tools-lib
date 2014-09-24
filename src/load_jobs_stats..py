@@ -1,10 +1,22 @@
 #!/usr/bin/env python
+'''script that sends the number of jobs by state to Plotly'''
 
 import datetime, sys
 
 import plotly.plotly as py
 from plotly.graph_objs import Stream, Scatter, Data, Layout, Figure
 
+# list of states to ensure right order in graph
+STATE_NAMES = [
+    'Running',
+    'Idle',
+    'SystemHold',
+    'BatchHold',
+    'UserHold',
+    'NotQueued',
+]
+
+# stream tokens so that each state goes to its own stream
 STREAM_IDS = {
     'Running': 'c7d72lai12',
     'Idle': 'v06nqwbyc8',
@@ -15,6 +27,8 @@ STREAM_IDS = {
 }
 
 def count_job_types(jobs):
+    '''create a map from job state to number of jobs based on a list
+       of jbos'''
     counters = {}
     for state in STREAM_IDS:
         counters[state] = 0
@@ -28,9 +42,15 @@ def count_job_types(jobs):
     return counters
 
 def init_plot(counters, options):
+    '''initialize Plotly plot based on counters, should be executed only,
+       once, unless plot layout is modified, or states are added'''
     time_stamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     traces = []
-    for state in counters:
+    for state in STATE_NAMES:
+# if state name list and stream IDs are inconsitent, try to plot as much
+# data as possible
+        if state not in STREAM_IDS:
+            continue
         stream = Stream(token=STREAM_IDS[state], maxpoints=48)
         trace = Scatter(
             x=[time_stamp],
@@ -48,8 +68,13 @@ def init_plot(counters, options):
     return url
 
 def update_plot(counters, options):
+    '''update the plot with current counter values'''
     time_stamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    for state in counters:
+    for state in STATE_NAMES:
+# if state name list and stream IDs are inconsitent, try to plot as much
+# data as possible
+        if state not in STREAM_IDS:
+            continue
         stream = py.Stream(STREAM_IDS[state])
         stream.open()
         x = time_stamp
@@ -71,8 +96,14 @@ if __name__ == '__main__':
     arg_parser.add_argument('--showq', default='/opt/moab/bin/showq',
                             help='showq command to use')
     options = arg_parser.parse_args()
+# check consistency of state name list and stream IDs, if inconsisten
+# try to continue nevertheless
+    if set(STATE_NAMES) != set(STREAM_IDS.keys()):
+        msg = '### error: state names inconsistent with stream IDs\n'
+        sys.stderr.write(msg)
     showq_parser = ShowqParser()
     if options.file:
+# for development and debugging
         with open(options.file, 'r') as showq_file:
             jobs = showq_parser.parse_file(showq_file)
     else:
