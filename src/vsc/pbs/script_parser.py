@@ -2,13 +2,16 @@
 '''class for parsing PBS files'''
 
 import os, re
+from vsc.event_logger import EventLogger
 from vsc.pbs.job import PbsJob
 from vsc.pbs.option_parser import PbsOptionParser
 
-class PbsScriptParser(object):
+class PbsScriptParser(EventLogger):
     '''Parser for PBS torque job files'''
 
     def __init__(self, pbs_directive='#PBS'):
+        '''Constructor'''
+        super(PbsScriptParser, self).__init__()
         self._job = PbsJob()
         self._pbs_directive = pbs_directive
         regex = r'\s*{0}\s+(.+)$'.format(pbs_directive)
@@ -17,7 +20,6 @@ class PbsScriptParser(object):
         self._state = None
         self._line_nr = 0
         self._pbs = []
-        self._events = []
 
     def parse_file(self, pbs_file):
         '''parse a PBS file'''
@@ -47,16 +49,11 @@ class PbsScriptParser(object):
         '''returns a PbsJob object representing the job script'''
         return self._job
 
-    @property
-    def events(self):
-        '''return events generated during parsing'''
-        return self._events
-
     def check_encoding(self, line):
         '''checks ASCII encoding and line endings'''
         try:
             line.decode('ascii')
-        except UnicodeDecodeError as error:
+        except UnicodeDecodeError:
             self.reg_event('non_ascii')
         if line.endswith('\r\n'):
             self.reg_event('dos_format')
@@ -83,12 +80,6 @@ class PbsScriptParser(object):
     def is_pbs(self, line):
         '''returns True if the line is a PBS directive'''
         return re.match(self._pbs_directive, line)
-
-    def reg_event(self, event, extra={}):
-        '''register a event'''
-        self._events.append({'id': event,
-                             'line': self._line_nr,
-                             'extra': extra})
 
     def parse_shebang(self, line):
         '''parse shebang part of PBS file'''
@@ -119,7 +110,7 @@ class PbsScriptParser(object):
         else:
             self._state = 'script'
             self.parse_script(line)
-    
+
     def parse_script(self, line):
         '''parse shell script part of a PBS file'''
         if self.is_shebang(line):

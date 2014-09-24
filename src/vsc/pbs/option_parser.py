@@ -4,15 +4,17 @@
 from argparse import ArgumentParser
 import os, re, validate_email
 
+from vsc.event_logger import EventLogger
 from vsc.utils import walltime2seconds, size2bytes
 from vsc.utils import InvalidWalltimeError
 
 
-class PbsOptionParser(object):
+class PbsOptionParser(EventLogger):
     '''Parser for PBS options, either command line or directives'''
 
     def __init__(self, job):
         '''constructor'''
+        super(PbsOptionParser, self).__init__()
         self._job = job
         self._arg_parser = ArgumentParser()
         self._arg_parser.add_argument('-A')
@@ -25,17 +27,6 @@ class PbsOptionParser(object):
         self._arg_parser.add_argument('-N')
         self._arg_parser.add_argument('-o')
         self._arg_parser.add_argument('-q')
-        self._events = []
-
-    @property
-    def events(self):
-        '''returns events collected during parse'''
-        return self._events
-
-    def reg_event(self, event, extra={}):
-        '''register an event when it occurs'''
-        self._events.append({'event': event,
-                             'extra': extra})
 
     def parse_args(self, option_line):
         '''parse options string'''
@@ -224,3 +215,4 @@ class PbsOptionParser(object):
             self._job.set_error(path, host)
         else:
             self._job.set_output(path, host)
+

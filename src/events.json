@@ -128,6 +128,11 @@
         "category": "error",
         "message": "'{procs}' is not integer for procs resource specification",
         "remedy": "number of processors should be integer"
+    },
+    "insufficient_node_mem": {
+        "category": "error",
+        "message": "no nodes available with {0} of RAM",
+        "remedy": "check pmem and ppn resource request"
     }
 }
 
