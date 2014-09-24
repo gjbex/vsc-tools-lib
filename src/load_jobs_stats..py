@@ -13,6 +13,7 @@ STATE_NAMES = [
     'SystemHold',
     'BatchHold',
     'UserHold',
+    'Hold',
     'NotQueued',
 ]
 
@@ -23,6 +24,7 @@ STREAM_IDS = {
     'SystemHold': 'wit8d3v54h',
     'BatchHold': 'p1kt433uui',
     'UserHold': 'w351mpb9jk',
+    'Hold': '9txpv9ickx',
     'NotQueued': 'bqn4umpi72',
 }
 
