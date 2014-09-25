@@ -9,7 +9,8 @@ class PbsJob(object):
         '''Constructor for a PBS job object'''
         self._name = name
         self._resource_specs = {
-            'partition': 'thinking'
+            'partition': 'thinking',
+            'qos': 'normal',
         }
         self._queue = None
         self._project = None

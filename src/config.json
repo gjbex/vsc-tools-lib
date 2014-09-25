@@ -1,5 +1,9 @@
 {
     "default_partition": "thinking",
-    "cluster_db": "cluster.db"
+    "partitions": ["thinking", "gpu", "phi"],
+    "default_qos": "normal",
+    "qos_levels": ["normal", "debugging"],
+    "cluster_db": "cluster.db",
+    "event_file": "events.json"
 }
 
