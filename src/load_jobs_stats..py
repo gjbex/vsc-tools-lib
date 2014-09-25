@@ -14,6 +14,7 @@ STATE_NAMES = [
     'Deferred',
     'BatchHold',
     'UserHold',
+    'Hold',
     'NotQueued',
 ]
 
@@ -25,6 +26,7 @@ STREAM_IDS = {
     'Deferred': 'p1kt433uui',
     'BatchHold': 'p1kt433uui',
     'UserHold': 'w351mpb9jk',
+    'Hold': '9txpv9ickx',
     'NotQueued': 'bqn4umpi72',
 }
 
