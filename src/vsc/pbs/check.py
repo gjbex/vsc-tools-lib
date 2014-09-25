@@ -9,7 +9,7 @@ class JobChecker(EventLogger):
 
     def __init__(self, db_name):
         '''Constructor for job checker'''
-        super(JobChecker, self).__init__()
+        super(JobChecker, self).__init__('global')
         self._conn = sqlite3.connect(db_name)
         self._cursor = self._conn.cursor()
 
@@ -19,19 +19,19 @@ class JobChecker(EventLogger):
 
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''
-        ppn = job.resource_spec('ppn')
-        pmem = job.resource_spec('pmem')
-        print ppn, pmem
-        if ppn and pmem:
-            node_mem = ppn*pmem
-        else:
-            return True
-        mem_sizes = self._mem_sizes(job.resource_spec('partition')).keys()
-        for mem in mem_sizes:
-            if node_mem < mem:
+        for nodes_spec in job.resource_spec('nodes'):
+            ppn = nodes_spec['ppn']
+            pmem = job.resource_spec('pmem')
+            if ppn and pmem:
+                node_mem = ppn*pmem
+            else:
                 return True
-        self.reg_event('insufficient_node_mem',
-                       {'mem': bytes2size(node_mem, 'gb')})
+            mem_sizes = self._mem_sizes(job.resource_spec('partition')).keys()
+            for mem in mem_sizes:
+                if node_mem < mem:
+                    continue
+            self.reg_event('insufficient_node_mem',
+                           {'mem': bytes2size(node_mem, 'gb')})
 
     def _mem_sizes(self, partition):
         '''retrieve the memory sizes of the nodes from the databse'''

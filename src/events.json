@@ -132,7 +132,7 @@
     "insufficient_node_mem": {
         "category": "error",
         "message": "no nodes available with {mem} of RAM",
-        "remedy": "check pmem and ppn resource request"
+        "remedy": "check pmem and ppn in resource specification"
     }
 }
 

@@ -54,6 +54,7 @@ if __name__ == '__main__':
         sys.exit(CAN_NOT_OPEN_PBS)
     job_checker = JobChecker(conf['cluster_db'])
     job_checker.check(pbs_parser.job)
+    pbs_parser.merge_events(job_checker.events)
     nr_warnings = 0
     nr_errors = 0
     for event in pbs_parser.events:
