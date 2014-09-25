@@ -16,6 +16,7 @@ class JobChecker(EventLogger):
     def check(self, job):
         '''Check semantics of given job'''
         self.check_pmem(job)
+        self.check_mem(job)
 
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''
@@ -32,6 +33,10 @@ class JobChecker(EventLogger):
                     continue
             self.reg_event('insufficient_node_mem',
                            {'mem': bytes2size(node_mem, 'gb')})
+
+    def check_mem(self, job):
+        '''check total memory requirements of job'''
+        pass
 
     def _mem_sizes(self, partition):
         '''retrieve the memory sizes of the nodes from the databse'''
