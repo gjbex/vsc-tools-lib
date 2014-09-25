@@ -103,8 +103,7 @@ class PbsScriptParser(EventLogger):
             match = self._pbs_extract.match(line)
             if match:
                 self._pbs_option_parser.parse_args(match.group(1))
-                for event in self._pbs_option_parser.events:
-                    self.reg_event(event['event'], event['extra'])
+                self.merge_events(self._pbs_option_parser.events)
             else:
                 self.reg_event('malformed_pbs_dir')
         else:
