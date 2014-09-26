@@ -14,7 +14,7 @@ class PbsOptionParser(EventLogger):
 
     def __init__(self, job):
         '''constructor'''
-        super(PbsOptionParser, self).__init__()
+        super(PbsOptionParser, self).__init__('global')
         self._job = job
         self._arg_parser = ArgumentParser()
         self._arg_parser.add_argument('-A')

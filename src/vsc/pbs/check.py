@@ -15,7 +15,6 @@ class JobChecker(EventLogger):
 
     def check(self, job):
         '''Check semantics of given job'''
-        self.check_pmem(job)
         self.check_total_pmem(job)
         self.check_mem(job)
         self.check_mem_vs_pmem(job)
@@ -25,6 +24,7 @@ class JobChecker(EventLogger):
         partition = job.resource_spec('partition')
         mem_sizes = self._mem_sizes(partition).keys()
         for nodes_spec in job.resource_spec('nodes'):
+            satisfied = False
             ppn = nodes_spec['ppn']
             pmem = job.resource_spec('pmem')
             if ppn and pmem:
@@ -33,33 +33,38 @@ class JobChecker(EventLogger):
                 continue
             for mem in mem_sizes:
                 if node_mem < mem:
-                    continue
-            self.reg_event('insufficient_node_pmem',
-                           {'mem': bytes2size(node_mem, 'gb')})
+                    satisfied = True
+                    break
+            if not satisfied:
+                self.reg_event('insufficient_node_pmem',
+                               {'mem': bytes2size(node_mem, 'gb')})
 
     def check_total_pmem(self, job):
         '''check total memory requirements of job as aggregated of pmem'''
         partition = job.resource_spec('partition')
         mem_sizes = self._mem_sizes(partition)
         for nodes_spec in job.resource_spec('nodes'):
-            nodes = nodes_spec['nodes']
+            satisfied = False
+            orig_nodes = nodes_spec['nodes']
+            nodes = orig_nodes
             ppn = nodes_spec['ppn']
             pmem = job.resource_spec('pmem')
             if ppn and pmem:
                 node_mem = ppn*pmem
             else:
                 continue
-            for mem in sort(sortmem_sizes.keys()):
+            for mem in sorted(mem_sizes.keys()):
                 if node_mem < mem:
-                    mem_sizes[mem] -= nodes
-                    if mem_sizes[mem] < 0:
-                        self.reg_event('insufficient_nodes_mem',
-                                       {'mem': bytes2size(node_mem, 'gb',
-                                        'nodes': nodes)})
-                    continue
-            self.reg_event('insufficient_nodes_mem',
-                           {'mem': bytes2size(node_mem, 'gb',
-                            'nodes': nodes)})
+                    if nodes <= mem_sizes[mem]:
+                        mem_sizes[mem] -= nodes
+                        nodes = 0
+                        break
+                    else:
+                        nodes -= mem_sizes[mem]
+            if nodes > 0:
+                self.reg_event('insufficient_nodes_mem',
+                               {'mem': bytes2size(node_mem, 'gb'),
+                                'nodes': orig_nodes})
 
     def check_mem(self, job):
         '''check total memory requirements of job as mem'''
@@ -69,7 +74,7 @@ class JobChecker(EventLogger):
         if mem_spec:
             for nodes_spec in job.resource_spec('nodes'):
                 nodes = nodes_spec['nodes']
-                for mem in sort(sortmem_sizes.keys()):
+                for mem in sorted(mem_sizes.keys()):
                     mem_spec -= mem*nodes
                     if mem_spec <=0:
                         break

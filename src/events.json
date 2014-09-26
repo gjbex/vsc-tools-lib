@@ -136,7 +136,7 @@
     },
     "insufficient_nodes_mem": {
         "category": "error",
-        "message": "no {nodes} nodes available with {mem} of RAM",
+        "message": "insufficient nodes ({nodes}) available with {mem} of RAM",
         "remedy": "check nodes, pmem and ppn in resource specification"
     },
     "insufficient_mem": {
