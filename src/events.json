@@ -129,10 +129,25 @@
         "message": "'{procs}' is not integer for procs resource specification",
         "remedy": "number of processors should be integer"
     },
-    "insufficient_node_mem": {
+    "insufficient_node_pmem": {
         "category": "error",
         "message": "no nodes available with {mem} of RAM",
         "remedy": "check pmem and ppn in resource specification"
+    },
+    "insufficient_nodes_mem": {
+        "category": "error",
+        "message": "no {nodes} nodes available with {mem} of RAM",
+        "remedy": "check nodes, pmem and ppn in resource specification"
+    },
+    "insufficient_mem": {
+        "category": "error",
+        "message": "insufficient nodes for a total of {mem} RAM",
+        "remedy": "check nodes and mem in resource specification"
+    },
+    "both_mem_pmem_specs": {
+        "category": "warning",
+        "message": "both mem and pmem resources specified",
+        "remedy": "check that you want both mem and pmem specifications"
     }
 }
 
