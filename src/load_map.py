@@ -88,8 +88,8 @@ def compute_texts(names, cpu, mem, status, jobs):
     for idx in xrange(len(names)):
         text_str = '<b>{0}</b>'.format(names[idx])
         if status[idx] != 'down':
-            text_str += '<br>CPU: {0:.1f}'.format(cpu[idx])
-            text_str += '<br>MEM: {0:.1f}'.format(mem[idx])
+            text_str += '<br>CPU: {0:.2f}'.format(cpu[idx])
+            text_str += '<br>MEM: {0:.2f}'.format(mem[idx])
             if status[idx] != 'free':
                 text_str += '<br>JOB: {0}'.format(','.join(jobs[idx]))
         else:
@@ -97,8 +97,7 @@ def compute_texts(names, cpu, mem, status, jobs):
         texts.append(text_str)
     return texts
 
-def init_plot(names, cpu, mem, status, jobs, x, y, options):
-    stream = Stream(token=options.stream_id, maxpoints=10)
+def create_plot(names, cpu, mem, status, jobs, x, y, options):
     x_coords, y_coords = compute_coordinates(x, y, options)
     cpu_colors = compute_cpu_colors(cpu, options)
     mem_sizes = compute_mem_sizes(mem, options)
@@ -112,7 +111,6 @@ def init_plot(names, cpu, mem, status, jobs, x, y, options):
             symbol=status_symbols,
         ),
         text=texts,
-        stream=stream,
     )
     data = Data([trace])
     layout = Layout(
@@ -124,36 +122,6 @@ def init_plot(names, cpu, mem, status, jobs, x, y, options):
     filename = '{0}_cpu_load'.format(options.partition)
     url = py.plot(figure, filename=filename, auto_open=False)
     return url
-
-def update_plot(names, cpu, mem, status, jobs, x, y, options):
-    stream = py.Stream(options.stream_id)
-    stream.open()
-    x_coords, y_coords = compute_coordinates(x, y, options)
-    cpu_colors = compute_cpu_colors(cpu, options)
-    mem_sizes = compute_mem_sizes(mem, options)
-    status_symbols = compute_status_symbols(status, options)
-    texts = compute_texts(names, cpu, mem, status, jobs)
-    trace = Scatter(
-        x=x_coords, y=y_coords, mode='markers',
-        marker=Marker(
-            color=cpu_colors,
-            size=mem_sizes,
-            symbol=status_symbols,
-        ),
-        text=texts,
-        stream=stream,
-    )
-    data = Data([trace])
-    layout = Layout(
-        title='{0} load'.format(options.partition),
-        showlegend=False,
-        annotations=create_annotations(options)
-    )
-    layout = Layout(
-        annotations=create_annotations(options)
-    )
-    stream.write(trace, layout=layout)
-    stream.close()
 
 def compute_maps(nodes, options):
     cpu = []
@@ -199,10 +167,6 @@ if __name__ == '__main__':
     import subprocess, sys
 
     arg_parser = ArgumentParser(description='Create a heatmap of CPU load')
-    arg_parser.add_argument('--stream_id', required=True,
-                            help='Plotly stream ID for graph')
-    arg_parser.add_argument('--init', action='store_true',
-                            help='initialize plot on Plotly')
     arg_parser.add_argument('--partition', default='thinking',
                             help='cluster partition to visualize')
     arg_parser.add_argument('--nr_racks', type=int, default=3,
@@ -240,11 +204,7 @@ if __name__ == '__main__':
     names = [node.hostname for node in nodes if node.has_property('thinking')]
     cpu, mem = compute_maps(nodes, options)
     jobs, status = compute_job_status(nodes, options)
-    if options.init:
-        url = init_plot(names, cpu, mem, status, jobs,
-                        x_labels, y_labels, options)
-        print 'URL: {0}'.format(url)
-    else:
-        update_plot(names, cpu, mem, status, jobs,
-                    x_labels, y_labels, options)
+    url = create_plot(names, cpu, mem, status, jobs,
+                      x_labels, y_labels, options)
+    print 'URL: {0}'.format(url)
 
