@@ -19,6 +19,13 @@ class JobChecker(EventLogger):
         self.check_mem(job)
         self.check_mem_vs_pmem(job)
 
+    def check_partition(self, job):
+        '''check whether the specified partition exists'''
+        partition = job.resource_spec('partition')
+        partitions = self._partitions()
+        if partition not in partitions:
+            pass
+
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''
         partition = job.resource_spec('partition')
@@ -98,4 +105,15 @@ class JobChecker(EventLogger):
         for row in self._cursor:
             sizes[row[0]] = row[1]
         return sizes
+
+    def _partitions(self):
+        '''retrieve the list of partitions and their nodes from databasse'''
+        partitions = {}
+        stmt = '''SELECT p.parition_name, count(n.node_id)
+                      FROM partitions as p NATURAL JOIN nodes as n
+                      GROUP BY p.partition_name'''
+        self._cursor.execute(stmt)
+        for row in self._cursor:
+            partitions[row[0]] = row[1]
+        return partitions
 
