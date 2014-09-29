@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import datetime
-import numpy as np
 import plotly.plotly as py
 import plotly.tools as tls
 from plotly.graph_objs import (Heatmap, Data, Layout, Font, Stream, Figure,
@@ -57,7 +56,7 @@ def compute_cpu_colors(cpu, options):
         if cpu_value < -0.1:
             colors.append(down_color)
         else:
-            idx = min(int(np.round(len(color_map)*cpu_value*0.7)),
+            idx = min(int(round(len(color_map)*cpu_value*0.7)),
                       len(color_map) - 1)
             colors.append(color_map[idx])
     return colors
