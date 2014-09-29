@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
 import datetime
-import numpy as np
 import plotly.plotly as py
 import plotly.tools as tls
-from plotly.graph_objs import Heatmap, Data, Layout, Font, Stream, Figure
+from plotly.graph_objs import (Heatmap, Data, Layout, Font, Stream, Figure,
+                               Scatter, Marker)
 from vsc.utils import hostname2rackinfo
 from vsc.pbs.node import PbsnodesParser
 
@@ -26,12 +26,95 @@ def create_annotations(options):
     ]
     return annotations
 
-def init_plot(z, x, y, options):
-    stream = Stream(token=options.stream_id, maxpoints=10)
-    heatmap = Heatmap(z=z, x=x, y=y, stream=stream)
-    data = Data([heatmap])
+def compute_coordinates(x, y, options):
+    x_coords = []
+    y_coords = []
+    for j in xrange(1, 1 + len(y)):
+        for i in xrange(1, 1 + len(x)):
+            x_coords.append(i)
+            y_coords.append(j)
+    return x_coords, y_coords
+
+def compute_cpu_colors(cpu, options):
+    color_map = [
+        'rgb(103,0,31)',
+        'rgb(178,24,43)',
+        'rgb(214,96,77)',
+        'rgb(244,165,130)',
+        'rgb(248,214,194)',
+        'rgb(237,237,237)',
+        'rgb(204,224,236)',
+        'rgb(146,197,222)',
+        'rgb(67,147,195)',
+        'rgb(33,102,172)',
+        'rgb(5,48,97)'
+    ]
+    color_map.reverse()
+    down_color = 'rgb(0,0,0)'
+    colors = []
+    for cpu_value in cpu:
+        if cpu_value < -0.1:
+            colors.append(down_color)
+        else:
+            idx = min(int(round(len(color_map)*cpu_value*0.7)),
+                      len(color_map) - 1)
+            colors.append(color_map[idx])
+    return colors
+
+def compute_mem_sizes(mem, options):
+    sizes = []
+    down_size = 10
+    for mem_value in mem:
+        if mem_value < -0.1:
+            sizes.append(down_size)
+        else:
+            size = 15 + 20*mem_value
+            sizes.append(size)
+    return sizes
+
+def compute_status_symbols(status, options):
+    symbol_map = {
+        'free': 'circle',
+        'down': 'cross',
+        'singlejob': 'square',
+        'multijob': 'diamond',
+    }
+    symbols = [symbol_map[state] for state in status]
+    return symbols
+
+def compute_texts(names, cpu, mem, status, jobs):
+    texts = []
+    for idx in xrange(len(names)):
+        text_str = '<b>{0}</b>'.format(names[idx])
+        if status[idx] != 'down':
+            text_str += '<br>CPU: {0:.2f}'.format(cpu[idx])
+            text_str += '<br>MEM: {0:.2f}'.format(mem[idx])
+            if status[idx] != 'free':
+                text_str += '<br>JOB: {0}'.format(','.join(jobs[idx]))
+        else:
+            text_str += ' DOWN'
+        texts.append(text_str)
+    return texts
+
+def create_plot(names, cpu, mem, status, jobs, x, y, options):
+    x_coords, y_coords = compute_coordinates(x, y, options)
+    cpu_colors = compute_cpu_colors(cpu, options)
+    mem_sizes = compute_mem_sizes(mem, options)
+    status_symbols = compute_status_symbols(status, options)
+    texts = compute_texts(names, cpu, mem, status, jobs)
+    trace = Scatter(
+        x=x_coords, y=y_coords, mode='markers',
+        marker=Marker(
+            color=cpu_colors,
+            size=mem_sizes,
+            symbol=status_symbols,
+        ),
+        text=texts,
+    )
+    data = Data([trace])
     layout = Layout(
         title='{0} load'.format(options.partition),
+        showlegend=False,
         annotations=create_annotations(options)
     )
     figure = Figure(data=data, layout=layout)
@@ -39,30 +122,32 @@ def init_plot(z, x, y, options):
     url = py.plot(figure, filename=filename, auto_open=False)
     return url
 
-def update_plot(z, x, y, options):
-    stream = py.Stream(options.stream_id)
-    stream.open()
-    heatmap = Heatmap(z=z, x=x, y=y)
-    layout = Layout(
-        annotations=create_annotations(options)
-    )
-    stream.write(heatmap, layout=layout)
-    stream.close()
-
 def compute_maps(nodes, options):
-    cpu = -np.ones((options.nr_racks*options.nr_irus, options.nr_nodes))
-    mem = -np.ones((options.nr_racks*options.nr_irus, options.nr_nodes))
+    cpu = []
+    mem = []
     for node in (n for n in nodes if n.has_property('thinking')):
-        rack_nr, iru_nr, node_nr = hostname2rackinfo(node.hostname)
-        x = ((rack_nr - options.rack_offset)*options.nr_irus +
-             (iru_nr - options.iru_offset))
-        y = node_nr - options.node_offset
-        cpu[x, y] = node.cpuload if node.cpuload is not None else -1.0
-        mem[x, y] = node.memload if node.memload is not None else -1.0
-        if options.verbose:
-            print '{0}: {1:.2f}, {2:.2f}'.format(node.hostname,
-                                                 cpu[x, y], mem[x, y])
+        cpu.append(node.cpuload if node.cpuload is not None else -1.0)
+        mem.append(node.memload if node.memload is not None else -1.0)
     return cpu, mem
+
+def compute_job_status(nodes, options):
+    jobs = []
+    status = []
+    for node in (n for n in nodes if n.has_property('thinking')):
+        if node.status:
+            if node.job_ids:
+                jobs.append(node.job_ids)
+                if len(node.job_ids) > 1:
+                    status.append('multijob')
+                else:
+                    status.append('singlejob')
+            else:
+                jobs.append([])
+                status.append('free')
+        else:
+            jobs.append(None)
+            status.append('down')
+    return jobs, status
 
 def compute_xy_labels(options):
     n_min = options.node_offset
@@ -81,10 +166,6 @@ if __name__ == '__main__':
     import subprocess, sys
 
     arg_parser = ArgumentParser(description='Create a heatmap of CPU load')
-    arg_parser.add_argument('--stream_id', required=True,
-                            help='Plotly stream ID for graph')
-    arg_parser.add_argument('--init', action='store_true',
-                            help='initialize plot on Plotly')
     arg_parser.add_argument('--partition', default='thinking',
                             help='cluster partition to visualize')
     arg_parser.add_argument('--nr_racks', type=int, default=3,
@@ -119,10 +200,10 @@ if __name__ == '__main__':
             sys.stderr.write('### error: could not execute pbsnodes\n')
             sys.exit(1)
     x_labels, y_labels = compute_xy_labels(options)
+    names = [node.hostname for node in nodes if node.has_property('thinking')]
     cpu, mem = compute_maps(nodes, options)
-    if options.init:
-        url = init_plot(cpu, x_labels, y_labels, options)
-        print 'URL: {0}'.format(url)
-    else:
-        update_plot(cpu, x_labels, y_labels, options)
+    jobs, status = compute_job_status(nodes, options)
+    url = create_plot(names, cpu, mem, status, jobs,
+                      x_labels, y_labels, options)
+    print 'URL: {0}'.format(url)
 
