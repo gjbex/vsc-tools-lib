@@ -18,7 +18,7 @@ def create_annotations(options):
             xref='paper',  # use paper coords
             yref='paper',  #  for both coordinates
             x=0.95,  # position's x-coord
-            y=1.15,  #   and y-coord
+            y=1.10,  #   and y-coord
             font=Font(size=16),    # increase font size (default is 12)
             bgcolor='#FFFFFF',     # white background
             borderpad=4            # space bt. border and text (in px)
@@ -36,28 +36,33 @@ def compute_coordinates(x, y, options):
     return x_coords, y_coords
 
 def compute_cpu_colors(cpu, options):
+    nr_blues = 7
     color_map = [
-        'rgb(103,0,31)',
-        'rgb(178,24,43)',
-        'rgb(214,96,77)',
-        'rgb(244,165,130)',
-        'rgb(248,214,194)',
-        'rgb(237,237,237)',
-        'rgb(204,224,236)',
-        'rgb(146,197,222)',
-        'rgb(67,147,195)',
-        'rgb(33,102,172)',
-        'rgb(5,48,97)'
+        'rgb(37,0,250)',
+        'rgb(57,28,250)',
+        'rgb(79,52,250)',
+        'rgb(107,85,250)',
+        'rgb(138,119,250)',
+        'rgb(164,150,250)',
+        'rgb(200,200,200)', # grey
+        'rgb(250,177,177)',
+        'rgb(250,93,93)',
+        'rgb(250,0,0)',
     ]
-    color_map.reverse()
     down_color = 'rgb(0,0,0)'
     colors = []
     for cpu_value in cpu:
         if cpu_value < -0.1:
             colors.append(down_color)
         else:
-            idx = min(int(round(len(color_map)*cpu_value*0.7)),
-                      len(color_map) - 1)
+            if cpu_value <= 1.01:
+                idx = int(round((nr_blues)*cpu_value))
+            elif cpu_value <= 1.06:
+                idx = nr_blues
+            elif cpu_value <= 2.0:
+                idx = nr_blues + 1
+            else:
+                idx = nr_blues + 2
             colors.append(color_map[idx])
     return colors
 
