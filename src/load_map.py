@@ -91,7 +91,7 @@ def compute_texts(names, cpu, mem, status, jobs):
     texts = []
     for idx in xrange(len(names)):
         text_str = '<b>{0}</b>'.format(names[idx])
-        if status[idx] != 'down':
+        if not (status[idx].startswith('down') or status[idx].startswith('offline')):
             text_str += '<br>CPU: {0:.2f}'.format(cpu[idx])
             text_str += '<br>MEM: {0:.2f}'.format(mem[idx])
             if status[idx] != 'free':
