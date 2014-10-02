@@ -56,7 +56,7 @@ def compute_cpu_colors(cpu, options):
             colors.append(down_color)
         else:
             if cpu_value <= 1.01:
-                idx = int(round((nr_blues)*cpu_value))
+                idx = int(round((nr_blues - 1)*cpu_value))
             elif cpu_value <= 1.06:
                 idx = nr_blues
             elif cpu_value <= 2.0:
