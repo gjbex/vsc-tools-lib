@@ -54,3 +54,19 @@ class QstatParser(object):
         job.add_resource_specs(resource_specs)
         job.add_resources_used(resources_used)
         return job
+
+    def parse(self, qstat_str):
+        '''parse PBS torque qstat full output, and return list of jobs'''
+        jobs = []
+        job_str = None
+        for line in qstat_str.split('\n'):
+            if line.startwith('Job Id:'):
+                if job_str:
+                    jobs.append(self.parse_record(job_str))
+                job_str = line
+            elif line.strip():
+                job_str += '\n' + line
+        if job_str:
+            jobs.append(self.parse_record(job_str))
+        return jobs
+
