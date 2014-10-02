@@ -158,12 +158,7 @@ def compute_xy_labels(options):
     n_min = options.node_offset
     n_max = n_min + options.nr_nodes
     x_labels = ['n{0:02d}'.format(i) for i in range(n_min, n_max)]
-    r_min = options.rack_offset
-    r_max = r_min + options.nr_racks
-    i_min = options.iru_offset
-    i_max = i_min + options.nr_irus
-    y_labels = ['r{0}i{1}'.format(r, i) for r in range(r_min, r_max)
-                for i in range(i_min, i_max)]
+    y_labels = options.enclosures.split(',')
     return x_labels, y_labels
 
 if __name__ == '__main__':
@@ -173,14 +168,8 @@ if __name__ == '__main__':
     arg_parser = ArgumentParser(description='Create a heatmap of CPU load')
     arg_parser.add_argument('--partition', default='thinking',
                             help='cluster partition to visualize')
-    arg_parser.add_argument('--nr_racks', type=int, default=3,
-                            help='number of racks')
-    arg_parser.add_argument('--rack_offset', type=int, default=1,
-                            help='rack offset')
-    arg_parser.add_argument('--nr_irus', type=int, default=3,
-                            help='number of IRUs per rack')
-    arg_parser.add_argument('--iru_offset', type=int, default=0,
-                            help='IRU offset')
+    arg_parser.add_argument('--enclosures', default='r1i0,r1i1,r1i2,r2i0,r2i1,r2i2,r3i0,r3i1,r3i2,r4i0,r4i1,r5i0,r5i1',
+                            help='list of enclosures')
     arg_parser.add_argument('--nr_nodes', type=int, default=16,
                             help='number of nodes per IRU')
     arg_parser.add_argument('--node_offset', type=int, default=1,
