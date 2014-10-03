@@ -24,7 +24,7 @@ STREAM_IDS = {
     'Idle': 'v06nqwbyc8',
     'SystemHold': 'wit8d3v54h',
     'Deferred': 'p1kt433uui',
-    'BatchHold': 'p1kt433uui',
+    'BatchHold': 'vjb6ixgg0p',
     'UserHold': 'w351mpb9jk',
     'Hold': '9txpv9ickx',
     'NotQueued': 'bqn4umpi72',
