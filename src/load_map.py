@@ -84,7 +84,12 @@ def compute_status_symbols(status, options):
         'singlejob': 'square',
         'multijob': 'diamond',
     }
-    symbols = [symbol_map[state] for state in status]
+    symbols = []
+    for state in status:
+        if state.startswith('donw') or state.startswith('offline'):
+            symbols.append(symbol_map['down'])
+        else:
+            symbols.append(symbol_map[state])
     return symbols
 
 def compute_texts(names, cpu, mem, status, jobs):
@@ -146,6 +151,9 @@ def compute_job_status(nodes, options):
                     status.append('multijob')
                 else:
                     status.append('singlejob')
+            elif node.state.startswith('down') or node.state.startswith('offline'):
+                jobs.append([])
+                status.append('down')
             else:
                 jobs.append([])
                 status.append('free')
