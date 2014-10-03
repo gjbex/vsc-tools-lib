@@ -5,10 +5,15 @@ import os
 class PbsJob(object):
     '''Class representing a PBS job'''
 
-    def __init__(self, name=None):
+    def __init__(self, job_id=None):
         '''Constructor for a PBS job object'''
-        self._name = name
+        self._id = job_id
+        self._name = None
+        self._user = None
+        self._state = None
         self._resource_specs = {}
+        self._resources_used = {}
+        self._exec_hosts = None
         self._queue = None
         self._project = None
         _, host, _, _, _ = os.uname()
@@ -27,6 +32,11 @@ class PbsJob(object):
         self._script = []
 
     @property
+    def job_id(self):
+        '''Returns job ID, None for jobs that are not queued'''
+        return  self._id
+
+    @property
     def name(self):
         '''returns the job's name, None if not set'''
         return self._name
@@ -37,8 +47,38 @@ class PbsJob(object):
         self._name = name
 
     @property
+    def user(self):
+        '''Returs the user ID of the job's woner, if any'''
+        return self._user
+
+    @user.setter
+    def user(self, user):
+        '''Sets the job's owner's user ID'''
+        self._user = user
+
+    @property
+    def state(self):
+        '''Returs the job's state'''
+        return self._state
+
+    @state.setter
+    def state(self, state):
+        '''Sets the job's state'''
+        self._state = state
+
+    @property
+    def exec_host(self):
+        '''Returns a map with exec hosts for a running job'''
+        return self._exec_hosts
+
+    @exec_host.setter
+    def exec_host(self, exec_host):
+        '''Sets the hosts a job is executing on'''
+        self._exec_hosts = exec_host
+
+    @property
     def project(self):
-        '''returns the job's project name, None if not set'''
+        '''Returns the job's project name, None if not set'''
         return self._project
 
     @project.setter
@@ -65,6 +105,16 @@ class PbsJob(object):
         '''Add resources to specification'''
         for key, value in resource_specs.items():
             self._resource_specs[key] = value
+
+    @property
+    def resources_used(self):
+        '''returns the job's resource usage'''
+        return self._resources_used
+
+    def add_resources_used(self, resources_used):
+        '''Add resources to used list'''
+        for key, value in resources_used.items():
+            self._resources_used[key] = value
 
     @property
     def mail_events(self):
