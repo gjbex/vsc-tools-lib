@@ -58,6 +58,9 @@ class QstatParser(object):
             elif line.startswith('Resource_List.walltime ='):
                 walltime = self._get_value(line)
                 resource_specs['walltime'] = walltime2seconds(walltime)
+            elif line.startswith('Resource_List.nodect = '):
+                nodect = int(self._get_value(line))
+                resource_specs['nodect'] = nodect
             elif line.startswith('exec_host ='):
                 state = 'exec_host'
                 host_str = self._get_value(line)

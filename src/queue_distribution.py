@@ -31,29 +31,51 @@ if __name__ == '__main__':
                                               options.qstat_options])
     qstat_parser = QstatParser()
     jobs = qstat_parser.parse(cmd_output)
-    queue_nodes = {}
-    queue_jobs = {}
+    running_nodes = {}
+    running_jobs = {}
+    queued_nodes = {}
+    queued_jobs = {}
     for queue in queues:
-        queue_jobs[queue] = 0
-    total_jobs = 0
+        queued_jobs[queue] = 0
+        running_jobs[queue] = 0
+    total_jobs = {'R': 0, 'Q': 0}
     for job in jobs:
         if job.state == 'R':
-            total_jobs += 1
+            total_jobs[job.state] += 1
             walltime = job.resource_specs['walltime']
             for idx, limit in enumerate(limits):
                 if walltime <= limit:
-                    if queues[idx] not in queue_nodes:
-                        queue_nodes[queues[idx]] = set()
+                    if queues[idx] not in running_nodes:
+                        running_nodes[queues[idx]] = set()
                     for node in job.exec_host.keys():
-                        queue_nodes[queues[idx]].add(node)
-                    queue_jobs[queues[idx]] += 1
+                        running_nodes[queues[idx]].add(node)
+                    running_jobs[queues[idx]] += 1
+                    break
+        elif job.state == 'Q':
+            total_jobs[job.state] += 1
+            walltime = job.resource_specs['walltime']
+            for idx, limit in enumerate(limits):
+                if walltime <= limit:
+                    if queues[idx] not in queued_nodes:
+                        queued_nodes[queues[idx]] = 0
+                    nodect = job.resource_specs['nodect']
+                    queued_nodes[queues[idx]] += nodect
+                    queued_jobs[queues[idx]] += 1
                     break
     for queue in queues:
-        if queue in queue_nodes:
+        if queue in running_nodes:
             print '{0}: {1:d} nodes, {2:d} jobs'.format(queue,
-                                                        len(queue_nodes[queue]),
-                                                        queue_jobs[queue])
+                                                        len(running_nodes[queue]),
+                                                        running_jobs[queue])
         else:
             print '{0}: 0 nodes, 0 jobs'.format(queue)
-    print 'total: {0:d}'.format(total_jobs)
+    print 'total running jobs: {0:d}'.format(total_jobs['R'])
+    for queue in queues:
+        if queue in queued_nodes:
+            print '{0}: {1:d} nodes, {2:d} jobs'.format(queue,
+                                                        queued_nodes[queue],
+                                                        queued_jobs[queue])
+        else:
+            print '{0}: 0 nodes, 0 jobs'.format(queue)
+    print 'total queued jobs: {0:d}'.format(total_jobs['Q'])
 
