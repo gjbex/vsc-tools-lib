@@ -1,6 +1,6 @@
 '''Module to represent cluster nodes'''
 
-import re
+import re, sys
 
 import vsc.utils
 
@@ -206,8 +206,12 @@ class PbsnodesParser(object):
                 _, status_str = line.split(' = ')
                 node_status.status = {}
                 for status_item in status_str.split(','):
-                    key, value = status_item.split('=')
-                    node_status.status[key] = value
+                    try:
+                        key, value = status_item.split('=')
+                        node_status.status[key] = value
+                    except ValueError:
+                        msg = '### warning: {0} has no value on {1}\n'
+                        sys.stderr.write(msg.format(status_item, hostname))
             elif line.startswith('ntype = '):
                 _, node_status.ntype = line.split(' = ')
             elif line.startswith('state = '):
