@@ -38,6 +38,8 @@ def count_job_types(jobs):
         counters[state] = 0
     for job_list in jobs.values():
         for job in job_list:
+            if job.id.startswith('3'):
+                continue
             if job.state in counters:
                 counters[job.state] += 1
             else:
