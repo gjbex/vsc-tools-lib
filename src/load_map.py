@@ -7,24 +7,7 @@ from plotly.graph_objs import (Heatmap, Data, Layout, Font, Stream, Figure,
                                Scatter, Marker)
 from vsc.utils import hostname2rackinfo
 from vsc.pbs.node import PbsnodesParser
-
-def create_annotations(options):
-    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    anno_text = 'time: {0}'.format(timestamp)
-    annotations = [
-        dict(
-            text=anno_text,  # set annotation text
-            showarrow=False, # remove arrow 
-            xref='paper',  # use paper coords
-            yref='paper',  #  for both coordinates
-            x=0.95,  # position's x-coord
-            y=1.10,  #   and y-coord
-            font=Font(size=16),    # increase font size (default is 12)
-            bgcolor='#FFFFFF',     # white background
-            borderpad=4            # space bt. border and text (in px)
-        )
-    ]
-    return annotations
+from vsc.plotly_utils import create_annotations
 
 def compute_coordinates(x, y, options):
     x_coords = []
@@ -125,7 +108,7 @@ def create_plot(names, cpu, mem, status, jobs, x, y, options):
     layout = Layout(
         title='{0} load'.format(options.partition),
         showlegend=False,
-        annotations=create_annotations(options)
+        annotations=create_annotations()
     )
     figure = Figure(data=data, layout=layout)
     filename = '{0}_cpu_load'.format(options.partition)
