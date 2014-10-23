@@ -48,7 +48,7 @@ def compute_queues(options):
         limits.append(limit_secs)
     return queues, limits
 
-def count_jobs(jobs, queues, limits):
+def count_jobs(jobs, queues, limits, partition):
     running_nodes = {}
     running_jobs = {}
     queued_nr_nodes = {}
@@ -59,6 +59,8 @@ def count_jobs(jobs, queues, limits):
         running_jobs[queue] = 0
         queued_nr_nodes[queue] = 0
     for job in jobs:
+        if job.partition != partition:
+            continue
         if job.state == 'R':
             walltime = job.resource_specs['walltime']
             for idx, limit in enumerate(limits):
@@ -121,7 +123,7 @@ if __name__ == '__main__':
     (
         running_jobs, running_nodes,
         queued_jobs, queued_nodes
-    ) = count_jobs(jobs, queues, limits)
+    ) = count_jobs(jobs, queues, limits, options.partition)
     if options.verbose:
         print 'Running jobs:'
         for queue in queues:

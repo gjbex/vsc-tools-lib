@@ -14,6 +14,7 @@ class PbsJob(object):
         self._resource_specs = {}
         self._resources_used = {}
         self._exec_hosts = None
+        self._partition = None
         self._queue = None
         self._project = None
         _, host, _, _, _ = os.uname()
@@ -65,6 +66,16 @@ class PbsJob(object):
     def state(self, state):
         '''Sets the job's state'''
         self._state = state
+
+    @property
+    def partition(self):
+        '''Returs the job's partition'''
+        return self._partition
+
+    @partition.setter
+    def partition(self, partition):
+        '''Sets the job's partition'''
+        self._partition = partition
 
     @property
     def exec_host(self):

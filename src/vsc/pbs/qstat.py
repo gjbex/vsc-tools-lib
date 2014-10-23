@@ -64,6 +64,8 @@ class QstatParser(object):
             elif line.startswith('exec_host ='):
                 state = 'exec_host'
                 host_str = self._get_value(line)
+            elif line.startswith('Resource_List.partition ='):
+                job.partition = self._get_value(line)
         job.add_resource_specs(resource_specs)
         job.add_resources_used(resources_used)
         return job
