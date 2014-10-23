@@ -30,7 +30,7 @@ STREAM_IDS = {
     'NotQueued': 'bqn4umpi72',
 }
 
-def count_job_types(jobs):
+def count_job_types(jobs, regex):
     '''create a map from job state to number of jobs based on a list
        of jbos'''
     counters = {}
@@ -38,13 +38,12 @@ def count_job_types(jobs):
         counters[state] = 0
     for job_list in jobs.values():
         for job in job_list:
-            if job.id.startswith('3'):
-                continue
-            if job.state in counters:
-                counters[job.state] += 1
-            else:
-                msg = '### unknown job state: {0}\n'.format(job.state)
-                sys.stderr.write(msg)
+            if regex.matches(job.id):
+                if job.state in counters:
+                    counters[job.state] += 1
+                else:
+                    msg = '### unknown job state: {0}\n'.format(job.state)
+                    sys.stderr.write(msg)
     return counters
 
 def init_plot(counters, options):
@@ -90,7 +89,7 @@ def update_plot(counters, options):
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
-    import subprocess
+    import re, subprocess
     from vsc.moab.job import ShowqParser
 
     arg_parser = ArgumentParser(description='create or update job stats')
@@ -98,6 +97,8 @@ if __name__ == '__main__':
                             help='initialize plot')
     arg_parser.add_argument('--cluster', default='thinking',
                             help='name of cluster')
+    arg_parser.add_argument('--pattern', default=r'2\d+',
+                            help='pattern used to filter job IDs')
     arg_parser.add_argument('--file', help='showq output file (debuggign)')
     arg_parser.add_argument('--showq', default='/opt/moab/bin/showq',
                             help='showq command to use')
@@ -119,7 +120,7 @@ if __name__ == '__main__':
         except subprocess.CalledProcessError:
             sys.stderr.write('### error: could not execute showq\n')
             sys.exit(1)
-    counters = count_job_types(jobs)
+    counters = count_job_types(jobs, re.compile(options.pattern))
     if options.init:
         url = init_plot(counters, options)
         print 'URL = {0}'.format(url)
