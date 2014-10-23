@@ -108,7 +108,9 @@ def create_plot(names, cpu, mem, status, jobs, x, y, options):
     layout = Layout(
         title='{0} load'.format(options.partition),
         showlegend=False,
-        annotations=create_annotations()
+        annotations=create_annotations(),
+        xaxis={'autotick': False},
+        yaxis={'autotick': False},
     )
     figure = Figure(data=data, layout=layout)
     filename = '{0}_cpu_load'.format(options.partition)
