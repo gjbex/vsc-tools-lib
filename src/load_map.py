@@ -129,13 +129,16 @@ def create_plot(names, cpu, mem, status, jobs, x, y, options):
     )
     figure = Figure(data=data, layout=layout)
     filename = '{0}_cpu_load'.format(options.partition)
-    url = py.plot(figure, filename=filename, auto_open=False)
-    return url
+    if options.dryrun:
+        return 'dryrun'
+    else:
+        url = py.plot(figure, filename=filename, auto_open=False)
+        return url
 
 def compute_maps(nodes, options):
     cpu = []
     mem = []
-    for node in (n for n in nodes if n.has_property('thinking')):
+    for node in (n for n in nodes if n.has_property(options.partition)):
         cpu.append(node.cpuload if node.cpuload is not None else -1.0)
         mem.append(node.memload if node.memload is not None else -1.0)
     return cpu, mem
@@ -143,7 +146,7 @@ def compute_maps(nodes, options):
 def compute_job_status(nodes, options):
     jobs = []
     status = []
-    for node in (n for n in nodes if n.has_property('thinking')):
+    for node in (n for n in nodes if n.has_property(options.partition)):
         if node.status:
             if node.job_ids:
                 jobs.append(node.job_ids)
@@ -186,6 +189,8 @@ if __name__ == '__main__':
                             help='pbsnodes command to use')
     arg_parser.add_argument('--verbose', action='store_true',
                             help='verbose output')
+    arg_parser.add_argument('--dryrun', action='store_true',
+                            help='do not create plot')
     arg_parser.add_argument('--file', help='file with pbsnodes output')
     options = arg_parser.parse_args()
     parser = PbsnodesParser()
@@ -196,13 +201,20 @@ if __name__ == '__main__':
         try:
             node_output = subprocess.check_output([options.pbsnodes])
             nodes = parser.parse(node_output)
-            if options.verbose:
-                print '{0:d} nodes found'.format(len(nodes))
         except subprocess.CalledProcessError:
             sys.stderr.write('### error: could not execute pbsnodes\n')
             sys.exit(1)
+    if options.verbose:
+        print '{0:d} nodes found'.format(len(nodes))
     x_labels, y_labels = compute_xy_labels(options)
-    names = [node.hostname for node in nodes if node.has_property('thinking')]
+    if options.verbose:
+        print '{0:d} x-labels, {1:d} y-labels'.format(len(x_labels),
+                                                      len(y_labels))
+    names = [node.hostname for node in nodes
+                 if node.has_property(options.partition)]
+    if options.verbose:
+        print 'names:'
+        print '\n'.join(names)
     cpu, mem = compute_maps(nodes, options)
     jobs, status = compute_job_status(nodes, options)
     url = create_plot(names, cpu, mem, status, jobs,
