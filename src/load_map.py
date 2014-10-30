@@ -1,12 +1,8 @@
 #!/usr/bin/env python
 
-import datetime
 import plotly.plotly as py
-import plotly.tools as tls
-from plotly.graph_objs import (Heatmap, Data, Layout, Font, Stream, Figure,
-                               Scatter, Marker)
-from vsc.utils import hostname2rackinfo
-from vsc.pbs.node import PbsnodesParser
+from plotly.graph_objs import Data, Layout, Figure, Scatter, Marker
+from vsc.pbs.pbsnodes import PbsnodesParser
 from vsc.plotly_utils import create_annotations
 
 def compute_coordinates(x, y, options):

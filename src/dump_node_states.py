@@ -2,10 +2,10 @@
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
-    import sqlite3, subprocess, sys
+    import subprocess, sys
 
-    from vsc.pbs.node import PbsnodesParser
-    from vsc.pbs.utils import compute_features, compute_partition
+    from vsc.pbs.pbsnodes import PbsnodesParser
+    from vsc.pbs.utils import compute_partition
     from vsc.utils import hostname2rackinfo
 
     arg_parser = ArgumentParser(description=('loads a database with node '

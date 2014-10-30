@@ -2,9 +2,9 @@
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
-    import re, sqlite3, subprocess, sys
+    import sqlite3, subprocess, sys
 
-    from vsc.pbs.node import PbsnodesParser
+    from vsc.pbs.pbsnodes import PbsnodesParser
     from vsc.moab.job import ShowqParser
     from vsc.pbs.utils import compute_features, compute_partition
     from vsc.utils import hostname2rackinfo
