@@ -38,7 +38,7 @@ def count_job_types(jobs, regex):
         counters[state] = 0
     for job_list in jobs.values():
         for job in job_list:
-            if regex.matches(job.id):
+            if regex.match(job.id):
                 if job.state in counters:
                     counters[job.state] += 1
                 else:
