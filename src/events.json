@@ -151,7 +151,7 @@
     },
     "unknown_partition": {
         "category": "error",
-        "message": "partition {{partition}} is not defined",
+        "message": "partition '{partition}' is not defined",
         "remedy": "check the specified partition"
     }
 }
