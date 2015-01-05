@@ -153,6 +153,11 @@
         "category": "error",
         "message": "partition '{partition}' is not defined",
         "remedy": "check the specified partition"
+    },
+    "unknown_qos": {
+        "category": "error",
+        "message": "QOS '{qos}' is not defined",
+        "remedy": "check the specified QOS"
     }
 }
 

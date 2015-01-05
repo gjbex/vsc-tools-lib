@@ -19,6 +19,16 @@ class JobChecker(EventLogger):
         self.check_mem(job)
         self.check_mem_vs_pmem(job)
         self.check_partition(job)
+        self.check_qos(job)
+
+    def check_qos(self, job):
+        '''check QOS specified exists'''
+        job_qos = job.resource_spec('qos')
+        if job_qos is not None:
+            qos = self._qos()
+            if job_qos not in qos:
+                self.reg_event('unknown_qos',
+                               {'qos': job_qos})
 
     def check_partition(self, job):
         '''check whether the specified partition exists'''
@@ -119,3 +129,11 @@ class JobChecker(EventLogger):
             partitions[row[0]] = row[1]
         return partitions
 
+    def _qos(self):
+        '''retrieve list of QOS levels'''
+        qos = []
+        stmt = '''SELECT qos FROM qos_levels'''
+        self._cursor.execute(stmt)
+        for row in self._cursor:
+            qos.append(row[0])
+        return qos
