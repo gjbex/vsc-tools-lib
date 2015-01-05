@@ -63,13 +63,17 @@ def count_jobs(jobs, queues, limits, partition):
         if job.partition != partition:
             continue
         if job.state == 'R':
-            walltime = job.resource_specs['walltime']
-            for idx, limit in enumerate(limits):
-                if walltime <= limit:
-                    for node in job.exec_host.keys():
-                        running_nodes[queues[idx]].add(node)
-                    running_jobs[queues[idx]] += 1
-                    break
+            if 'walltime' in job.resource_specs:
+                walltime = job.resource_specs['walltime']
+                for idx, limit in enumerate(limits):
+                    if walltime <= limit:
+                        for node in job.exec_host.keys():
+                            running_nodes[queues[idx]].add(node)
+                        running_jobs[queues[idx]] += 1
+                        break
+            else:
+                msg = '# warning: job {0} has no walltime\n'.format(job.job_id)
+                sys.stderr.write(msg)
         elif job.state == 'Q':
             if 'walltime' in job.resource_specs:
                 walltime = job.resource_specs['walltime']
