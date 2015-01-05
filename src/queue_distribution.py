@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import sys
 from vsc.plotly_utils import create_annotations
 
 import plotly.plotly as py
@@ -70,13 +71,17 @@ def count_jobs(jobs, queues, limits, partition):
                     running_jobs[queues[idx]] += 1
                     break
         elif job.state == 'Q':
-            walltime = job.resource_specs['walltime']
-            for idx, limit in enumerate(limits):
-                if walltime <= limit:
-                    nodect = job.resource_specs['nodect']
-                    queued_nr_nodes[queues[idx]] += nodect
-                    queued_jobs[queues[idx]] += 1
-                    break
+            if 'walltime' in job.resource_specs:
+                walltime = job.resource_specs['walltime']
+                for idx, limit in enumerate(limits):
+                    if walltime <= limit:
+                        nodect = job.resource_specs['nodect']
+                        queued_nr_nodes[queues[idx]] += nodect
+                        queued_jobs[queues[idx]] += 1
+                        break
+            else:
+                msg = '# warning: job {0} has no walltime\n'.format(job.job_id)
+                sys.stderr.write(msg)
     running_nr_nodes = {}
     for queue in queues:
         running_nr_nodes[queue] = len(running_nodes[queue])
