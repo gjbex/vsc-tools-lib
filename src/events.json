@@ -148,6 +148,11 @@
         "category": "warning",
         "message": "both mem and pmem resources specified",
         "remedy": "check that you want both mem and pmem specifications"
+    },
+    "unknown_partition": {
+        "category": "error",
+        "message": "partition {{partition}} is not defined",
+        "remedy": "check the specified partition"
     }
 }
 
