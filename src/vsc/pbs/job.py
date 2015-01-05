@@ -10,7 +10,7 @@ class PbsJob(object):
         self._name = name
         self._resource_specs = {
             'partition': 'thinking',
-            'qos': 'normal',
+            'qos': None,
         }
         self._queue = None
         self._project = None
