@@ -15,11 +15,12 @@ class JobChecker(EventLogger):
 
     def check(self, job):
         '''Check semantics of given job'''
+        self.check_partition(job)
+        self.check_ppn(job)
+        self.check_qos(job)
         self.check_total_pmem(job)
         self.check_mem(job)
         self.check_mem_vs_pmem(job)
-        self.check_partition(job)
-        self.check_qos(job)
 
     def check_qos(self, job):
         '''check QOS specified exists'''
@@ -31,7 +32,8 @@ class JobChecker(EventLogger):
                                {'qos': job_qos})
 
     def check_partition(self, job):
-        '''check whether the specified partition exists'''
+        '''check whether the specified partition exists, and whether
+           it has the total number of requested nodes'''
         partition = job.resource_spec('partition')
         partitions = self._partitions()
         if partition not in partitions:
@@ -45,6 +47,24 @@ class JobChecker(EventLogger):
                 self.reg_event('insufficient_nodes',
                                {'nodes': nodes,
                                 'max_nodes': partitions[partition]})
+
+    def check_ppn(self, job):
+        '''check whether there are enough nodes with the requested ppn'''
+        partition = job.resource_spec('partition')
+        all_ppn = self._ppn(partition)
+        for node_spec in job.resource_spec('nodes'):
+            job_ppn = node_spec['ppn']
+            job_nodes = node_spec['nodes']
+            for ppn in sorted(all_ppn):
+                if job_nodes <= all_ppn[ppn]:
+                    all_ppn[ppn] -= job_nodes
+                    break
+                else:
+                    job_nodes -= all_ppn[ppn]
+                    all_ppn[ppn] = 0
+            if job_nodes > 0:
+                self.reg_event('insufficient_ppn_nodes',
+                               {'ppn': job_ppn})
 
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''
@@ -145,3 +165,16 @@ class JobChecker(EventLogger):
         for row in self._cursor:
             qos.append(row[0])
         return qos
+
+    def _ppn(self, partition):
+        '''retrieve the number of nodes per ppn'''
+        ppn = {}
+        stmt = '''SELECT n.np, count(*)
+                      FROM nodes as n NATURAL JOIN partitions as p
+                      WHERE p.partition_name = ?
+                      GROUP BY n.np'''
+        self._cursor.execute(stmt, (partition, ))
+        for row in self._cursor:
+            ppn[row[0]] = row[1]
+        return ppn
+

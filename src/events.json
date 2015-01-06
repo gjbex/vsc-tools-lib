@@ -163,6 +163,11 @@
         "category": "error",
         "message": "too many nodes ({nodes}) reequested, maximum {max_nodes}",
         "remedy": "reduce the number of requested nodes"
+    },
+    "insufficient_ppn_nodes": {
+        "category": "error",
+        "message": "too few nodes with ppn {ppn}",
+        "remedy": "check specifications of compute nodes for number of cores"
     }
 }
 
