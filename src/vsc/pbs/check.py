@@ -37,6 +37,14 @@ class JobChecker(EventLogger):
         if partition not in partitions:
             self.reg_event('unknown_partition',
                            {'partition': partition})
+        else:
+            nodes = 0
+            for nodes_spec in job.resource_spec('nodes'):
+                nodes += nodes_spec['nodes']
+            if nodes > partitions[partition]:
+                self.reg_event('insufficient_nodes',
+                               {'nodes': nodes,
+                                'max_nodes': partitions[partition]})
 
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''

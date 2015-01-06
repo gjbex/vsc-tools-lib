@@ -158,6 +158,11 @@
         "category": "error",
         "message": "QOS '{qos}' is not defined",
         "remedy": "check the specified QOS"
+    },
+    "insufficient_nodes": {
+        "category": "error",
+        "message": "too many nodes ({nodes}) reequested, maximum {max_nodes}",
+        "remedy": "reduce the number of requested nodes"
     }
 }
 
