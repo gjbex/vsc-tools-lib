@@ -1,0 +1,7 @@
+Id   Name                                  Available Allocated PercentUsed 
+---- ------------------------------------- --------- --------- ----------- 
+120                                              836      1000 16.37       
+714  lp_h_biology                              11696     15000 22.03       
+1156 lp_h_comp_phys for vsc30032                2000      2000 0.00        
+1211 Account=lgaspi_tutorial,User=vsc30360      1657      1700 2.55        
+

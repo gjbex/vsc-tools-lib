@@ -1,0 +1,5 @@
+Id   Name                                  Available Allocated PercentUsed 
+---- ------------------------------------- --------- --------- ----------- 
+1217 Account=default_project,User=vsc30950       -13      1000 101.30      
+1255 Account=lp_lmpb                            9814     10000 1.86        
+
