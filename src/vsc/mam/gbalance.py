@@ -27,9 +27,9 @@ class GbalanceParser(object):
                 continue
             account_info = {}
             offset = 0
-            for i, field_width in enumerate(field_widths):
+            for field_width, field_name in zip(field_widths, field_names):
                 value = line[offset:offset + field_width].strip()
-                account_info[field_names[i]] = value
+                account_info[field_name] = value
                 offset += field_width + 1
             if account_info['Name']:
                 match = self._acc_re.match(account_info['Name'])
