@@ -2,6 +2,8 @@
 
 import re, sys
 
+from vsc.mam.account import MamAccount
+
 class GbalanceParser(object):
     '''parser for gbalance output'''
 
@@ -23,22 +25,27 @@ class GbalanceParser(object):
             if line.startswith('--'):
                 field_widths = [len(x) for x in line.split()]
                 continue
-            account = {}
+            account_info = {}
             offset = 0
             for i, field_width in enumerate(field_widths):
                 value = line[offset:offset + field_width].strip()
-                account[field_names[i]] = value
+                account_info[field_names[i]] = value
                 offset += field_width + 1
-            if account['Name']:
-                match = self._acc_re.match(account['Name'])
+            if account_info['Name']:
+                match = self._acc_re.match(account_info['Name'])
                 if not match:
-                    match = self._old_re.match(account['Name'])
+                    match = self._old_re.match(account_info['Name'])
                 if not match:
-                    msg = "can not parse account name '{0}'\n"
-                    sys.stderr.write(msg.format(account['Name']))
+                    msg = "can not parse account_info name '{0}'\n"
+                    sys.stderr.write(msg.format(account_info['Name']))
                 else:
-                    account['Name'] = match.group(1)
+                    account_info['Name'] = match.group(1)
             else:
-                account['Name'] = 'default_project'
-            accounts[account['Id']] = account
+                account_info['Name'] = 'default_project'
+            account = MamAccount(acc_id=account_info['Id'],
+                                 name=account_info['Name'])
+            account.available_credits = account_info['Available']
+            account.allocated_credits = account_info['Allocated']
+            accounts[account.account_id] = account
         return accounts
+
