@@ -168,6 +168,21 @@
         "category": "error",
         "message": "too few nodes with ppn {ppn}",
         "remedy": "check specifications of compute nodes for number of cores"
+    },
+    "no_credit_account": {
+        "category": "error",
+        "message": "no credit account can be found",
+        "remedy": "verify that you have to acquire credits to compute on this system"
+    },
+    "unknown_credit_account": {
+        "category": "error",
+        "message": "no credit account with name {account} can be found",
+        "remedy": "verify that credit account exists, and you can access it"
+    },
+    "insufficient_credits": {
+        "category": "warning",
+        "message": "credit account {account} may have insufficient credits to run this job",
+        "remedy": "verify the credit account balance, and acquire more credits if necessary"
     }
 }
 
