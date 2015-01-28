@@ -4,6 +4,7 @@
     "default_qos": "normal",
     "qos_levels": ["normal", "debugging"],
     "cluster_db": "cluster.db",
-    "event_file": "events.json"
+    "event_file": "events.json",
+    "balance": "/apps/leuven/icts/mam/bin/gbalance"
 }
 
