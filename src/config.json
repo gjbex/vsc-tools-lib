@@ -5,6 +5,8 @@
     "qos_levels": ["normal", "debugging"],
     "cluster_db": "cluster.db",
     "event_file": "events.json",
-    "balance": "/apps/leuven/icts/mam/bin/gbalance"
+    "balance_cmd": "/apps/leuven/icts/mam/bin/gbalance",
+    "default_project": "default_project",
+    "mock_balance": "../data/gbalance_new.txt"
 }
 
