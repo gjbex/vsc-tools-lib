@@ -52,7 +52,7 @@ if __name__ == '__main__':
         msg = "### error: can not open PBS file '{0}'\n"
         sys.stderr.write(msg.format(options.events))
         sys.exit(CAN_NOT_OPEN_PBS)
-    job_checker = JobChecker(conf['cluster_db'])
+    job_checker = JobChecker(conf)
     job_checker.check(pbs_parser.job)
     pbs_parser.merge_events(job_checker.events)
     nr_warnings = 0
