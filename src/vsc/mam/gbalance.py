@@ -7,9 +7,8 @@ from vsc.mam.account import MamAccount
 class GbalanceParser(object):
     '''parser for gbalance output'''
 
-    def __init__(self, cmd):
+    def __init__(self):
         '''constructor'''
-        self._cmd = cmd
         self._acc_re = re.compile(r'Account=([^,]+),?')
         self._old_re = re.compile(r'(\w+)')
 
