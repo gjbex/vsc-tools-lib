@@ -1,17 +1,20 @@
 #!/usr/bin/env python
 
 import sqlite3
+from subprocess import check_output, CalledProcessError, STDOUT
 from vsc.utils import bytes2size
 from vsc.event_logger import EventLogger
+from vsc.mam.gbalance import GbalanceParser
 
 class JobChecker(EventLogger):
     '''Semantic checker for jobs'''
 
-    def __init__(self, db_name):
+    def __init__(self, config):
         '''Constructor for job checker'''
         super(JobChecker, self).__init__('global')
-        self._conn = sqlite3.connect(db_name)
+        self._conn = sqlite3.connect(config['cluster_db'])
         self._cursor = self._conn.cursor()
+        self._config = config
 
     def check(self, job):
         '''Check semantics of given job'''
@@ -21,6 +24,7 @@ class JobChecker(EventLogger):
         self.check_total_pmem(job)
         self.check_mem(job)
         self.check_mem_vs_pmem(job)
+        self.check_credit_account(job)
 
     def check_qos(self, job):
         '''check QOS specified exists'''
@@ -123,7 +127,7 @@ class JobChecker(EventLogger):
                 nodes = nodes_spec['nodes']
                 for mem in sorted(mem_sizes.keys()):
                     mem_spec -= mem*nodes
-                    if mem_spec <=0:
+                    if mem_spec <= 0:
                         break
             if mem_spec > 0:
                 self.reg_event('insufficient_mem',
@@ -133,6 +137,47 @@ class JobChecker(EventLogger):
         '''Check whether both mem and pmem are specified'''
         if job.resource_spec('mem') and job.resource_spec('pmem'):
             self.reg_event('both_mem_pmem_specs')
+
+    def check_credit_account(self, job):
+        '''Check whether a project is available to debit credits from,
+           and whether the balance is sufficient'''
+        if 'mock_balance' in self._config:
+            with open(self._config['mock_balance'], 'r') as balance_file:
+                balance_sheet = ''.join(balance_file.readlines())
+        else:
+            balance_cmd = self._config['balance_cmd']
+            try:
+                balance_sheet = check_output([balance_cmd], stderr=STDOUT)
+            except CalledProcessError as e:
+# TODO: decide on user feedback
+                return
+        accounts = GbalanceParser().parse(balance_sheet)
+        if len(accounts) == 0:
+            self.reg_event('no_credit_account')
+            return
+        elif job.project is None:
+            credit_account = None
+            for account_id in accounts:
+                account_name = accounts[account_id].name
+                if (account_name == '' or
+                        account_name == self._config['default_project']):
+                    credit_account = account_id
+                    break
+            if not account_id:
+                self.reg_event('no_default_credit_account')
+                return
+        else:
+            credit_account = None
+            for account_id in accounts:
+                if accounts[account_id].name == job.project:
+                    credit_account = account_id
+                    break
+            if not account_id:
+                self.reg_event('unknow_credit_account',
+                               {'acccount': job.project})
+                return
+
+            
 
     def _mem_sizes(self, partition):
         '''retrieve the memory sizes of the nodes from the databse'''
