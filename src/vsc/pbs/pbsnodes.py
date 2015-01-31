@@ -46,6 +46,15 @@ class PbsnodesParser(object):
             elif line.startswith('status = '):
                 _, status_str = line.split(' = ')
                 node_status.status = {}
+                if 'message=' in status_str:
+                    match = re.search(r'message=(.*)(?:,\w+=|$)',
+                                      status_str)
+                    message = match.group(1)
+                    node_status.status['message'] = message
+                    repl = 'message={0},'.format(message)
+                    status_str = status_str.replace(repl, '')
+                    msg = '### warning: message {0} on node {1}\n'
+                    sys.stderr.write(msg.format(message, hostname))
                 for status_item in status_str.split(','):
                     try:
                         key, value = status_item.split('=')

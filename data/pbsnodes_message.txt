@@ -1,0 +1,10 @@
+r5i0n6
+     state = free
+     np = 20
+     properties = ivybridge,r5,r5i0,tencore,thinking,type_ivybridge
+     ntype = cluster
+     status = rectime=1421077859,varattr=,jobs=,state=free,netload=250792032533,gres=,message=ERROR: prolog/epilog failed,file: /var/spool/torque/mom_priv/epilogue.parallel,exit: -4,prolog/epilog timeout occurred,child cleaned up,loadave=0.10,ncpus=20,physmem=65932076kb,availmem=62679084kb,totmem=68028708kb,idletime=1798562,nusers=0,nsessions=0,uname=Linux r5i0n6 2.6.32-358.el6.x86_64 #1 SMP Tue Jan 29 11:47:41 EST 2013 x86_64,opsys=linux
+     note = offline because of reboot
+     mom_service_port = 15002
+     mom_manager_port = 15003
+                                        
