@@ -19,11 +19,12 @@ class PbsnodesParser(object):
             if state == 'init' and re.match(r'^\w', line):
                 node_str = line
                 state = 'in_node'
-            elif state == 'in_node' and len(line.strip()):
-                node_str += '\n' + line
-            else:
-                state = 'init'
-                nodes.append(self.parse_node(node_str.strip()))
+            elif state == 'in_node':
+                if len(line.strip()):
+                    node_str += '\n' + line
+                else:
+                    nodes.append(self.parse_node(node_str.strip()))
+                    state = 'init'
         return nodes
 
     def parse_file(self, node_file):
@@ -47,7 +48,7 @@ class PbsnodesParser(object):
                 _, status_str = line.split(' = ')
                 node_status.status = {}
                 if 'message=' in status_str:
-                    match = re.search(r'message=(.*)(?:,\w+=|$)',
+                    match = re.search(r'message=(.*?)(?:,\w+=|$)',
                                       status_str)
                     message = match.group(1)
                     node_status.status['message'] = message
