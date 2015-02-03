@@ -9,6 +9,7 @@ class PbsnodesParserTest(unittest.TestCase):
 
     def test_parsing_with_messages(self):
         file_name = 'data/pbsnodes_message.txt'
+        nr_nodes = 1
         warning_start = '### warning: message ERROR'
         warning_end = 'cleaned up on node r5i0n6\n'
         hostname = 'r5i0n6'
@@ -22,7 +23,7 @@ class PbsnodesParserTest(unittest.TestCase):
             node_infos = parser.parse_file(pbsnodes_file)
             warning_msg = sys.stderr.getvalue()
             sys.stderr = os_stderr
-        self.assertEqual(1, len(node_infos))
+        self.assertEqual(nr_nodes, len(node_infos))
         self.assertEqual(warning_start,
                          warning_msg[:len(warning_start)])
         self.assertEqual(warning_end,
@@ -36,3 +37,13 @@ class PbsnodesParserTest(unittest.TestCase):
 
     def test_parsing(self):
         file_name = 'data/pbsnodes.txt'
+        nr_nodes = 173
+        np = 20
+        rack_str = 'r'
+        parser = PbsnodesParser()
+        with open(file_name, 'r') as pbsnodes_file:
+            node_infos = parser.parse_file(pbsnodes_file)
+        self.assertEqual(nr_nodes, len(node_infos))
+        for node_info in node_infos:
+            self.assertTrue(np <= node_info.np)
+            self.assertTrue(node_info.hostname.startswith(rack_str))
