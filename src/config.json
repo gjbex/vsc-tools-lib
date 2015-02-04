@@ -7,6 +7,6 @@
     "event_file": "events.json",
     "balance_cmd": "/apps/leuven/icts/mam/bin/gbalance",
     "default_project": "default_project",
-    "mock_balance": "../data/gbalance_new.txt"
+    "mock_balance": "test/data/gbalance_new.txt"
 }
 
