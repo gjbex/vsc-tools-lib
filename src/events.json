@@ -128,6 +128,66 @@
         "category": "error",
         "message": "'{procs}' is not integer for procs resource specification",
         "remedy": "number of processors should be integer"
+    },
+    "insufficient_node_pmem": {
+        "category": "error",
+        "message": "no nodes available with {mem} of RAM",
+        "remedy": "check pmem and ppn in resource specification"
+    },
+    "insufficient_nodes_mem": {
+        "category": "error",
+        "message": "insufficient nodes ({nodes}) available with {mem} of RAM",
+        "remedy": "check nodes, pmem and ppn in resource specification"
+    },
+    "insufficient_mem": {
+        "category": "error",
+        "message": "insufficient nodes for a total of {mem} RAM",
+        "remedy": "check nodes and mem in resource specification"
+    },
+    "both_mem_pmem_specs": {
+        "category": "warning",
+        "message": "both mem and pmem resources specified",
+        "remedy": "check that you want both mem and pmem specifications"
+    },
+    "unknown_partition": {
+        "category": "error",
+        "message": "partition '{partition}' is not defined",
+        "remedy": "check the specified partition"
+    },
+    "unknown_qos": {
+        "category": "error",
+        "message": "QOS '{qos}' is not defined",
+        "remedy": "check the specified QOS"
+    },
+    "insufficient_nodes": {
+        "category": "error",
+        "message": "too many nodes ({nodes}) reequested, maximum {max_nodes}",
+        "remedy": "reduce the number of requested nodes"
+    },
+    "insufficient_ppn_nodes": {
+        "category": "error",
+        "message": "too few nodes with ppn {ppn}",
+        "remedy": "check specifications of compute nodes for number of cores"
+    },
+    "no_credit_account": {
+        "category": "error",
+        "message": "no credit account can be found",
+        "remedy": "verify that you have to acquire credits to compute on this system"
+    },
+    "no_default_credit_account": {
+        "category": "error",
+        "message": "no explicit credit account specified, and no default found",
+        "remedy": "verify that you have to acquire credits to compute on this system"
+    },
+    "unknown_credit_account": {
+        "category": "error",
+        "message": "no credit account with name {account} can be found",
+        "remedy": "verify that credit account exists, and you can access it"
+    },
+    "insufficient_credits": {
+        "category": "warning",
+        "message": "credit account {account} may have insufficient credits to run this job",
+        "remedy": "verify the credit account balance, and acquire more credits if necessary"
     }
 }
 

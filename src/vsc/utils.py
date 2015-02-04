@@ -17,7 +17,7 @@ class InvalidSizeError(Exception):
         self.message = msg
 
 
-import re
+import math, re
 
 def walltime2seconds(time_str):
     '''converts walltime [[[DD:]HHH?:]MM:]SS+ to seconds
@@ -120,6 +120,28 @@ def size2bytes(amount, order=None):
     except KeyError:
         raise InvalidSizeError("'{0}' is not a valid order "
                                "of magnitude".format(order))
+
+def bytes2size(bytes, unit):
+    '''Conbert a number of bytes to the given unit (kb, mb, gb, tb)
+       >>> bytes2size(34320, 'kb')
+       '34kb'
+       >>> bytes2size(12884463294, 'GB')
+       '12GB'
+    '''
+      
+    conversion = {
+        'b': 1.0,
+        'kb': 1024.0,
+        'mb': 1024.0**2,
+        'gb': 1024.0**3,
+        'tb': 1024.0**4,
+    }
+    if unit.lower() in conversion:
+        mem = int(math.ceil(bytes/conversion[unit.lower()]))
+        return '{0:d}{1}'.format(mem, unit)
+    else:
+        pass
+    
 
 def hostname2rackinfo(hostname):
     '''Determine rack number, IRU and node number from hostname'''

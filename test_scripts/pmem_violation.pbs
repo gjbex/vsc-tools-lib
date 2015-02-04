@@ -1,0 +1,6 @@
+#!/bin/bash -l
+#PBS -lnodes=2:ppn=20
+#PBS -lpmem=10gb
+
+echo "hello world!"
+

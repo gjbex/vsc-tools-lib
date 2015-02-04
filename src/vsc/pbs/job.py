@@ -11,10 +11,13 @@ class PbsJob(object):
         self._name = None
         self._user = None
         self._state = None
-        self._resource_specs = {}
         self._resources_used = {}
         self._exec_hosts = None
         self._partition = None
+        self._resource_specs = {
+            'partition': 'thinking',
+            'qos': None,
+        }
         self._queue = None
         self._project = None
         _, host, _, _, _ = os.uname()
@@ -111,6 +114,14 @@ class PbsJob(object):
     def resource_specs(self):
         '''returns the job's resource specifications'''
         return self._resource_specs
+
+    def resource_spec(self, spec):
+        '''returns the resource specification specified, None if that
+           was not specified'''
+        if spec in self._resource_specs:
+            return self._resource_specs[spec]
+        else:
+            return None
 
     def add_resource_specs(self, resource_specs):
         '''Add resources to specification'''
