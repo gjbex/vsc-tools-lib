@@ -12,6 +12,11 @@ class GbalanceParser(object):
         self._acc_re = re.compile(r'Account=([^,]+),?')
         self._old_re = re.compile(r'(\w+)')
 
+    def parse_file(self, gbalance_file):
+        '''parse a file that gbalance pbsnodes output'''
+        gbalance_output = ''.join(gbalance_file.readlines())
+        return self.parse(gbalance_output)
+
     def parse(self, gbalance_output):
         '''parse the output of gbalance and return account information'''
         accounts = {}
