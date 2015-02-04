@@ -47,7 +47,7 @@ class GbalanceTest(unittest.TestCase):
         default_available = -13
         default_allocated = 1000
         project_id = '1255'
-        project_name = 'lp_lmpb'
+        project_name = 'lp_qlint'
         project_available = 9814
         project_allocated = 10000
         parser = GbalanceParser()
