@@ -40,3 +40,17 @@ class JObCheckerTest(unittest.TestCase):
         checker.check(parser.job)
         self.assertEquals(nr_semantic_events, len(checker.events))
         self.assertEquals(event_name, checker.events[0]['id'])
+
+    def test_too_many_nodes(self):
+        file_name = 'data/too_many_nodes.pbs'
+        nr_syntax_events = 0
+        event_names = ['insufficient_nodes', 'insufficient_ppn_nodes']
+        parser = PbsScriptParser(self._config)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config)
+        checker.check(parser.job)
+        self.assertEquals(len(event_names), len(checker.events))
+        for event in checker.events:
+            self.assertTrue(event['id'] in event_names)
