@@ -62,6 +62,7 @@ class JobChecker(EventLogger):
             for ppn in sorted(all_ppn):
                 if job_nodes <= all_ppn[ppn]:
                     all_ppn[ppn] -= job_nodes
+                    job_nodes = 0
                     break
                 else:
                     job_nodes -= all_ppn[ppn]
