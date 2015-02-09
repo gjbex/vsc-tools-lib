@@ -15,7 +15,7 @@ class JObCheckerTest(unittest.TestCase):
         self._config['cluster_db'] = 'data/cluster.db'
         self._config['mock_balance'] = 'data/gbalance_new.txt'
 
-    def test_job_correct(self):
+    def test_correct(self):
         file_name = 'data/correct.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
@@ -26,3 +26,17 @@ class JObCheckerTest(unittest.TestCase):
         checker = JobChecker(self._config)
         checker.check(parser.job)
         self.assertEquals(nr_semantic_events, len(checker.events))
+
+    def test_too_large_ppn(self):
+        file_name = 'data/too_large_ppn.pbs'
+        nr_syntax_events = 0
+        nr_semantic_events = 1
+        event_name = 'insufficient_ppn_nodes'
+        parser = PbsScriptParser(self._config)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config)
+        checker.check(parser.job)
+        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEquals(event_name, checker.events[0]['id'])

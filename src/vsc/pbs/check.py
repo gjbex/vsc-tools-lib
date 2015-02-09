@@ -60,13 +60,14 @@ class JobChecker(EventLogger):
             job_ppn = node_spec['ppn']
             job_nodes = node_spec['nodes']
             for ppn in sorted(all_ppn):
-                if job_nodes <= all_ppn[ppn]:
-                    all_ppn[ppn] -= job_nodes
-                    job_nodes = 0
-                    break
-                else:
-                    job_nodes -= all_ppn[ppn]
-                    all_ppn[ppn] = 0
+                if ppn >= job_ppn:
+                    if job_nodes <= all_ppn[ppn]:
+                        all_ppn[ppn] -= job_nodes
+                        job_nodes = 0
+                        break
+                    else:
+                        job_nodes -= all_ppn[ppn]
+                        all_ppn[ppn] = 0
             if job_nodes > 0:
                 self.reg_event('insufficient_ppn_nodes',
                                {'ppn': job_ppn})
