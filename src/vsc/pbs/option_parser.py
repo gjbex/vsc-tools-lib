@@ -12,9 +12,10 @@ from vsc.utils import InvalidWalltimeError
 class PbsOptionParser(EventLogger):
     '''Parser for PBS options, either command line or directives'''
 
-    def __init__(self, job):
+    def __init__(self, config, job):
         '''constructor'''
         super(PbsOptionParser, self).__init__('global')
+        self._config = config
         self._job = job
         self._arg_parser = ArgumentParser()
         self._arg_parser.add_argument('-A')

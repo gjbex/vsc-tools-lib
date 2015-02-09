@@ -9,14 +9,15 @@ from vsc.pbs.option_parser import PbsOptionParser
 class PbsScriptParser(EventLogger):
     '''Parser for PBS torque job files'''
 
-    def __init__(self, pbs_directive='#PBS'):
+    def __init__(self, config, pbs_directive='#PBS'):
         '''Constructor'''
         super(PbsScriptParser, self).__init__()
-        self._job = PbsJob()
+        self._config = config
+        self._job = PbsJob(self._config)
         self._pbs_directive = pbs_directive
         regex = r'\s*{0}\s+(.+)$'.format(pbs_directive)
         self._pbs_extract = re.compile(regex)
-        self._pbs_option_parser = PbsOptionParser(self._job)
+        self._pbs_option_parser = PbsOptionParser(self._config, self._job)
         self._state = None
         self._line_nr = 0
         self._pbs = []

@@ -5,7 +5,7 @@ import os
 class PbsJob(object):
     '''Class representing a PBS job'''
 
-    def __init__(self, job_id=None):
+    def __init__(self, config, job_id=None):
         '''Constructor for a PBS job object'''
         self._id = job_id
         self._name = None
@@ -15,7 +15,7 @@ class PbsJob(object):
         self._exec_hosts = None
         self._partition = None
         self._resource_specs = {
-            'partition': 'thinking',
+            'partition': config['default_partition'],
             'qos': None,
         }
         self._queue = None
