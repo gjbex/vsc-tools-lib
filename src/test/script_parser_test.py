@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 '''module to test the vsc.pbs.script_parser.PbsScriptParser parser'''
 
-import unittest
+import json, unittest
 from vsc.pbs.script_parser import PbsScriptParser
 
 class PbsScriptParserTest(unittest.TestCase):
     '''Tests for the pbsnodes output parser'''
+
+    def setUp(self):
+        config_file_name = '../config.json'
+        with open(config_file_name, 'r') as config_file:
+            self._config = json.load(config_file)
 
     def test_parsing(self):
         file_name = 'data/correct.pbs'
@@ -16,7 +21,7 @@ class PbsScriptParserTest(unittest.TestCase):
         walltime = 72*3600
         qos = 'debugging'
         join = 'oe'
-        parser = PbsScriptParser()
+        parser = PbsScriptParser(self._config)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
         job = parser.job

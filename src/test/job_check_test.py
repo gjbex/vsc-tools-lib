@@ -11,18 +11,18 @@ class JObCheckerTest(unittest.TestCase):
     def setUp(self):
         conf_file_name = '../config.json'
         with open(conf_file_name, 'r') as conf_file:
-            self._conf = json.load(conf_file)
-        self._conf['cluster_db'] = '../cluster.db'
-        self._conf['mock_balance'] = 'data/gbalance_new.txt'
+            self._config = json.load(conf_file)
+        self._config['cluster_db'] = 'data/cluster.db'
+        self._config['mock_balance'] = 'data/gbalance_new.txt'
 
     def test_job_correct(self):
         file_name = 'data/correct.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
-        parser = PbsScriptParser()
+        parser = PbsScriptParser(self._config)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
         self.assertEquals(nr_syntax_events, len(parser.events))
-        checker = JobChecker(self._conf)
+        checker = JobChecker(self._config)
         checker.check(parser.job)
         self.assertEquals(nr_semantic_events, len(checker.events))
