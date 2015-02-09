@@ -10,20 +10,23 @@ class JObCheckerTest(unittest.TestCase):
 
     def setUp(self):
         conf_file_name = '../config.json'
+        event_file_name = '../events.json'
         with open(conf_file_name, 'r') as conf_file:
             self._config = json.load(conf_file)
         self._config['cluster_db'] = 'data/cluster.db'
         self._config['mock_balance'] = 'data/gbalance_new.txt'
+        with open(event_file_name, 'r') as event_file:
+            self._event_defs = json.load(event_file)
 
     def test_correct(self):
         file_name = 'data/correct.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
-        parser = PbsScriptParser(self._config)
+        parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
         self.assertEquals(nr_syntax_events, len(parser.events))
-        checker = JobChecker(self._config)
+        checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
         self.assertEquals(nr_semantic_events, len(checker.events))
 
@@ -32,11 +35,11 @@ class JObCheckerTest(unittest.TestCase):
         nr_syntax_events = 0
         nr_semantic_events = 1
         event_name = 'insufficient_ppn_nodes'
-        parser = PbsScriptParser(self._config)
+        parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
         self.assertEquals(nr_syntax_events, len(parser.events))
-        checker = JobChecker(self._config)
+        checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
         self.assertEquals(nr_semantic_events, len(checker.events))
         self.assertEquals(event_name, checker.events[0]['id'])
@@ -45,12 +48,24 @@ class JObCheckerTest(unittest.TestCase):
         file_name = 'data/too_many_nodes.pbs'
         nr_syntax_events = 0
         event_names = ['insufficient_nodes', 'insufficient_ppn_nodes']
-        parser = PbsScriptParser(self._config)
+        parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
         self.assertEquals(nr_syntax_events, len(parser.events))
-        checker = JobChecker(self._config)
+        checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
         self.assertEquals(len(event_names), len(checker.events))
         for event in checker.events:
             self.assertTrue(event['id'] in event_names)
+
+    def test_nodes_ppn_wrong_spec(self):
+        file_name = 'data/nodes_ppn_wrong_spec.pbs'
+        nr_syntax_events = 1
+        event_names = ['ppn_no_number']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(nr_syntax_events, parser.nr_errors)

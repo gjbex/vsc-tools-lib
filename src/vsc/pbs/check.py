@@ -9,9 +9,9 @@ from vsc.mam.gbalance import GbalanceParser
 class JobChecker(EventLogger):
     '''Semantic checker for jobs'''
 
-    def __init__(self, config):
+    def __init__(self, config, event_defs):
         '''Constructor for job checker'''
-        super(JobChecker, self).__init__('global')
+        super(JobChecker, self).__init__(event_defs, 'global')
         self._conn = sqlite3.connect(config['cluster_db'])
         self._cursor = self._conn.cursor()
         self._config = config

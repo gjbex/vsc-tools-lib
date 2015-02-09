@@ -9,8 +9,11 @@ class PbsScriptParserTest(unittest.TestCase):
 
     def setUp(self):
         config_file_name = '../config.json'
+        event_file_name = '../events.json'
         with open(config_file_name, 'r') as config_file:
             self._config = json.load(config_file)
+        with open(event_file_name, 'r') as event_file:
+            self._event_defs = json.load(event_file)
 
     def test_parsing(self):
         file_name = 'data/correct.pbs'
@@ -21,7 +24,7 @@ class PbsScriptParserTest(unittest.TestCase):
         walltime = 72*3600
         qos = 'debugging'
         join = 'oe'
-        parser = PbsScriptParser(self._config)
+        parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
         job = parser.job
