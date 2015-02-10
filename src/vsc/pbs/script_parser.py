@@ -16,7 +16,11 @@ class PbsScriptParser(EventLogger):
         self._job = PbsJob(self._config)
         self._pbs_directive = pbs_directive
         regex = r'\s*{0}\s+(.+)$'.format(pbs_directive)
-        self._pbs_extract = re.compile(regex)
+        self._pbs_re = re.compile(regex)
+        regex = r'\s+{0}\s+(.+)$'.format(pbs_directive)
+        self._pbs_indented_re = re.compile(regex)
+        regex = r'\s*{0}\s+(.+)$'.format(pbs_directive)
+        self._pbs_extract_re = re.compile(regex)
         self._pbs_option_parser = PbsOptionParser(self._config, event_defs,
                                                   self._job)
         self._state = None
@@ -67,6 +71,7 @@ class PbsScriptParser(EventLogger):
         return (re.match(r'\s*#', line) and
                 not (self.is_shebang(line) or
                      self.is_spaced_pbs(line) or
+                     self.is_indented_pbs(line) or
                      self.is_pbs(line)))
 
     def is_shebang(self, line):
@@ -81,7 +86,11 @@ class PbsScriptParser(EventLogger):
 
     def is_pbs(self, line):
         '''returns True if the line is a PBS directive'''
-        return re.match(self._pbs_directive, line)
+        return self._pbs_re.match(line)
+
+    def is_indented_pbs(self, line):
+        '''returns True if the line contains an indented PBS directive'''
+        return self._pbs_indented_re.match(line)
 
     def parse_shebang(self, line):
         '''parse shebang part of PBS file'''
@@ -102,7 +111,9 @@ class PbsScriptParser(EventLogger):
         elif self.is_spaced_pbs(line):
             self.reg_event('space_in_pbs_dir')
         elif self.is_pbs(line):
-            match = self._pbs_extract.match(line)
+            if self.is_indented_pbs(line):
+                self.reg_event('indented_pbs_dir')
+            match = self._pbs_extract_re.match(line)
             if match:
                 self._pbs_option_parser.parse_args(match.group(1))
                 self.merge_events(self._pbs_option_parser.events)

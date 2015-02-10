@@ -88,3 +88,14 @@ class PbsScriptParserTest(unittest.TestCase):
         for event in parser.events:
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(len(event_names), parser.nr_warnings)
+
+    def test_indented_pbs_directive(self):
+        file_name = 'data/indented_pbs_directive.pbs'
+        event_names = ['indented_pbs_dir']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(len(event_names), parser.nr_warnings)

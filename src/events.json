@@ -29,6 +29,11 @@
         "message": "PBS directive contains a space",
         "remedy": "remove space, i.e., use #PBS"
     },
+    "indented_pbs_dir": {
+        "category": "warning",
+        "message": "PBS directive should not be indented",
+        "remedy": "remove leading whitespac"
+    },
     "invalid_pbs_dir": {
         "category": "error",
         "message": "{msg}",
