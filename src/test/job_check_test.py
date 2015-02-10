@@ -57,15 +57,3 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEquals(len(event_names), len(checker.events))
         for event in checker.events:
             self.assertTrue(event['id'] in event_names)
-
-    def test_nodes_ppn_wrong_spec(self):
-        file_name = 'data/nodes_ppn_wrong_spec.pbs'
-        nr_syntax_events = 1
-        event_names = ['ppn_no_number']
-        parser = PbsScriptParser(self._config, self._event_defs)
-        with open(file_name, 'r') as pbs_file:
-            parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
-        for event in parser.events:
-            self.assertTrue(event['id'] in event_names)
-        self.assertEquals(nr_syntax_events, parser.nr_errors)

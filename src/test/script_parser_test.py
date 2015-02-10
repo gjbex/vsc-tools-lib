@@ -15,6 +15,23 @@ class PbsScriptParserTest(unittest.TestCase):
         with open(event_file_name, 'r') as event_file:
             self._event_defs = json.load(event_file)
 
+    def test_simple(self):
+        file_name = 'data/simple.pbs'
+        project = 'lp_qlint'
+        nodes = 2
+        ppn = 4
+        walltime = 72*3600
+        partition = self._config['default_partition']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        job = parser.job
+        nodes_specs = job.resource_specs['nodes'][0]
+        self.assertEquals(nodes, nodes_specs['nodes'])
+        self.assertEquals(ppn, nodes_specs['ppn'])
+        self.assertEquals(walltime, job.resource_specs['walltime'])
+        self.assertEquals(partition, job.resource_specs['partition'])
+
     def test_parsing(self):
         file_name = 'data/correct.pbs'
         name = 'my_job'
@@ -36,3 +53,28 @@ class PbsScriptParserTest(unittest.TestCase):
         self.assertEquals(walltime, job.resource_specs['walltime'])
         self.assertEquals(qos, job.resource_specs['qos'])
         self.assertEquals(join, job.join)
+
+    def test_dos(self):
+        file_name = 'data/dos.pbs'
+        nr_syntax_events = 4
+        event_names = ['dos_format']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(nr_syntax_events, parser.nr_errors)
+
+
+    def test_nodes_ppn_wrong_spec(self):
+        file_name = 'data/nodes_ppn_wrong_spec.pbs'
+        nr_syntax_events = 1
+        event_names = ['ppn_no_number']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(nr_syntax_events, parser.nr_errors)
