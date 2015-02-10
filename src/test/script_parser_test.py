@@ -66,7 +66,6 @@ class PbsScriptParserTest(unittest.TestCase):
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(nr_syntax_events, parser.nr_errors)
 
-
     def test_nodes_ppn_wrong_spec(self):
         file_name = 'data/nodes_ppn_wrong_spec.pbs'
         nr_syntax_events = 1
@@ -78,3 +77,14 @@ class PbsScriptParserTest(unittest.TestCase):
         for event in parser.events:
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(nr_syntax_events, parser.nr_errors)
+
+    def test_misplaced_shebang(self):
+        file_name = 'data/misplaced_shebang.pbs'
+        event_names = ['missing_shebang', 'misplaced_shebang']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(len(event_names), parser.nr_warnings)
