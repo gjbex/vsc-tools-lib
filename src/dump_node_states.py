@@ -8,8 +8,8 @@ if __name__ == '__main__':
     from vsc.pbs.utils import compute_partition
     from vsc.utils import hostname2rackinfo
 
-    arg_parser = ArgumentParser(description=('loads a database with node '
-                                             'information'))
+    arg_parser = ArgumentParser(description=('prints node information'
+                                             ' as provided by pbsnodes'))
     arg_parser.add_argument('--pbsnodes_file', help='pbsnodes file')
     arg_parser.add_argument('--partitions', default='thinking,gpu,phi',
                              help='partitions defined for the cluster')
