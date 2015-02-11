@@ -71,3 +71,15 @@ class JObCheckerTest(unittest.TestCase):
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(len(event_names), checker.nr_warnings)
 
+    def test_mem_violation(self):
+        file_name = 'data/mem_violation.pbs'
+        event_names = ['insufficient_mem']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        checker = JobChecker(self._config, self._event_defs)
+        checker.check(parser.job)
+        self.assertEquals(len(event_names), len(checker.events))
+        for event in checker.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(len(event_names), checker.nr_errors)
