@@ -152,3 +152,20 @@ class PbsScriptParserTest(unittest.TestCase):
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(len(event_names), parser.nr_errors)
         self.assertEquals(len(event_names), parser.nr_errors)
+
+    def test_multiple_resources(self):
+        file_name = 'data/multiple_resources.pbs'
+        nr_specs = 2
+        nr_nodes = [3, 5]
+        features = ['128GB', '64GB']
+        nr_features = 1
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        job = parser.job
+        node_specs = job.resource_specs['nodes']
+        self.assertEquals(nr_specs, len(node_specs))
+        for i, node_spec in enumerate(node_specs):
+            self.assertEquals(nr_nodes[i], node_spec['nodes'])
+            self.assertEquals(nr_features, len(node_spec['features']))
+            self.assertEquals(features[i], node_spec['features'][0])
