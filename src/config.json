@@ -14,6 +14,15 @@
     "cluster_db": "cluster.db",
     "event_file": "events.json",
     "balance_cmd": "/apps/leuven/icts/mam/bin/gbalance",
-    "default_project": "default_project"
+    "default_project": "default_project",
+    "qstat_cmd": "/usr/local/bin/qstat",
+    "qstat_options": "-f",
+    "queue_definitions": [
+        {"name": "q1h",  "walltime_limit": 3600},
+        {"name": "q24h", "walltime_limit": 86400},
+        {"name": "q72h", "walltime_limit": 259200},
+        {"name": "q7d",  "walltime_limit": 604800},
+        {"name": "q21d", "walltime_limit": 1814400}
+    ]
 }
 
