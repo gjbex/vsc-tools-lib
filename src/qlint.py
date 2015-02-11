@@ -44,7 +44,7 @@ if __name__ == '__main__':
         msg = "### error: can not open event file '{0}'\n"
         sys.stderr.write(msg.format(conf['event_file']))
         sys.exit(CAN_NOT_OPEN_EVENT_FILE)
-    pbs_parser = PbsScriptParser()
+    pbs_parser = PbsScriptParser(conf, event_defs)
     try:
         with open(options.pbs_file, 'r') as pbs_file:
             pbs_parser.parse_file(pbs_file)
@@ -52,7 +52,7 @@ if __name__ == '__main__':
         msg = "### error: can not open PBS file '{0}'\n"
         sys.stderr.write(msg.format(options.events))
         sys.exit(CAN_NOT_OPEN_PBS)
-    job_checker = JobChecker(conf)
+    job_checker = JobChecker(conf, event_defs)
     job_checker.check(pbs_parser.job)
     pbs_parser.merge_events(job_checker.events)
     nr_warnings = 0
