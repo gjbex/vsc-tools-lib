@@ -120,4 +120,15 @@ class PbsScriptParserTest(unittest.TestCase):
         self.assertEquals(len(event_names), len(parser.events))
         for event in parser.events:
             self.assertTrue(event['id'] in event_names)
+
+    def test_pmem_specs(self):
+        file_name = 'data/pmem_specs.pbs'
+        event_names = ['invalid_pmem_format']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(len(event_names), parser.nr_errors)
         self.assertEquals(len(event_names), parser.nr_errors)
