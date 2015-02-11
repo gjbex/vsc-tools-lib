@@ -17,7 +17,7 @@ if __name__ == '__main__':
                              help='file to store the database in')
     arg_parser.add_argument('--partitions', default='thinking,gpu,phi',
                              help='partitions defined for the cluster')
-    arg_parser.add_argument('--qos_levels', default='debugging',
+    arg_parser.add_argument('--qos_levels', default='debugging,normal',
                              help='QOS defined for the cluster')
     arg_parser.add_argument('--jobs', action='store_true',
                             help='create job-related tables')
