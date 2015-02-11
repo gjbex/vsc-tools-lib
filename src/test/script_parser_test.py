@@ -54,6 +54,15 @@ class PbsScriptParserTest(unittest.TestCase):
         self.assertEquals(qos, job.resource_specs['qos'])
         self.assertEquals(join, job.join)
 
+    def test_size_in_bytes(self):
+        file_name = 'data/size_in_bytes.pbs'
+        size = 4096
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        job = parser.job
+        self.assertEquals(size, job.resource_specs['mem'])
+
     def test_dos(self):
         file_name = 'data/dos.pbs'
         nr_syntax_events = 4
