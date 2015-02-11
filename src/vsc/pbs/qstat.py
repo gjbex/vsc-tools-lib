@@ -7,14 +7,20 @@ from vsc.pbs.job import PbsJob
 class QstatParser(object):
     '''Parser for full PBS torque qstat output'''
 
-    def __init__(self):
+    def __init__(self, config):
         '''constructor'''
+        self._config = config
         self._jobs = {}
 
     def _get_value(self, line):
         '''extract value from line'''
         _, value = line.split('=', 1)
         return value.strip()
+
+    def parse_file(self, qstat_file):
+        '''parse a file that contains qstat -f output'''
+        qstat_output = ''.join(qstat_file.readlines())
+        return self.parse(qstat_output)
 
     def parse_record(self, record):
         '''parse an individual job record'''
@@ -41,7 +47,7 @@ class QstatParser(object):
                     host_str = None
             if line.startswith('Job Id:'):
                 _, job_id = line.split(':', 1)
-                job = PbsJob(job_id.strip())
+                job = PbsJob(self._config, job_id.strip())
             elif line.startswith('Job_Name ='):
                 job.name = self._get_value(line)
             elif line.startswith('euser ='):
