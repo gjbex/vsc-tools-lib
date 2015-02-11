@@ -150,6 +150,8 @@ class JobChecker(EventLogger):
             balance_cmd = self._config['balance_cmd']
             try:
                 balance_sheet = check_output([balance_cmd], stderr=STDOUT)
+            except OSError as e:
+                return
             except CalledProcessError as e:
 # TODO: decide on user feedback
                 return
