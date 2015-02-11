@@ -47,7 +47,8 @@ class JObCheckerTest(unittest.TestCase):
     def test_too_many_nodes(self):
         file_name = 'data/too_many_nodes.pbs'
         nr_syntax_events = 0
-        event_names = ['insufficient_nodes', 'insufficient_ppn_nodes']
+        event_names = ['insufficient_nodes', 'insufficient_ppn_nodes',
+                       'insufficient_nodes_mem']
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
