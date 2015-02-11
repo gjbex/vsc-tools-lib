@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
-import sys
+import json, sys
 from vsc.plotly_utils import create_annotations
 
 import plotly.plotly as py
 from plotly.graph_objs import Bar, Data, Layout, Figure
+
+CAN_NOT_OPEN_CONF_FILE = 12
 
 def plot_queues(running_jobs, running_nodes, queued_jobs, queued_nodes,
                 queues, options):
@@ -98,8 +100,9 @@ if __name__ == '__main__':
     from vsc.pbs.qstat import QstatParser
 
     arg_parser = ArgumentParser(description='parse qstat output to'
-                                            ' compute queue'
-                                            ' distributions')
+                                            ' compute queue distributions'
+                                            ' and create a plotly bar'
+                                            ' chart')
     arg_parser.add_argument('--partition', default='thinking',
                             help='partition to display informatino for')
     arg_parser.add_argument('--qstat', default='/usr/local/bin/qstat',
@@ -115,7 +118,19 @@ if __name__ == '__main__':
                                  ' list of name:time (h)')
     arg_parser.add_argument('--file', help='file to use as input for'
                                            ' debugging')
+    arg_parser.add_argument('--conf', default='config.json',
+                            help='JSON configuration file')
     options = arg_parser.parse_args()
+
+# open configuration file and parse it
+    try:
+        with open(options.conf, 'r') as conf_file:
+            config = json.load(conf_file)
+    except EnvironmentError as error:
+        msg = "### error: can not open configuration file '{0}'\n"
+        sys.stderr.write(msg.format(options.conf))
+        sys.exit(CAN_NOT_OPEN_CONF_FILE)
+
     if options.file:
         with open(options.file, 'r') as qstat_file:
             cmd_output = ''.join([line for line in qstat_file])
@@ -127,7 +142,7 @@ if __name__ == '__main__':
         print 'Queue definitions:'
         for idx, queue in enumerate(queues):
             print '\t{0}: {1}'.format(queue, seconds2walltime(limits[idx]))
-    qstat_parser = QstatParser()
+    qstat_parser = QstatParser(config)
     jobs = qstat_parser.parse(cmd_output)
     (
         running_jobs, running_nodes,
