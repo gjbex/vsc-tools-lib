@@ -137,7 +137,7 @@ class JobChecker(EventLogger):
 
     def check_mem_vs_pmem(self, job):
         '''Check whether both mem and pmem are specified'''
-        if job.resource_spec('mem') and job.resource_spec('pmem'):
+        if job.resource_spec('mem') and not job.has_default_pmem:
             self.reg_event('both_mem_pmem_specs')
 
     def check_credit_account(self, job):

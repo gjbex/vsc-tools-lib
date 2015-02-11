@@ -182,6 +182,7 @@ class PbsOptionParser(EventLogger):
     def check_l(self, vals):
         '''check and handle resource options'''
         resource_spec = {}
+        has_default_pmem = True
 # there can be multiple -l options on one line or on the command line
         for val_str in (x.strip() for x in vals):
 # values can be combined by using ','
@@ -193,6 +194,8 @@ class PbsOptionParser(EventLogger):
                 elif (val.startswith('mem=') or val.startswith('pmem=') or
                       val.startswith('vmem=') or val.startswith('pvmem=')):
                     self.check_mem_res(val, resource_spec)
+                    if val.startswith('pmem='):
+                        has_default_pmem = False
                 elif val.startswith('nodes='):
                     self.check_nodes_res(val, resource_spec)
                 elif val.startswith('procs='):
@@ -204,6 +207,7 @@ class PbsOptionParser(EventLogger):
                 else:
                     self.reg_event('unknown_resource_spec', {'spec': val})
         self._job.add_resource_specs(resource_spec)
+        self._job._has_default_pmem = has_default_pmem
 
     def check_oe(self, val, option):
         '''check for valid -o or -e paths'''

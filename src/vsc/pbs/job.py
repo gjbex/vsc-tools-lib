@@ -15,21 +15,25 @@ class PbsJob(object):
         self._exec_hosts = None
         self._partition = None
         self._resource_specs = {
+            'pmem': config['default_pmem'],
             'partition': config['default_partition'],
-            'qos': None,
+            'qos': config['default_qos'],
+            'nodes': [{'nodes': config['default_nodes'],
+                       'ppn': config['default_ppn'],}]
         }
-        self._queue = None
+        self._has_default_pmem = True
+        self._queue = config['default_queue']
         self._project = None
         _, host, _, _, _ = os.uname()
         cwd = os.getcwd()
         self._io_specs = {
-            'keep': 'oe',
-            'join': 'n',
+            'keep': config['default_keep'],
+            'join': config['default_join'],
             'error': {'host': host, 'path': cwd},
-            'output': {'host': host, 'path': cwd}
+            'output': {'host': host, 'path': cwd},
         }
         self._mail_specs = {
-            'events': None,
+            'events': config['default_mail_events'],
             'addresses': [os.getlogin()]
         }
         self._shebang = None
@@ -137,6 +141,11 @@ class PbsJob(object):
         '''Add resources to used list'''
         for key, value in resources_used.items():
             self._resources_used[key] = value
+
+    @property
+    def has_default_pmem(self):
+        '''returns True if the default value for pmem was not changed'''
+        return self._has_default_pmem
 
     @property
     def mail_events(self):
