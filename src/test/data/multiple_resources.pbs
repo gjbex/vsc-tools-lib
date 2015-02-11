@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#PBS -l nodes=3:128GB+5:64GB
+#PBS -l nodes=3:mem128+5:mem64
 
 echo "hello world!"
 

@@ -157,7 +157,7 @@ class PbsScriptParserTest(unittest.TestCase):
         file_name = 'data/multiple_resources.pbs'
         nr_specs = 2
         nr_nodes = [3, 5]
-        features = ['128GB', '64GB']
+        features = ['mem128', 'mem64']
         nr_features = 1
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
