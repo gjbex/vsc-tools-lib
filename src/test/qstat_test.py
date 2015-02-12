@@ -5,7 +5,7 @@ import json, unittest
 from vsc.pbs.qstat import QstatParser
 
 class QstatTest(unittest.TestCase):
-    '''Tests for the gbalance output parser'''
+    '''Tests for the qstat -f output parser'''
 
     def setUp(self):
         conf_file_name = '../config.json'
