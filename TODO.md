@@ -1,2 +1,1 @@
-* add test for requested features
-* add job credit cost computation
+* check whether `vsc.pbs.utils` can be made more generic
