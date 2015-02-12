@@ -34,3 +34,13 @@ Utilities
     it
 * `vsc.utils`: functions for time and size conversion
 * `vsc.plotly`: functions to annotate plotly graphs
+
+Dependencies
+------------
+* Python 2.7.x
+
+Reverse dependencies
+--------------------
+* https://github.com/gjbex/qlint
+* https://github.com/gjbex/vsc-cluster-db
+* https://github.com/gjbex/vsc-monitoring
