@@ -10,7 +10,7 @@ class JObCheckerTest(unittest.TestCase):
 
     def setUp(self):
         conf_file_name = '../../conf/config.json'
-        event_file_name = '../events.json'
+        event_file_name = '../../lib/events.json'
         with open(conf_file_name, 'r') as conf_file:
             self._config = json.load(conf_file)
         self._config['cluster_db'] = 'data/cluster.db'

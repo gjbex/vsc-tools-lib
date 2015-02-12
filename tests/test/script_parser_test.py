@@ -9,7 +9,7 @@ class PbsScriptParserTest(unittest.TestCase):
 
     def setUp(self):
         config_file_name = '../../conf/config.json'
-        event_file_name = '../events.json'
+        event_file_name = '../../lib/events.json'
         with open(config_file_name, 'r') as config_file:
             self._config = json.load(config_file)
         with open(event_file_name, 'r') as event_file:
