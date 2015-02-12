@@ -128,7 +128,7 @@ if __name__ == '__main__':
     from argparse import ArgumentParser
 
     arg_parser = ArgumentParser(description=('create a database to store '
-                                             'store node information'))
+                                             'node information'))
     arg_parser.add_argument('--db', default='nodes.db',
                             help='file to store the database in')
     arg_parser.add_argument('--jobs', action='store_true',
