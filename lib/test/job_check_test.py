@@ -9,7 +9,7 @@ class JObCheckerTest(unittest.TestCase):
     '''Tests for the PBS job checker'''
 
     def setUp(self):
-        conf_file_name = '../config.json'
+        conf_file_name = '../../conf/config.json'
         event_file_name = '../events.json'
         with open(conf_file_name, 'r') as conf_file:
             self._config = json.load(conf_file)

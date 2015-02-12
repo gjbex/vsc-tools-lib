@@ -8,7 +8,7 @@ class QstatTest(unittest.TestCase):
     '''Tests for the qstat -f output parser'''
 
     def setUp(self):
-        conf_file_name = '../config.json'
+        conf_file_name = '../../conf/config.json'
         with open(conf_file_name, 'r') as conf_file:
             self._config = json.load(conf_file)
         self._config['cluster_db'] = 'data/cluster.db'

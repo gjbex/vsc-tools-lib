@@ -8,7 +8,7 @@ class PbsScriptParserTest(unittest.TestCase):
     '''Tests for the pbsnodes output parser'''
 
     def setUp(self):
-        config_file_name = '../config.json'
+        config_file_name = '../../conf/config.json'
         event_file_name = '../events.json'
         with open(config_file_name, 'r') as config_file:
             self._config = json.load(config_file)
