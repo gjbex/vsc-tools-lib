@@ -1,6 +1,0 @@
-#!/bin/bash -l
-#PBS -l nodes=3
-#PBS -l procs=2
-
-echo "hello world!"
-
