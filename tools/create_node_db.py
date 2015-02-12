@@ -137,5 +137,6 @@ if __name__ == '__main__':
                             help='when database exists, first drop tables')
     options = arg_parser.parse_args()
     conn = sqlite3.connect(options.db)
-    init_db(conn, DB_DESC, force=options.force, create_jobs_tables=options.jobs)
+    init_db(conn, DB_DESC, force=options.force,
+            create_jobs_tables=options.jobs)
 
