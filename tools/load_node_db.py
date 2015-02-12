@@ -5,7 +5,7 @@ if __name__ == '__main__':
     import sqlite3, subprocess, sys
 
     from vsc.pbs.pbsnodes import PbsnodesParser
-    from vsc.moab.job import ShowqParser
+    from vsc.moab.showq import ShowqParser
     from vsc.pbs.utils import compute_features, compute_partition
     from vsc.utils import hostname2rackinfo
 
