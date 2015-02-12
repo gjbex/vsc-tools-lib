@@ -90,7 +90,7 @@ def update_plot(counters, options):
 if __name__ == '__main__':
     from argparse import ArgumentParser
     import re, subprocess
-    from vsc.moab.job import ShowqParser
+    from vsc.moab.showq import ShowqParser
 
     arg_parser = ArgumentParser(description='create or update job stats')
     arg_parser.add_argument('--init', action='store_true',
