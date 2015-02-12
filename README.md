@@ -1,35 +1,36 @@
-qlint
-=====
-Sanity checker for PBS torque job files
+vsc-tools-lib
+=============
+Library of tools to parse output of PBS torque and Adaptive Moab tools,
+and represent the relevant data.
 
-Problems signalled
-------------------
-Errors:
-  * Non-unix line endings
-  * Non-ASCII charactersa in PBS file
-  * Invalid values for join (-j)
-  * Invalid values for keep (-k)
-  * Invalid values for mail event (-m)
-  * Malformed job name (-N)
-  * Malformed project name (-A)
-  * Invalid walltime format (-l walltime=...)
-  * Non-numerical ppn, procs, or gpus specification
-  * Invalid memory and process memory specification
-  * Multpile procs resource specifications
-  * Memory resources not available for combination of nodes, ppn, and pmem
-  * Memory resources not available for combinatino of nodes and mem
-  * Unknown partition specified
-  * Unknown QOS specified
-  * Number of nodes requested too large in partition
-  * ppn too large
+Functionality for PBS torque
+----------------------------
+* `vsc.pbs.job`: representation of a PBS job
+* `vsc.pbs.qstat`: parser for output of the `qstat -f` command
+* `vsc.pbs.node`: representation of a PBS node
+* `vsc.pbs.pbsnodes`: parser for the output of the `pbsnodes` command
+* `vsc.pbs.script_parser`: parser for PBS script files
+* `vsc.pbs.option_parser`: parser for PBS options, used by
+    `vsc.pbs.script_parser`
+* `vsc.pbs.utils`: auxiliary functions (site specific)
+* `vsc.pbs.check`: semantic checks of a PBS job specification
 
-Warnings:
-  * Missing shebang
-  * Misplaced shebang
-  * Space in directive, i.e., '# PBS', rather than '#PBS'
-  * PBS directives after first script statement
-  * Missing script
-  * Invalid mail addresses (-M)
-  * Unknown resource specication (-l)
-  * Memory specification for pmem and mem not consistent
+Functionality for Adaptive Moab
+-------------------------------
+* `vsc.moab.job`: representation of a PBS job's status
+* `vsc.moab.showq`: parser for the output of the `showq` command
+* `vsc.moab.checkjob`: parser for a small part of the output of the
+    `checkjob` command
 
+Functionality for Adaptive MAM
+------------------------------
+* `vsc.mam.account`: representation of a MAM account
+* `vsc.mam.gbalance`: parser for the output of the `gbalance` command
+
+Utilities
+---------
+* `vsc.eventlogger`: base class that acts as a logger for errors and
+    warnings, `vsc.pbs.script_parser` and `vsc.pbs.option_parser` extend
+    it
+* `vsc.utils`: functions for time and size conversion
+* `vsc.plotly`: functions to annotate plotly graphs
