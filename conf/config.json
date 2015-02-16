@@ -25,6 +25,19 @@
         {"name": "q72h", "walltime_limit": 259200},
         {"name": "q7d",  "walltime_limit": 604800},
         {"name": "q21d", "walltime_limit": 1814400}
-    ]
+    ],
+    "check_accounting": true,
+    "node_type_credits": {
+        "gpu": 2.86,
+        "M2070": 2.86,
+        "type_M2070": 2.86,
+        "K20Xm": 2.86,
+        "type_K20Xm": 2.86,
+        "phi": 2.86,
+        "type_phi": 2.86,
+        "sandybridge": 2.86,
+        "ivybridge": 4.76
+    },
+    "node_rate": 0.000278
 }
 
