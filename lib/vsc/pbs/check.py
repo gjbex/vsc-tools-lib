@@ -25,7 +25,8 @@ class JobChecker(EventLogger):
         self.check_total_pmem(job)
         self.check_mem(job)
         self.check_mem_vs_pmem(job)
-        self.check_credit_account(job)
+        if self._config['check_accounting']:
+            self.check_credit_account(job)
 
     def check_qos(self, job):
         '''check QOS specified exists'''
