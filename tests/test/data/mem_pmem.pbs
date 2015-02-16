@@ -1,5 +1,5 @@
 #!/bin/bash -l
 #PBS -l nodes=2:ppn=4,pmem=2gb -l mem=8gb
+#PBS -A lp_qlint
 
 echo "hello world!"
-

@@ -5,6 +5,7 @@ from subprocess import check_output, CalledProcessError, STDOUT
 from vsc.utils import bytes2size
 from vsc.event_logger import EventLogger
 from vsc.mam.gbalance import GbalanceParser
+from vsc.mam.quote import QuoteCalculator
 
 class JobChecker(EventLogger):
     '''Semantic checker for jobs'''
@@ -165,23 +166,26 @@ class JobChecker(EventLogger):
                 account_name = accounts[account_id].name
                 if (account_name == '' or
                         account_name == self._config['default_project']):
-                    credit_account = account_id
+                    credit_account = accounts[account_id]
                     break
-            if not account_id:
+            if not credit_account:
                 self.reg_event('no_default_credit_account')
                 return
         else:
             credit_account = None
             for account_id in accounts:
                 if accounts[account_id].name == job.project:
-                    credit_account = account_id
+                    credit_account = accounts[account_id]
                     break
-            if not account_id:
+            if not credit_account:
                 self.reg_event('unknow_credit_account',
                                {'acccount': job.project})
                 return
-
-            
+        quoteCalculator = QuoteCalculator(self._config)
+        credits = quoteCalculator.compute(job)
+        if credits > credit_account.available_credits:
+            self.reg_event('insufficient_credits',
+                           {'account': credit_account.name})
 
     def _mem_sizes(self, partition):
         '''retrieve the memory sizes of the nodes from the databse'''

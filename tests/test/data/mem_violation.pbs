@@ -1,5 +1,6 @@
 #!/bin/bash -l
 #PBS -lnodes=2:ppn=20
 #PBS -lmem=10tb
+#PBS -Alp_qlint
 
 echo "hello world!"

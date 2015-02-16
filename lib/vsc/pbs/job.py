@@ -19,7 +19,8 @@ class PbsJob(object):
             'partition': config['default_partition'],
             'qos': config['default_qos'],
             'nodes': [{'nodes': config['default_nodes'],
-                       'ppn': config['default_ppn'],}]
+                       'ppn': config['default_ppn'],}],
+            'walltime': config['default_walltime'],
         }
         self._has_default_pmem = True
         self._queue = config['default_queue']
