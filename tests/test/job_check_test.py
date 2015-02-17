@@ -97,3 +97,32 @@ class JObCheckerTest(unittest.TestCase):
         for event in checker.events:
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(len(event_names), checker.nr_errors)
+
+    def test_unknown_property(self):
+        file_name = 'data/unknown_property.pbs'
+        nr_syntax_events = 0
+        nr_semantic_events = 1
+        event_name = 'unknown_feature'
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config, self._event_defs)
+        checker.check(parser.job)
+        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEquals(event_name, checker.events[0]['id'])
+
+    def test_unknown_feature(self):
+        file_name = 'data/unknown_feature.pbs'
+        nr_syntax_events = 0
+        nr_semantic_events = 1
+        event_name = 'unknown_feature'
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config, self._event_defs)
+        checker.check(parser.job)
+        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEquals(event_name, checker.events[0]['id'])
+

@@ -164,6 +164,11 @@
         "message": "QOS '{qos}' is not defined",
         "remedy": "check the specified QOS"
     },
+    "unknown_feature": {
+        "category": "error",
+        "message": "feature {feature} is not defined",
+        "remedy": "check the node features requested"
+    },
     "insufficient_nodes": {
         "category": "error",
         "message": "too many nodes ({nodes}) reequested, maximum {max_nodes}",

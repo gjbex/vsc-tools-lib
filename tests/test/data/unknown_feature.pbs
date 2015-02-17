@@ -1,0 +1,10 @@
+#!/bin/bash -l
+#PBS -A lp_qlint
+#PBS -l nodes=2:ppn=4 -l feature=blabla
+#PBS -l pmem=4gb
+#PBS -lwalltime=72:00:00
+
+cd $PBS_O_WORKDIR
+echo "hello world!"
+
+

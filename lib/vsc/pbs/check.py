@@ -20,6 +20,7 @@ class JobChecker(EventLogger):
     def check(self, job):
         '''Check semantics of given job'''
         self.check_partition(job)
+        self.check_features(job)
         self.check_ppn(job)
         self.check_qos(job)
         self.check_total_pmem(job)
@@ -36,6 +37,20 @@ class JobChecker(EventLogger):
             if job_qos not in qos:
                 self.reg_event('unknown_qos',
                                {'qos': job_qos})
+
+    def check_features(self, job):
+        '''check features specified exists'''
+        node_specs = job.resource_spec('nodes')
+        features = self._features()
+        for node_spec in node_specs:
+            for feature in node_spec['features']:
+                if feature not in features:
+                    self.reg_event('unknown_feature',
+                                   {'feature': feature})
+        if (job.resource_spec('feature') and
+            job.resource_spec('feature') not in features):
+            self.reg_event('unknown_feature',
+                           {'feature': job.resource_spec('feature')})
 
     def check_partition(self, job):
         '''check whether the specified partition exists, and whether
@@ -219,6 +234,19 @@ class JobChecker(EventLogger):
         for row in self._cursor:
             qos.append(row[0])
         return qos
+
+    def _features(self):
+        '''retrieve list of features and properties'''
+        features = []
+        stmt = '''SELECT DISTINCT feature FROM features'''
+        self._cursor.execute(stmt)
+        for row in self._cursor:
+            features.append(row[0])
+        stmt = '''SELECT DISTINCT property FROM properties'''
+        self._cursor.execute(stmt)
+        for row in self._cursor:
+            features.append(row[0])
+        return features
 
     def _ppn(self, partition):
         '''retrieve the number of nodes per ppn'''

@@ -45,6 +45,6 @@ class QuoteCalculator(object):
                     if type_costs[node_type] > node_cost:
                         node_cost = type_costs[node_type]
             if node_cost < 0.0:
-                node_cost = type_costs[job.resource_specs['partition']]
+                node_cost = type_costs[job.resource_spec('partition')]
             cost += nr_nodes*node_cost
         return cost*walltime*node_rate
