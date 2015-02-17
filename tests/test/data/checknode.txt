@@ -1,0 +1,23 @@
+node r1i1n1
+
+State:      Busy  (in current state for 2:42:35)
+Configured Resources: PROCS: 20  MEM: 62G  SWAP: 64G  DISK: 1M
+Utilized   Resources: PROCS: 20  SWAP: 8603M
+Dedicated  Resources: PROCS: 20  MEM: 20G
+Attributes:         Memory=102400 Processors=100 ivybridge mem64 r1 r1i1 tencore thinking type_ivybridge 
+  MTBF(longterm):   INFINITY  MTBF(24h):   INFINITY
+Opsys:      linux     Arch:      ---   
+Speed:      1.00      CPULoad:  20.000
+Partition:  thinking  Rack/Slot:  ---  NodeIndex:  1
+Features:   ivybridge,r1,tencore,thinking,type_ivybridge,r1i1,mem64
+NodeType:   ivybridge
+Classes:    [q1h][q24h][q72h][q7d][q21d][batch][qreg][qlong][qicts]
+RM[thinking TYPE=PBS  ATTRO=FEATURES
+EffNodeAccessPolicy: SINGLEUSER
+
+Total Time:    337days  Up:    324days (96.08%)  Active:    287days (85.08%)
+
+Reservations:
+  20122607x20  Job:Running  -3:11:49 -> 6:02:48:11 (6:06:00:00)
+Jobs:        20122607
+
