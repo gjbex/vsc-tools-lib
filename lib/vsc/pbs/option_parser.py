@@ -123,7 +123,10 @@ class PbsOptionParser(EventLogger):
     def check_generic_res(self, val, resource_spec):
         '''check a generic resource'''
         attr_name, attr_value = val.split('=')
-        resource_spec[attr_name] = attr_value
+        if attr_name == 'feature':
+            resource_spec[attr_name] = attr_value.split(':')
+        else:
+            resource_spec[attr_name] = attr_value
 
     def check_mem_res(self, val, resource_spec):
         '''check memory resource'''
