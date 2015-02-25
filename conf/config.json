@@ -19,6 +19,7 @@
     "qstat_options": "-f",
     "pbsnodes_cmd": "/usr/local/bin/pbsnodes",
     "showq_cmd": "/opt/moab/bin/showq",
+    "checknode_cmd": "/opt/moab/bin/checknode",
     "queue_definitions": [
         {"name": "q1h",  "walltime_limit": 3600},
         {"name": "q24h", "walltime_limit": 86400},
