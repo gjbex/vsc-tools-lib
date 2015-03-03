@@ -12,7 +12,7 @@ class PbsnodesParser(object):
         pass
 
     def parse(self, node_output):
-        '''parse output as produced by pbsnodes'''
+        '''parse output as produced by pbsnodes, returns a list of nodes'''
         nodes = []
         state = 'init'
         for line in node_output.split('\n'):
