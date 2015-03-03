@@ -14,6 +14,4 @@ class ChecknodeParserTest(unittest.TestCase):
         parser = ChecknodeParser()
         with open(file_name, 'r') as checknode_file:
             features = parser.parse_file(checknode_file)
-        self.assertEqual(len(expected_features), len(features))
-        for feature in expected_features:
-            self.assertIn(feature, features)
+        self.assertListEqual(expected_features, features)
