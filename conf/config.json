@@ -3,7 +3,7 @@
     "default_ppn": 20,
     "default_pmem": 1073741824,
     "default_walltime": 3600,
-    "default_queue": "q24h",
+    "default_queue": "qdef",
     "default_join": "n",
     "default_keep": "n",
     "default_mail_events": "a",
