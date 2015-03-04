@@ -126,3 +126,70 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEquals(nr_semantic_events, len(checker.events))
         self.assertEquals(event_name, checker.events[0]['id'])
 
+    def test_queue_no_walltime(self):
+        file_name = 'data/queue_no_walltime.pbs'
+        nr_syntax_events = 0
+        nr_semantic_events = 0
+        queue_name = 'q72h'
+        expected_walltime = 72*3600
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config, self._event_defs)
+        checker.check(parser.job)
+        self.assertEquals(nr_semantic_events, len(checker.events))
+        job = parser.job
+        self.assertEquals(queue_name, job.queue)
+        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
+
+    def test_walltime_and_queue(self):
+        file_name = 'data/walltime_and_queue.pbs'
+        nr_syntax_events = 0
+        nr_semantic_events = 0
+        queue_name = 'q72h'
+        expected_walltime = 45*3600 + 15*60
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config, self._event_defs)
+        checker.check(parser.job)
+        self.assertEquals(nr_semantic_events, len(checker.events))
+        job = parser.job
+        self.assertEquals(queue_name, job.queue)
+        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
+
+    def test_queue_and_walltime(self):
+        file_name = 'data/queue_and_walltime.pbs'
+        nr_syntax_events = 0
+        nr_semantic_events = 0
+        queue_name = 'q72h'
+        expected_walltime = 45*3600 + 15*60
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config, self._event_defs)
+        checker.check(parser.job)
+        self.assertEquals(nr_semantic_events, len(checker.events))
+        job = parser.job
+        self.assertEquals(queue_name, job.queue)
+        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
+
+    def test_walltime_no_queue(self):
+        file_name = 'data/walltime_no_queue.pbs'
+        nr_syntax_events = 0
+        nr_semantic_events = 0
+        queue_name = 'qdef'
+        expected_walltime = 45*3600 + 15*60
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(nr_syntax_events, len(parser.events))
+        checker = JobChecker(self._config, self._event_defs)
+        checker.check(parser.job)
+        self.assertEquals(nr_semantic_events, len(checker.events))
+        job = parser.job
+        self.assertEquals(queue_name, job.queue)
+        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
