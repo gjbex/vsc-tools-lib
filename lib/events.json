@@ -198,6 +198,11 @@
         "category": "warning",
         "message": "credit account {account} may have insufficient credits to run this job",
         "remedy": "verify the credit account balance, and acquire more credits if necessary"
+    },
+    "invalid_proc_bitmap_characeter": {
+        "category": "error",
+        "message": "bitmaps should only contain '0' and '1'",
+        "remedy": "check the processor bitmap pattern"
     }
 }
 
