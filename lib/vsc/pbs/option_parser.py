@@ -151,6 +151,14 @@ class PbsOptionParser(EventLogger):
             self.reg_event('invalid_{0}_format'.format(attr_name),
                            {'size': attr_value})
 
+    def check_proc_bitmap(self, val, resource_spec):
+        '''check proc_bitmap'''
+        attr_name, attr_value = val.split('=')
+        if re.match(r'^[01]+$', attr_value):
+            resource_spec[attr_name] = attr_value
+        else:
+            self.reg_event('invalid_proc_bitmap_characeter')
+
     def check_nodes_res(self, val, resource_spec):
         '''check nodes resource'''
         _, attr_value = val.split('=', 1)
@@ -216,9 +224,11 @@ class PbsOptionParser(EventLogger):
                 elif val.startswith('procs='):
                     self.check_procs_res(val, resource_spec)
                 elif (val.startswith('partition=') or
-                      val.startswith('feature') or
-                      val.startswith('qos')):
+                      val.startswith('feature=') or
+                      val.startswith('qos=')):
                     self.check_generic_res(val, resource_spec)
+                elif val.startswith('proc_bitmap='):
+                    self.check_proc_bitmap(val, resource_spec)
                 else:
                     self.reg_event('unknown_resource_spec', {'spec': val})
         self._job.add_resource_specs(resource_spec)
