@@ -3,7 +3,7 @@
     "default_ppn": 20,
     "default_pmem": 1073741824,
     "default_walltime": 3600,
-    "default_queue": "q24h",
+    "default_queue": "qdef",
     "default_join": "n",
     "default_keep": "n",
     "default_mail_events": "a",
@@ -19,6 +19,8 @@
     "qstat_options": "-f",
     "pbsnodes_cmd": "/usr/local/bin/pbsnodes",
     "showq_cmd": "/opt/moab/bin/showq",
+    "checknode_cmd": "/opt/moab/bin/checknode",
+    "checknode_options": "--xml",
     "queue_definitions": [
         {"name": "q1h",  "walltime_limit": 3600},
         {"name": "q24h", "walltime_limit": 86400},

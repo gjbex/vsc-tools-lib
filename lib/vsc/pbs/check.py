@@ -47,10 +47,12 @@ class JobChecker(EventLogger):
                 if feature not in features:
                     self.reg_event('unknown_feature',
                                    {'feature': feature})
-        if (job.resource_spec('feature') and
-            job.resource_spec('feature') not in features):
-            self.reg_event('unknown_feature',
-                           {'feature': job.resource_spec('feature')})
+        if job.resource_spec('feature'):
+            job_features = job.resource_spec('feature')
+            for feature in job_features:
+                if feature not in features:
+                    self.reg_event('unknown_feature',
+                                   {'feature': feature})
 
     def check_partition(self, job):
         '''check whether the specified partition exists, and whether

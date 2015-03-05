@@ -39,6 +39,7 @@ class PbsJob(object):
         }
         self._shebang = None
         self._script = []
+        self._is_time_limit_set = False
 
     @property
     def job_id(self):

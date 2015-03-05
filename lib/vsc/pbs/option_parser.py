@@ -37,6 +37,10 @@ class PbsOptionParser(EventLogger):
         for option, value in options.__dict__.items():
             if value:
                 self.handle_option(option, value)
+        if self._job.queue and not self._job._is_time_limit_set:
+            walltime_limit = self.get_queue_limit(self._job.queue)
+            if walltime_limit:
+                self._job._resource_specs['walltime'] = walltime_limit
 
     def handle_option(self, option, value):
         '''option dispatch method'''
@@ -65,6 +69,13 @@ class PbsOptionParser(EventLogger):
             self._job.project = val
         else:
             self.reg_event('invalid_project_name', {'val': val})
+
+    def get_queue_limit(self, queue_name):
+        '''get the maximum walltime for the queue specified'''
+        for queue_def in self._config['queue_definitions']:
+            if queue_def['name'] == queue_name:
+                return int(queue_def['walltime_limit'])
+        return None
 
     def check_q(self, val):
         '''check whether a valid queue name was specified'''
@@ -123,7 +134,10 @@ class PbsOptionParser(EventLogger):
     def check_generic_res(self, val, resource_spec):
         '''check a generic resource'''
         attr_name, attr_value = val.split('=')
-        resource_spec[attr_name] = attr_value
+        if attr_name == 'feature':
+            resource_spec[attr_name] = attr_value.split(':')
+        else:
+            resource_spec[attr_name] = attr_value
 
     def check_mem_res(self, val, resource_spec):
         '''check memory resource'''
@@ -191,6 +205,7 @@ class PbsOptionParser(EventLogger):
                         val.startswith('cput=') or
                         val.startswith('pcput=')):
                     self.check_time_res(val, resource_spec)
+                    self._job._is_time_limit_set = True
                 elif (val.startswith('mem=') or val.startswith('pmem=') or
                       val.startswith('vmem=') or val.startswith('pvmem=')):
                     self.check_mem_res(val, resource_spec)
