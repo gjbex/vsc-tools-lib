@@ -39,6 +39,7 @@
         "type_phi": 2.86,
         "sandybridge": 2.86,
         "ivybridge": 4.76,
+        "haswell": 4.76,
         "thinking": 4.76
     },
     "node_rate": 0.000278
