@@ -197,7 +197,7 @@ class JobChecker(EventLogger):
                     break
             if not credit_account:
                 self.reg_event('unknown_credit_account',
-                               {'acccount': job.project})
+                               {'account': job.project})
                 return
         quoteCalculator = QuoteCalculator(self._config)
         credits = quoteCalculator.compute(job)
