@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 '''class for parsing PBS files'''
 
-import os, re
+import os
+import re
 from vsc.event_logger import EventLogger
 from vsc.pbs.job import PbsJob
 from vsc.pbs.option_parser import PbsOptionParser
+
 
 class PbsScriptParser(EventLogger):
     '''Parser for PBS torque job files'''
@@ -21,6 +23,8 @@ class PbsScriptParser(EventLogger):
         self._pbs_indented_re = re.compile(regex)
         regex = r'\s*{0}\s+(.+)$'.format(pbs_directive)
         self._pbs_extract_re = re.compile(regex)
+        regex = r'\s*-[A-Za-z]'
+        self._pbs_option_re = re.compile(regex)
         self._pbs_option_parser = PbsOptionParser(self._config, event_defs,
                                                   self._job)
         self._state = None
@@ -115,8 +119,12 @@ class PbsScriptParser(EventLogger):
                 self.reg_event('indented_pbs_dir')
             match = self._pbs_extract_re.match(line)
             if match:
-                self._pbs_option_parser.parse_args(match.group(1))
-                self.merge_events(self._pbs_option_parser.events)
+                option = match.group(1)
+                if self._pbs_option_re.match(option):
+                    self._pbs_option_parser.parse_args(option)
+                    self.merge_events(self._pbs_option_parser.events)
+                else:
+                    self.reg_event('malformed_pbs_dir')
             else:
                 self.reg_event('malformed_pbs_dir')
         else:
@@ -130,4 +138,3 @@ class PbsScriptParser(EventLogger):
         if self.is_pbs(line):
             self.reg_event('misplace_pbs_dir')
         self._job.add_script_line(self._line_nr, line)
-

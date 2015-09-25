@@ -1,0 +1,5 @@
+#!/bin/bash -l
+#PBS -l nodes=1:ppn-5
+#PBS pmem=30gb
+
+echo "hello world!"
