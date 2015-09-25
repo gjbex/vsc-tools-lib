@@ -1,0 +1,5 @@
+#!/bin/bash -l
+#PBS -m ae
+#PBS -l pmem=4gb
+
+echo "hello world"

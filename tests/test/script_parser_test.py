@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 '''module to test the vsc.pbs.script_parser.PbsScriptParser parser'''
 
-import json, unittest
+import json
+import unittest
 from vsc.pbs.script_parser import PbsScriptParser
+
 
 class PbsScriptParserTest(unittest.TestCase):
     '''Tests for the pbsnodes output parser'''
@@ -17,7 +19,6 @@ class PbsScriptParserTest(unittest.TestCase):
 
     def test_simple(self):
         file_name = 'data/simple.pbs'
-        project = 'lp_qlint'
         nodes = 2
         ppn = 4
         walltime = 72*3600
@@ -151,7 +152,6 @@ class PbsScriptParserTest(unittest.TestCase):
         for event in parser.events:
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(len(event_names), parser.nr_errors)
-        self.assertEquals(len(event_names), parser.nr_errors)
 
     def test_multiple_resources(self):
         file_name = 'data/multiple_resources.pbs'
@@ -169,3 +169,22 @@ class PbsScriptParserTest(unittest.TestCase):
             self.assertEquals(nr_nodes[i], node_spec['nodes'])
             self.assertEquals(nr_features, len(node_spec['features']))
             self.assertEquals(features[i], node_spec['features'][0])
+
+    def test_malformed_pbs_directive(self):
+        file_name = 'data/malformed_pbs_directive.pbs'
+        event_names = ['malformed_pbs_dir']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(len(event_names), parser.nr_errors)
+
+    def test_missing_l_resource(self):
+        file_name = 'data/missing_l_resource.pbs'
+        event_names = []
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
