@@ -1,0 +1,6 @@
+#!/bin/bash -l
+#PBS -a 201609190454.17
+#PBS -l nodes=5:ppn=20
+#PBS -l walltime=05:00
+
+echo "hello world!"

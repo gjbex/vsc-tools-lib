@@ -199,3 +199,22 @@ class PbsScriptParserTest(unittest.TestCase):
         for event in parser.events:
             self.assertTrue(event['id'] in event_names)
         self.assertEquals(len(event_names), parser.nr_warnings)
+
+    def test_correct_start_date_time(self):
+        file_name = 'data/correct_start_datetime.pbs'
+        event_names = []
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
+
+    def test_invalid_start_date_time(self):
+        file_name = 'data/invalid_start_datetime.pbs'
+        event_names = ['invalid_datetime']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(len(event_names), parser.nr_errors)
