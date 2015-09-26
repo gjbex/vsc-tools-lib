@@ -78,7 +78,7 @@ class PbsOptionParser(EventLogger):
         if self.is_valid_datetime(val):
             pass
         else:
-            self.reg_event('invalid_date_time', {'val': val})
+            self.reg_event('invalid_datetime', {'val': val})
 
     def check_A(self, val):
         '''check whether a valid project name was specified'''

@@ -198,6 +198,11 @@
         "category": "warning",
         "message": "credit account {account} may have insufficient credits to run this job",
         "remedy": "verify the credit account balance, and acquire more credits if necessary"
+    },
+    "invalid_datetime": {
+        "category": "error",
+        "message": "invalid datetime {val}",
+        "remedy": "expected format [[[[cc]yy]mm]dd]HHMM[.SS]"
     }
 }
 
