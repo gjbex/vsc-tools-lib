@@ -2,7 +2,9 @@
 '''class for parsing PBS options'''
 
 from argparse import ArgumentParser
-import os, re, validate_email
+import os
+import re
+import validate_email
 
 from vsc.event_logger import EventLogger
 from vsc.utils import walltime2seconds, size2bytes
@@ -18,6 +20,7 @@ class PbsOptionParser(EventLogger):
         self._config = config
         self._job = job
         self._arg_parser = ArgumentParser()
+        self._arg_parser.add_argument('-a')
         self._arg_parser.add_argument('-A')
         self._arg_parser.add_argument('-e')
         self._arg_parser.add_argument('-j')
@@ -44,7 +47,9 @@ class PbsOptionParser(EventLogger):
 
     def handle_option(self, option, value):
         '''option dispatch method'''
-        if option == 'A':
+        if option == 'a':
+            self.check_a(value.strip())
+        elif option == 'A':
             self.check_A(value.strip())
         elif option == 'e' or option == 'o':
             self.check_oe(value.strip(), option)
@@ -62,6 +67,18 @@ class PbsOptionParser(EventLogger):
             self.check_N(value.strip())
         elif option == 'q':
             self.check_q(value.strip())
+
+    def is_valid_date_time(self, dt_str):
+        match = self._date_time_re.match(dt_str)
+        return match is not None
+
+    def check_a(self, val):
+        '''check whether a valid datetime string was specified'''
+        regex = r'^\s*(?:(?:(?:(?:(?:\d{2})?\d{2})?\d{2})?\d{2})?\d{2})?\d{4}(?:\.\d{2})?\s*$'
+        if re.match(regex, val):
+            pass
+        else:
+            self.reg_event('invalid_date_time', {'val': val})
 
     def check_A(self, val):
         '''check whether a valid project name was specified'''
