@@ -188,3 +188,14 @@ class PbsScriptParserTest(unittest.TestCase):
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
         self.assertEquals(len(event_names), len(parser.events))
+
+    def test_confused_mail_options(self):
+        file_name = 'data/confused_mail_options.pbs'
+        event_names = ['invalid_mail_address']
+        parser = PbsScriptParser(self._config, self._event_defs)
+        with open(file_name, 'r') as pbs_file:
+            parser.parse_file(pbs_file)
+        self.assertEquals(len(event_names), len(parser.events))
+        for event in parser.events:
+            self.assertTrue(event['id'] in event_names)
+        self.assertEquals(len(event_names), parser.nr_warnings)
