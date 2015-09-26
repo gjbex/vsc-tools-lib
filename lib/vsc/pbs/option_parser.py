@@ -68,14 +68,14 @@ class PbsOptionParser(EventLogger):
         elif option == 'q':
             self.check_q(value.strip())
 
-    def is_valid_date_time(self, dt_str):
-        match = self._date_time_re.match(dt_str)
+    def is_valid_datetime(self, dt_str):
+        regex = r'^\s*(?:(?:(?:(?:(?:\d{2})?\d{2})?\d{2})?\d{2})?\d{2})?\d{4}(?:\.\d{2})?\s*$'
+        match = re.match(regex, dt_str)
         return match is not None
 
     def check_a(self, val):
         '''check whether a valid datetime string was specified'''
-        regex = r'^\s*(?:(?:(?:(?:(?:\d{2})?\d{2})?\d{2})?\d{2})?\d{2})?\d{4}(?:\.\d{2})?\s*$'
-        if re.match(regex, val):
+        if self.is_valid_datetime(val):
             pass
         else:
             self.reg_event('invalid_date_time', {'val': val})
