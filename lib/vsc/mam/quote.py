@@ -12,7 +12,10 @@ class QuoteCalculator(object):
     def determine_node_types(self, resource_spec, partition):
         '''determine the relevant type of a node to base to cost
            calculation on'''
-        node_types = resource_spec['features']
+        if 'features' in resource_spec:
+            node_types = resource_spec['features']
+        else:
+            node_types = None
         if not node_types:
             with sqlite3.connect(self._config['cluster_db']) as conn:
                 cursor = conn.cursor()
