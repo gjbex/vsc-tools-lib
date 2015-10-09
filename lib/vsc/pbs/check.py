@@ -7,6 +7,7 @@ from vsc.event_logger import EventLogger
 from vsc.mam.gbalance import GbalanceParser
 from vsc.mam.quote import QuoteCalculator
 
+
 class JobChecker(EventLogger):
     '''Semantic checker for jobs'''
 
@@ -43,10 +44,11 @@ class JobChecker(EventLogger):
         node_specs = job.resource_spec('nodes')
         features = self._features()
         for node_spec in node_specs:
-            for feature in node_spec['features']:
-                if feature not in features:
-                    self.reg_event('unknown_feature',
-                                   {'feature': feature})
+            if 'features' in node_spec:
+                for feature in node_spec['features']:
+                    if feature not in features:
+                        self.reg_event('unknown_feature',
+                                       {'feature': feature})
         if job.resource_spec('feature'):
             job_features = job.resource_spec('feature')
             for feature in job_features:
@@ -172,7 +174,7 @@ class JobChecker(EventLogger):
             except OSError as e:
                 return
             except CalledProcessError as e:
-# TODO: decide on user feedback
+                # TODO: decide on user feedback
                 return
         accounts = GbalanceParser().parse(balance_sheet)
         if len(accounts) == 0:
@@ -261,4 +263,3 @@ class JobChecker(EventLogger):
         for row in self._cursor:
             ppn[row[0]] = row[1]
         return ppn
-
