@@ -18,6 +18,16 @@ class EventLogger(object):
         self._context = context
 
     @property
+    def context(self):
+        '''return context the EventLogger is operating in'''
+        return self._context
+
+    @context.setter
+    def context(self, context):
+        '''set the context for the EventLogger'''
+        self._context = context
+
+    @property
     def events(self):
         '''return events generated during parsing'''
         return self._events
@@ -27,7 +37,7 @@ class EventLogger(object):
         if event not in self._event_defs:
             msg = "event '{0}' is undefined".format(event)
             raise UndefinedEventError(msg)
-        if self._context == 'file':
+        if self.context == 'file':
             self._events.append({'id': event,
                                  'line': self._line_nr,
                                  'extra': extra})

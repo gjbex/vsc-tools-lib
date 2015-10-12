@@ -13,7 +13,7 @@ class JobChecker(EventLogger):
 
     def __init__(self, config, event_defs):
         '''Constructor for job checker'''
-        super(JobChecker, self).__init__(event_defs, 'global')
+        super(JobChecker, self).__init__(event_defs, context='global')
         self._conn = sqlite3.connect(config['cluster_db'])
         self._cursor = self._conn.cursor()
         self._config = config
@@ -21,6 +21,7 @@ class JobChecker(EventLogger):
     def check(self, job):
         '''Check semantics of given job'''
         self.check_partition(job)
+        self.check_properties(job)
         self.check_features(job)
         self.check_ppn(job)
         self.check_qos(job)
@@ -39,16 +40,20 @@ class JobChecker(EventLogger):
                 self.reg_event('unknown_qos',
                                {'qos': job_qos})
 
+    def check_properties(self, job):
+        '''check node properties specified exists'''
+        node_specs = job.resource_spec('nodes')
+        properties = self._properties()
+        for node_spec in node_specs:
+            if 'properties' in node_spec:
+                for property in node_spec['properties']:
+                    if property not in properties:
+                        self.reg_event('unknown_property',
+                                       {'property': property})
+
     def check_features(self, job):
         '''check features specified exists'''
-        node_specs = job.resource_spec('nodes')
         features = self._features()
-        for node_spec in node_specs:
-            if 'features' in node_spec:
-                for feature in node_spec['features']:
-                    if feature not in features:
-                        self.reg_event('unknown_feature',
-                                       {'feature': feature})
         if job.resource_spec('feature'):
             job_features = job.resource_spec('feature')
             for feature in job_features:
@@ -78,20 +83,21 @@ class JobChecker(EventLogger):
         partition = job.resource_spec('partition')
         all_ppn = self._ppn(partition)
         for node_spec in job.resource_spec('nodes'):
-            job_ppn = node_spec['ppn']
-            job_nodes = node_spec['nodes']
-            for ppn in sorted(all_ppn):
-                if ppn >= job_ppn:
-                    if job_nodes <= all_ppn[ppn]:
-                        all_ppn[ppn] -= job_nodes
-                        job_nodes = 0
-                        break
-                    else:
-                        job_nodes -= all_ppn[ppn]
-                        all_ppn[ppn] = 0
-            if job_nodes > 0:
-                self.reg_event('insufficient_ppn_nodes',
-                               {'ppn': job_ppn})
+            if 'ppn' in node_spec:
+                job_ppn = node_spec['ppn']
+                job_nodes = node_spec['nodes']
+                for ppn in sorted(all_ppn):
+                    if ppn >= job_ppn:
+                        if job_nodes <= all_ppn[ppn]:
+                            all_ppn[ppn] -= job_nodes
+                            job_nodes = 0
+                            break
+                        else:
+                            job_nodes -= all_ppn[ppn]
+                            all_ppn[ppn] = 0
+                if job_nodes > 0:
+                    self.reg_event('insufficient_ppn_nodes',
+                                   {'ppn': job_ppn})
 
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''
@@ -121,7 +127,10 @@ class JobChecker(EventLogger):
             satisfied = False
             orig_nodes = nodes_spec['nodes']
             nodes = orig_nodes
-            ppn = nodes_spec['ppn']
+            if 'ppn' in nodes_spec:
+                ppn = nodes_spec['ppn']
+            else:
+                ppn = None
             pmem = job.resource_spec('pmem')
             if ppn and pmem:
                 node_mem = ppn*pmem
@@ -240,17 +249,22 @@ class JobChecker(EventLogger):
         return qos
 
     def _features(self):
-        '''retrieve list of features and properties'''
+        '''retrieve list of features'''
         features = []
         stmt = '''SELECT DISTINCT feature FROM features'''
         self._cursor.execute(stmt)
         for row in self._cursor:
             features.append(row[0])
+        return features
+
+    def _properties(self):
+        '''retrieve list of propertie and propertiess'''
+        properties = []
         stmt = '''SELECT DISTINCT property FROM properties'''
         self._cursor.execute(stmt)
         for row in self._cursor:
-            features.append(row[0])
-        return features
+            properties.append(row[0])
+        return properties
 
     def _ppn(self, partition):
         '''retrieve the number of nodes per ppn'''
