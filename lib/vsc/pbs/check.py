@@ -13,7 +13,7 @@ class JobChecker(EventLogger):
 
     def __init__(self, config, event_defs):
         '''Constructor for job checker'''
-        super(JobChecker, self).__init__(event_defs, 'global')
+        super(JobChecker, self).__init__(event_defs, context='global')
         self._conn = sqlite3.connect(config['cluster_db'])
         self._cursor = self._conn.cursor()
         self._config = config
@@ -83,20 +83,21 @@ class JobChecker(EventLogger):
         partition = job.resource_spec('partition')
         all_ppn = self._ppn(partition)
         for node_spec in job.resource_spec('nodes'):
-            job_ppn = node_spec['ppn']
-            job_nodes = node_spec['nodes']
-            for ppn in sorted(all_ppn):
-                if ppn >= job_ppn:
-                    if job_nodes <= all_ppn[ppn]:
-                        all_ppn[ppn] -= job_nodes
-                        job_nodes = 0
-                        break
-                    else:
-                        job_nodes -= all_ppn[ppn]
-                        all_ppn[ppn] = 0
-            if job_nodes > 0:
-                self.reg_event('insufficient_ppn_nodes',
-                               {'ppn': job_ppn})
+            if 'ppn' in node_spec:
+                job_ppn = node_spec['ppn']
+                job_nodes = node_spec['nodes']
+                for ppn in sorted(all_ppn):
+                    if ppn >= job_ppn:
+                        if job_nodes <= all_ppn[ppn]:
+                            all_ppn[ppn] -= job_nodes
+                            job_nodes = 0
+                            break
+                        else:
+                            job_nodes -= all_ppn[ppn]
+                            all_ppn[ppn] = 0
+                if job_nodes > 0:
+                    self.reg_event('insufficient_ppn_nodes',
+                                   {'ppn': job_ppn})
 
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''
@@ -126,7 +127,10 @@ class JobChecker(EventLogger):
             satisfied = False
             orig_nodes = nodes_spec['nodes']
             nodes = orig_nodes
-            ppn = nodes_spec['ppn']
+            if 'ppn' in nodes_spec:
+                ppn = nodes_spec['ppn']
+            else:
+                ppn = None
             pmem = job.resource_spec('pmem')
             if ppn and pmem:
                 node_mem = ppn*pmem
