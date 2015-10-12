@@ -2,6 +2,7 @@
 
 import os
 
+
 class PbsJob(object):
     '''Class representing a PBS job'''
 
@@ -19,8 +20,10 @@ class PbsJob(object):
             'partition': config['default_partition'],
             'qos': config['default_qos'],
             'nodes': [{'nodes': config['default_nodes'],
-                       'ppn': config['default_ppn'],}],
+                       'ppn': config['default_ppn'],
+                       'properties': [], }],
             'walltime': config['default_walltime'],
+            'features': [],
         }
         self._has_default_pmem = True
         self._queue = config['default_queue']
@@ -44,7 +47,7 @@ class PbsJob(object):
     @property
     def job_id(self):
         '''Returns job ID, None for jobs that are not queued'''
-        return  self._id
+        return self._id
 
     @property
     def name(self):
@@ -264,4 +267,3 @@ class PbsJob(object):
         address_str = ','.join(self.mail_addresses)
         attr_str += "\n\taddresses = '{0}'".format(address_str)
         return attr_str
-

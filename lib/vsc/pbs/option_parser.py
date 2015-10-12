@@ -175,7 +175,7 @@ class PbsOptionParser(EventLogger):
         node_spec_strs = attr_value.split('+')
         node_specs = []
         for node_spec_str in node_spec_strs:
-            node_spec = {'features': []}
+            node_spec = {'properties': []}
             spec_strs = node_spec_str.split(':')
 # if a node spec starts with a number, that's the number of nodes,
 # otherwise it can be a hostname or a feature, but number of nodes is 1
@@ -186,7 +186,7 @@ class PbsOptionParser(EventLogger):
 # note that this might be wrong, it may actually be a feature, but
 # that is a semantic check, not syntax
                 node_spec['host'] = spec_strs[0]
-# now deal with the remaining specifications, ppn, gpus and features
+# now deal with the remaining specifications, ppn, gpus and properties
             for spec_str in spec_strs[1:]:
                 if (spec_str.startswith('ppn=') or
                         spec_str.startswith('gpus=')):
@@ -197,7 +197,7 @@ class PbsOptionParser(EventLogger):
                         self.reg_event('{0}_no_number'.format(key),
                                        {'number': value})
                 else:
-                    node_spec['features'].append(spec_str)
+                    node_spec['properties'].append(spec_str)
             node_specs.append(node_spec)
         resource_spec['nodes'] = node_specs
 
@@ -214,9 +214,9 @@ class PbsOptionParser(EventLogger):
         '''check and handle resource options'''
         resource_spec = {}
         has_default_pmem = True
-# there can be multiple -l options on one line or on the command line
+        # there can be multiple -l options on one line or on command line
         for val_str in (x.strip() for x in vals):
-# values can be combined by using ','
+            # values can be combined by using ','
             for val in (x.strip() for x in val_str.split(',')):
                 if (val.startswith('walltime=') or
                         val.startswith('cput=') or
@@ -252,4 +252,3 @@ class PbsOptionParser(EventLogger):
             self._job.set_error(path, host)
         else:
             self._job.set_output(path, host)
-

@@ -2,6 +2,7 @@
 
 import sqlite3
 
+
 class QuoteCalculator(object):
     '''class implementing a calculator of job costs'''
 
@@ -9,18 +10,17 @@ class QuoteCalculator(object):
         '''constructor that takes a configuration'''
         self._config = config
 
-    def determine_node_types(self, resource_spec, partition):
+    def determine_node_types(self, node_spec, partition):
         '''determine the relevant type of a node to base to cost
            calculation on'''
-        if 'features' in resource_spec:
-            node_types = resource_spec['features']
+        if 'properties' in node_spec:
+            node_types = node_spec['properties']
         else:
-            node_types = None
-        if not node_types:
+            node_types = []
             with sqlite3.connect(self._config['cluster_db']) as conn:
                 cursor = conn.cursor()
                 result = cursor.execute(
-                    '''SELECT DISTINCT p.property    
+                    '''SELECT DISTINCT p.property
                            FROM properties as p, nodes as n,
                                 partitions as p
                            WHERE p.node_id = n.node_id AND
@@ -30,7 +30,7 @@ class QuoteCalculator(object):
                 for row in result:
                     node_types.append(row[0])
         return node_types
-        
+
     def compute(self, job):
         '''compute the cost in credits of the given job'''
         type_costs = self._config['node_type_credits']

@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 '''module to test the vsc.pbs.check.JobChecker logic'''
 
-import json, unittest
+import json
+import unittest
 from vsc.pbs.script_parser import PbsScriptParser
 from vsc.pbs.check import JobChecker
+
 
 class JObCheckerTest(unittest.TestCase):
     '''Tests for the PBS job checker'''
@@ -102,7 +104,7 @@ class JObCheckerTest(unittest.TestCase):
         file_name = 'data/unknown_property.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 1
-        event_name = 'unknown_feature'
+        event_name = 'unknown_property'
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)

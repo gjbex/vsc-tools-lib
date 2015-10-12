@@ -169,6 +169,11 @@
         "message": "feature {feature} is not defined",
         "remedy": "check the node features requested"
     },
+    "unknown_property": {
+        "category": "error",
+        "message": "node property {property} is not defined",
+        "remedy": "check the node properties requested"
+    },
     "insufficient_nodes": {
         "category": "error",
         "message": "too many nodes ({nodes}) reequested, maximum {max_nodes}",

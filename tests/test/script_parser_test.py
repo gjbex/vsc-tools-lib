@@ -167,8 +167,8 @@ class PbsScriptParserTest(unittest.TestCase):
         self.assertEquals(nr_specs, len(node_specs))
         for i, node_spec in enumerate(node_specs):
             self.assertEquals(nr_nodes[i], node_spec['nodes'])
-            self.assertEquals(nr_features, len(node_spec['features']))
-            self.assertEquals(features[i], node_spec['features'][0])
+            self.assertEquals(nr_features, len(node_spec['properties']))
+            self.assertEquals(features[i], node_spec['properties'][0])
 
     def test_malformed_pbs_directive(self):
         file_name = 'data/malformed_pbs_directive.pbs'
