@@ -44,5 +44,7 @@
         "haswell": 6.67,
         "thinking": 4.76
     },
-    "node_rate": 0.000278
+    "node_rate": 0.000278,
+    "report_indent": 4,
+    "report_width": 64
 }
