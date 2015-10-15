@@ -296,6 +296,8 @@ class ScriptChecker(EventLogger):
         '''check a script for potential errors'''
         self._line_nr = start_line_nr - 1
         for line in job.script.split('\n'):
+            self._line_nr += 1
+            print '{0}: {1}'.format(self._line_nr, line)
             self._check_module_load(line)
             self._check_workdir(line)
 
@@ -323,7 +325,8 @@ class ScriptChecker(EventLogger):
                                                     line.lower())
         if ratio > 75:
             if var not in line:
-                self.reg_event('missspelled', {'correct': var})
+                self.reg_event('missspelled',
+                               {'correct': '${{{0}}}'.format(var)})
             else:
                 var_value = '${{{0}}}'.format(var)
                 if not('${0}'.format(var) in line or

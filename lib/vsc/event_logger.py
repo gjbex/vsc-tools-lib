@@ -32,14 +32,15 @@ class EventLogger(object):
         '''return events generated during parsing'''
         return self._events
 
-    def reg_event(self, event, extra={}):
+    def reg_event(self, event, extra={}, line_nr=None):
         '''register a event'''
         if event not in self._event_defs:
             msg = "event '{0}' is undefined".format(event)
             raise UndefinedEventError(msg)
         if self.context == 'file':
+            line_nr = line_nr if line_nr else self._line_nr
             self._events.append({'id': event,
-                                 'line': self._line_nr,
+                                 'line': line_nr,
                                  'extra': extra})
         else:
             self._events.append({'id': event,
@@ -49,7 +50,7 @@ class EventLogger(object):
     def merge_events(self, events):
         '''merge events'''
         for event in events:
-            self.reg_event(event['id'], event['extra'])
+            self.reg_event(event['id'], event['extra'], event['line'])
 
     @property
     def nr_errors(self):

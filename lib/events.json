@@ -212,7 +212,7 @@
     "missspelled": {
         "category": "warning",
         "message": "suspicious Bash command",
-        "remedy": "did you mean '{cmd}' instead?"
+        "remedy": "did you mean '{correct}' instead?"
     }
 }
 
