@@ -1,0 +1,9 @@
+#!/bin/bash -l
+#PBS -l nodes=2:ppn=4
+#PBS -l pmem=4gb
+#PBS -lwalltime=72:00:00
+
+module load foss/2015a
+
+cd PBS_O_WORKDIR
+echo "hello world!"

@@ -208,6 +208,11 @@
         "category": "error",
         "message": "invalid datetime {val}",
         "remedy": "expected format [[[[cc]yy]mm]dd]HHMM[.SS]"
+    },
+    "missspelled": {
+        "category": "warning",
+        "message": "suspicious Bash command",
+        "remedy": "did you mean '{cmd}' instead?"
     }
 }
 

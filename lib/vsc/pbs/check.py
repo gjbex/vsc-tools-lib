@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import re
 import sqlite3
 from subprocess import check_output, CalledProcessError, STDOUT
 from vsc.utils import bytes2size
@@ -124,7 +125,6 @@ class JobChecker(EventLogger):
         partition = job.resource_spec('partition')
         mem_sizes = self._mem_sizes(partition)
         for nodes_spec in job.resource_spec('nodes'):
-            satisfied = False
             orig_nodes = nodes_spec['nodes']
             nodes = orig_nodes
             if 'ppn' in nodes_spec:
@@ -180,9 +180,9 @@ class JobChecker(EventLogger):
             balance_cmd = self._config['balance_cmd']
             try:
                 balance_sheet = check_output([balance_cmd], stderr=STDOUT)
-            except OSError as e:
+            except OSError:
                 return
-            except CalledProcessError as e:
+            except CalledProcessError:
                 # TODO: decide on user feedback
                 return
         accounts = GbalanceParser().parse(balance_sheet)
@@ -277,3 +277,55 @@ class JobChecker(EventLogger):
         for row in self._cursor:
             ppn[row[0]] = row[1]
         return ppn
+
+
+class ScriptChecker(EventLogger):
+    '''Implementation of a bash script checker that uses some heuristics
+       to check for common errors'''
+
+    def __init__(self, config, event_defs):
+        '''Constructor for script checker'''
+        super(ScriptChecker, self).__init__(event_defs)
+        try:
+            from fuzzywuzzy import fuzz
+            self._fuzz = fuzz
+        except ImportError:
+            self._fuzz = None
+
+    def check(self, job, start_line_nr):
+        '''check a script for potential errors'''
+        self._line_nr = start_line_nr - 1
+        for line in job.script.split('\n'):
+            self._check_module_load(line)
+            self._check_workdir(line)
+
+    def _check_module_load(self, line):
+        '''check whether this line contains a module load, if so do
+           some basic validity checks'''
+        if not self._fuzz:
+            return
+        line = line.strip()
+        cmd = 'module load'
+        cmd_re = r'module\s+load\s+.*'
+        ratio = self._fuzz.partial_token_sort_ratio(cmd, line)
+        if ratio > 75:
+            if not re.match(cmd_re, line):
+                self.reg_event('missspelled', {'correct': cmd})
+
+    def _check_workdir(self, line):
+        '''check whether this line contains PBS_O_WORKDIR and performs
+           some basic validity checks'''
+        if not self._fuzz:
+            return
+        line = line.strip()
+        var = 'PBS_O_WORKDIR'
+        ratio = self._fuzz.partial_token_sort_ratio(var.lower(),
+                                                    line.lower())
+        if ratio > 75:
+            if var not in line:
+                self.reg_event('missspelled', {'correct': var})
+            else:
+                var_value = '${{{0}}}'.format(var)
+                if not('${0}'.format(var) in line or
+                       var_value in line):
+                    self.reg_event('missspelled', {'correct': var_value})

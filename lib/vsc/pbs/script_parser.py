@@ -30,6 +30,12 @@ class PbsScriptParser(EventLogger):
         self._state = None
         self._line_nr = 0
         self._pbs = []
+        self._script_first_line_nr = None
+
+    @property
+    def script_first_line_nr(self):
+        '''return the first line number of the Bash script part'''
+        return self._script_first_line_nr
 
     def parse_file(self, pbs_file):
         '''parse a PBS file'''
@@ -129,6 +135,8 @@ class PbsScriptParser(EventLogger):
                 self.reg_event('malformed_pbs_dir')
         else:
             self._state = 'script'
+            if not self._script_first_line_nr:
+                self._script_first_line_nr = self._line_nr
             self.parse_script(line)
 
     def parse_script(self, line):
