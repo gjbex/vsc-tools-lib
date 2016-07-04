@@ -151,6 +151,12 @@ class PbsJob(object):
         '''returns the job's resource usage'''
         return self._resources_used
 
+    def resource_used(self, key):
+        if key in self._resources_used:
+            return self._resources_used[key]
+        else:
+            return None
+
     def add_resources_used(self, resources_used):
         '''Add resources to used list'''
         for key, value in resources_used.items():

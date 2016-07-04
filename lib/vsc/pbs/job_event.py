@@ -26,7 +26,7 @@ class PbsJobEvent(object):
     _key_map = {
         'jobname': 'name',
         'user': 'user',
-        'partition': 'partition',
+        'Resource_List.partition': 'partition',
         'account': 'project',
         'queue': 'queue',
         'exec_host': 'exec_host',
