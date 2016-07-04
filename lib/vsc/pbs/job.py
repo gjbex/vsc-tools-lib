@@ -1,5 +1,6 @@
 '''module to represent and manipulate PBS jobs'''
 
+import operator
 import os
 
 
@@ -36,9 +37,13 @@ class PbsJob(object):
             'error': {'host': host, 'path': cwd},
             'output': {'host': host, 'path': cwd},
         }
+        try:
+            default_mail_addr = os.getlogin()
+        except OSError:
+            default_mail_addr = ''
         self._mail_specs = {
             'events': config['default_mail_events'],
-            'addresses': [os.getlogin()]
+            'addresses': [default_mail_addr]
         }
         self._shebang = None
         self._script = []
@@ -133,10 +138,13 @@ class PbsJob(object):
         else:
             return None
 
+    def add_resource_spec(self, key, value):
+        self._resource_specs[key] = value
+
     def add_resource_specs(self, resource_specs):
         '''Add resources to specification'''
         for key, value in resource_specs.items():
-            self._resource_specs[key] = value
+            self.add_resource_spec(key, value)
 
     @property
     def resources_used(self):
@@ -146,7 +154,10 @@ class PbsJob(object):
     def add_resources_used(self, resources_used):
         '''Add resources to used list'''
         for key, value in resources_used.items():
-            self._resources_used[key] = value
+            self.add_resource_used(key, value)
+
+    def add_resource_used(self, key, value):
+        self._resources_used[key] = value
 
     @property
     def has_default_pmem(self):
@@ -246,12 +257,20 @@ class PbsJob(object):
     @property
     def events(self):
         '''return event list for this job'''
-        return self._events
+        return sorted(self._events, key=operator.attrgetter('time_stamp'))
+
+    def has_start_event(self):
+        '''returns True if this job has a start event'''
+        return any(event.is_start() for event in self._events)
+
+    def has_end_event(self):
+        '''returns True if this job has a end event'''
+        return any(event.is_end() for event in self._events)
 
     def add_event(self, event):
         '''add event to the job'''
-# TODO
-        pass
+        self._events.append(event)
+        event.update_job_info(self)
 
     def attrs_to_str(self):
         '''return job attributes as a string, mainly for debug purposes'''
