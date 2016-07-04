@@ -43,6 +43,7 @@ class PbsJob(object):
         self._shebang = None
         self._script = []
         self._is_time_limit_set = False
+        self._events = []
 
     @property
     def job_id(self):
@@ -241,6 +242,16 @@ class PbsJob(object):
     def add_script_line(self, line_nr, line):
         '''adds a line to the script, retains line number information'''
         self._script.append((line_nr, line))
+
+    @property
+    def events(self):
+        '''return event list for this job'''
+        return self._events
+
+    def add_event(self, event):
+        '''add event to the job'''
+# TODO
+        pass
 
     def attrs_to_str(self):
         '''return job attributes as a string, mainly for debug purposes'''
