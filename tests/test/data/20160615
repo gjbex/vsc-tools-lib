@@ -1,0 +1,381 @@
+06/15/2016 07:55:43;D;20322612.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc30661@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 07:55:43;E;20322612.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30661 group=vsc30661 account=lp_h_combustion jobname=IRC_TS4_um062x.com queue=q7d ctime=1465893450 qtime=1465893450 etime=1465893450 start=0 owner=vsc30661@hpcblade1-hev7.icts.hpc.kuleuven.be Resource_List.mem=10000mb Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=100:00:00 session=0 end=1465970143 Exit_status=0
+06/15/2016 08:00:16;Q;20322646.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 08:00:16;Q;20322646.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 09:37:15;Q;20322647.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 09:37:15;Q;20322647.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 11:22:17;Q;20322648.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 11:22:17;Q;20322648.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 11:31:23;D;20322648.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc30256@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 11:31:23;E;20322648.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30256 group=vsc30256 account=lp_ppw_okp jobname=STDIN queue=q72h ctime=1465982537 qtime=1465982537 etime=1465982537 start=0 owner=vsc30256@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:K20Xm:ppn=1 Resource_List.nodect=1 Resource_List.nodes=1:K20Xm:ppn=1 Resource_List.partition=gpu Resource_List.pmem=60gb Resource_List.walltime=48:00:00 session=0 end=1465983083 Exit_status=0
+06/15/2016 11:31:42;Q;20322649.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 11:31:42;Q;20322649.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 11:34:07;Q;20322650.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 11:34:07;Q;20322650.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 11:38:20;D;20322650.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc30256@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 11:38:21;E;20322650.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30256 group=vsc30256 account=lp_ppw_okp jobname=STDIN queue=q72h ctime=1465983247 qtime=1465983247 etime=1465983247 start=0 owner=vsc30256@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:K20Xm:ppn=1 Resource_List.nodect=1 Resource_List.nodes=1:K20Xm:ppn=1 Resource_List.partition=gpu Resource_List.pmem=60gb Resource_List.walltime=48:00:00 session=0 end=1465983501 Exit_status=0
+06/15/2016 11:38:30;D;20322649.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc30256@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 11:38:30;E;20322649.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30256 group=vsc30256 account=lp_ppw_okp jobname=STDIN queue=q72h ctime=1465983102 qtime=1465983102 etime=1465983102 start=0 owner=vsc30256@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:K40c:ppn=1 Resource_List.nodect=1 Resource_List.nodes=1:K40c:ppn=1 Resource_List.partition=gpu Resource_List.pmem=60gb Resource_List.walltime=48:00:00 session=0 end=1465983510 Exit_status=0
+06/15/2016 12:40:35;Q;20322651.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:40:35;Q;20322651.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 12:40:40;Q;20322652.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:40:40;Q;20322652.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 12:41:12;Q;20322653.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:41:12;Q;20322653.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 12:41:19;Q;20322654.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:41:19;Q;20322654.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 12:41:24;Q;20322655.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:41:24;Q;20322655.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 12:41:29;Q;20322656.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:41:29;Q;20322656.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 12:41:34;Q;20322657.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:41:34;Q;20322657.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 12:41:39;Q;20322658.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 12:41:39;Q;20322658.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 13:38:05;Q;20322659.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 13:38:05;Q;20322659.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q7d
+06/15/2016 13:38:15;Q;20322660.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 13:38:15;Q;20322660.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q7d
+06/15/2016 13:42:59;Q;20322661.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 13:42:59;Q;20322661.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 13:43:01;Q;20322662.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 13:43:01;Q;20322662.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 13:43:05;Q;20322663.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 13:43:05;Q;20322663.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 13:44:46;Q;20322664.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 13:44:46;Q;20322664.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 13:48:50;D;20322664.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31075@hpcblade2-hev6.icts.hpc.kuleuven.be
+06/15/2016 13:48:50;E;20322664.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31075 group=vsc31075 account=lp_biofluidics jobname=STDIN queue=q24h ctime=1465991086 qtime=1465991086 etime=1465991086 start=0 owner=vsc31075@hpcblade2-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=2:ppn=20 Resource_List.nodect=2 Resource_List.nodes=2:ppn=20 Resource_List.partition=thinking Resource_List.pmem=3gb Resource_List.walltime=12:00:00 session=0 end=1465991330 Exit_status=0
+06/15/2016 14:10:12;Q;20322665.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 14:10:12;Q;20322665.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 14:10:24;D;20322665.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 14:10:24;E;20322665.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc40023 group=vsc40023 account=lp_sys jobname=STDIN queue=q24h ctime=1465992612 qtime=1465992612 etime=1465992612 start=0 owner=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1 Resource_List.nodect=1 Resource_List.nodes=1 Resource_List.partition=gpu Resource_List.pmem=2500mb Resource_List.walltime=10:00:00 session=0 end=1465992624 Exit_status=0
+06/15/2016 14:11:04;Q;20322666.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 14:11:45;Q;20322667.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 14:11:45;Q;20322667.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 14:16:01;D;20322667.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 14:16:02;E;20322667.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc40023 group=vsc40023 account=lp_sys jobname=STDIN queue=q24h ctime=1465992705 qtime=1465992705 etime=1465992705 start=0 owner=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:K40c Resource_List.nodect=1 Resource_List.nodes=1:K40c Resource_List.partition=gpu Resource_List.pmem=2500mb Resource_List.walltime=10:00:00 session=0 end=1465992962 Exit_status=0
+06/15/2016 14:16:10;Q;20322668.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 14:16:10;Q;20322668.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 14:16:57;D;20322668.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 14:16:57;E;20322668.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc40023 group=vsc40023 account=lp_sys jobname=STDIN queue=q24h ctime=1465992970 qtime=1465992970 etime=1465992970 start=0 owner=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20:K40c Resource_List.nodect=1 Resource_List.nodes=1:ppn=20:K40c Resource_List.partition=gpu Resource_List.pmem=2500mb Resource_List.walltime=10:00:00 session=0 end=1465993017 Exit_status=0
+06/15/2016 14:17:35;Q;20322669.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 14:17:35;Q;20322669.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 14:20:15;D;20322669.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 14:20:15;E;20322669.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc40023 group=vsc40023 account=lp_sys jobname=STDIN queue=q24h ctime=1465993055 qtime=1465993055 etime=1465993055 start=0 owner=vsc40023@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1 Resource_List.nodect=1 Resource_List.nodes=1 Resource_List.partition=gpu Resource_List.pmem=2500mb Resource_List.walltime=10:00:00 session=0 end=1465993215 Exit_status=0
+06/15/2016 15:30:58;Q;20322670.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 15:30:58;Q;20322670.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 15:32:14;D;20322670.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc30706@hpcblade1-hev7.icts.hpc.kuleuven.be
+06/15/2016 15:32:14;E;20322670.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30706 group=vsc30706 jobname=STDIN queue=q1h ctime=1465997458 qtime=1465997458 etime=1465997458 start=0 owner=vsc30706@hpcblade1-hev7.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=0 end=1465997534 Exit_status=0
+06/15/2016 16:17:02;Q;20322671.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 16:17:02;Q;20322671.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 16:17:11;D;20322671.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc30783@hpcblade1-hev7.icts.hpc.kuleuven.be
+06/15/2016 16:17:11;E;20322671.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30783 group=vsc30783 jobname=STDIN queue=q1h ctime=1466000222 qtime=1466000222 etime=1466000222 start=0 owner=vsc30783@hpcblade1-hev7.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=0 end=1466000231 Exit_status=0
+06/15/2016 16:44:02;Q;20322672.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 16:44:02;Q;20322672.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 16:44:34;S;20322672.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466001842 qtime=1466001842 etime=1466001842 start=1466001874 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r4i1n7/0 Resource_List.neednodes=r4i1n7 Resource_List.nodect=1 Resource_List.nodes=r4i1n7 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 
+06/15/2016 16:46:05;E;20322672.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466001842 qtime=1466001842 etime=1466001842 start=1466001874 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r4i1n7/0 Resource_List.neednodes=r4i1n7 Resource_List.nodect=1 Resource_List.nodes=r4i1n7 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=16447 total_execution_slots=1 unique_node_count=1 end=1466001965 Exit_status=265 resources_used.cput=0 resources_used.energy_used=0 resources_used.mem=1836kb resources_used.vmem=106564kb resources_used.walltime=89
+06/15/2016 16:46:18;Q;20322673.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 16:46:18;Q;20322673.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 16:46:48;S;20322673.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466001978 qtime=1466001978 etime=1466001978 start=1466002008 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r12i0n12/0 Resource_List.neednodes=r12i0n12 Resource_List.nodect=1 Resource_List.nodes=r12i0n12 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 
+06/15/2016 16:46:51;E;20322673.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466001978 qtime=1466001978 etime=1466001978 start=1466002008 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r12i0n12/0 Resource_List.neednodes=r12i0n12 Resource_List.nodect=1 Resource_List.nodes=r12i0n12 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=28034 total_execution_slots=1 unique_node_count=1 end=1466002011 Exit_status=265 resources_used.cput=0 resources_used.energy_used=0 resources_used.mem=0kb resources_used.vmem=0kb resources_used.walltime=3
+06/15/2016 16:46:57;Q;20322674.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 16:46:57;Q;20322674.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 16:47:38;S;20322674.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466002017 qtime=1466002017 etime=1466002017 start=1466002058 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r12i2n4/0 Resource_List.neednodes=r12i2n4 Resource_List.nodect=1 Resource_List.nodes=r12i2n4 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 
+06/15/2016 16:48:12;E;20322674.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466002017 qtime=1466002017 etime=1466002017 start=1466002058 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r12i2n4/0 Resource_List.neednodes=r12i2n4 Resource_List.nodect=1 Resource_List.nodes=r12i2n4 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=28945 total_execution_slots=1 unique_node_count=1 end=1466002092 Exit_status=265 resources_used.cput=0 resources_used.energy_used=0 resources_used.mem=1840kb resources_used.vmem=106564kb resources_used.walltime=33
+06/15/2016 16:48:13;Q;20322675.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 16:48:13;Q;20322675.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 16:49:00;S;20322675.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466002093 qtime=1466002093 etime=1466002093 start=1466002140 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r12i2n3/0 Resource_List.neednodes=r12i2n3 Resource_List.nodect=1 Resource_List.nodes=r12i2n3 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 
+06/15/2016 16:49:05;E;20322675.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30002 group=vsc30002 jobname=STDIN queue=q1h ctime=1466002093 qtime=1466002093 etime=1466002093 start=1466002140 owner=vsc30002@hpcblade1-hev7.icts.hpc.kuleuven.be exec_host=r12i2n3/0 Resource_List.neednodes=r12i2n3 Resource_List.nodect=1 Resource_List.nodes=r12i2n3 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=29992 total_execution_slots=1 unique_node_count=1 end=1466002145 Exit_status=265 resources_used.cput=0 resources_used.energy_used=0 resources_used.mem=0kb resources_used.vmem=0kb resources_used.walltime=3
+06/15/2016 17:06:59;Q;20322676.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 17:06:59;Q;20322676.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 17:25:30;D;20322676.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31566@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 17:25:30;E;20322676.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31566 group=vsc31566 jobname=ExampleScript.pbs queue=q24h ctime=1466003219 qtime=1466003219 etime=1466003219 start=0 owner=vsc31566@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.mem=120gb Resource_List.neednodes=1:ppn=10:ivybridge Resource_List.nodect=1 Resource_List.nodes=1:ppn=10:ivybridge Resource_List.partition=thinking Resource_List.pmem=12gb Resource_List.walltime=24:00:00 session=0 end=1466004330 Exit_status=0
+06/15/2016 17:26:46;Q;20322677.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 17:26:46;Q;20322677.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/15/2016 17:38:19;Q;20322678.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 17:38:19;Q;20322678.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q7d
+06/15/2016 17:40:20;D;20322678.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc30963@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 17:40:20;E;20322678.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc30963 group=vsc30963 account=lp_hiv_networks jobname=RAxML_1_Stap.pbs queue=q7d ctime=1466005099 qtime=1466005099 etime=1466005099 start=0 owner=vsc30963@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=5:ppn=20:ivybridge Resource_List.nodect=5 Resource_List.nodes=5:ppn=20:ivybridge Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=168:00:00 session=0 end=1466005220 Exit_status=0
+06/15/2016 17:42:32;Q;20322679.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 17:42:32;Q;20322679.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q7d
+06/15/2016 18:24:06;Q;20322680.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 18:24:06;Q;20322680.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q7d
+06/15/2016 18:27:32;Q;20322681.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 18:27:32;Q;20322681.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 18:40:32;Q;20322682.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 18:40:32;Q;20322682.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 18:41:13;Q;20322683.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 18:41:13;Q;20322683.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 18:41:20;Q;20322684.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 18:41:20;Q;20322684.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 18:41:27;Q;20322685.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 18:41:27;Q;20322685.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 18:41:34;Q;20322686.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 18:41:34;Q;20322686.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 18:42:13;D;20322681.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 18:42:13;D;20322682.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 18:42:13;D;20322683.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 18:42:13;D;20322684.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 18:42:13;D;20322685.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 18:42:13;D;20322686.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 18:42:13;E;20322681.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 jobname=my-pe queue=q72h ctime=1466008052 qtime=1466008052 etime=1466008052 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=48:00:00 session=0 end=1466008933 Exit_status=0
+06/15/2016 18:42:13;E;20322686.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466008894 qtime=1466008894 etime=1466008894 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466008933 Exit_status=0
+06/15/2016 18:42:13;E;20322683.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466008873 qtime=1466008873 etime=1466008873 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466008933 Exit_status=0
+06/15/2016 18:42:13;E;20322685.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466008887 qtime=1466008887 etime=1466008887 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466008933 Exit_status=0
+06/15/2016 18:42:13;E;20322682.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 jobname=my-pe queue=q72h ctime=1466008832 qtime=1466008832 etime=1466008832 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=48:00:00 session=0 end=1466008933 Exit_status=0
+06/15/2016 18:42:13;E;20322684.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466008880 qtime=1466008880 etime=1466008880 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466008933 Exit_status=0
+06/15/2016 19:01:31;Q;20322687.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:01:31;Q;20322687.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 19:02:05;D;20322687.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31603@hpcblade1-hev7.icts.hpc.kuleuven.be
+06/15/2016 19:02:05;E;20322687.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31603 group=vsc31603 jobname=STDIN queue=q1h ctime=1466010091 qtime=1466010091 etime=1466010091 start=0 owner=vsc31603@hpcblade1-hev7.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=0 end=1466010125 Exit_status=0
+06/15/2016 19:10:04;Q;20322688.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:04;Q;20322688.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:10:11;Q;20322689.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:11;Q;20322689.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:10:18;Q;20322690.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:18;Q;20322690.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:10:25;Q;20322691.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:25;Q;20322691.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:10:32;Q;20322692.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:32;Q;20322692.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:10:39;Q;20322693.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:39;Q;20322693.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:10:46;Q;20322694.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:46;Q;20322694.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:10:53;Q;20322695.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:10:53;Q;20322695.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:00;Q;20322696.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:00;Q;20322696.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:07;Q;20322697.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:07;Q;20322697.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:08;Q;20322698.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:08;Q;20322698.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 19:11:14;Q;20322699.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:14;Q;20322699.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:21;Q;20322700.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:21;Q;20322700.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:29;Q;20322701.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:29;Q;20322701.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:36;Q;20322702.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:36;Q;20322702.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:43;Q;20322703.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:43;Q;20322703.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:50;Q;20322704.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:50;Q;20322704.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:11:57;Q;20322705.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:11:57;Q;20322705.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:04;Q;20322706.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:04;Q;20322706.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:04;D;20322698.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 19:12:04;E;20322698.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 jobname=STDIN queue=q1h ctime=1466010668 qtime=1466010668 etime=1466010668 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=0 end=1466010724 Exit_status=0
+06/15/2016 19:12:11;Q;20322707.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:11;Q;20322707.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:16;Q;20322708.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:16;Q;20322708.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/15/2016 19:12:18;Q;20322709.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:18;Q;20322709.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:25;Q;20322710.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:25;Q;20322710.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:32;Q;20322711.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:32;Q;20322711.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:39;Q;20322712.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:39;Q;20322712.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:46;Q;20322713.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:46;Q;20322713.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:12:53;Q;20322714.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:12:53;Q;20322714.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:00;Q;20322715.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:00;Q;20322715.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:07;Q;20322716.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:07;Q;20322716.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:14;Q;20322717.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:14;Q;20322717.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:21;Q;20322718.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:21;Q;20322718.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:28;Q;20322719.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:28;Q;20322719.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:35;Q;20322720.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:35;Q;20322720.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:42;Q;20322721.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:42;Q;20322721.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:49;Q;20322722.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:49;Q;20322722.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:13:56;Q;20322723.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:13:56;Q;20322723.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:03;Q;20322724.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:03;Q;20322724.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:10;Q;20322725.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:10;Q;20322725.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:17;Q;20322726.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:17;Q;20322726.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:24;Q;20322727.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:24;Q;20322727.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:31;Q;20322728.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:31;Q;20322728.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:38;Q;20322729.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:38;Q;20322729.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:45;Q;20322730.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:45;Q;20322730.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:52;Q;20322731.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:52;Q;20322731.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:14:59;Q;20322732.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:14:59;Q;20322732.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:06;Q;20322733.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:06;Q;20322733.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:13;Q;20322734.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:13;Q;20322734.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:20;Q;20322735.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:20;Q;20322735.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:27;Q;20322736.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:27;Q;20322736.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:34;Q;20322737.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:34;Q;20322737.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:41;Q;20322738.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:41;Q;20322738.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:48;Q;20322739.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:48;Q;20322739.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:15:55;Q;20322740.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:15:55;Q;20322740.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:02;Q;20322741.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:02;Q;20322741.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:10;Q;20322742.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:10;Q;20322742.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:17;Q;20322743.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:17;Q;20322743.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:24;Q;20322744.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:24;Q;20322744.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:31;Q;20322745.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:31;Q;20322745.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:38;Q;20322746.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:38;Q;20322746.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:45;Q;20322747.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:45;Q;20322747.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:52;Q;20322748.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:52;Q;20322748.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 19:16:59;Q;20322749.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 19:16:59;Q;20322749.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q72h
+06/15/2016 20:28:59;D;20322688.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322689.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322690.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322691.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322692.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322693.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322694.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322695.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322696.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322697.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322699.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322700.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322701.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322702.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322703.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322704.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322705.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322706.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322707.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322708.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322709.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322710.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322711.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322712.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322713.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322714.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322715.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322716.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322717.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322718.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322719.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322720.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322721.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322722.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322723.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322724.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322725.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322726.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322727.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322728.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322729.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322730.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322731.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322732.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322733.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322734.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322735.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322736.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322737.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322738.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322739.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322740.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322741.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322742.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322743.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322744.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322745.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322746.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322747.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322748.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;D;20322749.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/15/2016 20:28:59;E;20322749.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466011019 qtime=1466011019 etime=1466011019 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322748.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466011012 qtime=1466011012 etime=1466011012 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322747.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466011005 qtime=1466011005 etime=1466011005 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322741.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010962 qtime=1466010962 etime=1466010962 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322745.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010991 qtime=1466010991 etime=1466010991 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322733.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010906 qtime=1466010906 etime=1466010906 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322735.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010920 qtime=1466010920 etime=1466010920 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322732.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010899 qtime=1466010899 etime=1466010899 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322742.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010970 qtime=1466010970 etime=1466010970 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322744.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010984 qtime=1466010984 etime=1466010984 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322731.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010892 qtime=1466010892 etime=1466010892 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322737.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010934 qtime=1466010934 etime=1466010934 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322739.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010948 qtime=1466010948 etime=1466010948 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322738.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010941 qtime=1466010941 etime=1466010941 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322746.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010998 qtime=1466010998 etime=1466010998 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322734.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010913 qtime=1466010913 etime=1466010913 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322727.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010864 qtime=1466010864 etime=1466010864 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322740.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010955 qtime=1466010955 etime=1466010955 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322730.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010885 qtime=1466010885 etime=1466010885 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322726.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010857 qtime=1466010857 etime=1466010857 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322743.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010977 qtime=1466010977 etime=1466010977 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322729.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010878 qtime=1466010878 etime=1466010878 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322728.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010871 qtime=1466010871 etime=1466010871 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322723.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010836 qtime=1466010836 etime=1466010836 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322725.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010850 qtime=1466010850 etime=1466010850 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322736.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010927 qtime=1466010927 etime=1466010927 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322722.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010829 qtime=1466010829 etime=1466010829 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322724.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010843 qtime=1466010843 etime=1466010843 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322719.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010808 qtime=1466010808 etime=1466010808 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322720.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010815 qtime=1466010815 etime=1466010815 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322718.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010801 qtime=1466010801 etime=1466010801 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322721.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010822 qtime=1466010822 etime=1466010822 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322717.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010794 qtime=1466010794 etime=1466010794 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322714.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010773 qtime=1466010773 etime=1466010773 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322716.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010787 qtime=1466010787 etime=1466010787 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322715.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010780 qtime=1466010780 etime=1466010780 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322712.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010759 qtime=1466010759 etime=1466010759 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322713.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010766 qtime=1466010766 etime=1466010766 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322709.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010738 qtime=1466010738 etime=1466010738 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322711.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010752 qtime=1466010752 etime=1466010752 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322710.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010745 qtime=1466010745 etime=1466010745 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322703.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010703 qtime=1466010703 etime=1466010703 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322705.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010717 qtime=1466010717 etime=1466010717 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322702.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010695 qtime=1466010696 etime=1466010696 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322704.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010710 qtime=1466010710 etime=1466010710 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322701.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010689 qtime=1466010689 etime=1466010689 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322706.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010724 qtime=1466010724 etime=1466010724 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322707.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010731 qtime=1466010731 etime=1466010731 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322708.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=STDIN queue=q1h ctime=1466010736 qtime=1466010736 etime=1466010736 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=01:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322699.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010674 qtime=1466010674 etime=1466010674 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322700.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010681 qtime=1466010681 etime=1466010681 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322697.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010667 qtime=1466010667 etime=1466010667 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322696.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010660 qtime=1466010660 etime=1466010660 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322695.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010653 qtime=1466010653 etime=1466010653 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322694.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010646 qtime=1466010646 etime=1466010646 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322693.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010639 qtime=1466010639 etime=1466010639 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322692.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010632 qtime=1466010632 etime=1466010632 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322691.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010625 qtime=1466010625 etime=1466010625 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322690.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010618 qtime=1466010618 etime=1466010618 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322689.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010611 qtime=1466010611 etime=1466010611 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 20:28:59;E;20322688.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31514 group=vsc31514 account=lp_leuven_mg jobname=gsinput queue=q72h ctime=1466010604 qtime=1466010604 etime=1466010604 start=0 owner=vsc31514@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2500mb Resource_List.walltime=72:00:00 session=0 end=1466015339 Exit_status=0
+06/15/2016 23:32:20;Q;20322750.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/15/2016 23:32:20;Q;20322750.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
