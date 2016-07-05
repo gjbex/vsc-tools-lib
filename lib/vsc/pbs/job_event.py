@@ -115,8 +115,9 @@ class PbsJobEvent(object):
         key_value_strs = re.split(r'\s+', info_str)
         info = dict()
         for key_value_str in key_value_strs:
-            key, value = key_value_str.split('=', 1)
-            info[key] = value
+            if key_value_str:
+                key, value = key_value_str.split('=', 1)
+                info[key] = value
         PbsJobEvent._format_info(info)
         return info
 
