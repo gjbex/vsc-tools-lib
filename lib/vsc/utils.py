@@ -8,6 +8,9 @@ class InvalidWalltimeError(Exception):
         super(InvalidWalltimeError, self).__init__()
         self.message = msg
 
+    def __str__(self):
+        return self.message
+
 
 class InvalidSizeError(Exception):
     '''thrown when an invalid size format is used'''
@@ -15,6 +18,9 @@ class InvalidSizeError(Exception):
     def __init__(self, msg):
         super(InvalidSizeError, self).__init__()
         self.message = msg
+
+    def __str__(self):
+        return self.message
 
 
 import math, re
@@ -114,7 +120,10 @@ def size2bytes(amount, order=None):
         else:
             raise InvalidSizeError("'{0}' is not an integer".format(amount))
     try:
-        return int(amount)*conversion[order]
+        if order:
+            return int(amount)*conversion[order]
+        else:
+            return int(amount)
     except ValueError:
         raise InvalidSizeError("'{0}' is not an integer".format(amount))
     except KeyError:
