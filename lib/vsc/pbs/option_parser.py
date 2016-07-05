@@ -171,7 +171,7 @@ class PbsOptionParser(EventLogger):
     def check_nodes_res(self, val, resource_spec):
         '''check nodes resource'''
         _, attr_value = val.split('=', 1)
-        node_specs = PbsOptionParser.parse_node_spec_str(attr_value)
+        node_specs = PbsOptionParser.parse_node_spec_str(attr_value, self)
         resource_spec['nodes'] = node_specs
 
     def check_procs_res(self, val, resource_spec):
@@ -227,7 +227,7 @@ class PbsOptionParser(EventLogger):
             self._job.set_output(path, host)
 
     @staticmethod
-    def parse_node_spec_str(attr_value):
+    def parse_node_spec_str(attr_value, parser=None):
 # if present, multiple node specifications are separated by '+'
         node_spec_strs = attr_value.split('+')
         node_specs = []
@@ -250,9 +250,9 @@ class PbsOptionParser(EventLogger):
                     key, value = spec_str.split('=')
                     if value.isdigit():
                         node_spec[key] = int(value)
-                    else:
-                        self.reg_event('{0}_no_number'.format(key),
-                                       {'number': value})
+                    elif parser:
+                        parser.reg_event('{0}_no_number'.format(key),
+                                         {'number': value})
                 else:
                     node_spec['properties'].append(spec_str)
             node_specs.append(node_spec)

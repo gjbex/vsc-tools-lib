@@ -71,8 +71,11 @@ class QstatParser(object):
                 host_strs = self._get_value(line) .split('+')
                 exec_host = dict()
                 for host_str in host_strs:
-                    host, cores = host_str.split('/')
-                    exec_host[host] = cores
+                    if '/' in host_str:
+                        host, cores = host_str.split('/')
+                        exec_host[host] = cores
+                    else:
+                        exec_host[host_str] = None
                 job.exec_host = exec_host
             elif line.startswith('Resource_List.partition ='):
                 job.partition = self._get_value(line)
