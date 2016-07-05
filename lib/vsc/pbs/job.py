@@ -1,5 +1,6 @@
 '''module to represent and manipulate PBS jobs'''
 
+import operator
 import os
 
 
@@ -27,6 +28,7 @@ class PbsJob(object):
         }
         self._has_default_pmem = True
         self._queue = config['default_queue']
+        self._exit_status = None
         self._project = None
         _, host, _, _, _ = os.uname()
         cwd = os.getcwd()
@@ -36,13 +38,18 @@ class PbsJob(object):
             'error': {'host': host, 'path': cwd},
             'output': {'host': host, 'path': cwd},
         }
+        try:
+            default_mail_addr = os.getlogin()
+        except OSError:
+            default_mail_addr = ''
         self._mail_specs = {
             'events': config['default_mail_events'],
-            'addresses': [os.getlogin()]
+            'addresses': [default_mail_addr]
         }
         self._shebang = None
         self._script = []
         self._is_time_limit_set = False
+        self._events = []
 
     @property
     def job_id(self):
@@ -120,6 +127,16 @@ class PbsJob(object):
         self._queue = name
 
     @property
+    def exit_status(self):
+        '''returns the job's exit status, or None'''
+        return self._exit_status
+
+    @exit_status.setter
+    def exit_status(self, value):
+        '''Set the job's exit status'''
+        self._exit_status = value
+
+    @property
     def resource_specs(self):
         '''returns the job's resource specifications'''
         return self._resource_specs
@@ -132,20 +149,32 @@ class PbsJob(object):
         else:
             return None
 
+    def add_resource_spec(self, key, value):
+        self._resource_specs[key] = value
+
     def add_resource_specs(self, resource_specs):
         '''Add resources to specification'''
         for key, value in resource_specs.items():
-            self._resource_specs[key] = value
+            self.add_resource_spec(key, value)
 
     @property
     def resources_used(self):
         '''returns the job's resource usage'''
         return self._resources_used
 
+    def resource_used(self, key):
+        if key in self._resources_used:
+            return self._resources_used[key]
+        else:
+            return None
+
     def add_resources_used(self, resources_used):
         '''Add resources to used list'''
         for key, value in resources_used.items():
-            self._resources_used[key] = value
+            self.add_resource_used(key, value)
+
+    def add_resource_used(self, key, value):
+        self._resources_used[key] = value
 
     @property
     def has_default_pmem(self):
@@ -241,6 +270,24 @@ class PbsJob(object):
     def add_script_line(self, line_nr, line):
         '''adds a line to the script, retains line number information'''
         self._script.append((line_nr, line))
+
+    @property
+    def events(self):
+        '''return event list for this job'''
+        return sorted(self._events, key=operator.attrgetter('time_stamp'))
+
+    def has_start_event(self):
+        '''returns True if this job has a start event'''
+        return any(event.is_start() for event in self._events)
+
+    def has_end_event(self):
+        '''returns True if this job has a end event'''
+        return any(event.is_end() for event in self._events)
+
+    def add_event(self, event):
+        '''add event to the job'''
+        self._events.append(event)
+        event.update_job_info(self)
 
     def attrs_to_str(self):
         '''return job attributes as a string, mainly for debug purposes'''

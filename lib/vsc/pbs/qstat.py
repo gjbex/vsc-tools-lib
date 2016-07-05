@@ -68,8 +68,15 @@ class QstatParser(object):
                 nodect = int(self._get_value(line))
                 resource_specs['nodect'] = nodect
             elif line.startswith('exec_host ='):
-                state = 'exec_host'
-                host_str = self._get_value(line)
+                host_strs = self._get_value(line) .split('+')
+                exec_host = dict()
+                for host_str in host_strs:
+                    if '/' in host_str:
+                        host, cores = host_str.split('/')
+                        exec_host[host] = cores
+                    else:
+                        exec_host[host_str] = None
+                job.exec_host = exec_host
             elif line.startswith('Resource_List.partition ='):
                 job.partition = self._get_value(line)
         job.add_resource_specs(resource_specs)

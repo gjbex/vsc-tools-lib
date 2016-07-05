@@ -1,0 +1,34 @@
+06/16/2016 05:05:28;Q;20322751.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 05:05:28;Q;20322751.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/16/2016 05:06:20;D;20322751.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 05:06:20;E;20322751.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31113 group=vsc31113 account=lp_sidc jobname=euphoria.pbs queue=q1h ctime=1466046328 qtime=1466046328 etime=1466046328 start=0 owner=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=10:ppn=20 Resource_List.nodect=10 Resource_List.nodes=10:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2gb Resource_List.walltime=01:00:00 session=0 end=1466046380 Exit_status=0
+06/16/2016 05:06:24;Q;20322752.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 05:06:24;Q;20322752.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/16/2016 05:06:36;D;20322752.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 05:06:36;E;20322752.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31113 group=vsc31113 account=lp_sidc jobname=euphoria.pbs queue=q1h ctime=1466046384 qtime=1466046384 etime=1466046384 start=0 owner=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=10:ppn=20 Resource_List.nodect=10 Resource_List.nodes=10:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2gb Resource_List.walltime=01:00:00 session=0 end=1466046396 Exit_status=0
+06/16/2016 05:07:13;Q;20322753.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 05:07:13;Q;20322753.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/16/2016 05:12:33;D;20322753.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 05:12:33;E;20322753.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31113 group=vsc31113 account=lp_sidc jobname=euphoria.pbs queue=q1h ctime=1466046433 qtime=1466046433 etime=1466046433 start=0 owner=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=20 Resource_List.nodect=1 Resource_List.nodes=1:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2gb Resource_List.walltime=00:05:00 session=0 end=1466046753 Exit_status=0
+06/16/2016 05:14:18;Q;20322754.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 05:14:18;Q;20322754.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/16/2016 05:15:23;D;20322754.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 05:15:23;E;20322754.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31113 group=vsc31113 account=lp_sidc jobname=euphoria.pbs queue=q1h ctime=1466046858 qtime=1466046858 etime=1466046858 start=0 owner=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=5:ppn=2 Resource_List.nodect=5 Resource_List.nodes=5:ppn=2 Resource_List.partition=thinking Resource_List.pmem=2gb Resource_List.walltime=00:05:00 session=0 end=1466046923 Exit_status=0
+06/16/2016 05:15:56;Q;20322755.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 05:15:56;Q;20322755.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/16/2016 05:21:19;D;20322755.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 05:21:19;E;20322755.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31113 group=vsc31113 account=lp_sidc jobname=euphoria.pbs queue=q1h ctime=1466046956 qtime=1466046956 etime=1466046956 start=0 owner=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=10:ppn=20 Resource_List.nodect=10 Resource_List.nodes=10:ppn=20 Resource_List.partition=thinking Resource_List.pmem=2gb Resource_List.walltime=00:05:00 session=0 end=1466047279 Exit_status=0
+06/16/2016 05:23:37;Q;20322756.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 05:23:37;Q;20322756.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/16/2016 05:26:02;D;20322756.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 05:26:02;E;20322756.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31113 group=vsc31113 account=lp_sidc jobname=euphoria.pbs queue=q1h ctime=1466047417 qtime=1466047417 etime=1466047417 start=0 owner=vsc31113@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=8 Resource_List.nodect=1 Resource_List.nodes=1:ppn=8 Resource_List.partition=thinking Resource_List.pmem=2gb Resource_List.walltime=00:45:00 session=0 end=1466047562 Exit_status=0
+06/16/2016 08:09:56;Q;20322757.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 08:09:56;Q;20322757.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/16/2016 08:10:21;D;20322757.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31566@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 08:10:22;E;20322757.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31566 group=vsc31566 jobname=ExampleScript.pbs queue=q24h ctime=1466057396 qtime=1466057396 etime=1466057396 start=0 owner=vsc31566@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.mem=120gb Resource_List.neednodes=1:ppn=10:ivybridge Resource_List.nodect=1 Resource_List.nodes=1:ppn=10:ivybridge Resource_List.partition=thinking Resource_List.pmem=12gb Resource_List.walltime=24:00:00 session=0 end=1466057422 Exit_status=0
+06/16/2016 10:14:54;Q;20322758.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 10:14:54;Q;20322758.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q24h
+06/16/2016 10:19:04;Q;20322759.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=qdef
+06/16/2016 10:19:04;Q;20322759.hpc-p-svcs-10.icts.hpc.kuleuven.be;queue=q1h
+06/16/2016 10:59:22;D;20322758.hpc-p-svcs-10.icts.hpc.kuleuven.be;requestor=vsc31530@hpcblade1-hev6.icts.hpc.kuleuven.be
+06/16/2016 10:59:22;E;20322758.hpc-p-svcs-10.icts.hpc.kuleuven.be;user=vsc31530 group=vsc31530 jobname=p250k_evolving_gaussianBox queue=q24h ctime=1466064894 qtime=1466064894 etime=1466064894 start=0 owner=vsc31530@hpcblade1-hev6.icts.hpc.kuleuven.be Resource_List.neednodes=1:ppn=24:haswell Resource_List.nodect=1 Resource_List.nodes=1:ppn=24:haswell Resource_List.partition=thinking Resource_List.pmem=2048mb Resource_List.walltime=08:00:00 session=0 end=1466067562 Exit_status=0

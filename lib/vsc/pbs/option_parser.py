@@ -171,34 +171,7 @@ class PbsOptionParser(EventLogger):
     def check_nodes_res(self, val, resource_spec):
         '''check nodes resource'''
         _, attr_value = val.split('=', 1)
-# if present, multiple node specifications are separated by '+'
-        node_spec_strs = attr_value.split('+')
-        node_specs = []
-        for node_spec_str in node_spec_strs:
-            node_spec = {'properties': []}
-            spec_strs = node_spec_str.split(':')
-# if a node spec starts with a number, that's the number of nodes,
-# otherwise it can be a hostname or a feature, but number of nodes is 1
-            if spec_strs[0].isdigit():
-                node_spec['nodes'] = int(spec_strs[0])
-            else:
-                node_spec['nodes'] = 1
-# note that this might be wrong, it may actually be a feature, but
-# that is a semantic check, not syntax
-                node_spec['host'] = spec_strs[0]
-# now deal with the remaining specifications, ppn, gpus and properties
-            for spec_str in spec_strs[1:]:
-                if (spec_str.startswith('ppn=') or
-                        spec_str.startswith('gpus=')):
-                    key, value = spec_str.split('=')
-                    if value.isdigit():
-                        node_spec[key] = int(value)
-                    else:
-                        self.reg_event('{0}_no_number'.format(key),
-                                       {'number': value})
-                else:
-                    node_spec['properties'].append(spec_str)
-            node_specs.append(node_spec)
+        node_specs = PbsOptionParser.parse_node_spec_str(attr_value, self)
         resource_spec['nodes'] = node_specs
 
     def check_procs_res(self, val, resource_spec):
@@ -252,3 +225,35 @@ class PbsOptionParser(EventLogger):
             self._job.set_error(path, host)
         else:
             self._job.set_output(path, host)
+
+    @staticmethod
+    def parse_node_spec_str(attr_value, parser=None):
+# if present, multiple node specifications are separated by '+'
+        node_spec_strs = attr_value.split('+')
+        node_specs = []
+        for node_spec_str in node_spec_strs:
+            node_spec = {'properties': []}
+            spec_strs = node_spec_str.split(':')
+# if a node spec starts with a number, that's the number of nodes,
+# otherwise it can be a hostname or a feature, but number of nodes is 1
+            if spec_strs[0].isdigit():
+                node_spec['nodes'] = int(spec_strs[0])
+            else:
+                node_spec['nodes'] = 1
+# note that this might be wrong, it may actually be a feature, but
+# that is a semantic check, not syntax
+                node_spec['host'] = spec_strs[0]
+# now deal with the remaining specifications, ppn, gpus and properties
+            for spec_str in spec_strs[1:]:
+                if (spec_str.startswith('ppn=') or
+                        spec_str.startswith('gpus=')):
+                    key, value = spec_str.split('=')
+                    if value.isdigit():
+                        node_spec[key] = int(value)
+                    elif parser:
+                        parser.reg_event('{0}_no_number'.format(key),
+                                         {'number': value})
+                else:
+                    node_spec['properties'].append(spec_str)
+            node_specs.append(node_spec)
+        return node_specs
