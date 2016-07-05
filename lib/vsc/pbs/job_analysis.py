@@ -16,9 +16,9 @@ time_fmt = '%Y-%m-%d %H:%M:%S'
 default_host_columns = ['job_id', 'host', 'cores']
 
 def job_to_tuple(job):
-    parts = job.resource_spec('nodes').split(':')
-    if len(parts) >= 2 and '=' in parts[1]:
-        _, ppn = parts[1].split('=')
+    nodes = job.resource_spec('nodes')[0]['nodes']
+    if 'ppn' in job.resource_spec('nodes')[0]:
+        ppn = job.resource_spec('nodes')[0]['ppn']
     else:
         ppn = None
     if job.resource_used('mem'):
@@ -62,5 +62,7 @@ def jobs_to_dataframes(jobs):
     def time_conv(time):
         return pd.datetime.strptime(time, time_fmt)
     df_jobs['time'] = df_jobs['time'].map(time_conv)
+    df_jobs.ppn = df_jobs.ppn.fillna(-1.0).astype(int)
+    df_jobs.exit_status = df_jobs.exit_status.fillna(-1024.0).astype(int)
     df_hosts = pd.DataFrame(host_data, columns=default_host_columns)
     return df_jobs, df_hosts
