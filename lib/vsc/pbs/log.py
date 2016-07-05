@@ -2,6 +2,7 @@
 
 from datetime import datetime, timedelta
 import os
+import sys
 
 from vsc.pbs.job import PbsJob
 from vsc.pbs.job_event import PbsJobEvent
@@ -25,7 +26,10 @@ class PbsLogParser(object):
         while date <= end_date:
             file_name = os.path.join(self._config['log_dir'],
                                      date.strftime('%Y%m%d'))
-            self.parse_file(file_name)
+            if os.path.exists(file_name):
+                self.parse_file(file_name)
+            else:
+                sys.stderr.write("no log file '{0}'\n".format(file_name))
             date += delta_time
 
     def parse_file(self, file_name):
