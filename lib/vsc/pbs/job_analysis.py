@@ -4,13 +4,13 @@ import numpy as np
 from operator import itemgetter
 import pandas as pd
 
-from vsc.utils import seconds2walltime
+from vsc.utils import seconds2walltime, bytes2size
 
 
 default_job_columns = [
     'time', 'job_id', 'user', 'state', 'partition',
     'used_mem', 'used_walltime', 'spec_walltime', 'nodes', 'ppn',
-    'hosts',
+    'hosts', 'exit_status',
 ]
 time_fmt = '%Y-%m-%d %H:%M:%S'
 default_host_columns = ['job_id', 'host', 'cores']
@@ -21,19 +21,25 @@ def job_to_tuple(job):
         _, ppn = parts[1].split('=')
     else:
         ppn = None
+    if job.resource_used('mem'):
+        mem_used = float(bytes2size(job.resource_used('mem'), 'gb',
+                                    no_unit=True, fraction=True))
+    else:
+        mem_used = None
     return (
         job.events[-1].time_stamp.strftime(time_fmt),
         job.job_id,
         job.user,
         job.state,
         job.partition,
-        job.resource_used('mem'),
+        mem_used,
         (seconds2walltime(job.resource_used('walltime'))
              if job.resource_used('walltime') else None),
         seconds2walltime(job.resource_spec('walltime')),
         job.resource_spec('nodect'),
         ppn,
         ' '.join(job.exec_host.keys()) if job.exec_host else None,
+        job.exit_status,
     )
 
 def exec_host_to_tuples(job):

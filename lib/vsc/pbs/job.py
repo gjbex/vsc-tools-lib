@@ -28,6 +28,7 @@ class PbsJob(object):
         }
         self._has_default_pmem = True
         self._queue = config['default_queue']
+        self._exit_status = None
         self._project = None
         _, host, _, _, _ = os.uname()
         cwd = os.getcwd()
@@ -124,6 +125,16 @@ class PbsJob(object):
     def queue(self, name):
         '''Set the job's queue name'''
         self._queue = name
+
+    @property
+    def exit_status(self):
+        '''returns the job's exit status, or None'''
+        return self._exit_status
+
+    @exit_status.setter
+    def exit_status(self, value):
+        '''Set the job's exit status'''
+        self._exit_status = int(value)
 
     @property
     def resource_specs(self):

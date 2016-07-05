@@ -29,6 +29,7 @@ class PbsJobEvent(object):
         'Resource_List.partition': 'partition',
         'account': 'project',
         'queue': 'queue',
+        'Exit_status': 'exit_status',
         'exec_host': 'exec_host',
     }
 
