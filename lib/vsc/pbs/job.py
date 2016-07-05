@@ -134,7 +134,7 @@ class PbsJob(object):
     @exit_status.setter
     def exit_status(self, value):
         '''Set the job's exit status'''
-        self._exit_status = int(value)
+        self._exit_status = value
 
     @property
     def resource_specs(self):
