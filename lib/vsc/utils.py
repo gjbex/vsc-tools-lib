@@ -82,7 +82,7 @@ def size2bytes(amount, order=None):
     >>> size2bytes(12, 'k')
     12288
     >>> size2bytes(12, 't')
-    13194139533312L
+    13194139533312
     >>> size2bytes(12, None)
     12
     >>> size2bytes(12, 'q')
@@ -96,7 +96,7 @@ def size2bytes(amount, order=None):
     >>> size2bytes('12kb')
     12288
     >>> size2bytes('12 tw')
-    13194139533312L
+    13194139533312
     '''
     conversion = {
         'k': 1024,
@@ -121,14 +121,17 @@ def size2bytes(amount, order=None):
         raise InvalidSizeError("'{0}' is not a valid order "
                                "of magnitude".format(order))
 
-def bytes2size(bytes, unit):
+def bytes2size(bytes, unit, no_unit=False, fraction=False):
     '''Conbert a number of bytes to the given unit (kb, mb, gb, tb)
        >>> bytes2size(34320, 'kb')
        '34kb'
        >>> bytes2size(12884463294, 'GB')
        '12GB'
+       >>> bytes2size(12884463294, 'GB', no_unit=True)
+       '12'
+       >>> bytes2size(1297, 'kb', fraction=True)
+       '1.3kb'
     '''
-      
     conversion = {
         'b': 1.0,
         'kb': 1024.0,
@@ -137,10 +140,14 @@ def bytes2size(bytes, unit):
         'tb': 1024.0**4,
     }
     if unit.lower() in conversion:
-        mem = int(math.ceil(bytes/conversion[unit.lower()]))
-        return '{0:d}{1}'.format(mem, unit)
+        mem = bytes/conversion[unit.lower()]
+        if  fraction:
+            return '{0:.1f}{1}'.format(mem, '' if no_unit else unit)
+        else:
+            mem = int(math.ceil(mem))
+            return '{0:d}{1}'.format(mem, '' if no_unit else unit)
     else:
-        pass
+        raise InvalidSizeError("'{0}' is not a valid unit".format(unit))
     
 
 def hostname2rackinfo(hostname):
