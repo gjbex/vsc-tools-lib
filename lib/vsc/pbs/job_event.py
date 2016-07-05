@@ -3,6 +3,7 @@
 from datetime import datetime
 import re
 
+from vsc.pbs.option_parser import PbsOptionParser
 from vsc.utils import walltime2seconds, size2bytes
 
 
@@ -95,7 +96,13 @@ class PbsJobEvent(object):
         for key in self._info:
             if key.startswith(prefix):
                 resource = key[len(prefix):]
-                job.add_resource_spec(resource, self.info(key))
+                if resource == 'nodes':
+                    node_specs = PbsOptionParser.parse_node_spec_str(self.info(key))
+                    job.add_resource_spec(resource, node_specs)
+                elif resource == 'feature':
+                    job.add_resource_spec('features', [self.info(key)])
+                else:
+                    job.add_resource_spec(resource, self.info(key))
         prefix = 'resources_used.'
         for key in self._info:
             if key.startswith(prefix):
