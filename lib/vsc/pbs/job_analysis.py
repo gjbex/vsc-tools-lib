@@ -16,6 +16,8 @@ time_fmt = '%Y-%m-%d %H:%M:%S'
 default_host_columns = ['job_id', 'host', 'cores']
 
 def job_to_tuple(job):
+    '''returns a tuple with the job information that will be inserted
+    into a pandas data frame'''
     nodes = job.resource_spec('nodes')[0]['nodes']
     if 'ppn' in job.resource_spec('nodes')[0]:
         ppn = job.resource_spec('nodes')[0]['ppn']
@@ -43,6 +45,8 @@ def job_to_tuple(job):
     )
 
 def exec_host_to_tuples(job):
+    '''returns a tuple with the exec_host information that will be inserted
+    into a pandas data frame'''
     tuples = []
     if job.exec_host:
         for host in sorted(job.exec_host.iterkeys()):
@@ -50,7 +54,9 @@ def exec_host_to_tuples(job):
     return tuples
 
 def jobs_to_dataframes(jobs):
-    '''create a pandas DataFrame out of a dictionary of jobs'''
+    '''create pandas DataFrames out of a dictionary of jobs, the first
+    contains the job information, the second keeps track of job-node
+    associations'''
     job_data = []
     host_data = []
     for job_id, job in jobs.iteritems():
