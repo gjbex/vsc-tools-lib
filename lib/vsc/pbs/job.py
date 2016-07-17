@@ -289,6 +289,24 @@ class PbsJob(object):
         self._events.append(event)
         event.update_job_info(self)
 
+    @property
+    def start(self):
+        '''return the start datetime of the job, None if not started'''
+        if self.has_start_event():
+            for event in self.events[::-1]:
+                if event.type == 'S':
+                    return event.time_stamp
+        else:
+            return None
+
+    @property
+    def end(self):
+        '''return the end datetime of the job, None if not started'''
+        if self.has_end_event():
+            return self.events[-1].time_stamp
+        else:
+            return None
+
     def attrs_to_str(self):
         '''return job attributes as a string, mainly for debug purposes'''
         attr_str = ''
