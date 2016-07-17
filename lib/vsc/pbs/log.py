@@ -8,6 +8,16 @@ from vsc.pbs.job import PbsJob
 from vsc.pbs.job_event import PbsJobEvent
 
 
+class PbsLogParserError(Exception):
+    '''Exception to denote a parse error'''
+
+    def __init__(self, msg):
+        self._msg = msg
+
+    def __str__(self):
+        return self._msg
+
+
 class PbsLogParser(object):
     '''Implements torque log parser'''
 
@@ -27,6 +37,7 @@ class PbsLogParser(object):
             file_name = os.path.join(self._config['log_dir'],
                                      date.strftime('%Y%m%d'))
             if os.path.exists(file_name):
+
                 self.parse_file(file_name)
             else:
                 sys.stderr.write("no log file '{0}'\n".format(file_name))
@@ -35,15 +46,22 @@ class PbsLogParser(object):
     def parse_file(self, file_name):
         '''Parse the specified log'''
         with open(file_name, 'r') as pbs_file:
+            line_nr = 0
             for line in pbs_file:
+                line_nr += 1
                 line = line.rstrip()
                 if not line:
                     continue
-                time_stamp, event_type, job_id, info_str = line.split(';')
-                if job_id not in self._jobs:
-                    self._jobs[job_id] = PbsJob(self._config, job_id)
-                event = PbsJobEvent(time_stamp, event_type, info_str)
-                self._jobs[job_id].add_event(event)
+                try:
+                    time_stamp, event_type, job_id, info_str = line.split(';')
+                    if job_id not in self._jobs:
+                        self._jobs[job_id] = PbsJob(self._config, job_id)
+                    event = PbsJobEvent(time_stamp, event_type, info_str)
+                    self._jobs[job_id].add_event(event)
+                except:
+                    msg = 'problem on line {0} in {1}'.format(line,
+                                                              file_name)
+                    raise PbsLogParserError(msg)
 
     @property
     def jobs(self):
