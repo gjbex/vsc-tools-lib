@@ -1,29 +1,45 @@
 '''Module implementing utilities to analyze PBS torque job log files'''
 
+from collections import namedtuple
+from datetime import date, datetime
 import json
-import numpy as np
 from operator import itemgetter
 import pandas as pd
 
 from vsc.pbs.log import PbsLogParser
 from vsc.utils import seconds2walltime, bytes2size
 
+
+class AnalysisError(Exception):
+    '''Signals a problem in the analysis'''
+
+    def __init__(self, msg):
+        self._msg = msg
+
+    def __str__(self):
+        return self._msg
+
+
 class PbsLogAnalysis(object):
     '''class that wraps log analysis functionality'''
 
     default_job_columns = [
-        'time', 'job_id', 'user', 'state', 'partition',
+        'start', 'end', 'job_id', 'user', 'state', 'partition',
         'used_mem', 'used_walltime', 'spec_walltime', 'nodes', 'ppn',
         'hosts', 'exit_status',
     ]
-    time_fmt = '%Y-%m-%d %H:%M:%S'
+    JobTuple = namedtuple('JobTuple', default_job_columns)
     default_host_columns = ['job_id', 'host', 'cores']
+    HostTuple = namedtuple('HostTuple', default_host_columns)
+    time_fmt = '%Y-%m-%d %H:%M:%S'
 
     def __init__(self, cfg_file_name):
         '''Constructor that takes the name of a JSON configuration file'''
         with open(cfg_file_name, 'r') as json_file:
             self._config = json.load(json_file)
         self._jobs = None
+        self._df_jobs = None
+        self._df_hosts = None
 
     def prepare(self, start=None, end=None):
         '''Prepare analysis by parsing log files and acquiring
@@ -47,16 +63,24 @@ class PbsLogAnalysis(object):
     def jobs_df(self):
         '''return jobs pandas data frame'''
         return self._df_jobs
-    
+
     @property
     def hosts_df(self):
         '''return hosts pandas data frame'''
         return self._df_hosts
-    
+
     @staticmethod
     def _job_to_tuple(job):
         '''returns a tuple with the job information that will be inserted
         into a pandas data frame'''
+        if job.start:
+            start_time = job.start.strftime(PbsLogAnalysis.time_fmt)
+        else:
+            start_time = '1970-01-01 00:00:00'
+        if job.end:
+            end_time = job.end.strftime(PbsLogAnalysis.time_fmt)
+        else:
+            end_time = datetime.now().strftime(PbsLogAnalysis.time_fmt)
         nodes = job.resource_spec('nodes')[0]['nodes']
         if 'ppn' in job.resource_spec('nodes')[0]:
             ppn = job.resource_spec('nodes')[0]['ppn']
@@ -67,41 +91,30 @@ class PbsLogAnalysis(object):
                                         no_unit=True, fraction=True))
         else:
             mem_used = None
-        events = []
-        last_event = (
-            job.events[-1].time_stamp.strftime(PbsLogAnalysis.time_fmt),
-            job.job_id,
-            job.user,
-            job.state,
-            job.partition,
-            mem_used,
-            (seconds2walltime(job.resource_used('walltime'))
-                 if job.resource_used('walltime') else None),
-            seconds2walltime(job.resource_spec('walltime')),
-            job.resource_spec('nodect'),
-            ppn,
-            ' '.join(job.exec_host.keys()) if job.exec_host else None,
-            job.exit_status,
-        )
-        events.append(last_event)
-        if last_event[3] == 'E':
-            event = (
-                job.events[-2].time_stamp.strftime(PbsLogAnalysis.time_fmt),
-                job.job_id,
-                job.user,
-                'S',
-                job.partition,
-                mem_used,
-                (seconds2walltime(job.resource_used('walltime'))
-                     if job.resource_used('walltime') else None),
-                seconds2walltime(job.resource_spec('walltime')),
-                job.resource_spec('nodect'),
-                ppn,
-                ' '.join(job.exec_host.keys()) if job.exec_host else None,
-                job.exit_status,
-            )
-            events.append(event)
-        return events
+        if job.resource_used('walltime'):
+            walltime = seconds2walltime(job.resource_used('walltime'))
+        else:
+            walltime = None
+        spec_walltime = seconds2walltime(job.resource_spec('walltime'))
+        if job.exec_host:
+            hosts = ' '.join(job.exec_host.keys())
+        else:
+            hosts = None
+        return PbsLogAnalysis.JobTuple(
+                start=start_time,
+                end=end_time,
+                job_id=job.job_id,
+                user=job.user,
+                state=job.state,
+                partition=job.partition,
+                used_mem=mem_used,
+                used_walltime=walltime,
+                spec_walltime=spec_walltime,
+                nodes=nodes,
+                ppn=ppn,
+                hosts=hosts,
+                exit_status=job.exit_status
+                )
 
     @staticmethod
     def _exec_host_to_tuples(job):
@@ -121,38 +134,29 @@ class PbsLogAnalysis(object):
         host_data = []
         for job_id, job in self._jobs.iteritems():
             if job.has_end_event() or job.has_start_event():
-                job_data.extend(PbsLogAnalysis._job_to_tuple(job))
+                job_data.append(PbsLogAnalysis._job_to_tuple(job))
                 host_data.extend(PbsLogAnalysis._exec_host_to_tuples(job))
-        df_jobs = pd.DataFrame(sorted(job_data, key=itemgetter(0)),
+        df_jobs = pd.DataFrame(sorted(job_data, key=itemgetter(2)),
                                columns=PbsLogAnalysis.default_job_columns)
+
         def time_conv(time):
             return pd.datetime.strptime(time, PbsLogAnalysis.time_fmt)
-        df_jobs['time'] = df_jobs['time'].map(time_conv)
+        df_jobs['start'] = df_jobs['start'].map(time_conv)
+        df_jobs['end'] = df_jobs['end'].map(time_conv)
         df_jobs.ppn = df_jobs.ppn.fillna(-1.0).astype(int)
         df_jobs.exit_status = df_jobs.exit_status.fillna(-1024.0).astype(int)
-        df_hosts = pd.DataFrame(host_data, columns=PbsLogAnalysis.default_host_columns)
+        df_hosts = pd.DataFrame(host_data,
+                                columns=PbsLogAnalysis.default_host_columns)
         return df_jobs, df_hosts
 
-    def running_jobs(self, start_time, end_time):
+    def running_jobs(self, start_time=None, end_time=None, at_time=None):
         '''returns a pandas DataFrame containing the jobs that were
         running within the time interval specified by start and end
         time'''
         jobs = self.jobs_df
-        started_jobs = jobs[(jobs.state == 'S') &
-                                  (jobs.time < end_time)]
-        ended_jobs = jobs[(jobs.state == 'E') &
-                                (start_time < jobs.time)]
-        running_jobs = pd.merge(started_jobs, ended_jobs,
-                                how='inner', on='job_id')
-        running_jobs.rename(columns={'time_x': 'start',
-                                     'time_y': 'end'},
-                            inplace=True)
-        for column in started_jobs.columns:
-            if column != 'time' and column != 'job_id':
-                del running_jobs[column + '_x']
-        renaming = {}
-        for column in ended_jobs.columns:
-            if column != 'time' and column != 'job_id':
-                renaming[column + '_y'] = column
-        running_jobs.rename(columns=renaming, inplace=True)
-        return running_jobs
+        if at_time:
+            return jobs[(jobs.start < at_time) & (at_time < jobs.end)]
+        elif start_time and end_time:
+            return jobs[(jobs.start < end_time) & (jobs.end > start_time)]
+        else:
+            raise AnalysisError('either specify interval, or time at')
