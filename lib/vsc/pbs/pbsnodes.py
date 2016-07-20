@@ -7,9 +7,9 @@ from vsc.pbs.node import NodeStatus
 class PbsnodesParser(object):
     '''Implements a parser for pbsnodes output'''
 
-    def __init__(self):
+    def __init__(self, is_verbose=False):
         '''Constructor'''
-        pass
+        self._is_verbose = is_verbose
 
     def parse(self, node_output):
         '''parse output as produced by pbsnodes, returns a list of nodes'''
@@ -31,6 +31,53 @@ class PbsnodesParser(object):
         '''parse a file that contains pbsnodes output'''
         node_output = ''.join(node_file.readlines())
         return self.parse(node_output)
+
+    def parse_jobs(self, jobs_str):
+        job_info = {}
+        job_strs = jobs_str.split(' ')
+        for job_str in job_strs:
+            job_id, info_str = job_str.split('(')
+            job_info[job_id] = {}
+            info_strs = info_str[:-2]
+            for info_str in info_strs.split(','):
+                try:
+                    key, value = info_str.split('=')
+                    job_info[job_id][key] = value
+                except ValueError:
+                    if self._is_verbose:
+                        msg = '### warnig: no value for {0}\n'
+                        sys.write(msg.format(key))
+                    job_info[job_id][info_str] = None
+        return job_info
+        
+    def parse_status(self, node_status, status_str):
+        pos = status_str.find(',')
+        while pos >= 0:
+            if status_str.startswith('jobs='):
+                last_pos = status_str.rfind(')')
+                if last_pos == -1:
+                    jobs = {}
+                    status_str = status_str[pos + 1:]
+                else:
+                    start_pos = status_str.find('=') + 1
+                    jobs_str = status_str[start_pos:last_pos + 1]
+                    jobs = self.parse_jobs(jobs_str)
+                    status_str = status_str[last_pos + 2:]
+                node_status.status['job_info'] = jobs
+                pos = status_str.find(',')
+
+            else:
+                try:
+                    key, value = status_str[:pos].split('=')
+                    node_status.status[key] = value
+                except ValueError:
+                    if self._is_verbose:
+                        msg = '### warming: no value for {0} on {1}\n'
+                        sys.stderr.write(msg.format(key,
+                                                    node_status.hostname))
+                    node_status.status[status_str[:pos]] = None
+                status_str = status_str[pos + 1:]
+                pos = status_str.find(',')
 
     def parse_node(self, node_str):
         '''parse a string containing pbsnodes information of single node'''
@@ -54,15 +101,10 @@ class PbsnodesParser(object):
                     node_status.status['message'] = message
                     repl = 'message={0},'.format(message)
                     status_str = status_str.replace(repl, '')
-                    msg = '### warning: message {0} on node {1}\n'
-                    sys.stderr.write(msg.format(message, hostname))
-                for status_item in status_str.split(','):
-                    try:
-                        key, value = status_item.split('=')
-                        node_status.status[key] = value
-                    except ValueError:
-                        msg = '### warning: {0} has no value on {1}\n'
-                        sys.stderr.write(msg.format(status_item, hostname))
+                    if self._is_verbose:
+                        msg = '### warning: message {0} on node {1}\n'
+                        sys.stderr.write(msg.format(message, hostname))
+                self.parse_status(node_status, status_str)
             elif line.startswith('ntype = '):
                 _, node_status.ntype = line.split(' = ')
             elif line.startswith('state = '):
@@ -76,5 +118,3 @@ class PbsnodesParser(object):
                     core, job = job_item.split('/')
                     node_status.jobs[core] = job
         return node_status
-
-
