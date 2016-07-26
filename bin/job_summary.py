@@ -3,7 +3,9 @@
 from argparse import ArgumentParser
 import json
 import numpy as np
+import re
 import subprocess
+import sys
 
 from vsc.pbs.pbsnodes import PbsnodesParser
 from vsc.utils import size2bytes, bytes2size, seconds2walltime
@@ -11,8 +13,19 @@ from vsc.utils import size2bytes, bytes2size, seconds2walltime
 CFG_FILE = '../conf/config.json'
 
 
+def get_numeric_job_id(job_id):
+    match = re.match(r'(\d+)(?:\..+)?$', job_id)
+    if match:
+        return match.group(1)
+    else:
+        msg = "### error: job ID '{0}' seems malformed"
+        sys.stderr.write(msg.format(job_id))
+        sys.exit(1)
+
+
 def compute_stats(data):
-    return min(data), np.median(np.array(data, dtype=np.float)), max(data)
+    array = np.array(data, dtype=np.float)
+    return np.min(array), np.median(array), np.max(array)
 
 
 def compute_memory(node):
@@ -32,10 +45,17 @@ if __name__ == '__main__':
     arg_parser = ArgumentParser(description='print summary statistics '
                                             'for a running job')
     arg_parser.add_argument('job_id', help='ID of job to summarize')
+    arg_parser.add_argument('--conf', default=CFG_FILE,
+                            help='configuration file to use')
+    arg_parser.add_argument('--nodes', action='store_true',
+                            help='show comma-separated list of '
+                                 'host names the job is running on')
     arg_parser.add_argument('--verbose', action='store_true',
                             help='show warnings')
     options = arg_parser.parse_args()
-    with open(CFG_FILE, 'r') as config_file:
+    job_id = get_numeric_job_id(options.job_id)
+    print(job_id)
+    with open(options.conf, 'r') as config_file:
         config = json.load(config_file)
     pbsnodes_output = subprocess.check_output(config['pbsnodes_cmd'])
     pbsnodes_parser = PbsnodesParser(options.verbose)
@@ -44,35 +64,37 @@ if __name__ == '__main__':
     mems = []
     netloads = []
     cput = None
+    node_names = []
     for node in nodes:
-        if options.job_id in node.job_ids:
+        if job_id in node.job_ids:
             loadaves.append(float(node.status['loadave']))
             mems.append(compute_memory(node))
             netloads.append(float(node.status['netload']))
-            cpu_time = get_cpu_time(node, options.job_id)
+            cpu_time = get_cpu_time(node, job_id)
             if cpu_time:
                 cput = cpu_time
+            node_names.append(node.hostname)
     if loadaves:
         print 'nodes = {0}'.format(len(loadaves))
         print 'cpu time: {0}'.format(seconds2walltime(cput))
         print 'loadave:'
         stats = compute_stats(loadaves)
-        print('  min: {0:.1f}, '
-              'median: {1:.1f}, '
-              'max: {2:.1f}').format(*stats)
+        fmt_str = '  min: {0:.1f}, median: {1:.1f}, max: {2:.1f}'
+        print(fmt_str.format(*stats))
         print 'mem:'
         stats = map(lambda x: float(bytes2size(x, 'gb', no_unit=True,
                                                fraction=True)),
                     compute_stats(mems))
-        print('  min: {0:.1f} GB, '
-              'median: {1:.1f} GB, '
-              'max: {2:.1f} GB').format(*stats)
+        fmt_str = '  min: {0:.1f} GB, median: {1:.1f} GB, max: {2:.1f} GB'
+        print(fmt_str.format(*stats))
         print 'netload:'
         stats = map(lambda x: float(bytes2size(x, 'gb', no_unit=True,
                                                fraction=True)),
-                    netloads)
-        print('  min: {0:.1f} GB, '
-              'median: {1:.1f} GB, '
-              'max: {2:.1f} GB').format(*stats)
+                    compute_stats(netloads))
+        fmt_str = '  min: {0:.1f} GB, median: {1:.1f} GB, max: {2:.1f} GB'
+        print(fmt_str.format(*stats))
+        if options.nodes:
+            print('nodes:')
+            print('  ' + ','.join(node_names))
     else:
         print 'job {0} is not running'.format(options.job_id)
