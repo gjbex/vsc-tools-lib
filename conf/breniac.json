@@ -1,0 +1,37 @@
+{
+    "default_nodes": 1,
+    "default_ppn": 28,
+    "default_pmem": 40006124,
+    "default_walltime": 3600,
+    "default_queue": "qdef",
+    "default_join": "n",
+    "default_keep": "n",
+    "default_mail_events": "a",
+    "default_partition": "breniac",
+    "partitions": ["breniac"],
+    "default_qos": "normal",
+    "qos_levels": ["normal"],
+    "cluster_db": "cluster.db",
+    "event_file": "events.json",
+    "balance_cmd": "/opt/mam/bin/mam-balance",
+    "default_project": "default_project",
+    "qstat_cmd": "/usr/bin/qstat",
+    "qstat_options": "-f",
+    "pbsnodes_cmd": "/usr/bin/pbsnodes",
+    "showq_cmd": "/opt/moab/bin/showq",
+    "checknode_cmd": "/opt/moab/bin/checknode",
+    "checknode_options": "--xml",
+    "queue_definitions": [
+        {"name": "q1h",  "walltime_limit": 3600},
+        {"name": "q24h", "walltime_limit": 86400},
+        {"name": "q72h", "walltime_limit": 259200},
+        {"name": "q7d",  "walltime_limit": 604800}
+    ],
+    "check_accounting": false,
+    "node_type_credits": {
+        "broadwell": 1.0
+    },
+    "node_rate": 0.000011574,
+    "report_indent": 4,
+    "report_width": 64
+}
