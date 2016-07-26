@@ -54,7 +54,6 @@ if __name__ == '__main__':
                             help='show warnings')
     options = arg_parser.parse_args()
     job_id = get_numeric_job_id(options.job_id)
-    print(job_id)
     with open(options.conf, 'r') as config_file:
         config = json.load(config_file)
     pbsnodes_output = subprocess.check_output(config['pbsnodes_cmd'])
