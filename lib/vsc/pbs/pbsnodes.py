@@ -23,7 +23,10 @@ class PbsnodesParser(object):
                 if len(line.strip()):
                     node_str += '\n' + line
                 else:
-                    nodes.append(self.parse_node(node_str.strip()))
+                    try:
+                        nodes.append(self.parse_node(node_str.strip()))
+                    except Exception:
+                        print("problem with node\n'{0}'".format(node_str))
                     state = 'init'
         return nodes
 
@@ -36,18 +39,19 @@ class PbsnodesParser(object):
         job_info = {}
         job_strs = jobs_str.split(' ')
         for job_str in job_strs:
-            job_id, info_str = job_str.split('(')
-            job_info[job_id] = {}
-            info_strs = info_str[:-2]
-            for info_str in info_strs.split(','):
-                try:
-                    key, value = info_str.split('=')
-                    job_info[job_id][key] = value
-                except ValueError:
-                    if self._is_verbose:
-                        msg = '### warnig: no value for {0}\n'
-                        sys.write(msg.format(key))
-                    job_info[job_id][info_str] = None
+            if '(' in job_str:
+                job_id, info_str = job_str.split('(')
+                job_info[job_id] = {}
+                info_strs = info_str[:-2]
+                for info_str in info_strs.split(','):
+                    try:
+                        key, value = info_str.split('=')
+                        job_info[job_id][key] = value
+                    except ValueError:
+                        if self._is_verbose:
+                            msg = '### warnig: no value for {0}\n'
+                            sys.write(msg.format(key))
+                        job_info[job_id][info_str] = None
         return job_info
         
     def parse_status(self, node_status, status_str):
