@@ -8,7 +8,8 @@ import subprocess
 import sys
 
 from vsc.pbs.pbsnodes import PbsnodesParser
-from vsc.utils import size2bytes, bytes2size, seconds2walltime
+from vsc.utils import (size2bytes, bytes2size, seconds2walltime,
+                       core_specs2count)
 
 CFG_FILE = '../conf/config.json'
 
@@ -70,6 +71,7 @@ if __name__ == '__main__':
     netloads = []
     cput = None
     walltime = None
+    core_count = 0
     node_names = []
     for node in nodes:
         if job_id in node.job_ids:
@@ -82,13 +84,19 @@ if __name__ == '__main__':
                 cput = cpu_time
             if wall_time:
                 walltime = wall_time
+            for core_str, running_job_id in node.jobs.iteritems():
+                if running_job_id.startswith(job_id):
+                    core_count += core_specs2count(core_str)
             node_names.append(node.hostname)
     if loadaves:
-        print 'nodes = {0}'.format(len(loadaves))
+        print 'nodes = {0}, cores = {1}'.format(len(loadaves), core_count)
         if cput:
             print 'cpu time: {0}'.format(seconds2walltime(cput))
         if walltime:
             print 'walltime: {0}'.format(seconds2walltime(walltime))
+        if cput and walltime and core_count:
+            efficiency = 100.0*int(cput)/(int(walltime)*core_count)
+            print 'parallel efficiency: {0:.1f} %'.format(efficiency)
         print 'loadave:'
         stats = compute_stats(loadaves)
         fmt_str = '  min: {0:.1f}, median: {1:.1f}, max: {2:.1f}'
