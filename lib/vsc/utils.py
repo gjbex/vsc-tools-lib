@@ -39,11 +39,11 @@ def walltime2seconds(time_str):
     >>> walltime2seconds('1:2:3')
     Traceback (most recent call last):
         ...
-    InvalidWalltimeError
+    InvalidWalltimeError: '1:2:3' is invalid
     >>> walltime2seconds('1-02-03')
     Traceback (most recent call last):
         ...
-    InvalidWalltimeError
+    InvalidWalltimeError: '1-02-03' is invalid
     '''
     time_str = time_str.strip()
     match = re.match(r'^(\d+)$', time_str)
@@ -94,11 +94,11 @@ def size2bytes(amount, order=None):
     >>> size2bytes(12, 'q')
     Traceback (most recent call last):
         ...
-    InvalidSizeError
+    InvalidSizeError: 'q' is not a valid order of magnitude
     >>> size2bytes('size', 't')
     Traceback (most recent call last):
         ...
-    InvalidSizeError
+    InvalidSizeError: 'size' is not an integer
     >>> size2bytes('12kb')
     12288
     >>> size2bytes('12 tw')
