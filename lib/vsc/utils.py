@@ -167,6 +167,29 @@ def hostname2rackinfo(hostname):
     else:
         return None, None, None
 
+
+def core_specs2count(core_spec_str):
+    '''Determine the number of cores from a speciciatoin such as, e.g.,
+    0-5,7,9-11
+
+    >>> core_specs2count('0-5')
+    6
+    >>> core_specs2count('1-9,15-18')
+    13
+    >>> core_specs2count('5')
+    1
+    >>> core_specs2count('0-4,7,9-14,3')
+    13
+    '''
+    core_count = 0
+    for core_spec in core_spec_str.split(','):
+        if core_spec.isdigit():
+            core_count += 1
+        elif '-' in core_spec:
+            low, high = core_spec.split('-')
+            core_count += int(high) - int(low) + 1
+    return core_count
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
