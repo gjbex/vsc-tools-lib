@@ -290,6 +290,13 @@ class PbsJob(object):
         event.update_job_info(self)
 
     @property
+    def end_event(self):
+        if self.has_end_event():
+            return self.events[-1]
+        else:
+            return None
+
+    @property
     def start(self):
         '''return the start datetime of the job, None if not started'''
         if self.has_start_event():
