@@ -65,5 +65,6 @@ class PbsLogParser(object):
 
     @property
     def jobs(self):
-        '''return the jobs that were parsed as a list'''
+        '''return the jobs that were parsed as a dictionary that maps
+        job IDs to job object'''
         return self._jobs
