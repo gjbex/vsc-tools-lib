@@ -16,7 +16,7 @@ class PbsnodesParserTest(unittest.TestCase):
         loadave = '0.10'
         netload = '250792032533'
         state = 'free'
-        parser = PbsnodesParser()
+        parser = PbsnodesParser(is_verbose=True)
         with open(file_name, 'r') as pbsnodes_file:
             os_stderr = sys.stderr
             sys.stderr = io.StringIO()
