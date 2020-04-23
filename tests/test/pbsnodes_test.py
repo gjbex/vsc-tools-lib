@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''module to test the vsc.pbs.pbsnodes.Pbsnodes parser'''
 
-import StringIO, sys, unittest
+import io, sys, unittest
 from vsc.pbs.pbsnodes import PbsnodesParser
 
 class PbsnodesParserTest(unittest.TestCase):
@@ -19,7 +19,7 @@ class PbsnodesParserTest(unittest.TestCase):
         parser = PbsnodesParser()
         with open(file_name, 'r') as pbsnodes_file:
             os_stderr = sys.stderr
-            sys.stderr = StringIO.StringIO()
+            sys.stderr = io.StringIO()
             node_infos = parser.parse_file(pbsnodes_file)
             warning_msg = sys.stderr.getvalue()
             sys.stderr = os_stderr

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''module to test the vsc.moab.checknode.Checknode parser'''
 
-import StringIO, sys, unittest
+import sys, unittest
 from vsc.moab.checknode import ChecknodeParser
 
 class ChecknodeParserTest(unittest.TestCase):
