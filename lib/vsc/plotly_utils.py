@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 import datetime
 import plotly.plotly as py
 from plotly.graph_objs import Font

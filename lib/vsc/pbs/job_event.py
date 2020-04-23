@@ -89,7 +89,7 @@ class PbsJobEvent(object):
     def update_job_info(self, job):
         '''update the job info based on this event'''
         job.state = self.type
-        for key, attr_name in PbsJobEvent._key_map.iteritems():
+        for key, attr_name in PbsJobEvent._key_map.items():
             if self.has_info(key):
                 job.__setattr__(attr_name, self.info(key))
         prefix = 'Resource_List.'

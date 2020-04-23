@@ -52,6 +52,7 @@ docs/_build/
 # vim swap and backup files
 *.swp
 *~
+*.bak
 
 # direnv configuration
 .envrc

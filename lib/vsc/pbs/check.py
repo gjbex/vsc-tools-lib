@@ -103,7 +103,7 @@ class JobChecker(EventLogger):
     def check_pmem(self, job):
         '''Check whether the requested memory per node is available'''
         partition = job.resource_spec('partition')
-        mem_sizes = self._mem_sizes(partition).keys()
+        mem_sizes = list(self._mem_sizes(partition).keys())
         for nodes_spec in job.resource_spec('nodes'):
             satisfied = False
             ppn = nodes_spec['ppn']
@@ -297,7 +297,7 @@ class ScriptChecker(EventLogger):
         self._line_nr = start_line_nr - 1
         for line in job.script.split('\n'):
             self._line_nr += 1
-            print '{0}: {1}'.format(self._line_nr, line)
+            print('{0}: {1}'.format(self._line_nr, line))
             self._check_module_load(line)
             self._check_workdir(line)
 

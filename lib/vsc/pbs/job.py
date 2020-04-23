@@ -154,7 +154,7 @@ class PbsJob(object):
 
     def add_resource_specs(self, resource_specs):
         '''Add resources to specification'''
-        for key, value in resource_specs.items():
+        for key, value in list(resource_specs.items()):
             self.add_resource_spec(key, value)
 
     @property
@@ -170,7 +170,7 @@ class PbsJob(object):
 
     def add_resources_used(self, resources_used):
         '''Add resources to used list'''
-        for key, value in resources_used.items():
+        for key, value in list(resources_used.items()):
             self.add_resource_used(key, value)
 
     def add_resource_used(self, key, value):
@@ -320,10 +320,10 @@ class PbsJob(object):
         attr_str += "name = '{0}'".format(self.name)
         attr_str += "\nproject = '{0}'".format(self.project)
         attr_str += "\nresources:"
-        for resource_name, resource_spec in self.resource_specs.items():
+        for resource_name, resource_spec in list(self.resource_specs.items()):
             if resource_name == 'nodes':
                 for node_spec in resource_spec:
-                    for f_name, f_val in node_spec.items():
+                    for f_name, f_val in list(node_spec.items()):
                         attr_str += "\n\t{0} = '{1}'".format(f_name, f_val)
             else:
                 attr_str += "\n\t{0} = '{1}'".format(resource_name,
