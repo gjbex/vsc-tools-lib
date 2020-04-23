@@ -16,7 +16,7 @@ class QstatTest(unittest.TestCase):
         parser = ShowqParser()
         with open(file_name, 'r') as showq_file:
             jobs = parser.parse_file(showq_file)
-        self.assertEquals(nr_categories, len(jobs))
-        self.assertEquals(nr_active_jobs, len(jobs['active']))
-        self.assertEquals(nr_eligible_jobs, len(jobs['eligible']))
-        self.assertEquals(nr_blocked_jobs, len(jobs['blocked']))
+        self.assertEqual(nr_categories, len(jobs))
+        self.assertEqual(nr_active_jobs, len(jobs['active']))
+        self.assertEqual(nr_eligible_jobs, len(jobs['eligible']))
+        self.assertEqual(nr_blocked_jobs, len(jobs['blocked']))

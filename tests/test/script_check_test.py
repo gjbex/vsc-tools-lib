@@ -26,15 +26,15 @@ class PbsScriptCheckTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(0, len(parser.events))
+        self.assertEqual(0, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
         script_checker = ScriptChecker(self._config, self._event_defs)
         script_checker.check(parser.job, parser.script_first_line_nr)
-        self.assertEquals(len(event_names), len(script_checker.events))
+        self.assertEqual(len(event_names), len(script_checker.events))
         for event in script_checker.events:
             self.assertTrue(event['id'] in event_names)
-        self.assertEquals(len(event_names), script_checker.nr_warnings)
+        self.assertEqual(len(event_names), script_checker.nr_warnings)
 
     def test_working_dir(self):
         file_name = 'data/working_dir.pbs'
@@ -42,15 +42,15 @@ class PbsScriptCheckTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(0, len(parser.events))
+        self.assertEqual(0, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
         script_checker = ScriptChecker(self._config, self._event_defs)
         script_checker.check(parser.job, parser.script_first_line_nr)
-        self.assertEquals(len(event_names), len(script_checker.events))
+        self.assertEqual(len(event_names), len(script_checker.events))
         for event in script_checker.events:
             self.assertTrue(event['id'] in event_names)
-        self.assertEquals(len(event_names), script_checker.nr_warnings)
+        self.assertEqual(len(event_names), script_checker.nr_warnings)
 
     def test_working_dir_no_var(self):
         file_name = 'data/working_dir_no_var.pbs'
@@ -58,12 +58,12 @@ class PbsScriptCheckTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(0, len(parser.events))
+        self.assertEqual(0, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
         script_checker = ScriptChecker(self._config, self._event_defs)
         script_checker.check(parser.job, parser.script_first_line_nr)
-        self.assertEquals(len(event_names), len(script_checker.events))
+        self.assertEqual(len(event_names), len(script_checker.events))
         for event in script_checker.events:
             self.assertTrue(event['id'] in event_names)
-        self.assertEquals(len(event_names), script_checker.nr_warnings)
+        self.assertEqual(len(event_names), script_checker.nr_warnings)

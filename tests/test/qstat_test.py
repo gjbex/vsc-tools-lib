@@ -26,14 +26,14 @@ class QstatTest(unittest.TestCase):
         parser = QstatParser(self._config)
         with open(file_name, 'r') as qstat_file:
             jobs = parser.parse_file(qstat_file)
-        self.assertEquals(nr_jobs, len(jobs))
+        self.assertEqual(nr_jobs, len(jobs))
         for i, job_nr in enumerate(test_jobs):
-            self.assertEquals(job_id[i], jobs[test_jobs[i] - 1].job_id)
-            self.assertEquals(job_state[i], jobs[test_jobs[i] - 1].state)
+            self.assertEqual(job_id[i], jobs[test_jobs[i] - 1].job_id)
+            self.assertEqual(job_state[i], jobs[test_jobs[i] - 1].state)
             walltime = jobs[test_jobs[i] - 1].resource_specs['walltime']
-            self.assertEquals(job_walltime[i], walltime)
+            self.assertEqual(job_walltime[i], walltime)
             nodect = jobs[test_jobs[i] - 1].resource_specs['nodect']
-            self.assertEquals(job_nodect[i], nodect)
+            self.assertEqual(job_nodect[i], nodect)
 
                               
 

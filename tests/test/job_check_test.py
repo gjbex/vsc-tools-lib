@@ -27,10 +27,10 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEqual(nr_semantic_events, len(checker.events))
 
     def test_too_large_ppn(self):
         file_name = 'data/too_large_ppn.pbs'
@@ -40,11 +40,11 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
-        self.assertEquals(event_name, checker.events[0]['id'])
+        self.assertEqual(nr_semantic_events, len(checker.events))
+        self.assertEqual(event_name, checker.events[0]['id'])
 
     def test_too_many_nodes(self):
         file_name = 'data/too_many_nodes.pbs'
@@ -54,10 +54,10 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(len(event_names), len(checker.events))
+        self.assertEqual(len(event_names), len(checker.events))
         for event in checker.events:
             self.assertTrue(event['id'] in event_names)
 
@@ -69,10 +69,10 @@ class JObCheckerTest(unittest.TestCase):
             parser.parse_file(pbs_file)
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(len(event_names), len(checker.events))
+        self.assertEqual(len(event_names), len(checker.events))
         for event in checker.events:
             self.assertTrue(event['id'] in event_names)
-        self.assertEquals(len(event_names), checker.nr_warnings)
+        self.assertEqual(len(event_names), checker.nr_warnings)
 
     def test_mem_violation(self):
         file_name = 'data/mem_violation.pbs'
@@ -82,10 +82,10 @@ class JObCheckerTest(unittest.TestCase):
             parser.parse_file(pbs_file)
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(len(event_names), len(checker.events))
+        self.assertEqual(len(event_names), len(checker.events))
         for event in checker.events:
             self.assertTrue(event['id'] in event_names)
-        self.assertEquals(len(event_names), checker.nr_errors)
+        self.assertEqual(len(event_names), checker.nr_errors)
 
     def test_pmem_violation(self):
         file_name = 'data/pmem_violation.pbs'
@@ -95,10 +95,10 @@ class JObCheckerTest(unittest.TestCase):
             parser.parse_file(pbs_file)
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(len(event_names), len(checker.events))
+        self.assertEqual(len(event_names), len(checker.events))
         for event in checker.events:
             self.assertTrue(event['id'] in event_names)
-        self.assertEquals(len(event_names), checker.nr_errors)
+        self.assertEqual(len(event_names), checker.nr_errors)
 
     def test_unknown_property(self):
         file_name = 'data/unknown_property.pbs'
@@ -108,11 +108,11 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
-        self.assertEquals(event_name, checker.events[0]['id'])
+        self.assertEqual(nr_semantic_events, len(checker.events))
+        self.assertEqual(event_name, checker.events[0]['id'])
 
     def test_unknown_feature(self):
         file_name = 'data/unknown_feature.pbs'
@@ -122,11 +122,11 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
-        self.assertEquals(event_name, checker.events[0]['id'])
+        self.assertEqual(nr_semantic_events, len(checker.events))
+        self.assertEqual(event_name, checker.events[0]['id'])
 
     def test_queue_no_walltime(self):
         file_name = 'data/queue_no_walltime.pbs'
@@ -137,13 +137,13 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEqual(nr_semantic_events, len(checker.events))
         job = parser.job
-        self.assertEquals(queue_name, job.queue)
-        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
+        self.assertEqual(queue_name, job.queue)
+        self.assertEqual(expected_walltime, job.resource_spec('walltime'))
 
     def test_walltime_and_queue(self):
         file_name = 'data/walltime_and_queue.pbs'
@@ -154,13 +154,13 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEqual(nr_semantic_events, len(checker.events))
         job = parser.job
-        self.assertEquals(queue_name, job.queue)
-        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
+        self.assertEqual(queue_name, job.queue)
+        self.assertEqual(expected_walltime, job.resource_spec('walltime'))
 
     def test_queue_and_walltime(self):
         file_name = 'data/queue_and_walltime.pbs'
@@ -171,13 +171,13 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEqual(nr_semantic_events, len(checker.events))
         job = parser.job
-        self.assertEquals(queue_name, job.queue)
-        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
+        self.assertEqual(queue_name, job.queue)
+        self.assertEqual(expected_walltime, job.resource_spec('walltime'))
 
     def test_walltime_no_queue(self):
         file_name = 'data/walltime_no_queue.pbs'
@@ -188,10 +188,10 @@ class JObCheckerTest(unittest.TestCase):
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
             parser.parse_file(pbs_file)
-        self.assertEquals(nr_syntax_events, len(parser.events))
+        self.assertEqual(nr_syntax_events, len(parser.events))
         checker = JobChecker(self._config, self._event_defs)
         checker.check(parser.job)
-        self.assertEquals(nr_semantic_events, len(checker.events))
+        self.assertEqual(nr_semantic_events, len(checker.events))
         job = parser.job
-        self.assertEquals(queue_name, job.queue)
-        self.assertEquals(expected_walltime, job.resource_spec('walltime'))
+        self.assertEqual(queue_name, job.queue)
+        self.assertEqual(expected_walltime, job.resource_spec('walltime'))

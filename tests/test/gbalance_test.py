@@ -23,18 +23,18 @@ class GbalanceTest(unittest.TestCase):
         parser = GbalanceParser()
         with open(file_name, 'r') as gbalance_file:
             accounts = parser.parse_file(gbalance_file)
-            self.assertEquals(nr_accounts, len(accounts))
+            self.assertEqual(nr_accounts, len(accounts))
             self.assertTrue(first_id in accounts)
             self.assertTrue(last_id in accounts)
-            self.assertEquals(test_name, accounts[test_id].name)
-            self.assertEquals(test_available,
+            self.assertEqual(test_name, accounts[test_id].name)
+            self.assertEqual(test_available,
                               accounts[test_id].available_credits)
-            self.assertEquals(test_allocated,
+            self.assertEqual(test_allocated,
                               accounts[test_id].allocated_credits)
-            self.assertEquals(default_name, accounts[default_id].name)
-            self.assertEquals(default_available,
+            self.assertEqual(default_name, accounts[default_id].name)
+            self.assertEqual(default_available,
                               accounts[default_id].available_credits)
-            self.assertEquals(default_allocated,
+            self.assertEqual(default_allocated,
                               accounts[default_id].allocated_credits)
 
     def test_parsing(self):
@@ -53,16 +53,16 @@ class GbalanceTest(unittest.TestCase):
         parser = GbalanceParser()
         with open(file_name, 'r') as gbalance_file:
             accounts = parser.parse_file(gbalance_file)
-            self.assertEquals(nr_accounts, len(accounts))
+            self.assertEqual(nr_accounts, len(accounts))
             self.assertTrue(first_id in accounts)
             self.assertTrue(last_id in accounts)
-            self.assertEquals(default_name, accounts[default_id].name)
-            self.assertEquals(default_available,
+            self.assertEqual(default_name, accounts[default_id].name)
+            self.assertEqual(default_available,
                               accounts[default_id].available_credits)
-            self.assertEquals(default_allocated,
+            self.assertEqual(default_allocated,
                               accounts[default_id].allocated_credits)
-            self.assertEquals(project_name, accounts[project_id].name)
-            self.assertEquals(project_available,
+            self.assertEqual(project_name, accounts[project_id].name)
+            self.assertEqual(project_available,
                               accounts[project_id].available_credits)
-            self.assertEquals(project_allocated,
+            self.assertEqual(project_allocated,
                               accounts[project_id].allocated_credits)
