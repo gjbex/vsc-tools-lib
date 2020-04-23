@@ -69,7 +69,7 @@ class PbsScriptParserTest(unittest.TestCase):
         nr_syntax_events = 4
         event_names = ['dos_format']
         parser = PbsScriptParser(self._config, self._event_defs)
-        with open(file_name, 'r') as pbs_file:
+        with open(file_name, 'r', newline='') as pbs_file:
             parser.parse_file(pbs_file)
         self.assertEqual(nr_syntax_events, len(parser.events))
         for event in parser.events:
