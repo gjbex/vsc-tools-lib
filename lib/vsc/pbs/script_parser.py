@@ -68,7 +68,7 @@ class PbsScriptParser(EventLogger):
     def check_encoding(self, line):
         '''checks ASCII encoding and line endings'''
         try:
-            line.decode('ascii')
+            line.encode('ascii')
         except UnicodeDecodeError:
             self.reg_event('non_ascii')
         if line.endswith('\r\n'):
