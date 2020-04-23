@@ -297,7 +297,6 @@ class ScriptChecker(EventLogger):
         self._line_nr = start_line_nr - 1
         for line in job.script.split('\n'):
             self._line_nr += 1
-            print('{0}: {1}'.format(self._line_nr, line))
             self._check_module_load(line)
             self._check_workdir(line)
 
