@@ -47,3 +47,22 @@ class PbsnodesParserTest(unittest.TestCase):
         for node_info in node_infos:
             self.assertTrue(np <= node_info.np)
             self.assertTrue(node_info.hostname.startswith(rack_str))
+
+    def test_parsing_gpu_node(self):
+        file_name = 'data/pbsnodes_gpu.txt'
+        nr_nodes = 1
+        np = 36
+        hostname = 'r22g35'
+        memory = 192494548*1024
+        cpuload = 3.02/36
+        nr_jobs = 3
+        parser = PbsnodesParser()
+        with open(file_name, 'r') as pbsnodes_file:
+            node_infos = parser.parse_file(pbsnodes_file)
+        self.assertEqual(nr_nodes, len(node_infos))
+        node_info = node_infos[0]
+        self.assertEqual(np, node_info.np)
+        self.assertEqual(node_info.hostname, hostname)
+        self.assertEqual(node_info.memory, memory)
+        self.assertEqual(node_info.cpuload, cpuload)
+        self.assertEqual(len(node_info.jobs), nr_jobs)
