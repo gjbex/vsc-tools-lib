@@ -30,6 +30,6 @@ esac
 
 EXEC=`readlink -f ${0}`
 EXEC_PATH=`dirname ${EXEC}`
-export PYTHONPATH="${EXEC_PATH}/../lib:${PYTHONPATH}"
+export PYTHONPATH="${EXEC_PATH}/../:${PYTHONPATH}"
 cd "${EXEC_PATH}/test"
 python -m unittest discover -p '*_test.py'
