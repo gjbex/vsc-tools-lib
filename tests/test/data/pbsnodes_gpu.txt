@@ -1,0 +1,29 @@
+r22g35
+     state = free
+     power_state = Running
+     np = 36
+     properties = r22g,singleisland,type_skylake_gpu,skylake,beeond
+     ntype = cluster
+     jobs = 18-26/50327019.tier2-p-moab-2.tier2.hpc.kuleuven.be,0-8/50326974.tier2-p-moab-2.tier2.hpc.kuleuven.be,9-17/50327381.tier2-p-moab-2.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r22g35 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=199931 130291 197247 214620,nsessions=4,nusers=4,idletime=11806532,totmem=193543124kb,availmem=181658448kb,physmem=192494548kb,ncpus=36,loadave=3.02,gres=,netload=30788318742175,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200423-4564-gitfb8f2740;sudo=1-8-23-4-el7_7-2;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=OnDemand:1000MHz,macaddr=28:80:23:f7:69:50,version=6.1.3,rectime=1587720852,jobs=50326974.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327019.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327381.tier2-p-moab-2.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 4
+     gpu_status = gpu[3]=gpu_id=00000000:8A:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:8A:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=788 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=38%;gpu_memory_utilization=6%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=45 C,gpu[2]=gpu_id=00000000:89:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:89:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=485 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=34%;gpu_memory_utilization=1%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=37 C;gpu_display=Enabled,gpu[1]=gpu_id=00000000:62:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:62:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=5%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=35 C;gpu_display=Enabled,gpu[0]=gpu_id=00000000:61:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:61:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=873 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=42 C;gpu_display=Enabled,gpu_display=Enabled,driver_ver=418.67,timestamp=Fri Apr 24 11:34:11 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 36
+     total_threads = 36
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 27
+     gpu_status = gpu[3]=gpu_id=00000000:8A:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:8A:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=788 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=38%;gpu_memory_utilization=6%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=45 C,gpu[2]=gpu_id=00000000:89:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:89:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=485 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=34%;gpu_memory_utilization=1%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=37 C;gpu_display=Enabled,gpu[1]=gpu_id=00000000:62:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:62:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=5%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=35 C;gpu_display=Enabled,gpu[0]=gpu_id=00000000:61:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:61:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=873 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=42 C;gpu_display=Enabled,gpu_display=Enabled,driver_ver=418.67,timestamp=Fri Apr 24 11:34:11 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 36
+     total_threads = 36
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 27

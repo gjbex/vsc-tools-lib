@@ -4,7 +4,7 @@ import re, sys
 
 from vsc.pbs.node import NodeStatus
 
-class PbsnodesParser(object):
+class PbsnodesParser:
     '''Implements a parser for pbsnodes output'''
 
     def __init__(self, is_verbose=False):
@@ -76,7 +76,7 @@ class PbsnodesParser(object):
                     node_status.status[key] = value
                 except ValueError:
                     if self._is_verbose:
-                        msg = '### warming: no value for {0} on {1}\n'
+                        msg = '### warning: no value for {0} on {1}\n'
                         sys.stderr.write(msg.format(key,
                                                     node_status.hostname))
                     node_status.status[status_str[:pos]] = None
