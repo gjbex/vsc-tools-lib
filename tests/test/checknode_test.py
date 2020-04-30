@@ -8,7 +8,7 @@ class ChecknodeParserTest(unittest.TestCase):
     '''Tests for the checknode output parser'''
 
     def test_parsing(self):
-        file_name = 'data/checknode.xml'
+        file_name = 'tests/test/data/checknode.xml'
         expected_features = ['ivybridge', 'r1', 'tencore', 'thinking',
                              'type_ivybridge', 'r1i1', 'mem64']
         parser = ChecknodeParser()

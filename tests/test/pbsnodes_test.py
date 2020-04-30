@@ -8,7 +8,7 @@ class PbsnodesParserTest(unittest.TestCase):
     '''Tests for the pbsnodes output parser'''
 
     def test_parsing_with_messages(self):
-        file_name = 'data/pbsnodes_message.txt'
+        file_name = 'tests/test/data/pbsnodes_message.txt'
         nr_nodes = 1
         warning_start = '### warning: message ERROR'
         warning_end = 'cleaned up on node r5i0n6\n'
@@ -36,7 +36,7 @@ class PbsnodesParserTest(unittest.TestCase):
         self.assertEqual(state, node_info.state)
 
     def test_parsing(self):
-        file_name = 'data/pbsnodes.txt'
+        file_name = 'tests/test/data/pbsnodes.txt'
         nr_nodes = 173
         np = 20
         rack_str = 'r'
@@ -49,7 +49,7 @@ class PbsnodesParserTest(unittest.TestCase):
             self.assertTrue(node_info.hostname.startswith(rack_str))
 
     def test_parsing_gpu_node(self):
-        file_name = 'data/pbsnodes_gpu.txt'
+        file_name = 'tests/test/data/pbsnodes_gpu.txt'
         nr_nodes = 1
         np = 36
         hostname = 'r22g35'

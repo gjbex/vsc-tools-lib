@@ -8,7 +8,7 @@ class GbalanceTest(unittest.TestCase):
     '''Tests for the gbalance output parser'''
 
     def test_parsing_gold(self):
-        file_name = 'data/gbalance_old.txt'
+        file_name = 'tests/test/data/gbalance_old.txt'
         nr_accounts = 4
         first_id = '120'
         last_id = '1211'
@@ -38,7 +38,7 @@ class GbalanceTest(unittest.TestCase):
                               accounts[default_id].allocated_credits)
 
     def test_parsing(self):
-        file_name = 'data/gbalance_new.txt'
+        file_name = 'tests/test/data/gbalance_new.txt'
         nr_accounts = 2
         first_id = '1217'
         last_id = '1255'

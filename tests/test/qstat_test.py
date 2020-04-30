@@ -8,14 +8,14 @@ class QstatTest(unittest.TestCase):
     '''Tests for the qstat -f output parser'''
 
     def setUp(self):
-        conf_file_name = '../../conf/config.json'
+        conf_file_name = 'conf/config.json'
         with open(conf_file_name, 'r') as conf_file:
             self._config = json.load(conf_file)
-        self._config['cluster_db'] = 'data/cluster.db'
-        self._config['mock_balance'] = 'data/gbalance_new.txt'
+        self._config['cluster_db'] = 'tests/test/data/cluster.db'
+        self._config['mock_balance'] = 'tests/test/data/gbalance_new.txt'
 
     def test_parsing(self):
-        file_name = 'data/qstat_full.txt'
+        file_name = 'tests/test/data/qstat_full.txt'
         nr_jobs = 121
         test_jobs = [1, 50, 121]
         job_id = ['20025307.icts-p-svcs-1', '20034175.icts-p-svcs-1',
@@ -36,7 +36,7 @@ class QstatTest(unittest.TestCase):
             self.assertEqual(job_nodect[i], nodect)
 
     def test_parsing_large(self):
-        file_name = 'data/qstat_f_out.txt'
+        file_name = 'tests/test/data/qstat_f_out.txt'
         nr_jobs = 532
         test_jobs = [1, 50, 122]
         job_id = ['50011943.tier2-p-moab-2.icts.hpc.kuleuven.be',
