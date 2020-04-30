@@ -66,3 +66,6 @@ class PbsnodesParserTest(unittest.TestCase):
         self.assertEqual(node_info.memory, memory)
         self.assertEqual(node_info.cpuload, cpuload)
         self.assertEqual(len(node_info.jobs), nr_jobs)
+        self.assertEqual(4, len(node_info.gpu_status))
+        self.assertEqual('38%', node_info.gpu_status[0]['gpu_utilization'])
+        self.assertEqual('0%', node_info.gpu_status[3]['gpu_utilization'])

@@ -18,6 +18,7 @@ class NodeStatus(object):
         self._status = None
         self._note = None
         self._memory = 0
+        self._gpu_status = list()
 
     @property
     def hostname(self):
@@ -139,6 +140,16 @@ class NodeStatus(object):
     def note(self, note):
         '''set node's note'''
         self._note = note
+
+    @property
+    def gpu_status(self):
+        '''return GPU info, list of dicts, one per GPU, empty list if no GPUs
+        in node'''
+        return self._gpu_status
+
+    def add_gpu_status(self, gpu_status):
+        '''add a gpu_status dictionary to the Node object'''
+        self._gpu_status.append(gpu_status)
 
     def __str__(self):
         '''returns string representation for node status'''
