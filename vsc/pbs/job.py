@@ -1,5 +1,6 @@
 '''module to represent and manipulate PBS jobs'''
 
+from datetime import datetime
 import operator
 import os
 
@@ -313,6 +314,44 @@ class PbsJob(object):
             return self.events[-1].time_stamp
         else:
             return None
+
+    @property
+    def queue_time(self):
+        '''return queue time as reported by qstat'''
+        try:
+            return self._queue_time
+        except:
+            return None
+
+    @queue_time.setter
+    def queue_time(self, value):
+        '''set queue time as reported by qstat'''
+        if type(value) == str:
+            self._queue_time = datetime.strptime(value, '%c')
+        else:
+            self._queue_time = value
+
+    @property
+    def start_time(self):
+        '''return start time as reported by qstat'''
+        try:
+            return self._start_time
+        except:
+            return None
+    @start_time.setter
+    def start_time(self, value):
+        '''set start time as reported by qstat'''
+        if type(value) == str:
+            self._start_time = datetime.strptime(value, '%c')
+        else:
+            self._start_time = value
+
+    @property
+    def time_in_queue(self):
+        if self.state == 'Q':
+            return (datetime.now() - self.queue_time).total_seconds()
+        else:
+            return (self.start_time - self.queue_time).total_seconds()
 
     def attrs_to_str(self):
         '''return job attributes as a string, mainly for debug purposes'''
