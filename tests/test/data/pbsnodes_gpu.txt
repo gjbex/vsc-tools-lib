@@ -18,12 +18,3 @@ r22g35
      dedicated_numa_nodes = 0
      dedicated_cores = 0
      dedicated_threads = 27
-     gpu_status = gpu[3]=gpu_id=00000000:8A:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:8A:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=788 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=38%;gpu_memory_utilization=6%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=45 C,gpu[2]=gpu_id=00000000:89:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:89:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=485 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=34%;gpu_memory_utilization=1%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=37 C;gpu_display=Enabled,gpu[1]=gpu_id=00000000:62:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:62:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=5%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=35 C;gpu_display=Enabled,gpu[0]=gpu_id=00000000:61:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:61:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=873 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=42 C;gpu_display=Enabled,gpu_display=Enabled,driver_ver=418.67,timestamp=Fri Apr 24 11:34:11 2020
-     total_sockets = 2
-     total_numa_nodes = 2
-     total_cores = 36
-     total_threads = 36
-     dedicated_sockets = 0
-     dedicated_numa_nodes = 0
-     dedicated_cores = 0
-     dedicated_threads = 27
