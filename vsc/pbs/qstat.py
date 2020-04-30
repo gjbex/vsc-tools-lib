@@ -79,6 +79,10 @@ class QstatParser(object):
                 job.exec_host = exec_host
             elif line.startswith('Resource_List.partition ='):
                 job.partition = self._get_value(line)
+            elif line.startswith('qtime = '):
+                job.queue_time = self._get_value(line)
+            elif line.startswith('start_time = '):
+                job.start_time = self._get_value(line)
         job.add_resource_specs(resource_specs)
         job.add_resources_used(resources_used)
         return job
