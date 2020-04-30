@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='vsc-tools-lib-gjbex',  
-    version='0.9',
+    version='0.9.1',
     author="Geert Jan Bex",
     author_email="geertjan.bex@uhasselt.be",
     description="Python library for interacting with PBS, Adaptive Moab and MAM",
