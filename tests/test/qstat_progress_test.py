@@ -28,6 +28,8 @@ class QstatProgressTest(unittest.TestCase):
         job_start_times = [None,
                            'Sat Apr 18 15:42:00 2020',
                            'Mon Apr 20 14:32:53 2020']
+        job_run_times = [0, 515627, 345605, ]
+        job_remaining_times = [1, 518400 - 515627, 0]
         parser = QstatParser(self._config)
         with open(file_name, 'r') as qstat_file:
             jobs = parser.parse_file(qstat_file)
@@ -38,4 +40,8 @@ class QstatProgressTest(unittest.TestCase):
                          datetime.strptime(job_queue_times[i], '%c'))
             else:
                 delta = (datetime.now() - datetime.strptime(job_queue_times[i], '%c'))
-            self.assertAlmostEqual(delta.total_seconds(), jobs[test_jobs[i]].time_in_queue, places=0)
+            self.assertAlmostEqual(delta.total_seconds(),
+                                   jobs[test_jobs[i]].time_in_queue, places=0)
+            self.assertEqual(job_run_times[i], jobs[test_jobs[i]].walltime_used)
+            self.assertEqual(job_remaining_times[i],
+                             jobs[test_jobs[i]].walltime_remaining)

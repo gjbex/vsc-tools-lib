@@ -353,6 +353,23 @@ class PbsJob(object):
         else:
             return (self.start_time - self.queue_time).total_seconds()
 
+    @property
+    def walltime_used(self):
+        '''return the walltime already used by the job, 0 if queued'''
+        if self.state == 'Q':
+            return 0
+        else:
+            return self.resource_used('walltime')
+
+    @property
+    def walltime_remaining(self):
+        ''' return walltime remaining for a job, requested walltime if queued'''
+        if self.state == 'Q':
+            return self.resource_spec('walltime')
+        else:
+            delta = self.resource_spec('walltime') - self.resource_used('walltime')
+            return delta if delta >= 0 else 0
+
     def attrs_to_str(self):
         '''return job attributes as a string, mainly for debug purposes'''
         attr_str = ''
