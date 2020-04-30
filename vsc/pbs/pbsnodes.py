@@ -25,8 +25,9 @@ class PbsnodesParser:
                 else:
                     try:
                         nodes.append(self.parse_node(node_str.strip()))
-                    except Exception:
-                        print("problem with node\n'{0}'".format(node_str))
+                    except Exception as e:
+                        msg = "### warning: error parsing: '{}'\n"
+                        sys.stderr.write(msg.format(str(e)))
                     state = 'init'
         return nodes
 
@@ -50,7 +51,7 @@ class PbsnodesParser:
                     except ValueError:
                         if self._is_verbose:
                             msg = '### warnig: no value for {0}\n'
-                            sys.write(msg.format(key))
+                            sys.stderr.write(msg.format(key))
                         job_info[job_id][info_str] = None
         return job_info
         
@@ -82,6 +83,23 @@ class PbsnodesParser:
                     node_status.status[status_str[:pos]] = None
                 status_str = status_str[pos + 1:]
                 pos = status_str.find(',')
+
+    def parse_gpu_status(self, gpu_status_str):
+        '''parse the gpu_status entry'''
+        gpu_status = list()
+        gpu_strs = gpu_status_str.split(',')
+        for gpu_str in gpu_strs:
+            match = re.match(r'^gpu\[(\d+)\]=(.+)$', gpu_str)
+            if match is None:
+                msg = "### warning: can not parse gpu_status '{}'\n"
+                # sys.stderr.write(msg.format(gpu_str))
+                continue
+            gpu_info = {'gpu_nr': int(match.group(1))}
+            for info in match.group(2).split(';'):
+                key, value = info.split('=')
+                gpu_info[key] = value
+            gpu_status.append(gpu_info)
+        return gpu_status
 
     def parse_node(self, node_str):
         '''parse a string containing pbsnodes information of single node'''
@@ -121,4 +139,8 @@ class PbsnodesParser:
                 for job_item in job_str.split(','):
                     core, job = job_item.split('/')
                     node_status.jobs[core] = job
+            elif line.startswith('gpu_status = '):
+                _, gpu_status_str = line.split(' = ')
+                for gpu_status in self.parse_gpu_status(gpu_status_str):
+                    node_status.add_gpu_status(gpu_status)
         return node_status
