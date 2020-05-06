@@ -11,17 +11,17 @@ class PbsScriptCheckTest(unittest.TestCase):
     '''Tests for the Bash script checker'''
 
     def setUp(self):
-        conf_file_name = '../../conf/config.json'
-        event_file_name = '../../lib/events.json'
+        conf_file_name = 'conf/config.json'
+        event_file_name = 'lib/events.json'
         with open(conf_file_name, 'r') as conf_file:
             self._config = json.load(conf_file)
-        self._config['cluster_db'] = 'data/cluster.db'
-        self._config['mock_balance'] = 'data/gbalance_new.txt'
+        self._config['cluster_db'] = 'tests/test/data/cluster.db'
+        self._config['mock_balance'] = 'tests/test/data/gbalance_new.txt'
         with open(event_file_name, 'r') as event_file:
             self._event_defs = json.load(event_file)
 
     def test_module_laod(self):
-        file_name = 'data/module_laod.pbs'
+        file_name = 'tests/test/data/module_laod.pbs'
         event_names = ['missspelled']
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
@@ -37,7 +37,7 @@ class PbsScriptCheckTest(unittest.TestCase):
         self.assertEqual(len(event_names), script_checker.nr_warnings)
 
     def test_working_dir(self):
-        file_name = 'data/working_dir.pbs'
+        file_name = 'tests/test/data/working_dir.pbs'
         event_names = ['missspelled']
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
@@ -53,7 +53,7 @@ class PbsScriptCheckTest(unittest.TestCase):
         self.assertEqual(len(event_names), script_checker.nr_warnings)
 
     def test_working_dir_no_var(self):
-        file_name = 'data/working_dir_no_var.pbs'
+        file_name = 'tests/test/data/working_dir_no_var.pbs'
         event_names = ['missspelled']
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:

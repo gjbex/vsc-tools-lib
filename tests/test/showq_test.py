@@ -8,7 +8,7 @@ class QstatTest(unittest.TestCase):
     '''Tests for the showq output parser'''
 
     def test_parsing(self):
-        file_name = 'data/showq.txt'
+        file_name = 'tests/test/data/showq.txt'
         nr_categories = 3
         nr_active_jobs = 62
         nr_eligible_jobs = 60

@@ -11,17 +11,17 @@ class JObCheckerTest(unittest.TestCase):
     '''Tests for the PBS job checker'''
 
     def setUp(self):
-        conf_file_name = '../../conf/config.json'
-        event_file_name = '../../lib/events.json'
+        conf_file_name = 'conf/config.json'
+        event_file_name = 'lib/events.json'
         with open(conf_file_name, 'r') as conf_file:
             self._config = json.load(conf_file)
-        self._config['cluster_db'] = 'data/cluster.db'
-        self._config['mock_balance'] = 'data/gbalance_new.txt'
+        self._config['cluster_db'] = 'tests/test/data/cluster.db'
+        self._config['mock_balance'] = 'tests/test/data/gbalance_new.txt'
         with open(event_file_name, 'r') as event_file:
             self._event_defs = json.load(event_file)
 
     def test_correct(self):
-        file_name = 'data/correct.pbs'
+        file_name = 'tests/test/data/correct.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
         parser = PbsScriptParser(self._config, self._event_defs)
@@ -33,7 +33,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(nr_semantic_events, len(checker.events))
 
     def test_too_large_ppn(self):
-        file_name = 'data/too_large_ppn.pbs'
+        file_name = 'tests/test/data/too_large_ppn.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 1
         event_name = 'insufficient_ppn_nodes'
@@ -47,7 +47,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(event_name, checker.events[0]['id'])
 
     def test_too_many_nodes(self):
-        file_name = 'data/too_many_nodes.pbs'
+        file_name = 'tests/test/data/too_many_nodes.pbs'
         nr_syntax_events = 0
         event_names = ['insufficient_nodes', 'insufficient_ppn_nodes',
                        'insufficient_nodes_mem']
@@ -62,7 +62,7 @@ class JObCheckerTest(unittest.TestCase):
             self.assertTrue(event['id'] in event_names)
 
     def test_mem_pmem(self):
-        file_name = 'data/mem_pmem.pbs'
+        file_name = 'tests/test/data/mem_pmem.pbs'
         event_names = ['both_mem_pmem_specs']
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
@@ -75,7 +75,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(len(event_names), checker.nr_warnings)
 
     def test_mem_violation(self):
-        file_name = 'data/mem_violation.pbs'
+        file_name = 'tests/test/data/mem_violation.pbs'
         event_names = ['insufficient_mem']
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
@@ -88,7 +88,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(len(event_names), checker.nr_errors)
 
     def test_pmem_violation(self):
-        file_name = 'data/pmem_violation.pbs'
+        file_name = 'tests/test/data/pmem_violation.pbs'
         event_names = ['insufficient_nodes_mem']
         parser = PbsScriptParser(self._config, self._event_defs)
         with open(file_name, 'r') as pbs_file:
@@ -101,7 +101,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(len(event_names), checker.nr_errors)
 
     def test_unknown_property(self):
-        file_name = 'data/unknown_property.pbs'
+        file_name = 'tests/test/data/unknown_property.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 1
         event_name = 'unknown_property'
@@ -115,7 +115,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(event_name, checker.events[0]['id'])
 
     def test_unknown_feature(self):
-        file_name = 'data/unknown_feature.pbs'
+        file_name = 'tests/test/data/unknown_feature.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 1
         event_name = 'unknown_feature'
@@ -129,7 +129,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(event_name, checker.events[0]['id'])
 
     def test_queue_no_walltime(self):
-        file_name = 'data/queue_no_walltime.pbs'
+        file_name = 'tests/test/data/queue_no_walltime.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
         queue_name = 'q72h'
@@ -146,7 +146,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(expected_walltime, job.resource_spec('walltime'))
 
     def test_walltime_and_queue(self):
-        file_name = 'data/walltime_and_queue.pbs'
+        file_name = 'tests/test/data/walltime_and_queue.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
         queue_name = 'q72h'
@@ -163,7 +163,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(expected_walltime, job.resource_spec('walltime'))
 
     def test_queue_and_walltime(self):
-        file_name = 'data/queue_and_walltime.pbs'
+        file_name = 'tests/test/data/queue_and_walltime.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
         queue_name = 'q72h'
@@ -180,7 +180,7 @@ class JObCheckerTest(unittest.TestCase):
         self.assertEqual(expected_walltime, job.resource_spec('walltime'))
 
     def test_walltime_no_queue(self):
-        file_name = 'data/walltime_no_queue.pbs'
+        file_name = 'tests/test/data/walltime_no_queue.pbs'
         nr_syntax_events = 0
         nr_semantic_events = 0
         queue_name = 'qdef'
