@@ -155,7 +155,7 @@ class NodeStatus(object):
 
     def add_gpu_status(self, gpu_status):
         '''add a gpu_status dictionary to the Node object'''
-        self._gpu_status.append(gpu_status)
+        self._gpu_status.insert(0, gpu_status)
 
     @property
     def gpu_states(self):

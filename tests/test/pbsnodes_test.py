@@ -60,7 +60,7 @@ class PbsnodesParserTest(unittest.TestCase):
         cpuload = 3.02/36
         nr_jobs = 3
         nr_gpus = 4
-        gpu_states = ['Unallocated', 'Exclusive', 'Exclusive', 'Exclusive']
+        gpu_states = ['Exclusive', 'Exclusive', 'Exclusive', 'Unallocated',]
         parser = PbsnodesParser()
         with open(file_name, 'r') as pbsnodes_file:
             node_infos = parser.parse_file(pbsnodes_file)
@@ -72,7 +72,7 @@ class PbsnodesParserTest(unittest.TestCase):
         self.assertEqual(node_info.cpuload, cpuload)
         self.assertEqual(len(node_info.jobs), nr_jobs)
         self.assertEqual(4, len(node_info.gpu_status))
-        self.assertEqual('38%', node_info.gpu_status[0]['gpu_utilization'])
-        self.assertEqual('0%', node_info.gpu_status[3]['gpu_utilization'])
+        self.assertEqual('38%', node_info.gpu_status[3]['gpu_utilization'])
+        self.assertEqual('0%', node_info.gpu_status[0]['gpu_utilization'])
         self.assertEqual(nr_gpus, node_info.gpus)
         self.assertEqual(gpu_states, node_info.gpu_states)
