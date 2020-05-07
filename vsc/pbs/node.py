@@ -18,6 +18,7 @@ class NodeStatus(object):
         self._status = None
         self._note = None
         self._memory = 0
+        self._gpus = 0
         self._gpu_status = list()
 
     @property
@@ -140,6 +141,11 @@ class NodeStatus(object):
     def note(self, note):
         '''set node's note'''
         self._note = note
+
+    @property
+    def gpus(self):
+        '''returns number of GPUs, 0 for non-GPU nodes'''
+        return self._gpus
 
     @property
     def gpu_status(self):

@@ -139,6 +139,9 @@ class PbsnodesParser:
                 for job_item in job_str.split(','):
                     core, job = job_item.split('/')
                     node_status.jobs[core] = job
+            elif line.startswith('gpus = '):
+                _, gpus = line.split(' = ')
+                node_status._gpus = int(gpus)
             elif line.startswith('gpu_status = '):
                 _, gpu_status_str = line.split(' = ')
                 for gpu_status in self.parse_gpu_status(gpu_status_str):

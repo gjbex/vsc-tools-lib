@@ -16,6 +16,7 @@ class PbsnodesParserTest(unittest.TestCase):
         loadave = '0.10'
         netload = '250792032533'
         state = 'free'
+        nr_gpus = 0
         parser = PbsnodesParser(is_verbose=True)
         with open(file_name, 'r') as pbsnodes_file:
             os_stderr = sys.stderr
@@ -34,6 +35,7 @@ class PbsnodesParserTest(unittest.TestCase):
         self.assertEqual(netload, node_info.status['netload'])
         self.assertEqual(netload, node_info.status['netload'])
         self.assertEqual(state, node_info.state)
+        self.assertEqual(nr_gpus, node_info.gpus)
 
     def test_parsing(self):
         file_name = 'tests/test/data/pbsnodes.txt'
@@ -56,6 +58,7 @@ class PbsnodesParserTest(unittest.TestCase):
         memory = 192494548*1024
         cpuload = 3.02/36
         nr_jobs = 3
+        nr_gpus = 4
         parser = PbsnodesParser()
         with open(file_name, 'r') as pbsnodes_file:
             node_infos = parser.parse_file(pbsnodes_file)
@@ -69,3 +72,4 @@ class PbsnodesParserTest(unittest.TestCase):
         self.assertEqual(4, len(node_info.gpu_status))
         self.assertEqual('38%', node_info.gpu_status[0]['gpu_utilization'])
         self.assertEqual('0%', node_info.gpu_status[3]['gpu_utilization'])
+        self.assertEqual(nr_gpus, node_info.gpus)
