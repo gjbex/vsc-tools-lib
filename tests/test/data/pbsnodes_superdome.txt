@@ -1,0 +1,18 @@
+tier2-p-superdome-1
+     state = job-exclusive
+     power_state = Running
+     np = 112
+     properties = type_superdome,r28
+     ntype = cluster
+     jobs = 0-13/50327748.tier2-p-moab-2.tier2.hpc.kuleuven.be,14-27/50327749.tier2-p-moab-2.tier2.hpc.kuleuven.be,28-41/50327750.tier2-p-moab-2.tier2.hpc.kuleuven.be,42-55/50327751.tier2-p-moab-2.tier2.hpc.kuleuven.be,56-69/50327752.tier2-p-moab-2.tier2.hpc.kuleuven.be,70-83/50327753.tier2-p-moab-2.tier2.hpc.kuleuven.be,98-111/50327757.tier2-p-moab-2.tier2.hpc.kuleuven.be,84-97/50327758.tier2-p-moab-2.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux tier2-p-superdome-1 3.10.0-1062.1.2.el7.x86_64 #1 SMP Mon Sep 16 14:19:51 EDT 2019 x86_64,sessions=21481 35094 35415 35880 36386 36885 37421 50332 113575,nsessions=9,nusers=2,idletime=350277,totmem=6143460704kb,availmem=6087208412kb,physmem=6142412128kb,ncpus=112,loadave=110.89,gres=,netload=8013973482197,state=free,varattr=puppethpc=20200311-147;puppethpccode=20200311-4434-gitb306e1cd;sudo=1-8-23-3-el7;kernel=3-10-0-1062-1-2-el7-x86_64,cpuclock=Fixed,macaddr=48:df:37:39:b7:50,version=6.1.3,rectime=1587720829,jobs=50327748.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327749.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327750.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327751.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327752.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327753.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327757.tier2-p-moab-2.tier2.hpc.kuleuven.be 50327758.tier2-p-moab-2.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 8
+     total_numa_nodes = 8
+     total_cores = 112
+     total_threads = 112
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 8
+     dedicated_cores = 112
+     dedicated_threads = 112

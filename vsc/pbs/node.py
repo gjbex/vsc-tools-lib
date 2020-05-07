@@ -18,6 +18,7 @@ class NodeStatus(object):
         self._status = None
         self._note = None
         self._memory = 0
+        self._gpus = 0
         self._gpu_status = list()
 
     @property
@@ -142,6 +143,11 @@ class NodeStatus(object):
         self._note = note
 
     @property
+    def gpus(self):
+        '''returns number of GPUs, 0 for non-GPU nodes'''
+        return self._gpus
+
+    @property
     def gpu_status(self):
         '''return GPU info, list of dicts, one per GPU, empty list if no GPUs
         in node'''
@@ -149,7 +155,15 @@ class NodeStatus(object):
 
     def add_gpu_status(self, gpu_status):
         '''add a gpu_status dictionary to the Node object'''
-        self._gpu_status.append(gpu_status)
+        self._gpu_status.insert(0, gpu_status)
+
+    @property
+    def gpu_states(self):
+        '''returns a list of GPU states, empty if the system has none'''
+        states = list()
+        for status in self._gpu_status:
+            states.append(status['gpu_state'])
+        return states
 
     def __str__(self):
         '''returns string representation for node status'''

@@ -1,0 +1,38 @@
+r22g41
+     state = down,offline
+     power_state = Running
+     np = 36
+     properties = r22g,singleisland,type_skylake_gpu,skylake,beeond
+     ntype = cluster
+     note = ERROR CRIT: [mount_vsc-hard-mounts_leuven-apps] Mount point /vsc-hard-mounts/leuven-apps is not mounted, remount failed: exit status 32
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 4
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 36
+     total_threads = 36
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r24g35
+     state = down
+     power_state = Running
+     np = 36
+     properties = r24g,singleisland,type_skylake_gpu,skylake,beeond
+     ntype = cluster
+     status = opsys=linux,uname=Linux r24g35 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=76545,nsessions=1,nusers=1,idletime=5004500,totmem=193543124kb,availmem=184987204kb,physmem=192494548kb,ncpus=36,loadave=0.56,gres=,netload=44985732835315,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200430-4587-gitf69d1602;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=OnDemand:1000MHz,macaddr=28:80:23:f7:69:78,version=6.1.3,rectime=1588337124,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 4
+     gpu_status = gpu[3]=gpu_id=00000000:8A:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:8A:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=0 MB;gpu_mode=Default;gpu_state=Unallocated;gpu_utilization=4%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=41 C,gpu[2]=gpu_id=00000000:89:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:89:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=0 MB;gpu_mode=Default;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=40 C;gpu_display=Enabled,gpu[1]=gpu_id=00000000:62:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:62:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=0 MB;gpu_mode=Default;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=37 C;gpu_display=Enabled,gpu[0]=gpu_id=00000000:61:00.0;gpu_pci_device_id=368644318;gpu_pci_location_id=00000000:61:00.0;gpu_product_name=Tesla P100-SXM2-16GB;gpu_memory_total=16280 MB;gpu_memory_used=0 MB;gpu_mode=Default;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=40 C;gpu_display=Enabled,gpu_display=Enabled,driver_ver=418.67,timestamp=Fri May  1 14:45:19 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 36
+     total_threads = 36
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0

@@ -1,0 +1,4 @@
+include lib/events.json
+include conf/analysis.json
+include conf/config.json
+include conf/cluster.db
