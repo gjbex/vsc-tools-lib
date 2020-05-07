@@ -157,6 +157,14 @@ class NodeStatus(object):
         '''add a gpu_status dictionary to the Node object'''
         self._gpu_status.append(gpu_status)
 
+    @property
+    def gpu_states(self):
+        '''returns a list of GPU states, empty if the system has none'''
+        states = list()
+        for status in self._gpu_status:
+            states.append(status['gpu_state'])
+        return states
+
     def __str__(self):
         '''returns string representation for node status'''
         node_str = self.hostname
