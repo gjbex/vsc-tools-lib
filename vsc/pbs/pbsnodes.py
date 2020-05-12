@@ -56,6 +56,7 @@ class PbsnodesParser:
         return job_info
         
     def parse_status(self, node_status, status_str):
+        '''parse the status entry'''
         pos = status_str.find(',')
         while pos >= 0:
             if status_str.startswith('jobs='):
@@ -77,8 +78,8 @@ class PbsnodesParser:
                     node_status.status[key] = value
                 except ValueError:
                     if self._is_verbose:
-                        msg = '### warning: no value for {0} on {1}\n'
-                        sys.stderr.write(msg.format(key,
+                        msg = '### warning: {0} can not be parsed for {1}\n'
+                        sys.stderr.write(msg.format(status_str[:pos],
                                                     node_status.hostname))
                     node_status.status[status_str[:pos]] = None
                 status_str = status_str[pos + 1:]
