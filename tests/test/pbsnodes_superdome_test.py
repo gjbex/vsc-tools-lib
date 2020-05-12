@@ -13,7 +13,7 @@ class PbsnodesParserTest(unittest.TestCase):
         hostnames = ['tier2-p-superdome-1', ]
         states = ['job-exclusive', ]
         nps = [112, ]
-        parser = PbsnodesParser(is_verbose=True)
+        parser = PbsnodesParser(is_verbose=False)
         with open(file_name, 'r') as pbsnodes_file:
             node_infos = parser.parse_file(pbsnodes_file)
         self.assertEqual(nr_nodes, len(node_infos))
