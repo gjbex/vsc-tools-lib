@@ -1,0 +1,2805 @@
+r10n5
+     state = job-exclusive
+     power_state = Running
+     np = 20
+     properties = type_K40c,haswell,gpu,K40c,r10
+     ntype = cluster
+     jobs = 0-19/22100857.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r10n5 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=2296 3488 3652 3837 18964,nsessions=5,nusers=2,idletime=433789,totmem=62700180kb,availmem=60231092kb,physmem=61651604kb,ncpus=20,loadave=1.31,gres=,netload=2230301619882,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=38:63:bb:44:42:c8,version=6.1.3,rectime=1589288437,jobs=22100857.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 2
+     gpu_status = gpu[1]=gpu_id=00000000:84:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:84:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=90%;gpu_memory_utilization=4%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=42 C,gpu[0]=gpu_id=00000000:08:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:08:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Exclusive;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=42 C;gpu_display=Disabled,gpu_display=Disabled,driver_ver=418.67,timestamp=Tue May 12 15:00:33 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 20
+     total_threads = 20
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r10n6
+     state = free
+     power_state = Running
+     np = 20
+     properties = type_K40c,haswell,gpu,K40c,r10
+     ntype = cluster
+     status = opsys=linux,uname=Linux r10n6 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=17484,nsessions=1,nusers=1,idletime=9066103,totmem=62700188kb,availmem=59544552kb,physmem=61651612kb,ncpus=20,loadave=1.18,gres=,netload=1980161778030,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=38:63:bb:44:42:a4,version=6.1.3,rectime=1589288423,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 2
+     gpu_status = gpu[1]=gpu_id=00000000:84:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:84:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=94%;gpu_memory_utilization=5%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=39 C,gpu[0]=gpu_id=00000000:08:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:08:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=1;gpu_double_bit_ecc_errors=0;gpu_temperature=42 C;gpu_display=Disabled,gpu_display=Disabled,driver_ver=418.67,timestamp=Tue May 12 15:00:23 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 20
+     total_threads = 20
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r10n7
+     state = free
+     power_state = Running
+     np = 20
+     properties = type_K40c,haswell,gpu,K40c,r10
+     ntype = cluster
+     status = opsys=linux,uname=Linux r10n7 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=7623,nsessions=1,nusers=1,idletime=3098610,totmem=62700188kb,availmem=60025384kb,physmem=61651612kb,ncpus=20,loadave=1.57,gres=,netload=1753431303312,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=38:63:bb:44:42:70,version=6.1.3,rectime=1589288410,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 2
+     gpu_status = gpu[1]=gpu_id=00000000:84:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:84:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=90%;gpu_memory_utilization=4%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=39 C,gpu[0]=gpu_id=00000000:08:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:08:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=10;gpu_double_bit_ecc_errors=0;gpu_temperature=43 C;gpu_display=Disabled,gpu_display=Disabled,driver_ver=418.67,timestamp=Tue May 12 15:00:05 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 20
+     total_threads = 20
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r10n8
+     state = free
+     power_state = Running
+     np = 20
+     properties = type_K40c,haswell,gpu,K40c,r10
+     ntype = cluster
+     status = opsys=linux,uname=Linux r10n8 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3826,nsessions=1,nusers=1,idletime=24183664,totmem=62700188kb,availmem=59360664kb,physmem=61651612kb,ncpus=20,loadave=1.43,gres=,netload=1791585112401,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=38:63:bb:44:42:d0,version=6.1.3,rectime=1589288430,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 2
+     gpu_status = gpu[1]=gpu_id=00000000:84:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:84:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=98%;gpu_memory_utilization=5%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=0;gpu_double_bit_ecc_errors=0;gpu_temperature=41 C,gpu[0]=gpu_id=00000000:08:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:08:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=11441 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Enabled;gpu_single_bit_ecc_errors=26;gpu_double_bit_ecc_errors=0;gpu_temperature=40 C;gpu_display=Disabled,gpu_display=Disabled,driver_ver=418.67,timestamp=Tue May 12 15:00:26 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 20
+     total_threads = 20
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r10n9
+     state = free
+     power_state = Running
+     np = 20
+     properties = type_K40c,haswell,gpu,K40c,r10
+     ntype = cluster
+     status = opsys=linux,uname=Linux r10n9 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3114,nsessions=1,nusers=1,idletime=24183668,totmem=62700188kb,availmem=45565288kb,physmem=61651612kb,ncpus=20,loadave=0.33,gres=,netload=1555535452267,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=38:63:bb:44:42:40,version=6.1.3,rectime=1589288424,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     gpus = 2
+     gpu_status = gpu[1]=gpu_id=00000000:84:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:84:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=0%;gpu_memory_total=12206 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Disabled;gpu_temperature=38 C,gpu[0]=gpu_id=00000000:08:00.0;gpu_pci_device_id=270799070;gpu_pci_location_id=00000000:08:00.0;gpu_product_name=Tesla K40c;gpu_fan_speed=23%;gpu_memory_total=12206 MB;gpu_memory_used=0 MB;gpu_mode=Exclusive_Process;gpu_state=Unallocated;gpu_utilization=0%;gpu_memory_utilization=0%;gpu_ecc_mode=Disabled;gpu_temperature=37 C;gpu_display=Disabled,gpu_display=Disabled,driver_ver=418.67,timestamp=Tue May 12 15:00:23 2020
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 20
+     total_threads = 20
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r04i02n01
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100701.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=32425 30245,nsessions=2,nusers=2,idletime=13918453,totmem=62699580kb,availmem=56540512kb,physmem=61651004kb,ncpus=24,loadave=8.00,gres=,netload=1666783695491,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:67:50,version=6.1.3,rectime=1589288415,jobs=22100701.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r04i02n02
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100566.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=1367 13203,nsessions=2,nusers=2,idletime=16067014,totmem=62699580kb,availmem=54966952kb,physmem=61651004kb,ncpus=24,loadave=22.88,gres=,netload=2169623670843,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:68:30,version=6.1.3,rectime=1589288424,jobs=22100566.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r04i02n03
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r04i02n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=19759,nsessions=1,nusers=1,idletime=24193200,totmem=62699580kb,availmem=54650180kb,physmem=61651004kb,ncpus=24,loadave=0.07,gres=,netload=2429550532927,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4605-git22d595a6;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:78:30,version=6.1.3,rectime=1589288401,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r04i02n04
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100567.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=17072 20220,nsessions=2,nusers=2,idletime=18294194,totmem=62699580kb,availmem=54059536kb,physmem=61651004kb,ncpus=24,loadave=24.44,gres=,netload=3907703988377,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:65:70,version=6.1.3,rectime=1589288410,jobs=22100567.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r04i02n05
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100568.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=18471 20565,nsessions=2,nusers=2,idletime=15737786,totmem=62699580kb,availmem=46166924kb,physmem=61651004kb,ncpus=24,loadave=24.23,gres=,netload=1092934602115,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:8d:a0,version=6.1.3,rectime=1589288428,jobs=22100568.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r04i02n06
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100569.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=497 14309,nsessions=2,nusers=2,idletime=24193221,totmem=62699580kb,availmem=53255712kb,physmem=61651004kb,ncpus=24,loadave=24.22,gres=,netload=6998874763616,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:77:80,version=6.1.3,rectime=1589288438,jobs=22100569.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r04i02n07
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-3/22100578.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=11461 12006 12338 12339 12344 12345 21563,nsessions=7,nusers=2,idletime=19871668,totmem=62699580kb,availmem=50941908kb,physmem=61651004kb,ncpus=24,loadave=4.89,gres=,netload=11425676744641,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6a:d0,version=6.1.3,rectime=1589288396,jobs=22100578.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 4
+
+r04i02n08
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100711.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=9196 32601,nsessions=2,nusers=2,idletime=13658107,totmem=62699580kb,availmem=56361704kb,physmem=61651004kb,ncpus=24,loadave=20.03,gres=,netload=11218131947570,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4600-git670da8fe;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:7e:b0,version=6.1.3,rectime=1589288419,jobs=22100711.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r04i02n09
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-3/22097565.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=11403 24089,nsessions=2,nusers=2,idletime=5778924,totmem=62699580kb,availmem=47121220kb,physmem=61651004kb,ncpus=24,loadave=4.00,gres=,netload=1652708841901,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-4-el7_7-2;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:77:c0,version=6.1.3,rectime=1589288396,jobs=22097565.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 4
+
+r04i02n10
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100575.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=5138 26508,nsessions=2,nusers=2,idletime=19960798,totmem=62699580kb,availmem=51597968kb,physmem=61651004kb,ncpus=24,loadave=24.32,gres=,netload=7286360437924,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6b:20,version=6.1.3,rectime=1589288414,jobs=22100575.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r04i02n11
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r04i02n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=13987,nsessions=1,nusers=1,idletime=24112778,totmem=62699580kb,availmem=55948100kb,physmem=61651004kb,ncpus=24,loadave=0.09,gres=,netload=113147117862854,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4605-git22d595a6;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:77:f0,version=6.1.3,rectime=1589288416,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r04i02n12
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r04i02n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=24189,nsessions=1,nusers=1,idletime=13982109,totmem=62699580kb,availmem=56267884kb,physmem=61651004kb,ncpus=24,loadave=0.00,gres=,netload=2642270115475,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4602-git3a8ac3d0;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:78:d0,version=6.1.3,rectime=1589288429,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r04i02n13
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-3/22098186.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4042 25327,nsessions=2,nusers=2,idletime=10204039,totmem=62699580kb,availmem=47577300kb,physmem=61651004kb,ncpus=24,loadave=4.04,gres=,netload=1113299609875,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-4-el7_7-2;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:67:30,version=6.1.3,rectime=1589288396,jobs=22098186.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 4
+
+r04i02n14
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100590.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6945 19462,nsessions=2,nusers=2,idletime=24110291,totmem=62699580kb,availmem=56151032kb,physmem=61651004kb,ncpus=24,loadave=7.97,gres=,netload=4599464597205,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6a:a0,version=6.1.3,rectime=1589288432,jobs=22100590.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r04i02n15
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r04i02n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=32037,nsessions=1,nusers=1,idletime=23238472,totmem=62699580kb,availmem=55983320kb,physmem=61651004kb,ncpus=24,loadave=0.12,gres=,netload=10152116766361,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:65:90,version=6.1.3,rectime=1589288408,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r04i02n16
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r04,r04i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100618.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r04i02n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=8106 11884,nsessions=2,nusers=2,idletime=15737188,totmem=62699580kb,availmem=20347028kb,physmem=61651004kb,ncpus=24,loadave=19.95,gres=,netload=2015409139966,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6b:70,version=6.1.3,rectime=1589288403,jobs=22100618.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r05i02n01
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100511.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=12145 26300,nsessions=2,nusers=2,idletime=13904966,totmem=62699580kb,availmem=55944300kb,physmem=61651004kb,ncpus=24,loadave=24.34,gres=,netload=5265765243669,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6c:00,version=6.1.3,rectime=1589288438,jobs=22100511.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r05i02n02
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-3/22100508.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3133 16562,nsessions=2,nusers=2,idletime=19871839,totmem=62699580kb,availmem=36546192kb,physmem=61651004kb,ncpus=24,loadave=1.00,gres=,netload=14230222055031,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6b:50,version=6.1.3,rectime=1589288431,jobs=22100508.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 4
+
+r05i02n03
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-3/22099171.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=20187 25061,nsessions=2,nusers=2,idletime=9087324,totmem=62699580kb,availmem=52438340kb,physmem=61651004kb,ncpus=24,loadave=4.11,gres=,netload=4199194400281,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-4-el7_7-2;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:67:a0,version=6.1.3,rectime=1589288428,jobs=22099171.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 4
+
+r05i02n04
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100168.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=893 31711,nsessions=2,nusers=2,idletime=8976939,totmem=62699580kb,availmem=9525184kb,physmem=61651004kb,ncpus=24,loadave=20.00,gres=,netload=1061228184790,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:67:70,version=6.1.3,rectime=1589288403,jobs=22100168.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r05i02n05
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100512.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=8929 12422,nsessions=2,nusers=2,idletime=2871488,totmem=62699580kb,availmem=52833552kb,physmem=61651004kb,ncpus=24,loadave=23.91,gres=,netload=2039673416012,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6a:e0,version=6.1.3,rectime=1589288424,jobs=22100512.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r05i02n06
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6331 30376,nsessions=2,nusers=2,idletime=24193222,totmem=62699580kb,availmem=53171416kb,physmem=61651004kb,ncpus=24,loadave=24.34,gres=,netload=6111445298879,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200506-4595-git26f1d6ee;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:64:60,version=6.1.3,rectime=1589288415,jobs=22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r05i02n07
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=549 20738,nsessions=2,nusers=2,idletime=14340011,totmem=62699580kb,availmem=50920732kb,physmem=61651004kb,ncpus=24,loadave=24.34,gres=,netload=7776476559909,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200506-4595-git26f1d6ee;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6b:d0,version=6.1.3,rectime=1589288435,jobs=22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r05i02n08
+     state = down
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     note = r5i2n8 - end_support: "2020-04-30T02:00:00+02:00"
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 0
+     total_numa_nodes = 0
+     total_cores = 0
+     total_threads = 0
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r05i02n09
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=8136 13867,nsessions=2,nusers=2,idletime=15530960,totmem=62699580kb,availmem=50696572kb,physmem=61651004kb,ncpus=24,loadave=24.22,gres=,netload=1260524816593,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4596-git6f7b05f2;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:67:60,version=6.1.3,rectime=1589288400,jobs=22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r05i02n10
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100447.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=21126 23207,nsessions=2,nusers=2,idletime=24199177,totmem=62699580kb,availmem=55149020kb,physmem=61651004kb,ncpus=24,loadave=19.99,gres=,netload=23100684264968,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:65:b0,version=6.1.3,rectime=1589288439,jobs=22100447.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r05i02n11
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100728.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=11437 15621,nsessions=2,nusers=2,idletime=24199175,totmem=62699580kb,availmem=52971992kb,physmem=61651004kb,ncpus=24,loadave=1.07,gres=,netload=12439127364278,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4605-git22d595a6;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:65:50,version=6.1.3,rectime=1589288400,jobs=22100728.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r05i02n12
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=23467 26827,nsessions=2,nusers=2,idletime=24089073,totmem=62699580kb,availmem=50296924kb,physmem=61651004kb,ncpus=24,loadave=24.64,gres=,netload=6971137364503,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200506-4595-git26f1d6ee;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:66:d0,version=6.1.3,rectime=1589288416,jobs=22097490.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r05i02n13
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r05i02n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3985,nsessions=1,nusers=1,idletime=5784337,totmem=62699580kb,availmem=55944364kb,physmem=61651004kb,ncpus=24,loadave=0.15,gres=,netload=603628071121,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4602-git3a8ac3d0;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6a:b0,version=6.1.3,rectime=1589288438,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r05i02n14
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-3/22100181.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=7431 31774,nsessions=2,nusers=2,idletime=24199141,totmem=62699580kb,availmem=48350324kb,physmem=61651004kb,ncpus=24,loadave=4.00,gres=,netload=47083535906987,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:65:20,version=6.1.3,rectime=1589288423,jobs=22100181.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 4
+
+r05i02n15
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r05i02n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=12495,nsessions=1,nusers=1,idletime=16771852,totmem=62699580kb,availmem=40770584kb,physmem=61651004kb,ncpus=24,loadave=0.06,gres=,netload=656475623488,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:6b:30,version=6.1.3,rectime=1589288401,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r05i02n16
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r05,r05i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100513.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r05i02n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3994 5362,nsessions=2,nusers=2,idletime=3366695,totmem=62699580kb,availmem=55887736kb,physmem=61651004kb,ncpus=24,loadave=24.13,gres=,netload=436360933800,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:66:40,version=6.1.3,rectime=1589288407,jobs=22100513.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r08i00n01
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100703.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r08i00n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15067 16959,nsessions=2,nusers=2,idletime=16986929,totmem=62699580kb,availmem=50690156kb,physmem=61651004kb,ncpus=24,loadave=1.00,gres=,netload=6852600595474,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:7e:f0,version=6.1.3,rectime=1589288409,jobs=22100703.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r08i00n02
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4142,nsessions=1,nusers=1,idletime=24192890,totmem=62699580kb,availmem=58180020kb,physmem=61651004kb,ncpus=24,loadave=0.00,gres=,netload=7942580708700,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4605-git22d595a6;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:66:a0,version=6.1.3,rectime=1589288420,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n03
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6276,nsessions=1,nusers=1,idletime=24185791,totmem=62699580kb,availmem=52934816kb,physmem=61651004kb,ncpus=24,loadave=0.04,gres=,netload=4555356873715,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:58:d0,version=6.1.3,rectime=1589288440,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n04
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4101,nsessions=1,nusers=1,idletime=24192968,totmem=62699580kb,availmem=46728928kb,physmem=61651004kb,ncpus=24,loadave=0.08,gres=,netload=30128929015593,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:5f:c0,version=6.1.3,rectime=1589288425,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n05
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=11191,nsessions=1,nusers=1,idletime=24192952,totmem=62699580kb,availmem=51008176kb,physmem=61651004kb,ncpus=24,loadave=0.04,gres=,netload=2258541326451,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4605-git22d595a6;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:61:10,version=6.1.3,rectime=1589288426,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n06
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=13122,nsessions=1,nusers=1,idletime=16925950,totmem=62699580kb,availmem=54562236kb,physmem=61651004kb,ncpus=24,loadave=0.26,gres=,netload=5325849946132,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:58:a0,version=6.1.3,rectime=1589288398,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n07
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=28789,nsessions=1,nusers=1,idletime=24192935,totmem=62699580kb,availmem=54794340kb,physmem=61651004kb,ncpus=24,loadave=0.00,gres=,netload=2975960132014,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:51:30,version=6.1.3,rectime=1589288422,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n08
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=24978,nsessions=1,nusers=1,idletime=15739646,totmem=62699580kb,availmem=60534332kb,physmem=61651004kb,ncpus=24,loadave=0.00,gres=,netload=1316909303109,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4605-git22d595a6;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:61:50,version=6.1.3,rectime=1589288401,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n09
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4060,nsessions=1,nusers=1,idletime=5880820,totmem=62699580kb,availmem=55999476kb,physmem=61651004kb,ncpus=24,loadave=0.17,gres=,netload=1102471113947,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:67:20,version=6.1.3,rectime=1589288436,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n10
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=30841,nsessions=1,nusers=1,idletime=15738595,totmem=62699580kb,availmem=45940244kb,physmem=61651004kb,ncpus=24,loadave=0.02,gres=,netload=980540951374,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:66:90,version=6.1.3,rectime=1589288435,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n11
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=8588,nsessions=1,nusers=1,idletime=24192909,totmem=62699580kb,availmem=57238764kb,physmem=61651004kb,ncpus=24,loadave=0.00,gres=,netload=2288118365476,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:62:90,version=6.1.3,rectime=1589288434,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n12
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     jobs = 0-7/22099328.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r08i00n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=764 8195,nsessions=2,nusers=2,idletime=13747128,totmem=62699580kb,availmem=45676364kb,physmem=61651004kb,ncpus=24,loadave=8.00,gres=,netload=4840446544302,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200506-4595-git26f1d6ee;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:8a:e0,version=6.1.3,rectime=1589288424,jobs=22099328.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 8
+
+r08i00n13
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=21101,nsessions=1,nusers=1,idletime=15739305,totmem=62699580kb,availmem=56112184kb,physmem=61651004kb,ncpus=24,loadave=0.06,gres=,netload=1829577470491,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4600-git670da8fe;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:60:e0,version=6.1.3,rectime=1589288421,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n14
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=1843,nsessions=1,nusers=1,idletime=24192982,totmem=62699580kb,availmem=53119572kb,physmem=61651004kb,ncpus=24,loadave=0.00,gres=,netload=5341560226107,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4601-gitb8ab498c;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:62:80,version=6.1.3,rectime=1589288423,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n15
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=20543,nsessions=1,nusers=1,idletime=15663688,totmem=62699580kb,availmem=57189912kb,physmem=61651004kb,ncpus=24,loadave=0.05,gres=,netload=3248393731344,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:50:30,version=6.1.3,rectime=1589288416,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r08i00n16
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r08,r08i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r08i00n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=12473,nsessions=1,nusers=1,idletime=24192952,totmem=62699580kb,availmem=58905116kb,physmem=61651004kb,ncpus=24,loadave=0.01,gres=,netload=7343134204174,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200512-4601-gitb8ab498c;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=6c:c2:17:3f:60:c0,version=6.1.3,rectime=1589288423,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r11i00n01
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r11i00n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=5312,nsessions=1,nusers=1,idletime=3102851,totmem=128759832kb,availmem=114335916kb,physmem=127711256kb,ncpus=24,loadave=0.12,gres=,netload=14320911271123,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200505-4592-gitcaf930f1;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:00:90,version=6.1.3,rectime=1589288419,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r11i00n02
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100692.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=18340 27105,nsessions=2,nusers=2,idletime=23243461,totmem=128759832kb,availmem=111030444kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=6364559691988,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:42:b0,version=6.1.3,rectime=1589288397,jobs=22100692.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n03
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100620.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=14703 23079,nsessions=2,nusers=2,idletime=4248750,totmem=128759832kb,availmem=110277380kb,physmem=127711256kb,ncpus=24,loadave=20.01,gres=,netload=7319851515307,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f4:20,version=6.1.3,rectime=1589288398,jobs=22100620.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n04
+     state = down
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r11i00n05
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100740.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=5613 6087,nsessions=2,nusers=2,idletime=9933676,totmem=128759832kb,availmem=120241280kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=2081810478674,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:00:40,version=6.1.3,rectime=1589288404,jobs=22100740.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n06
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100719.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15640 31888,nsessions=2,nusers=2,idletime=16054593,totmem=128759832kb,availmem=116566516kb,physmem=127711256kb,ncpus=24,loadave=33.23,gres=,netload=2382960560113,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:08:50,version=6.1.3,rectime=1589288399,jobs=22100719.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n07
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100733.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=14485 17265,nsessions=2,nusers=2,idletime=24185635,totmem=128759832kb,availmem=110616072kb,physmem=127711256kb,ncpus=24,loadave=30.07,gres=,netload=8076490063059,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:08:20,version=6.1.3,rectime=1589288404,jobs=22100733.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n08
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100267.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6746 20803,nsessions=2,nusers=2,idletime=10378956,totmem=128759832kb,availmem=119805416kb,physmem=127711256kb,ncpus=24,loadave=20.02,gres=,netload=2902119065866,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:00:30,version=6.1.3,rectime=1589288396,jobs=22100267.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n09
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100723.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15908 32614,nsessions=2,nusers=2,idletime=24183041,totmem=128759832kb,availmem=118863376kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=8610149725349,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f4:70,version=6.1.3,rectime=1589288404,jobs=22100723.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n10
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100620.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4264 8636,nsessions=2,nusers=2,idletime=24183059,totmem=128759832kb,availmem=102571940kb,physmem=127711256kb,ncpus=24,loadave=20.18,gres=,netload=16911332033528,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f1:b0,version=6.1.3,rectime=1589288422,jobs=22100620.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n11
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100736.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4722 31602,nsessions=2,nusers=2,idletime=19091813,totmem=128759832kb,availmem=106422604kb,physmem=127711256kb,ncpus=24,loadave=36.17,gres=,netload=6778069096614,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:07:e0,version=6.1.3,rectime=1589288397,jobs=22100736.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n12
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100694.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4793 18547,nsessions=2,nusers=2,idletime=15782925,totmem=128759832kb,availmem=115289508kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=9578750092678,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:fe:10,version=6.1.3,rectime=1589288421,jobs=22100694.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n13
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100720.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=11701 12197,nsessions=2,nusers=2,idletime=24183035,totmem=128759832kb,availmem=110812864kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=8973980722131,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:fa:40,version=6.1.3,rectime=1589288398,jobs=22100720.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n14
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-23/22100292.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=24503 27946,nsessions=2,nusers=2,idletime=21524456,totmem=128759832kb,availmem=91793488kb,physmem=127711256kb,ncpus=24,loadave=1.01,gres=,netload=4987471400151,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:45:80,version=6.1.3,rectime=1589288416,jobs=22100292.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i00n15
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100677.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6739 29361,nsessions=2,nusers=2,idletime=3694600,totmem=128759832kb,availmem=122581492kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=3206139246046,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200505-4592-gitcaf930f1;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:0a:90,version=6.1.3,rectime=1589288440,jobs=22100677.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i00n16
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100668.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i00n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=32520 8885,nsessions=2,nusers=2,idletime=24192848,totmem=128759832kb,availmem=106250320kb,physmem=127711256kb,ncpus=24,loadave=36.03,gres=,netload=2655144082055,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:ff:d0,version=6.1.3,rectime=1589288424,jobs=22100668.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n01
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100679.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=19342 30725,nsessions=2,nusers=2,idletime=3865034,totmem=128759832kb,availmem=113915928kb,physmem=127711256kb,ncpus=24,loadave=34.71,gres=,netload=21548070612350,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:5c:80,version=6.1.3,rectime=1589288402,jobs=22100679.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n02
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100680.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=10677 19700,nsessions=2,nusers=2,idletime=24192855,totmem=128759832kb,availmem=110188456kb,physmem=127711256kb,ncpus=24,loadave=35.30,gres=,netload=6955968569202,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f7:20,version=6.1.3,rectime=1589288402,jobs=22100680.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n03
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-23/22100591.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4563 12214,nsessions=2,nusers=2,idletime=24192858,totmem=128759832kb,availmem=109854116kb,physmem=127711256kb,ncpus=24,loadave=23.90,gres=,netload=3049829102187,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:18:d0,version=6.1.3,rectime=1589288409,jobs=22100591.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i01n04
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100681.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=17704 6126,nsessions=2,nusers=2,idletime=10378725,totmem=128759832kb,availmem=118732136kb,physmem=127711256kb,ncpus=24,loadave=36.02,gres=,netload=1911332173527,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1b:40,version=6.1.3,rectime=1589288403,jobs=22100681.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n05
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100686.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=17269 7028,nsessions=2,nusers=2,idletime=24185626,totmem=128759832kb,availmem=107010924kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=32675356328701,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:19:c0,version=6.1.3,rectime=1589288404,jobs=22100686.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n06
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100732.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=19895 24270,nsessions=2,nusers=2,idletime=24192858,totmem=128759832kb,availmem=107950680kb,physmem=127711256kb,ncpus=24,loadave=35.93,gres=,netload=5395151384221,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:13:40,version=6.1.3,rectime=1589288403,jobs=22100732.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n07
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-9/22100455.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=18482 26742,nsessions=2,nusers=2,idletime=18061313,totmem=128759832kb,availmem=107549424kb,physmem=127711256kb,ncpus=24,loadave=10.05,gres=,netload=4084957787130,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:15:e0,version=6.1.3,rectime=1589288417,jobs=22100455.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 10
+
+r11i01n08
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100663.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6133 10801,nsessions=2,nusers=2,idletime=5458921,totmem=128759832kb,availmem=119677276kb,physmem=127711256kb,ncpus=24,loadave=36.13,gres=,netload=796156501286,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:06:60,version=6.1.3,rectime=1589288396,jobs=22100663.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n09
+     state = down,offline
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     note = puppet is running since 2020-04-10 05:38:02 +0200
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r11i01n10
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100621.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=10570 31027,nsessions=2,nusers=2,idletime=24185655,totmem=128759832kb,availmem=107736004kb,physmem=127711256kb,ncpus=24,loadave=20.00,gres=,netload=2905601329874,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:18:b0,version=6.1.3,rectime=1589288411,jobs=22100621.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n11
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100664.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=31741 24029,nsessions=2,nusers=2,idletime=24192795,totmem=128759832kb,availmem=118208768kb,physmem=127711256kb,ncpus=24,loadave=36.01,gres=,netload=3643335366864,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1d:40,version=6.1.3,rectime=1589288396,jobs=22100664.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n12
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100621.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=367 19730,nsessions=2,nusers=2,idletime=24175838,totmem=128759832kb,availmem=106462576kb,physmem=127711256kb,ncpus=24,loadave=20.12,gres=,netload=5999055414760,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1e:10,version=6.1.3,rectime=1589288412,jobs=22100621.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n13
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100665.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6045 16258,nsessions=2,nusers=2,idletime=10378495,totmem=128759832kb,availmem=113343680kb,physmem=127711256kb,ncpus=24,loadave=36.02,gres=,netload=1293560600700,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f7:40,version=6.1.3,rectime=1589288396,jobs=22100665.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n14
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100714.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=22773 31093,nsessions=2,nusers=2,idletime=1715429,totmem=128759832kb,availmem=123892916kb,physmem=127711256kb,ncpus=24,loadave=35.99,gres=,netload=10799021684120,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e1:fa:00,version=6.1.3,rectime=1589288437,jobs=22100714.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n15
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100721.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=12470 29590,nsessions=2,nusers=2,idletime=24192826,totmem=128759832kb,availmem=118826724kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=5104810252077,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f9:a0,version=6.1.3,rectime=1589288399,jobs=22100721.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i01n16
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100722.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i01n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=7860 25078,nsessions=2,nusers=2,idletime=24107042,totmem=128759832kb,availmem=106684472kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=5142005399804,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:05:d0,version=6.1.3,rectime=1589288398,jobs=22100722.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i02n01
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r11i02n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=9587,nsessions=1,nusers=1,idletime=15655070,totmem=128759832kb,availmem=109676324kb,physmem=127711256kb,ncpus=24,loadave=0.00,gres=,netload=5777532796760,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f4:90,version=6.1.3,rectime=1589288398,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r11i02n02
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100293.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=18275 29983,nsessions=2,nusers=2,idletime=9072516,totmem=128759832kb,availmem=97066704kb,physmem=127711256kb,ncpus=24,loadave=1.00,gres=,netload=9873702714855,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:0a:c0,version=6.1.3,rectime=1589288420,jobs=22100293.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n03
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=16006 30594,nsessions=2,nusers=2,idletime=24183058,totmem=128759832kb,availmem=107916072kb,physmem=127711256kb,ncpus=24,loadave=24.47,gres=,netload=12995765100898,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:04:90,version=6.1.3,rectime=1589288437,jobs=22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n04
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r11i02n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15283,nsessions=1,nusers=1,idletime=4352349,totmem=128759832kb,availmem=118001520kb,physmem=127711256kb,ncpus=24,loadave=0.00,gres=,netload=35215026277072,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:04:40,version=6.1.3,rectime=1589288397,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r11i02n05
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=29513 32052,nsessions=2,nusers=2,idletime=24183031,totmem=128759832kb,availmem=111498832kb,physmem=127711256kb,ncpus=24,loadave=24.43,gres=,netload=11301872158337,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f5:b0,version=6.1.3,rectime=1589288408,jobs=22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n06
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n06 3.10.0-1062.4.1.el7.x86_64 #1 SMP Fri Oct 18 17:15:30 UTC 2019 x86_64,sessions=7186 26062,nsessions=2,nusers=2,idletime=5870977,totmem=128759700kb,availmem=119962904kb,physmem=127711124kb,ncpus=24,loadave=24.25,gres=,netload=1197609298527,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-1062-4-1-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f6:10,version=6.1.3,rectime=1589288397,jobs=22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n07
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=11230 24675,nsessions=2,nusers=2,idletime=24183034,totmem=128759832kb,availmem=110965540kb,physmem=127711256kb,ncpus=24,loadave=24.23,gres=,netload=3780502174960,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:04:50,version=6.1.3,rectime=1589288412,jobs=22097389.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n08
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100294.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3266 15518,nsessions=2,nusers=2,idletime=5728050,totmem=128759832kb,availmem=77661712kb,physmem=127711256kb,ncpus=24,loadave=1.02,gres=,netload=5749112855381,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:12:80,version=6.1.3,rectime=1589288402,jobs=22100294.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n09
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100296.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=978 9597,nsessions=2,nusers=2,idletime=10015278,totmem=128759832kb,availmem=103939936kb,physmem=127711256kb,ncpus=24,loadave=1.54,gres=,netload=2189776855105,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:09:70,version=6.1.3,rectime=1589288398,jobs=22100296.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n10
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100610.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6383 27716,nsessions=2,nusers=2,idletime=24183017,totmem=128759832kb,availmem=107836416kb,physmem=127711256kb,ncpus=24,loadave=20.06,gres=,netload=6010846487376,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:07:b0,version=6.1.3,rectime=1589288402,jobs=22100610.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i02n11
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100297.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=13337 29345,nsessions=2,nusers=2,idletime=10010431,totmem=128759832kb,availmem=106392920kb,physmem=127711256kb,ncpus=24,loadave=1.08,gres=,netload=6136100351785,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:15:70,version=6.1.3,rectime=1589288407,jobs=22100297.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n12
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r11i02n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=22043,nsessions=1,nusers=1,idletime=3103102,totmem=128759832kb,availmem=110928920kb,physmem=127711256kb,ncpus=24,loadave=2.78,gres=,netload=9234679684839,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:14:f0,version=6.1.3,rectime=1589288406,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r11i02n13
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100673.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6036 25659,nsessions=2,nusers=2,idletime=2524885,totmem=128759832kb,availmem=113729116kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=1353173940855,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1f:80,version=6.1.3,rectime=1589288397,jobs=22100673.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i02n14
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100521.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=18250 29350,nsessions=2,nusers=2,idletime=2740860,totmem=128759832kb,availmem=106155364kb,physmem=127711256kb,ncpus=24,loadave=19.92,gres=,netload=3627535488729,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1e:60,version=6.1.3,rectime=1589288396,jobs=22100521.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r11i02n15
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     jobs = 0-23/22100594.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r11i02n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=26711 30000,nsessions=2,nusers=2,idletime=5458939,totmem=128759832kb,availmem=114133072kb,physmem=127711256kb,ncpus=24,loadave=24.49,gres=,netload=4552291158506,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:0e:80,version=6.1.3,rectime=1589288419,jobs=22100594.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r11i02n16
+     state = down
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r11,r11i02,singleisland
+     ntype = cluster
+     note = r11i2n16 - end_support: "2020-04-30T02:00:00+02:00"
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r12i00n01
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-23/22100699.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15515 29625,nsessions=2,nusers=2,idletime=14965493,totmem=128759832kb,availmem=106905336kb,physmem=127711256kb,ncpus=24,loadave=24.16,gres=,netload=5092013162094,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:13:b0,version=6.1.3,rectime=1589288429,jobs=22100699.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r12i00n02
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100624.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3961 12033,nsessions=2,nusers=2,idletime=13814404,totmem=128759832kb,availmem=109884276kb,physmem=127711256kb,ncpus=24,loadave=33.31,gres=,netload=2678149586601,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1f:40,version=6.1.3,rectime=1589288404,jobs=22100624.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n03
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100738.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=8119 32486,nsessions=2,nusers=2,idletime=21165827,totmem=128759832kb,availmem=105806820kb,physmem=127711256kb,ncpus=24,loadave=24.02,gres=,netload=2008481565665,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:06:d0,version=6.1.3,rectime=1589288403,jobs=22100738.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n04
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100695.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=27806 16509,nsessions=2,nusers=2,idletime=4643503,totmem=128759832kb,availmem=113730740kb,physmem=127711256kb,ncpus=24,loadave=36.20,gres=,netload=4010009238522,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:19:80,version=6.1.3,rectime=1589288431,jobs=22100695.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n05
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-23/22100592.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=1000 1377,nsessions=2,nusers=2,idletime=1459654,totmem=128759832kb,availmem=112244340kb,physmem=127711256kb,ncpus=24,loadave=23.82,gres=,netload=2427916543936,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1b:90,version=6.1.3,rectime=1589288414,jobs=22100592.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r12i00n06
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100638.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15771 27042,nsessions=2,nusers=2,idletime=21519235,totmem=128759832kb,availmem=104929284kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=3055917997450,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f7:70,version=6.1.3,rectime=1589288403,jobs=22100638.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n07
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100718.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=7367 31888,nsessions=2,nusers=2,idletime=10378108,totmem=128759832kb,availmem=117341348kb,physmem=127711256kb,ncpus=24,loadave=35.16,gres=,netload=2476004274037,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:18:20,version=6.1.3,rectime=1589288397,jobs=22100718.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n08
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100660.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=9246 21854,nsessions=2,nusers=2,idletime=13918034,totmem=128759832kb,availmem=115377592kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=1487089308185,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f9:c0,version=6.1.3,rectime=1589288402,jobs=22100660.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n09
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100669.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=28890 12020,nsessions=2,nusers=2,idletime=3012763,totmem=128759832kb,availmem=107164660kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=19755733407411,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:07:50,version=6.1.3,rectime=1589288403,jobs=22100669.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n10
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100675.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=9421 20471,nsessions=2,nusers=2,idletime=24185651,totmem=128759832kb,availmem=110339800kb,physmem=127711256kb,ncpus=24,loadave=36.01,gres=,netload=16836836536156,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:05:40,version=6.1.3,rectime=1589288402,jobs=22100675.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n11
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100696.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=27974 20617,nsessions=2,nusers=2,idletime=24192856,totmem=128759832kb,availmem=111546708kb,physmem=127711256kb,ncpus=24,loadave=33.74,gres=,netload=3108502481886,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1a:60,version=6.1.3,rectime=1589288420,jobs=22100696.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n12
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100685.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6785 14425,nsessions=2,nusers=2,idletime=24192824,totmem=128759832kb,availmem=115549588kb,physmem=127711256kb,ncpus=24,loadave=36.02,gres=,netload=2780679873660,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:41:d0,version=6.1.3,rectime=1589288429,jobs=22100685.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n13
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100688.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=1931 3805,nsessions=2,nusers=2,idletime=24192823,totmem=128759832kb,availmem=109698060kb,physmem=127711256kb,ncpus=24,loadave=36.17,gres=,netload=7117207225870,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:06:c0,version=6.1.3,rectime=1589288404,jobs=22100688.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n14
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100691.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4159 6075,nsessions=2,nusers=2,idletime=10377826,totmem=128759832kb,availmem=114952536kb,physmem=127711256kb,ncpus=24,loadave=31.62,gres=,netload=1344906408881,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:f7:10,version=6.1.3,rectime=1589288417,jobs=22100691.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i00n15
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-1/22100234.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6156 26833,nsessions=2,nusers=2,idletime=10377614,totmem=128759832kb,availmem=113458964kb,physmem=127711256kb,ncpus=24,loadave=2.00,gres=,netload=1240038907069,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:07:60,version=6.1.3,rectime=1589288440,jobs=22100234.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 2
+
+r12i00n16
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i00,singleisland
+     ntype = cluster
+     jobs = 0-19/22100666.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i00n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15154 28689,nsessions=2,nusers=2,idletime=3607812,totmem=128759832kb,availmem=115500304kb,physmem=127711256kb,ncpus=24,loadave=36.06,gres=,netload=7900665682002,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:19:60,version=6.1.3,rectime=1589288396,jobs=22100666.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n01
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r12i01n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=19503 28351 29127,nsessions=3,nusers=3,idletime=688157,totmem=128759832kb,availmem=102050320kb,physmem=127711256kb,ncpus=24,loadave=0.22,gres=,netload=1089375314730,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=5c:b9:01:da:d1:00,version=6.1.3,rectime=1589288397,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r12i01n02
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100674.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=425 3300,nsessions=2,nusers=2,idletime=16060075,totmem=128759832kb,availmem=109172940kb,physmem=127711256kb,ncpus=24,loadave=36.04,gres=,netload=2126675266745,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:10:c0,version=6.1.3,rectime=1589288411,jobs=22100674.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n03
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100697.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6064 29953,nsessions=2,nusers=2,idletime=10377337,totmem=128759832kb,availmem=116885800kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=1739333406509,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:06:20,version=6.1.3,rectime=1589288404,jobs=22100697.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n04
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-23/22100596.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=15913 16777,nsessions=2,nusers=2,idletime=24192845,totmem=128759832kb,availmem=112554156kb,physmem=127711256kb,ncpus=24,loadave=24.08,gres=,netload=4425785150446,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:ee:f0,version=6.1.3,rectime=1589288408,jobs=22100596.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r12i01n05
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100735.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=21630 25655,nsessions=2,nusers=2,idletime=24095857,totmem=128759832kb,availmem=120661304kb,physmem=127711256kb,ncpus=24,loadave=34.12,gres=,netload=3854271512207,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:11:00,version=6.1.3,rectime=1589288398,jobs=22100735.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n06
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100689.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=666 18453,nsessions=2,nusers=2,idletime=24192817,totmem=128759832kb,availmem=112767556kb,physmem=127711256kb,ncpus=24,loadave=36.08,gres=,netload=17018238250572,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1d:c0,version=6.1.3,rectime=1589288396,jobs=22100689.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n07
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100672.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=24189 31247,nsessions=2,nusers=2,idletime=9758512,totmem=128759832kb,availmem=112631984kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=21536145114884,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:13:00,version=6.1.3,rectime=1589288440,jobs=22100672.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n08
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-23/22100595.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=1712 12220,nsessions=2,nusers=2,idletime=24192827,totmem=128759832kb,availmem=112935172kb,physmem=127711256kb,ncpus=24,loadave=24.33,gres=,netload=3486380594525,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1f:a0,version=6.1.3,rectime=1589288398,jobs=22100595.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r12i01n09
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100693.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=12245 24234,nsessions=2,nusers=2,idletime=24182996,totmem=128759832kb,availmem=113703692kb,physmem=127711256kb,ncpus=24,loadave=36.10,gres=,netload=3212860416472,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:fc:80,version=6.1.3,rectime=1589288407,jobs=22100693.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n10
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100715.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=2933 26884,nsessions=2,nusers=2,idletime=18661275,totmem=128759832kb,availmem=111331568kb,physmem=127711256kb,ncpus=24,loadave=35.97,gres=,netload=4520800396859,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:02:20,version=6.1.3,rectime=1589288403,jobs=22100715.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n11
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100641.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=14430 11366,nsessions=2,nusers=2,idletime=10377130,totmem=128759832kb,availmem=113480696kb,physmem=127711256kb,ncpus=24,loadave=36.16,gres=,netload=2831588439105,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:02:40,version=6.1.3,rectime=1589288402,jobs=22100641.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n12
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100642.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3132 7527,nsessions=2,nusers=2,idletime=16014039,totmem=128759832kb,availmem=115250464kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=3237223781615,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e2:ed:00,version=6.1.3,rectime=1589288402,jobs=22100642.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n13
+     state = job-exclusive
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-23/22100707.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=8454 13842,nsessions=2,nusers=2,idletime=24185648,totmem=128759832kb,availmem=107412492kb,physmem=127711256kb,ncpus=24,loadave=1.00,gres=,netload=3584942694003,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:04:30,version=6.1.3,rectime=1589288419,jobs=22100707.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 24
+
+r12i01n14
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100644.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=30416 13890,nsessions=2,nusers=2,idletime=24192848,totmem=128759832kb,availmem=104071420kb,physmem=127711256kb,ncpus=24,loadave=36.03,gres=,netload=3329193538817,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:1f:d0,version=6.1.3,rectime=1589288402,jobs=22100644.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n15
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100645.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6055 13840,nsessions=2,nusers=2,idletime=7671245,totmem=128759832kb,availmem=114048444kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=1833409638812,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:12:e0,version=6.1.3,rectime=1589288413,jobs=22100645.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i01n16
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i01,singleisland
+     ntype = cluster
+     jobs = 0-19/22100734.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i01n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=27516 31208,nsessions=2,nusers=2,idletime=9829989,totmem=128759832kb,availmem=106631852kb,physmem=127711256kb,ncpus=24,loadave=36.26,gres=,netload=5567098904958,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:19:f0,version=6.1.3,rectime=1589288413,jobs=22100734.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n01
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r12i02n01 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6371,nsessions=1,nusers=1,idletime=22892992,totmem=128759832kb,availmem=115464972kb,physmem=127711256kb,ncpus=24,loadave=0.00,gres=,netload=29814473452795,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:84:10,version=6.1.3,rectime=1589288416,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
+r12i02n02
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100739.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n02 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=8767 23186,nsessions=2,nusers=2,idletime=2763772,totmem=128759832kb,availmem=119165764kb,physmem=127711256kb,ncpus=24,loadave=33.88,gres=,netload=6488513679189,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:83:70,version=6.1.3,rectime=1589288412,jobs=22100739.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n03
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100717.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n03 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=10254 30780,nsessions=2,nusers=2,idletime=3703945,totmem=128759832kb,availmem=111997344kb,physmem=127711256kb,ncpus=24,loadave=35.71,gres=,netload=3280228324072,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:95:60,version=6.1.3,rectime=1589288409,jobs=22100717.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n04
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100650.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n04 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=25262 7240,nsessions=2,nusers=2,idletime=3623250,totmem=128759832kb,availmem=121342148kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=9005424908530,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:82:f0,version=6.1.3,rectime=1589288402,jobs=22100650.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n05
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100651.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n05 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=3110 24973,nsessions=2,nusers=2,idletime=529365,totmem=128759832kb,availmem=115725856kb,physmem=127711256kb,ncpus=24,loadave=36.08,gres=,netload=3999445008538,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:76:e0,version=6.1.3,rectime=1589288429,jobs=22100651.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n06
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100652.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n06 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=631 3709,nsessions=2,nusers=2,idletime=24192866,totmem=128759832kb,availmem=121971408kb,physmem=127711256kb,ncpus=24,loadave=36.04,gres=,netload=3597004551523,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:8d:b0,version=6.1.3,rectime=1589288425,jobs=22100652.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n07
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100690.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n07 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6033 6040,nsessions=2,nusers=2,idletime=5793082,totmem=128759832kb,availmem=118701380kb,physmem=127711256kb,ncpus=24,loadave=35.71,gres=,netload=1410699027932,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:7b:60,version=6.1.3,rectime=1589288397,jobs=22100690.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n08
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100654.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n08 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=13191 17411,nsessions=2,nusers=2,idletime=3539316,totmem=128759832kb,availmem=105196144kb,physmem=127711256kb,ncpus=24,loadave=35.99,gres=,netload=6012337526067,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:84:20,version=6.1.3,rectime=1589288412,jobs=22100654.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n09
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100678.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n09 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=29175 32640,nsessions=2,nusers=2,idletime=13918129,totmem=128759832kb,availmem=109276044kb,physmem=127711256kb,ncpus=24,loadave=35.63,gres=,netload=1423598850656,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:7c:70,version=6.1.3,rectime=1589288396,jobs=22100678.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n10
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100716.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n10 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=7094 29137,nsessions=2,nusers=2,idletime=24192834,totmem=128759832kb,availmem=109727940kb,physmem=127711256kb,ncpus=24,loadave=36.01,gres=,netload=2922143908418,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:89:b0,version=6.1.3,rectime=1589288409,jobs=22100716.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n11
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100737.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n11 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=4981 25254,nsessions=2,nusers=2,idletime=24192879,totmem=128759832kb,availmem=104905976kb,physmem=127711256kb,ncpus=24,loadave=36.00,gres=,netload=3245593854945,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:8a:b0,version=6.1.3,rectime=1589288419,jobs=22100737.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n12
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100698.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n12 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6438 11861,nsessions=2,nusers=2,idletime=24192839,totmem=128759832kb,availmem=102976420kb,physmem=127711256kb,ncpus=24,loadave=36.02,gres=,netload=5810412181557,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:84:b0,version=6.1.3,rectime=1589288409,jobs=22100698.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n13
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100684.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n13 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=12670 19793,nsessions=2,nusers=2,idletime=2083612,totmem=128759832kb,availmem=109347800kb,physmem=127711256kb,ncpus=24,loadave=36.07,gres=,netload=5023093054363,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:76:b0,version=6.1.3,rectime=1589288396,jobs=22100684.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n14
+     state = busy
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-19/22100658.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n14 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=22790 24620,nsessions=2,nusers=2,idletime=5878864,totmem=128759832kb,availmem=109549488kb,physmem=127711256kb,ncpus=24,loadave=36.01,gres=,netload=1482262507486,state=busy,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:93:e0,version=6.1.3,rectime=1589288440,jobs=22100658.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 20
+
+r12i02n15
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     jobs = 0-3/22100140.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     status = opsys=linux,uname=Linux r12i02n15 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=10764 11430,nsessions=2,nusers=2,idletime=24192860,totmem=128759832kb,availmem=102843556kb,physmem=127711256kb,ncpus=24,loadave=4.08,gres=,netload=4918256436193,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:88:40,version=6.1.3,rectime=1589288440,jobs=22100140.tier2-p-moab-1.tier2.hpc.kuleuven.be
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 4
+
+r12i02n16
+     state = free
+     power_state = Running
+     np = 24
+     properties = twelvecore,type_haswell,haswell,r12,r12i02,singleisland
+     ntype = cluster
+     status = opsys=linux,uname=Linux r12i02n16 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64,sessions=6147,nsessions=1,nusers=1,idletime=5954434,totmem=128759832kb,availmem=119921768kb,physmem=127711256kb,ncpus=24,loadave=0.02,gres=,netload=324395906414,state=free,varattr=puppethpc=20200319-152;puppethpccode=20200507-4599-gitf1492909;sudo=1-8-23-9-el7;kernel=3-10-0-957-27-2-el7-x86_64,cpuclock=Fixed,macaddr=58:20:b1:e3:98:10,version=6.1.3,rectime=1589288428,jobs=
+     mom_service_port = 15002
+     mom_manager_port = 15003
+     total_sockets = 2
+     total_numa_nodes = 2
+     total_cores = 24
+     total_threads = 24
+     dedicated_sockets = 0
+     dedicated_numa_nodes = 0
+     dedicated_cores = 0
+     dedicated_threads = 0
+
