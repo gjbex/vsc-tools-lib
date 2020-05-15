@@ -38,18 +38,29 @@ class PbsnodesParserTest(unittest.TestCase):
         self.assertEqual(nr_gpus, node_info.gpus)
         self.assertEqual(0, len(node_info.gpu_states))
 
-    def test_parsing(self):
-        file_name = 'tests/test/data/pbsnodes.txt'
-        nr_nodes = 173
-        np = 20
-        rack_str = 'r'
-        parser = PbsnodesParser()
+    def test_parsing_genius2(self):
+        file_name = 'tests/test/data/pbsnodes_genius_ehsan.txt'
+        nr_nodes = 243
+        parser = PbsnodesParser(is_verbose=False)
         with open(file_name, 'r') as pbsnodes_file:
             node_infos = parser.parse_file(pbsnodes_file)
         self.assertEqual(nr_nodes, len(node_infos))
-        for node_info in node_infos:
-            self.assertTrue(np <= node_info.np)
-            self.assertTrue(node_info.hostname.startswith(rack_str))
+
+    def test_parsing_breniac(self):
+        file_name = 'tests/test/data/pbsnodes_breniac.txt'
+        nr_nodes = 988
+        parser = PbsnodesParser(is_verbose=False)
+        with open(file_name, 'r') as pbsnodes_file:
+            node_infos = parser.parse_file(pbsnodes_file)
+        self.assertEqual(nr_nodes, len(node_infos))
+
+    def test_parsing_thinking(self):
+        file_name = 'tests/test/data/pbsnodes_thinking.txt'
+        nr_nodes = 149
+        parser = PbsnodesParser(is_verbose=False)
+        with open(file_name, 'r') as pbsnodes_file:
+            node_infos = parser.parse_file(pbsnodes_file)
+        self.assertEqual(nr_nodes, len(node_infos))
 
     def test_parsing_gpu_node(self):
         file_name = 'tests/test/data/pbsnodes_gpu.txt'
