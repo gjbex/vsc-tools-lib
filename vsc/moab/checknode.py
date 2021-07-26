@@ -35,6 +35,7 @@ class InputError(Exception):
         self.expression = expression
         self.message = message
 
+
 class ChecknodeParser(object):
     '''Parser class for Moab checknode ouptut'''
 
@@ -42,6 +43,24 @@ class ChecknodeParser(object):
     _nodes_str: str
     _blocks: list
     _nodes: list
+
+    # block-specific attributes
+    _hostname: str
+    _state: list
+    _conf_resrcs: list
+    _util_resrcs: list
+    _dedi_resrcs: list
+    _cpuload: list
+    _partition: str
+    _features: str
+    _nodetype: str
+    _access_policy: str
+    _eff_policy: str
+    _n_job_fail: int
+    _times: list
+    _reservations: list
+    _jobs: list
+    _alert: list
 
     def __init__(self, debug=False):
         """Constructor
