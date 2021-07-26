@@ -19,7 +19,7 @@ class ChecknodeParserTest(unittest.TestCase):
             lines = f.readlines()
             block = ''.join(lines)
 
-        parser = ChecknodeParser()
+        parser = ChecknodeParser(debug=True)
         parser.parse_one(block)
 
 class ChecknodeParserXMLTest(unittest.TestCase):
