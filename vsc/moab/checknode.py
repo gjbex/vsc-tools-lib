@@ -36,6 +36,58 @@ class InputError(Exception):
         self.message = message
 
 
+class ChecknodeBlock(object):
+    '''
+    ChecknodeBlock represents one block of `checknode ALL` output for a single node
+
+    For brevity (and avoiding to write many setter/getters), all class attributes are public
+    '''
+
+    # block-specific attributes are all public
+    hostname: str
+    state: list
+    conf_resrcs: list
+    util_resrcs: list
+    dedi_resrcs: list
+    cpuload: float
+    partition: str
+    features: str
+    nodetype: str
+    access_policy: str
+    eff_policy: str
+    n_job_fail: int
+    times: list
+    reservations: list
+    jobs: list
+    alert: list
+
+    def __init__(self) -> None:
+        '''Constructor
+
+        Parameters
+        ----------
+        None
+            No input expected when instantiating
+        '''
+
+        self.hostname = str()
+        self.state = list()
+        self.conf_resrcs = list()
+        self.util_resrcs = list()
+        self.dedi_resrcs = list()
+        self.cpuload = 0.0
+        self.partition = str()
+        self.features = str()
+        self.nodetype = str()
+        self.access_policy = str()
+        self.eff_policy = str()
+        self.n_job_fail = 0
+        self.times = list()
+        self.reservations = list()
+        self.jobs = list()
+        self.alert = list()
+
+
 class ChecknodeParser(object):
     '''Parser class for Moab checknode ouptut'''
 
@@ -43,24 +95,6 @@ class ChecknodeParser(object):
     _nodes_str: str
     _blocks: list
     _nodes: list
-
-    # block-specific attributes
-    _hostname: str
-    _state: list
-    _conf_resrcs: list
-    _util_resrcs: list
-    _dedi_resrcs: list
-    _cpuload: list
-    _partition: str
-    _features: str
-    _nodetype: str
-    _access_policy: str
-    _eff_policy: str
-    _n_job_fail: int
-    _times: list
-    _reservations: list
-    _jobs: list
-    _alert: list
 
     def __init__(self, debug=False):
         """Constructor
@@ -189,8 +223,10 @@ class ChecknodeParser(object):
 
            Returns
            -------
-           x : x
-               explain here
+           blk : ChecknodeBlock
+               this instance of ChecknodeBlock contains all fields which are parsed by
+               the regex (self._reg_block); the respective names of the fields defined
+               in the regex matches the class attribute names
         """
 
         if self._debug: print(block)
@@ -219,25 +255,27 @@ class ChecknodeParser(object):
         except Exception as err:
             print('Error: regex for block failed')
 
-        # extract the values for each group
-        _hostname = _match.group('hostname').strip()
-        _state = _match.group('state').strip()
-        _conf_resrcs = _match.group('conf_resrcs').strip()
-        _util_resrcs = _match.group('util_resrcs').strip()
-        _dedi_resrcs = _match.group('dedi_resrcs').strip()
-        _cpuload = float(_match.group(cpuload))
-        _partition = _match.group('partition').strip()
-        _features = _match.group('features').strip()
-        _nodetype = _match.group('nodetype').strip()
-        _access_policy = _match.group('access_policy').strip()
-        _eff_policy = _match.group('eff_policy').strip()
-        _n_job_fail = int(_match.group('n_job_fail'))
-        _times = _match.group('times').strip()
-        _reservations = _match.group('reservations').strip()
-        _jobs = _match.group('jobs').strip()
-        _alert = _match.group('alert').strip()
+        # extract the values for each group, and set them as attributes of
+        # an instance of ChecknodeBlock class
+        blk = ChecknodeBlock()
+        blk.hostname = _match.group('hostname').strip()
+        blk.state = _match.group('state').strip()
+        blk.conf_resrcs = _match.group('conf_resrcs').strip()
+        blk.util_resrcs = _match.group('util_resrcs').strip()
+        blk.dedi_resrcs = _match.group('dedi_resrcs').strip()
+        blk.cpuload = float(_match.group(cpuload))
+        blk.partition = _match.group('partition').strip()
+        blk.features = _match.group('features').strip()
+        blk.nodetype = _match.group('nodetype').strip()
+        blk.access_policy = _match.group('access_policy').strip()
+        blk.eff_policy = _match.group('eff_policy').strip()
+        blk.n_job_fail = int(_match.group('n_job_fail'))
+        blk.times = _match.group('times').strip()
+        blk.reservations = _match.group('reservations').strip()
+        blk.jobs = _match.group('jobs').strip()
+        blk.alert = _match.group('alert').strip()
 
-        # parse special fields which are complex
+        return blk
 
 
     def _parse_resources(self, resrcs):
