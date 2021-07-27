@@ -1,0 +1,32 @@
+node r23i13n23
+
+State:   Running  (in current state for 00:24:28)
+Configured Resources: PROCS: 36  MEM: 184G  SWAP: 185G  DISK: 1M  socket: 2  numanode: 2  core: 36  thread: 36
+Utilized   Resources: PROCS: 17  SWAP: 28G
+Dedicated  Resources: PROCS: 17  MEM: 85G
+Attributes:         kernel=3-10-0-1160-11-1-el7-x86_64,puppethpc=20210720-172,puppethpccode=20210716-5303-git2d6bb287,sudo=1-8-23-10-el7_9-1
+  MTBF(longterm):   INFINITY  MTBF(24h):   INFINITY
+Opsys:      linux     Arch:      ---
+Speed:      1.00      CPULoad:   0.960
+Partition:  pbs  Rack/Slot:  23/1  NodeIndex:  23
+Features:   singleisland,beeond,skylake,r23i13,r23,type_free,genius,mem192
+NodeType:   free
+Classes:    [q1h][q24h][q72h][q7d][q21d][qsuperdome]
+RM[pbs]*:   TYPE=PBS  STATE=Running
+NodeAccessPolicy: SHARED
+EffNodeAccessPolicy: SHARED
+
+Total Time:   INFINITY  Up:   INFINITY (95.61%)  Active:    782days (63.54%)
+
+Reservations:
+  dedicated_nodes_16204.14548x1  User    -720days ->   INFINITY (  INFINITY)
+    Blocked Resources@  -720days  Procs: 36/36 (100.00%)  Mem: 0/188493 (0.00%)  Swap: 0/189517 (0.00%)  Disk: 0/1 (0.00%)
+  50818310x3  Job:Running  -11:47:12 -> 3:12:48 (15:00:00)
+  50820317x4  Job:Running  -4:47:04 -> 5:12:56 (10:00:00)
+  50820321x6  Job:Running  -4:44:16 -> 2:19:14:44 (2:23:59:00)
+  50820647x4  Job:Running  -00:24:28 -> 2:23:34:32 (2:23:59:00)
+Jobs:        50818310,50820317,50820321,50820647
+ALERT:  node has 17 procs dedicated but load is low (0.960)
+  WARNING:  node 'r23i13n23' is overcommitted at time -11:47:12 (P: -3)
+  WARNING:  node 'r23i13n23' is overcommitted at time -4:47:04 (P: -7)
+  WARNING:  node 'r23i13n23' is overcommitted at time -4:44:16 (P: -13)
