@@ -71,10 +71,10 @@ class ChecknodeBlock(object):
         '''
 
         self.hostname = str()
-        self.state = list()
-        self.conf_resrcs = list()
-        self.util_resrcs = list()
-        self.dedi_resrcs = list()
+        self.state = str()
+        self.conf_resrcs = dict()
+        self.util_resrcs = dict()
+        self.dedi_resrcs = dict()
         self.cpuload = 0.0
         self.partition = str()
         self.features = str()
@@ -82,10 +82,10 @@ class ChecknodeBlock(object):
         self.access_policy = str()
         self.eff_policy = str()
         self.n_job_fail = 0
-        self.times = list()
-        self.reservations = list()
-        self.jobs = list()
-        self.alert = list()
+        self.times = str()
+        self.reservations = str()
+        self.jobs = str()
+        self.alert = str()
 
 
 class ChecknodeParser(object):
@@ -260,10 +260,13 @@ class ChecknodeParser(object):
         blk = ChecknodeBlock()
         blk.hostname = _match.group('hostname').strip()
         blk.state = _match.group('state').strip()
-        blk.conf_resrcs = _match.group('conf_resrcs').strip()
-        blk.util_resrcs = _match.group('util_resrcs').strip()
-        blk.dedi_resrcs = _match.group('dedi_resrcs').strip()
-        blk.cpuload = float(_match.group(cpuload))
+        conf_resrcs = _match.group('conf_resrcs').strip()
+        blk.conf_resrcs = self._parse_resources(conf_resrcs)
+        util_resrcs = _match.group('util_resrcs').strip()
+        blk.util_resrcs = self._parse_resources(util_resrcs)
+        dedi_resrcs = _match.group('dedi_resrcs').strip()
+        blk.dedi_resrcs = self._parse_resources(dedi_resrcs)
+        blk.cpuload = float(_match.group('cpuload'))
         blk.partition = _match.group('partition').strip()
         blk.features = _match.group('features').strip()
         blk.nodetype = _match.group('nodetype').strip()
