@@ -51,6 +51,9 @@ class ChecknodeParserTest(unittest.TestCase):
         self.assertEqual(chkblock.reservations[1][0]['elapsed_time'], '6:03:47:34')
         self.assertEqual(chkblock.reservations[1][0]['walltime'], '6:23:59:00')
 
+        self.assertEqual(chkblock.jobs, '50622561')
+        self.assertEqual(chkblock.alert, 'node is in state Busy but load is low (4.890)')
+
     # def test_parse_one_r23i13n23(self):
     #     with open(self.filename_r23i13n23, 'r') as f:
     #         lines = f.readlines()

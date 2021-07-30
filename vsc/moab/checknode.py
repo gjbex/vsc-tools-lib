@@ -146,8 +146,11 @@ class ChecknodeParser(object):
                 r"\bEffNodeAccessPolicy:\s+(?P<eff_policy>SHARED|SINGLEUSER|SINGLEJOB)[\w\W]+"
                 r"\bSuccessive Job Failures:\s+(?P<n_job_fail>[\d]+)[\w\W]+"
                 r"\bTotal\sTime:\s+(?P<times>[\w\W]+)[\w\W]+"
-                r"\bReservations:\s+(?P<reservations>[\w\W]+)[\w\W]+"
-                r"\bJobs:\s+(?P<jobs>[\w\W,]+)[\w\W]+\s?[\w\W]+\b\n"
+                # r"\bReservations:\s+(?P<reservations>[\w\W]+)[\w\W]+" # gjb
+                r"\bReservations:\s+(?P<reservations>[\w\W]+)" # em
+                # r"\bJobs:\s+(?P<jobs>[\w\W,]+)[\w\W]+\s?[\w\W]+\b\n" # gjb
+                r"\bJobs:\s+(?P<jobs>[\w\W,]+)\b\n" # em
+                # r"(\bJobs:\s+(?P<jobs>[\w\W]+))?" # em
                 r"(\bALERT:\s+(?P<alert>[\w\W]+))?"
                 )
         self._reg_resrscs = re.compile(r'\w+:\s+[\d\w]+')
