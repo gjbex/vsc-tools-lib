@@ -151,6 +151,12 @@ class ChecknodeParser(object):
                 r"(\bALERT:\s+(?P<alert>[\w\W]+))?"
                 )
         self._reg_resrscs = re.compile(r'\w+:\s+[\d\w]+')
+        self._reg_stnd_resrv = re.compile(r'Blocked Resources@')
+        self._reg_user_resrv = re.compile(r'(?P<jobid>[\w]{8})x(?P<ppn>[\d]+)\s+'
+                                          r'Job:(?P<job>[\w]+)\s+'
+                                          r'(?P<remaining>[\-\d\:]+)\s+->\s+'
+                                          r'(?P<elapsed>[\d\:]+)\s+'
+                                          r'\((?P<walltime>[\d\:]+)\)')
 
     def parse_file(self, filename):
         """
@@ -274,7 +280,8 @@ class ChecknodeParser(object):
         blk.eff_policy = _match.group('eff_policy').strip()
         blk.n_job_fail = int(_match.group('n_job_fail'))
         blk.times = _match.group('times').strip()
-        blk.reservations = _match.group('reservations').strip()
+        reservations = _match.group('reservations').strip()
+        blk.reservations = self._parse_reservations(reservations)
         blk.jobs = _match.group('jobs').strip()
         blk.alert = _match.group('alert').strip()
 
@@ -311,6 +318,62 @@ class ChecknodeParser(object):
             return dic
         else:
             return None
+
+    def _parse_reservations(self, resrv):
+        """
+        Parse the string for reservations
+
+        The string for resources can contain standing reservations and running jobs, e.g.:
+        Reservations:
+        dedicated_nodes_16204.14548x1  User    -720days ->   INFINITY (  INFINITY)
+            Blocked Resources@  -720days  Procs: 36/36 (100.00%)  Mem: 0/188493 (0.00%)  Swap: 0/189517 (0.00%)  Disk: 0/1 (0.00%)
+        50818310x3  Job:Running  -10:38:12 -> 4:21:48 (15:00:00)
+        50820317x4  Job:Running  -3:38:04 -> 6:21:56 (10:00:00)
+        50820321x6  Job:Running  -3:35:16 -> 2:20:23:44 (2:23:59:00)
+        50820582x1  Job:Running  -1:40:22 -> 2:22:18:38 (2:23:59:00)
+
+        For the running jobs, the first column has the format <JobID>x<ppn>, so, we can capture/aggregate
+        the total cores used on a node by parsing the "Reservations" block
+
+        Parameters
+        ----------
+        resrv : str
+            reservation string block
+
+        Returns
+        -------
+        output : tuple (bool, list_of_dict)
+            the first item in the tuple (bool) specifies whether there is a
+            standing reservation on the node; the second item is a list of
+            dictionaries for the jobs running on the node, a dictionary per
+            job. Each dict contains the following key/value items:
+                jobid : str
+                ppn : int
+                job : str
+                remaining_time : str
+                elapsed_time : str
+                walltime : str
+        """
+        resrv = resrv.strip()
+        dics = list()
+
+        _matches = re.findall(self._reg_user_resrv, resrv)
+        if _matches:
+            for _match in _matches:
+                dic = dict()
+                dic['jobid'] = _match[0]
+                dic['ppn'] = int(_match[1])
+                dic['job'] = _match[2]
+                dic['remaining_time'] = _match[3]
+                dic['elapsed_time'] = _match[4]
+                dic['walltime'] = _match[5]
+                dics.append(dic)
+
+        _stnd_resrv = re.match(self._reg_stnd_resrv, resrv)
+        if _stnd_resrv:
+            return (True, dics)
+        else:
+            return (False, dics)
 
     def parse(self, checknode_xml):
         '''parse checknode XML output, and return the list of features'''
