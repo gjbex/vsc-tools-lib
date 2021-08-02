@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 '''module to test the vsc.moab.checknode.Checknode parser'''
 
+from subprocess import check_call
 import sys, unittest
 from vsc.moab.checknode import ChecknodeParser, ChecknodeBlock
 
@@ -10,6 +11,7 @@ class ChecknodeParserTest(unittest.TestCase):
     def setUp(self):
         self.filename_r27i13n24 = 'data/checknode_r27i13n24.txt'
         self.filename_r23i13n23 = 'data/checknode_r23i13n23.txt'
+        self.filename_r24g05    = 'data/checknode_r24g05.txt'
         self.filename_genius = 'data/checknode_genius.txt'
 
     def tearDown(self):
@@ -27,7 +29,7 @@ class ChecknodeParserTest(unittest.TestCase):
         self.assertEqual(chkblock.hostname, 'r27i13n24')
         self.assertEqual(chkblock.state, 'Busy')
         self.assertIsInstance(chkblock.conf_resrcs, dict)
-        self.assertEqual(chkblock.conf_resrcs['PROCS'], '36')
+        self.assertEqual(chkblock.conf_resrcs['PROCS'], 36)
         self.assertEqual(chkblock.conf_resrcs['MEM'], '184G')
         self.assertIsInstance(chkblock.util_resrcs, dict)
         self.assertEqual(chkblock.util_resrcs['SWAP'], '12G')
@@ -49,6 +51,8 @@ class ChecknodeParserTest(unittest.TestCase):
         self.assertEqual(chkblock.reservations[1][0]['remaining_time'], '-20:11:26')
         self.assertEqual(chkblock.reservations[1][0]['elapsed_time'], '6:03:47:34')
         self.assertEqual(chkblock.reservations[1][0]['walltime'], '6:23:59:00')
+        job_cores = [dic['ppn'] for dic in chkblock.reservations[1]]
+        self.assertNotEqual(chkblock.util_resrcs['PROCS'], sum(job_cores))
 
         self.assertIsInstance(chkblock.jobs, list)
         self.assertEqual(len(chkblock.jobs), 1)
@@ -92,6 +96,29 @@ class ChecknodeParserTest(unittest.TestCase):
 
         self.assertIsInstance(chkblock.alert, list)
         self.assertEqual(len(chkblock.alert), 4)
+
+    def test_parse_one_r24g05(self):
+        """Complementary test for a CascadeLake GPU node"""
+        with open(self.filename_r24g05, 'r') as fh:
+            lines = fh.readlines()
+            block = ''.join(lines)
+
+        parser = ChecknodeParser(debug=False)
+        chkblock = parser.parse_one(block)
+
+        conf_resrcs = chkblock.conf_resrcs
+        self.assertIn('GPUS', conf_resrcs)
+        self.assertEqual(conf_resrcs['GPUS'], 8)
+
+        util_resrcs = chkblock.util_resrcs
+        self.assertEqual(util_resrcs['GPUS'], 6)
+        self.assertEqual(util_resrcs['PROCS'], 34)
+
+        self.assertEqual(chkblock.partition, 'gpu')
+        self.assertIn('gpu', chkblock.nodetype)
+
+        job_cores = [dic['ppn'] for dic in chkblock.reservations[1]]
+        self.assertNotEqual(util_resrcs['PROCS'], sum(job_cores))
 
 
 class ChecknodeParserXMLTest(unittest.TestCase):

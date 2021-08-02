@@ -4,6 +4,8 @@ Example:
 >>> from vsc.moab.checknode import ChecknodeParser
 >>> parser = ChecknodeParser
 >>> checknode = parser.parse_ascii('/path/to/checknode/file.txt')
+or
+>>> block = parser.parse_one('/path/to/checknode/file.txt')
 '''
 
 import sys, re
@@ -136,7 +138,7 @@ class ChecknodeParser(object):
                                           r'(?P<remaining>[\-\d\:]+)\s+->\s+'
                                           r'(?P<elapsed>[\d\:]+)\s+'
                                           r'\((?P<walltime>[\d\:]+)\)')
-        self._reg_alert = re.compile(r'[\w\W]+ALERT:(?P<alert>[\w\W]+)')
+        self._reg_alert = re.compile(r'([\w\W]+ALERT:(?P<alert>[\w\W]+))?')
         # regex for parsers
         self._reg_first = re.compile(r'(?P<first>[\w]+)[\w\W]+')
         self._reg_load  = re.compile(r'[\w\W]+\s+CPULoad:\s+(?P<cpuload>[\d\.]+)')
@@ -261,8 +263,11 @@ class ChecknodeParser(object):
 
             _alert = re.match(self._reg_alert, block)
             assert _alert is not None
-            _alerts = _alert.group('alert').split('\n')
-            _dic['alert'] = [_alert.strip() for _alert in _alerts if _alert]
+            if _alert.group('alert') is None:
+                _dic['alert'] = list()
+            else:
+                _alerts = _alert.group('alert').split('\n')
+                _dic['alert'] = [_alert.strip() for _alert in _alerts if _alert]
         except AssertionError:
             sys.stderr.write('regex for "hostname/Reservations/ALERT" field(s) failed\n')
             sys.exit(_fail)
@@ -315,7 +320,7 @@ class ChecknodeParser(object):
         if _matches:
             for _match in _matches:
                 key, val = _match.split(':')
-                val = int(val) if val.isdigit() else val.strip()
+                val = int(val) if val.strip().isdigit() else val.strip()
                 dic[key.strip()] = val
             return dic
         else:

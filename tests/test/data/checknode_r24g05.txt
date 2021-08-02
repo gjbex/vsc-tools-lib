@@ -1,0 +1,26 @@
+node r24g05
+
+State:   Running  (in current state for 00:00:22)
+Configured Resources: PROCS: 36  MEM: 751G  SWAP: 752G  DISK: 1M  GPUS: 8  socket: 2  numanode: 2  core: 36  thread: 36
+Utilized   Resources: PROCS: 34  SWAP: 209G  GPUS: 6
+Dedicated  Resources: PROCS: 34  MEM: 350G  GPUS: 6
+Attributes:         kernel=3-10-0-1160-11-1-el7-x86_64,puppethpc=20210720-172,puppethpccode=20210729-5307-gite178caa6,sudo=1-8-23-10-el7_9-1
+  MTBF(longterm):   INFINITY  MTBF(24h):   INFINITY
+Opsys:      linux     Arch:      ---
+Speed:      1.00      CPULoad:  10.220
+Partition:  gpu  Rack/Slot:  24/8  NodeIndex:  24
+Features:   r24g,cascadelake,type_cascadelake_gpu,r24,genius,mem192,gpu
+NodeType:   cascadelake_gpu
+Classes:    [q1h][q24h][q72h][q7d][q21d][qsuperdome]
+RM[pbs]*:   TYPE=PBS  STATE=Running
+NodeAccessPolicy: SHARED
+EffNodeAccessPolicy: SHARED
+
+Total Time:    677days  Up:    626days (92.47%)  Active:    502days (74.28%)
+
+Reservations:
+  50823976x1  Job:Running  -1:17:17:37 -> 1:14:42:23 (3:08:00:00)
+  50823994x1  Job:Running  -1:15:19:04 -> 1:16:40:56 (3:08:00:00)
+  50824176x1  Job:Running  -16:52:17 -> 1:07:07:43 (2:00:00:00)
+  50824071x1  Job:Running  -11:37:19 -> 11:22:41 (23:00:00)
+Jobs:        50823976,50823994,50824071,50824176
