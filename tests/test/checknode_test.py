@@ -36,7 +36,6 @@ class ChecknodeParserTest(unittest.TestCase):
         self.assertEqual(chkblock.nodetype, 'cascadelake')
         self.assertEqual(chkblock.access_policy, 'SHARED')
         self.assertEqual(chkblock.eff_policy, 'SINGLEJOB')
-        self.assertEqual(chkblock.n_job_fail, 1)
 
         self.assertIsInstance(chkblock.reservations, tuple)
         self.assertEqual(len(chkblock.reservations), 2)
@@ -51,16 +50,49 @@ class ChecknodeParserTest(unittest.TestCase):
         self.assertEqual(chkblock.reservations[1][0]['elapsed_time'], '6:03:47:34')
         self.assertEqual(chkblock.reservations[1][0]['walltime'], '6:23:59:00')
 
-        self.assertEqual(chkblock.jobs, '50622561')
-        self.assertEqual(chkblock.alert, 'node is in state Busy but load is low (4.890)')
+        self.assertIsInstance(chkblock.jobs, list)
+        self.assertEqual(len(chkblock.jobs), 1)
+        self.assertEqual(chkblock.jobs[0], '50622561')
 
-    # def test_parse_one_r23i13n23(self):
-    #     with open(self.filename_r23i13n23, 'r') as f:
-    #         lines = f.readlines()
-    #         block = ''.join(lines)
+        self.assertIsInstance(chkblock.alert, list)
+        self.assertEqual(len(chkblock.alert), 1)
+        self.assertEqual(chkblock.alert[0], 'node is in state Busy but load is low (4.890)')
 
-    #     parser = ChecknodeParser(debug=False)
-    #     chkblock = parser.parse_one(block)
+    def test_parse_one_r23i13n23(self):
+        """Complementary tests for ChecknodeBlock.reservations attribute"""
+        with open(self.filename_r23i13n23, 'r') as f:
+            lines = f.readlines()
+            block = ''.join(lines)
+
+        parser = ChecknodeParser(debug=False)
+        chkblock = parser.parse_one(block)
+        resrv = chkblock.reservations
+        stnd_resr, usr_resr = resrv
+        ures0 = usr_resr[0]
+        ures3 = usr_resr[3]
+
+        self.assertIsInstance(resrv, tuple)
+        self.assertEqual(len(resrv), 2)
+
+        self.assertTrue(stnd_resr)
+
+        self.assertIsInstance(usr_resr, list)
+        self.assertEqual(len(usr_resr), 4)
+
+        self.assertIsInstance(ures0, dict)
+        self.assertIn('jobid', ures0)
+        self.assertEqual(ures0['jobid'], '50818310')
+        self.assertEqual(ures0['ppn'], 3)
+        self.assertEqual(ures0['job'], 'Running')
+        self.assertEqual(ures0['remaining_time'], '-11:47:12')
+        self.assertEqual(ures0['elapsed_time'], '3:12:48')
+        self.assertEqual(ures0['walltime'], '15:00:00')
+        self.assertEqual(ures3['jobid'], '50820647')
+        self.assertEqual(ures3['ppn'], 4)
+
+        self.assertIsInstance(chkblock.alert, list)
+        self.assertEqual(len(chkblock.alert), 4)
+
 
 class ChecknodeParserXMLTest(unittest.TestCase):
     '''Tests for the checknode output parser'''
