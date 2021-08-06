@@ -135,16 +135,11 @@ class ChecknodeParser(object):
     def _regex_inventory(self) -> None:
         """Inventory of the regular expressions needed"""
 
-        # self._reg_split = re.compile(r'\bnode\sr') # gjb
-        self._reg_split = re.compile(r'\bnode\s(r\d{2}i\d{2}n\d{2}|r\d{2}g\d{2}|tier2-p-superdome-1)') # em
+        self._reg_split = re.compile(r'\bnode\s(r\d{2}i\d{2}n\d{2}|r\d{2}g\d{2}|tier2-p-superdome-1)')
         # regex for one checknode block
-        # self._reg_host = re.compile(r'\bnode\s(?P<hostname>[\w]+).*') # gjb
-        # self._reg_host = re.compile(r'\b(?P<hostname>[\w]+).*') # em
-        self._reg_host = re.compile(r'(\bnode\s)?(?P<hostname>[\w]+).*') # em
+        self._reg_host = re.compile(r'(\bnode\s)?(?P<hostname>[\w]+).*')
         self._reg_resrscs = re.compile(r'\w+:\s+[\d\w]+')
-        # self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)Jobs:[\w\W]+') # not always working
-        # self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)((Jobs|RM\[pbs\][\w\W]+|ALERT):[\w\W]+)?') # em
-        self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)') # em
+        self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)')
         self._reg_stnd_resrv = re.compile(r'Blocked Resources')
         self._reg_user_resrv = re.compile(r'(?P<jobid>[\w]{8})x(?P<ppn>[\d]+)\s+'
                                           r'Job:(?P<job>[\w]+)\s+'

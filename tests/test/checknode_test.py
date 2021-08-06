@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 '''module to test the vsc.moab.checknode.Checknode parser'''
 
+from logging import debug
 from subprocess import check_call
 import sys, unittest
 from vsc.moab.checknode import ChecknodeParser, ChecknodeBlock
@@ -120,6 +121,27 @@ class ChecknodeParserTest(unittest.TestCase):
         job_cores = [dic['ppn'] for dic in chkblock.reservations[1]]
         self.assertNotEqual(util_resrcs['PROCS'], sum(job_cores))
 
+
+class checknodeParserFileTest(unittest.TestCase):
+    '''Tests for `checknode ALL` command and the whole output'''
+
+    def setUp(self):
+        self.filename_all = 'data/checknode_ALL.txt'
+
+    def tearDown(self):
+        pass
+
+    def test_all(self):
+        parser = ChecknodeParser(debug=False)
+        parser.parse_file(self.filename_all)
+        _nodes = parser.nodes
+
+        self.assertIsInstance(_nodes, list)
+        self.assertEqual(len(_nodes), 267)
+        for _node in _nodes:
+            self.assertIsInstance(_node, ChecknodeBlock)
+        self.assertEqual(_nodes[0].hostname,  'r23i13n23')
+        self.assertEqual(_nodes[-1].hostname, 'r27i13n24')
 
 class ChecknodeParserXMLTest(unittest.TestCase):
     '''Tests for the checknode output parser'''
