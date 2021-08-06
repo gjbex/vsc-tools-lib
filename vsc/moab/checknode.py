@@ -47,19 +47,16 @@ class ChecknodeBlock(object):
 
     # block-specific attributes are all public
     hostname: str
-    state: list
-    conf_resrcs: list
-    util_resrcs: list
-    dedi_resrcs: list
+    state: str
+    conf_resrcs: dict
+    util_resrcs: dict
+    dedi_resrcs: dict
     cpuload: float
     partition: str
-    features: str
     nodetype: str
     access_policy: str
     eff_policy: str
-    n_job_fail: int
-    times: list
-    reservations: list
+    reservations: tuple
     jobs: list
     alert: str
 
@@ -82,10 +79,9 @@ class ChecknodeBlock(object):
         self.nodetype = str()
         self.access_policy = str()
         self.eff_policy = str()
-        self.reservations = str()
+        self.reservations = tuple()
         self.jobs = list()
         self.alert = str()
-
 
 class ChecknodeParser(object):
     '''Parser class for Moab checknode ouptut'''
@@ -124,14 +120,31 @@ class ChecknodeParser(object):
 
         return len(self._nodes)
 
+    @property
+    def nodes(self) -> list:
+        """
+        Getter
+
+        Returns
+        -------
+        nodes : list
+            a list of ChecknodeBlock instances are returned, one instance per node
+        """
+        return self._nodes
+
     def _regex_inventory(self) -> None:
         """Inventory of the regular expressions needed"""
 
-        self._reg_split = re.compile(r'\bnode\sr')
+        # self._reg_split = re.compile(r'\bnode\sr') # gjb
+        self._reg_split = re.compile(r'\bnode\s(r\d{2}i\d{2}n\d{2}|r\d{2}g\d{2}|tier2-p-superdome-1)') # em
         # regex for one checknode block
-        self._reg_host = re.compile(r'\bnode\s(?P<hostname>[\w]+).*')
+        # self._reg_host = re.compile(r'\bnode\s(?P<hostname>[\w]+).*') # gjb
+        # self._reg_host = re.compile(r'\b(?P<hostname>[\w]+).*') # em
+        self._reg_host = re.compile(r'(\bnode\s)?(?P<hostname>[\w]+).*') # em
         self._reg_resrscs = re.compile(r'\w+:\s+[\d\w]+')
-        self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)Jobs:[\w\W]+')
+        # self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)Jobs:[\w\W]+') # not always working
+        # self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)((Jobs|RM\[pbs\][\w\W]+|ALERT):[\w\W]+)?') # em
+        self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)') # em
         self._reg_stnd_resrv = re.compile(r'Blocked Resources')
         self._reg_user_resrv = re.compile(r'(?P<jobid>[\w]{8})x(?P<ppn>[\d]+)\s+'
                                           r'Job:(?P<job>[\w]+)\s+'
@@ -169,7 +182,7 @@ class ChecknodeParser(object):
         Parameters
         ----------
         filename : str
-            full path to "checknode ALL" output in ascii format
+            full path to `checknode ALL` output in ascii format
 
         Returns
         -------
@@ -177,7 +190,7 @@ class ChecknodeParser(object):
         """
 
         with open(filename, 'r') as f:
-            lines = ' '.join(f.readlines())
+            lines = ''.join(f.readlines())
             self._nodes_str = lines
             self.parse_ascii(self._nodes_str)
 
@@ -200,13 +213,18 @@ class ChecknodeParser(object):
         """
 
         if self._nodes_str:
-            _blocks  = re.split(self._nodes_str, self._reg_split)
+            _tmp = re.split(self._reg_split, self._nodes_str)
+            _tmp = [_ for _ in _tmp if _]
+            if (len(_tmp) % 2 != 0):
+                raise NotImplementedError('Error: _split_nodes_str has gone haywire!\n')
+
+            # _reg_split would split each block into two pieces; so, I stich them together
+            _blocks = [_first + _last for _first, _last in zip(_tmp[0:-1:2], _tmp[1::2])]
             self._blocks = [_ for _ in _blocks if _]
         else:
-            raise InputError('Expecting non-empty input; something has gone wrong')
             if self._debug:
                 sys.stderr.write('Error: _split_nodes_str: type(self._nodes_str)={}\n'.format(type(self._nodes_str)))
-            sys.exit(_fail)
+            raise InputError('Expecting non-empty input; something has gone wrong')
 
     def parse_ascii(self, output) -> None:
         """Parse output of checknode, and return a list of
@@ -216,6 +234,7 @@ class ChecknodeParser(object):
 
         self._split_nodes_str()
         for _block in self._blocks:
+            if not _block: continue
             _node = self.parse_one(_block)
             if _node:
                 self._nodes.append(_node)
@@ -249,18 +268,40 @@ class ChecknodeParser(object):
             if isinstance(kv, list) and len(kv) == 2:
                 key, val = kv
                 if key in _exclude: continue
+                if 'RM[pbs]' in key: continue
                 _dic[key] = val.strip()
 
-        # extract multi-line and hostname fields
+        # extract hostname, and multi-line fields
         try:
             _host = re.match(self._reg_host, block)
             assert _host is not None
             _dic['hostname'] = _host.group('hostname')
+        except AssertionError:
+            sys.stderr.write('Error: regex for "hostname" field failed\n')
+            sys.stderr.write('block is: {0}\n'.format(block))
+            sys.exit(_fail)
 
-            _rsrv = re.match(self._reg_rsrv, block)
+        try:
+            _trimmed_block = list()
+            _lines = block.split('\n')
+            for _line in _lines:
+                if not _line: continue
+                _break = _line.startswith('Jobs:') or _line.startswith('RM[pbs] ') or _line.startswith('ALERT')
+                if _break:
+                    break
+                else:
+                    _trimmed_block.append(_line)
+
+            _trimmed_block = ''.join(_trimmed_block)
+
+            _rsrv = re.match(self._reg_rsrv, _trimmed_block)
             assert _rsrv is not None
             _dic['reservations'] = _rsrv.group('reservations')
+        except AssertionError:
+            sys.stderr.write('Error: regex for "Reservations" field failed; host={0}\n'.format(_dic['hostname']))
+            sys.exit(_fail)
 
+        try:
             _alert = re.match(self._reg_alert, block)
             assert _alert is not None
             if _alert.group('alert') is None:
@@ -269,7 +310,7 @@ class ChecknodeParser(object):
                 _alerts = _alert.group('alert').split('\n')
                 _dic['alert'] = [_alert.strip() for _alert in _alerts if _alert]
         except AssertionError:
-            sys.stderr.write('regex for "hostname/Reservations/ALERT" field(s) failed\n')
+            sys.stderr.write('Error: regex for "ALERT" field failed; host={0}\n'.format(_dic['hostname']))
             sys.exit(_fail)
 
         if self._debug:
@@ -278,20 +319,26 @@ class ChecknodeParser(object):
 
         # extract the values for each group, and set them as attributes of
         # an instance of ChecknodeBlock class
-        blk = ChecknodeBlock()
-        blk.hostname = _dic['hostname']
-        blk.state = self._dic_parsers['state'](_dic['State'])
-        blk.conf_resrcs = self._dic_parsers['conf_resrcs'](_dic['Configured Resources'])
-        blk.util_resrcs = self._dic_parsers['util_resrcs'](_dic['Utilized   Resources'])
-        blk.dedi_resrcs = self._dic_parsers['dedi_resrcs'](_dic['Dedicated  Resources'])
-        blk.cpuload = self._dic_parsers['cpuload'](_dic['Speed'])
-        blk.partition = self._dic_parsers['partition'](_dic['Partition'])
-        blk.nodetype = _dic['NodeType']
-        blk.access_policy = _dic['NodeAccessPolicy']
-        blk.eff_policy = _dic['EffNodeAccessPolicy']
-        blk.reservations = self._dic_parsers['reservations'](_dic['reservations'])
-        blk.jobs = _dic['Jobs'].split(',')
-        blk.alert = _dic['alert']
+        try:
+            blk = ChecknodeBlock()
+            blk.hostname = _dic['hostname']
+            blk.state = self._dic_parsers['state'](_dic['State'])
+            blk.conf_resrcs = self._dic_parsers['conf_resrcs'](_dic['Configured Resources'])
+            blk.util_resrcs = self._dic_parsers['util_resrcs'](_dic['Utilized   Resources'])
+            blk.dedi_resrcs = self._dic_parsers['dedi_resrcs'](_dic['Dedicated  Resources'])
+            blk.cpuload = self._dic_parsers['cpuload'](_dic['Speed'])
+            blk.partition = self._dic_parsers['partition'](_dic['Partition'])
+            blk.nodetype = _dic['NodeType']
+            if 'NodeAccessPolicy' in _dic:
+                blk.access_policy = _dic['NodeAccessPolicy']
+            blk.eff_policy = _dic['EffNodeAccessPolicy']
+            blk.reservations = self._dic_parsers['reservations'](_dic['reservations'])
+            if 'Jobs' in _dic:
+                blk.jobs  = _dic['Jobs'].split(',')
+            if 'alert' in _dic:
+                blk.alert = _dic['alert']
+        except Exception:
+            raise NotImplementedError('Error: parse_one: _dic to ChecknodeBlock instance failed; host={0}'.format(_dic['hostname']))
 
         return blk
 
