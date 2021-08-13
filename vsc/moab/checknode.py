@@ -132,6 +132,26 @@ class ChecknodeParser(object):
         """
         return self._nodes
 
+    def get_node_by_hostname(self, hostname):
+        """
+        Retrieve an instance of ChecknodeBlock from the list of all blocks, based on hostname
+
+        Parameters
+        ----------
+        hostname : str
+            hostname of the desired node/block to retrieve
+
+        Returns
+        -------
+        node : ChecknodeBlock | None
+            return an instance of ChecknodeBlock when the hostname matches; else None
+        """
+        for _node in self._nodes:
+            if _node.hostname == hostname.strip():
+                return _node
+
+        return None
+
     def _regex_inventory(self) -> None:
         """Inventory of the regular expressions needed"""
 
