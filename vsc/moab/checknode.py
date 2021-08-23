@@ -87,7 +87,9 @@ class ChecknodeParser(object):
     '''Parser class for Moab checknode ouptut'''
 
     _debug: bool
+    _lines: list
     _nodes_str: str
+    _dic_blocks: dict
     _blocks: list
     _nodes: list
 
@@ -132,6 +134,18 @@ class ChecknodeParser(object):
         """
         return self._nodes
 
+    @property
+    def dic_nodes(self) -> dict:
+        '''
+        Return a dictionary of all nodes/blocks, where the key is the hostname
+
+        Returns
+        -------
+        dic_nodes : dict
+            the value for each key/hostname is a block as a string
+        '''
+        return self._dic_blocks
+
     def get_node_by_hostname(self, hostname):
         """
         Retrieve an instance of ChecknodeBlock from the list of all blocks, based on hostname
@@ -146,18 +160,18 @@ class ChecknodeParser(object):
         node : ChecknodeBlock | None
             return an instance of ChecknodeBlock when the hostname matches; else None
         """
-        for _node in self._nodes:
-            if _node.hostname == hostname.strip():
-                return _node
+        if hostname in self._dic_blocks:
+            _block_str = 'node {0} {1}'.format(hostname, self._dic_blocks[hostname])
+            return self.parse_one(_block_str)
 
         return None
 
     def _regex_inventory(self) -> None:
         """Inventory of the regular expressions needed"""
 
-        self._reg_split = re.compile(r'\bnode\s(r\d{2}i\d{2}n\d{2}|r\d{2}g\d{2}|tier2-p-superdome-1)')
+        # self._reg_split = re.compile(r'\bnode\s(r\d{2}i\d{2}n\d{2}|r\d{2}g\d{2}|tier2-p-superdome-1)')
         # regex for one checknode block
-        self._reg_host = re.compile(r'(\bnode\s)?(?P<hostname>[\w]+).*')
+        self._reg_host = re.compile(r'(\bnode\s)?(?P<hostname>[\w\-]+).*')
         self._reg_resrscs = re.compile(r'\w+:\s+[\d\w]+')
         self._reg_rsrv = re.compile(r'[\w\W]+Reservations:\s+(?P<reservations>[\w\W]+)')
         self._reg_stnd_resrv = re.compile(r'Blocked Resources')
@@ -194,6 +208,11 @@ class ChecknodeParser(object):
         """
         Parse a file that contains checknode output
 
+        Notes
+        -----
+        - the self._lines attribute is allocated as a list of strings (lines)
+        - the self._nodes_str attribute is allocated as a (concatanated) string
+
         Parameters
         ----------
         filename : str
@@ -205,18 +224,20 @@ class ChecknodeParser(object):
         """
 
         with open(filename, 'r') as f:
-            lines = ''.join(f.readlines())
-            self._nodes_str = lines
+            # lines = ''.join(f.readlines())
+            self._lines = f.readlines()
+            self._nodes_str = ''.join(self._lines)
             self.parse_ascii(self._nodes_str)
 
-    def _split_nodes_str(self) -> None:
-        """
-        Split the self._nodes_str string into blocks, one block per node
+    def _split_nodes_str(self):
+        '''
+        Split the self._nodes_str string into blocks
 
-        This routine uses the re.split() method to split the checknode output
-        (in long string format) into blocks, where each block starts with a
-        phrase like "node r". This private method uses self._nodes_str and fills
-        in the self._blocks list, so no input is needed, and no output is returned.
+        Notes
+        -----
+        - blocks are stored as key/value pairs in self._dic_blocks dictionary, where
+          the key is the hostname, and value is the rest of the string for each block
+        - self._blocks is also filled in
 
         Parameters
         ----------
@@ -225,21 +246,56 @@ class ChecknodeParser(object):
         Returns
         -------
         None
-        """
-
-        if self._nodes_str:
-            _tmp = re.split(self._reg_split, self._nodes_str)
-            _tmp = [_ for _ in _tmp if _]
-            if (len(_tmp) % 2 != 0):
-                raise NotImplementedError('Error: _split_nodes_str has gone haywire!\n')
-
-            # _reg_split would split each block into two pieces; so, I stich them together
-            _blocks = [_first + _last for _first, _last in zip(_tmp[0:-1:2], _tmp[1::2])]
-            self._blocks = [_ for _ in _blocks if _]
-        else:
+        '''
+        if not self._lines:
             if self._debug:
                 sys.stderr.write('Error: _split_nodes_str: type(self._nodes_str)={}\n'.format(type(self._nodes_str)))
             raise InputError('Expecting non-empty input; something has gone wrong')
+
+        self._dic_blocks = dict()
+        for _line in self._lines:
+            _match = re.match(r'^node\s+(?P<hostname>[\w\-]+)\s+.*', _line)
+            if _match is not None:
+                _hostname = _match.group('hostname')
+                self._dic_blocks[_hostname] = ''
+            elif _match is None:
+                self._dic_blocks[_hostname] += _line
+            else:
+                print('Error: self._split_nodes_str: line: {0}'.format(_line), file=sys.stderr)
+
+        self._blocks = ['node {0} {1}'.format(_k, _v) for _k, _v in self._dic_blocks.items()]
+
+    # def _split_nodes_str_re_split(self) -> None:
+    #     """
+    #     Split the self._nodes_str string into blocks, one block per node
+
+    #     This routine uses the re.split() method to split the checknode output
+    #     (in long string format) into blocks, where each block starts with a
+    #     phrase like "node r". This private method uses self._nodes_str and fills
+    #     in the self._blocks list, so no input is needed, and no output is returned.
+
+    #     Parameters
+    #     ----------
+    #     None
+
+    #     Returns
+    #     -------
+    #     None
+    #     """
+
+    #     if self._nodes_str:
+    #         _tmp = re.split(self._reg_split, self._nodes_str)
+    #         _tmp = [_ for _ in _tmp if _]
+    #         if (len(_tmp) % 2 != 0):
+    #             raise NotImplementedError('Error: _split_nodes_str has gone haywire!\n')
+
+    #         # _reg_split would split each block into two pieces; so, I stich them together
+    #         _blocks = [_first + _last for _first, _last in zip(_tmp[0:-1:2], _tmp[1::2])]
+    #         self._blocks = [_ for _ in _blocks if _]
+    #     else:
+    #         if self._debug:
+    #             sys.stderr.write('Error: _split_nodes_str_re_split: type(self._nodes_str)={}\n'.format(type(self._nodes_str)))
+    #         raise InputError('Expecting non-empty input; something has gone wrong')
 
     def parse_ascii(self, output) -> None:
         """Parse output of checknode, and return a list of

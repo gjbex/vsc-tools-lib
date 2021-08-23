@@ -146,11 +146,14 @@ class checknodeParserFileTest(unittest.TestCase):
     def test_get_node_by_hostname(self):
         parser = ChecknodeParser(debug=False)
         parser.parse_file(self.filename_all)
-        nodes = parser.nodes
-        hostname = 'r24g05'
 
+        hostname = 'r24g05'
         r24g05 = parser.get_node_by_hostname(hostname)
         self.assertEqual(r24g05.hostname, hostname)
+
+        hostname = 'tier2-p-superdome-1'
+        superdome = parser.get_node_by_hostname(hostname)
+        self.assertEqual(superdome.hostname, hostname)
 
 class ChecknodeParserXMLTest(unittest.TestCase):
     '''Tests for the checknode output parser'''
