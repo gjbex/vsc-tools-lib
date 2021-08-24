@@ -3,7 +3,7 @@
 
 from logging import debug
 from subprocess import check_call
-import sys, unittest
+import sys, re, unittest
 from vsc.moab.checknode import ChecknodeParser, ChecknodeBlock
 
 class ChecknodeParserTest(unittest.TestCase):
@@ -134,26 +134,38 @@ class checknodeParserFileTest(unittest.TestCase):
     def test_all(self):
         parser = ChecknodeParser(debug=False)
         parser.parse_file(self.filename_all)
-        _nodes = parser.nodes
+        _blocks = parser.blocks
 
-        self.assertIsInstance(_nodes, list)
-        self.assertEqual(len(_nodes), 267)
-        for _node in _nodes:
-            self.assertIsInstance(_node, ChecknodeBlock)
-        self.assertEqual(_nodes[0].hostname,  'r23i13n23')
-        self.assertEqual(_nodes[-1].hostname, 'r27i13n24')
+        self.assertIsInstance(_blocks, list)
+        self.assertEqual(len(_blocks), 267)
+        for _block in _blocks:
+            self.assertIsInstance(_block, ChecknodeBlock)
+        self.assertEqual(_blocks[0].hostname,  'r23i13n23')
+        self.assertEqual(_blocks[-1].hostname, 'r27i13n24')
 
-    def test_get_node_by_hostname(self):
+    def test_get_block_by_hostname(self):
         parser = ChecknodeParser(debug=False)
         parser.parse_file(self.filename_all)
 
         hostname = 'r24g05'
-        r24g05 = parser.get_node_by_hostname(hostname)
+        r24g05 = parser.get_block_by_hostname(hostname)
         self.assertEqual(r24g05.hostname, hostname)
 
         hostname = 'tier2-p-superdome-1'
-        superdome = parser.get_node_by_hostname(hostname)
+        superdome = parser.get_block_by_hostname(hostname)
         self.assertEqual(superdome.hostname, hostname)
+
+    def test_dic_blocks(self):
+        parser = ChecknodeParser(debug=False)
+        parser.parse_file(self.filename_all)
+        _dic_blocks = parser.dic_blocks
+        _list_hosts = _dic_blocks.keys()
+        _regex_host = re.compile(r'r\d{2}i\d{2}n\d{2}|r\d{2}g\d{2}|tier2-p-superdome-1')
+
+        for _host in _list_hosts:
+            _match = re.match(_regex_host, _host)
+            self.assertIsNotNone(_match)
+
 
 class ChecknodeParserXMLTest(unittest.TestCase):
     '''Tests for the checknode output parser'''

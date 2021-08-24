@@ -1,11 +1,17 @@
 '''module for dealing with Moab's checknode output
 
 Example:
+>>> # to parse a single block from a file:
 >>> from vsc.moab.checknode import ChecknodeParser
->>> parser = ChecknodeParser
+>>> parser = ChecknodeParser(debug=False)
 >>> checknode = parser.parse_ascii('/path/to/checknode/file.txt')
-or
+>>> # or
 >>> block = parser.parse_one('/path/to/checknode/file.txt')
+
+>>> # to parse the whole output of `checknode ALL` as a list of blocks:
+>>> parser = ChecknodeParser(debug=False)
+>>> parser.parse_file('/path/to/checknode_ALL.txt')
+>>> blocks = parser.blocks
 '''
 
 import sys, re
@@ -88,7 +94,7 @@ class ChecknodeParser(object):
 
     _debug: bool
     _lines: list
-    _nodes_str: str
+    _blocks_str: str
     _dic_blocks: dict
     _blocks: list
     _nodes: list
@@ -123,30 +129,30 @@ class ChecknodeParser(object):
         return len(self._nodes)
 
     @property
-    def nodes(self) -> list:
+    def blocks(self) -> list:
         """
         Getter
 
         Returns
         -------
-        nodes : list
+        blocks : list
             a list of ChecknodeBlock instances are returned, one instance per node
         """
         return self._nodes
 
     @property
-    def dic_nodes(self) -> dict:
+    def dic_blocks(self) -> dict:
         '''
         Return a dictionary of all nodes/blocks, where the key is the hostname
 
         Returns
         -------
-        dic_nodes : dict
+        dic_blocks : dict
             the value for each key/hostname is a block as a string
         '''
         return self._dic_blocks
 
-    def get_node_by_hostname(self, hostname):
+    def get_block_by_hostname(self, hostname):
         """
         Retrieve an instance of ChecknodeBlock from the list of all blocks, based on hostname
 
@@ -210,7 +216,7 @@ class ChecknodeParser(object):
         Notes
         -----
         - the self._lines attribute is allocated as a list of strings (lines)
-        - the self._nodes_str attribute is allocated as a (concatanated) string
+        - the self._blocks_str attribute is allocated as a (concatanated) string
 
         Parameters
         ----------
@@ -224,12 +230,12 @@ class ChecknodeParser(object):
 
         with open(filename, 'r') as f:
             self._lines = f.readlines()
-            self._nodes_str = ''.join(self._lines)
-            self.parse_ascii(self._nodes_str)
+            self._blocks_str = ''.join(self._lines)
+            self.parse_ascii(self._blocks_str)
 
-    def _split_nodes_str(self):
+    def _split_blocks_str(self):
         '''
-        Split the self._nodes_str string into blocks
+        Split the self._blocks_str string into blocks
 
         Notes
         -----
@@ -247,7 +253,7 @@ class ChecknodeParser(object):
         '''
         if not self._lines:
             if self._debug:
-                sys.stderr.write('Error: _split_nodes_str: type(self._nodes_str)={}\n'.format(type(self._nodes_str)))
+                sys.stderr.write('Error: _split_blocks_str: type(self._blocks_str)={}\n'.format(type(self._blocks_str)))
             raise InputError('Expecting non-empty input; something has gone wrong')
 
         self._dic_blocks = dict()
@@ -259,7 +265,7 @@ class ChecknodeParser(object):
             elif _match is None:
                 self._dic_blocks[_hostname] += _line
             else:
-                print('Error: self._split_nodes_str: line: {0}'.format(_line), file=sys.stderr)
+                print('Error: self._split_blocks_str: line: {0}'.format(_line), file=sys.stderr)
 
         self._blocks = ['node {0} {1}'.format(_k, _v) for _k, _v in self._dic_blocks.items()]
 
@@ -269,7 +275,7 @@ class ChecknodeParser(object):
         # a block is checknode output for one node
         self._nodes = list()
 
-        self._split_nodes_str()
+        self._split_blocks_str()
         for _block in self._blocks:
             if not _block: continue
             _node = self.parse_one(_block)
