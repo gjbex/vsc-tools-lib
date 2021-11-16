@@ -1,0 +1,25 @@
+node r27i13n24
+
+State:      Busy  (in current state for 20:11:26)
+Configured Resources: PROCS: 36  MEM: 184G  SWAP: 185G  DISK: 1M  socket: 2  numanode: 2  core: 36  thread: 36
+Utilized   Resources: PROCS: 36  SWAP: 12G
+Dedicated  Resources: PROCS: 36  MEM: 180G
+Attributes:         kernel=3-10-0-1127-18-2-el7-x86_64,puppethpc=20201015-161,puppethpccode=20210121-5048-git25524c1c,sudo=1-8-23-9-el7
+  MTBF(longterm):   INFINITY  MTBF(24h):   INFINITY
+Opsys:      linux     Arch:      ---
+Speed:      1.00      CPULoad:   4.890
+Partition:  pbs  Rack/Slot:  27/48  NodeIndex:  27
+Features:   singleisland,beeond,cascadelake,type_cascadelake,r27,r27i13,mem192,genius
+NodeType:   cascadelake
+Classes:    [q1h][q24h][q72h][q7d][q21d][qsuperdome]
+RM[pbs]*:   TYPE=PBS  STATE=Busy
+NodeAccessPolicy: SHARED
+EffNodeAccessPolicy: SINGLEJOB
+Successive Job Failures: 1
+
+Total Time:    110days  Up:    110days (99.83%)  Active: 99:02:11:57 (89.59%)
+
+Reservations:
+  50622561x1  Job:Running  -20:11:26 -> 6:03:47:34 (6:23:59:00)
+Jobs:        50622561
+ALERT:  node is in state Busy but load is low (4.890)

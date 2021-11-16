@@ -12,7 +12,7 @@ class PbsnodesParserTest(unittest.TestCase):
         nr_nodes = 2
         hostnames = ['r22g41', 'r24g35', ]
         states = ['down,offline', 'down']
-        parser = PbsnodesParser(is_verbose=True)
+        parser = PbsnodesParser(is_verbose=False)
         with open(file_name, 'r') as pbsnodes_file:
             node_infos = parser.parse_file(pbsnodes_file)
         self.assertEqual(nr_nodes, len(node_infos))
