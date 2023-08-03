@@ -69,7 +69,7 @@ class QstatParser(object):
                 resource_specs['nodect'] = nodect
             elif line.startswith('exec_host ='):
                 host_strs = self._get_value(line) .split('+')
-                exec_host = dict()
+                exec_host = {}
                 for host_str in host_strs:
                     if '/' in host_str:
                         host, cores = host_str.split('/')

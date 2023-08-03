@@ -12,8 +12,7 @@ class CheckjobParser(object):
     def parse(self, job, checkjob_str):
         '''parse checkjob output, and return relevant status'''
         for line in checkjob_str.split('\n'):
-            match = self._account_re.search(line)
-            if match:
+            if match := self._account_re.search(line):
                 job.account = match.group(1)
                 continue
             if line.startswith('Holds:'):

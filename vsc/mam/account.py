@@ -41,7 +41,8 @@ class MamAccount(object):
         self._allocated = float(credits)
 
     def __str__(self):
-        account_str = '{0} ({1}):'.format(self.name, self.account_id)
-        account_str += '\n  available: {0:.2f}'.format(self.available_credits)
+        account_str = '{0} ({1}):'.format(
+            self.name, self.account_id
+        ) + '\n  available: {0:.2f}'.format(self.available_credits)
         account_str += '\n  allocated: {0:.2f}'.format(self.allocated_credits)
         return account_str

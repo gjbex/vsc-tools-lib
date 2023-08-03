@@ -24,7 +24,7 @@ class PbsLogParser(object):
     def __init__(self, config):
         '''Constructor'''
         self._config = config
-        self._jobs = dict()
+        self._jobs = {}
 
     def parse(self, start_date, end_date):
         '''Parse log information from the given start date to the end

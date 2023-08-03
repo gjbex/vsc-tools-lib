@@ -41,8 +41,7 @@ class PbsOptionParser(EventLogger):
             if value:
                 self.handle_option(option, value)
         if self._job.queue and not self._job._is_time_limit_set:
-            walltime_limit = self.get_queue_limit(self._job.queue)
-            if walltime_limit:
+            if walltime_limit := self.get_queue_limit(self._job.queue):
                 self._job._resource_specs['walltime'] = walltime_limit
 
     def handle_option(self, option, value):
@@ -51,7 +50,7 @@ class PbsOptionParser(EventLogger):
             self.check_a(value.strip())
         elif option == 'A':
             self.check_A(value.strip())
-        elif option == 'e' or option == 'o':
+        elif option in ['e', 'o']:
             self.check_oe(value.strip(), option)
         elif option == 'j':
             self.check_j(value.strip())
@@ -75,9 +74,7 @@ class PbsOptionParser(EventLogger):
 
     def check_a(self, val):
         '''check whether a valid datetime string was specified'''
-        if self.is_valid_datetime(val):
-            pass
-        else:
+        if not self.is_valid_datetime(val):
             self.reg_event('invalid_datetime', {'val': val})
 
     def check_A(self, val):
@@ -89,10 +86,14 @@ class PbsOptionParser(EventLogger):
 
     def get_queue_limit(self, queue_name):
         '''get the maximum walltime for the queue specified'''
-        for queue_def in self._config['queue_definitions']:
-            if queue_def['name'] == queue_name:
-                return int(queue_def['walltime_limit'])
-        return None
+        return next(
+            (
+                int(queue_def['walltime_limit'])
+                for queue_def in self._config['queue_definitions']
+                if queue_def['name'] == queue_name
+            ),
+            None,
+        )
 
     def check_q(self, val):
         '''check whether a valid queue name was specified'''
@@ -103,7 +104,7 @@ class PbsOptionParser(EventLogger):
 
     def check_j(self, val):
         '''check -j option, vals can be oe, eo, n'''
-        if val == 'oe' or val == 'eo' or val == 'n':
+        if val in ['oe', 'eo', 'n']:
             self._job.join = val
         else:
             self.reg_event('invalid_join', {'val': val})
@@ -159,10 +160,9 @@ class PbsOptionParser(EventLogger):
     def check_mem_res(self, val, resource_spec):
         '''check memory resource'''
         attr_name, attr_value = val.split('=')
-        match = re.match(r'(\d+)([kmgt])?[bw]', attr_value)
-        if match:
-            amount = int(match.group(1))
-            order = match.group(2)
+        if match := re.match(r'(\d+)([kmgt])?[bw]', attr_value):
+            amount = int(match[1])
+            order = match[2]
             resource_spec[attr_name] = size2bytes(amount, order)
         else:
             self.reg_event('invalid_{0}_format'.format(attr_name),

@@ -74,8 +74,6 @@ class PbsnodesParser:
                     jobs = self.parse_jobs(jobs_str)
                     status_str = status_str[last_pos + 2:]
                 node_status.status['job_info'] = jobs
-                pos = status_str.find(',')
-
             else:
                 try:
                     key, value = status_str[:pos].split('=')
@@ -87,11 +85,12 @@ class PbsnodesParser:
                                                     node_status.hostname))
                     node_status.status[status_str[:pos]] = None
                 status_str = status_str[pos + 1:]
-                pos = status_str.find(',')
+
+            pos = status_str.find(',')
 
     def parse_gpu_status(self, gpu_status_str):
         '''parse the gpu_status entry'''
-        gpu_status = list()
+        gpu_status = []
         gpu_strs = gpu_status_str.split(',')
         for gpu_str in gpu_strs:
             match = re.match(r'^gpu\[(\d+)\]=(.+)$', gpu_str)
@@ -99,8 +98,8 @@ class PbsnodesParser:
                 msg = "### warning: can not parse gpu_status '{}'\n"
                 # sys.stderr.write(msg.format(gpu_str))
                 continue
-            gpu_info = {'gpu_nr': int(match.group(1))}
-            for info in match.group(2).split(';'):
+            gpu_info = {'gpu_nr': int(match[1])}
+            for info in match[2].split(';'):
                 key, value = info.split('=')
                 gpu_info[key] = value
             gpu_status.append(gpu_info)
@@ -125,7 +124,7 @@ class PbsnodesParser:
                     if 'message=' in status_str:
                         match = re.search(r'message=(.*?)(?:,\w+=|$)',
                                           status_str)
-                        message = match.group(1)
+                        message = match[1]
                         node_status.status['message'] = message
                         repl = 'message={0},'.format(message)
                         status_str = status_str.replace(repl, '')

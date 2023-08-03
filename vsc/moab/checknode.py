@@ -77,16 +77,16 @@ class ChecknodeBlock(object):
 
         self.hostname = str()
         self.state = str()
-        self.conf_resrcs = dict()
-        self.util_resrcs = dict()
-        self.dedi_resrcs = dict()
+        self.conf_resrcs = {}
+        self.util_resrcs = {}
+        self.dedi_resrcs = {}
         self.cpuload = 0.0
         self.partition = str()
         self.nodetype = str()
         self.access_policy = str()
         self.eff_policy = str()
         self.reservations = tuple()
-        self.jobs = list()
+        self.jobs = []
         self.alert = str()
 
 class ChecknodeParser(object):
@@ -200,14 +200,15 @@ class ChecknodeParser(object):
 
         This private method has no return, but it sets the private attribute (dict) self._dic_parsers
         """
-        self._dic_parsers = dict()
-        self._dic_parsers['state'] = self._parse_first_trash_rest
-        self._dic_parsers['conf_resrcs'] = self._parse_resources
-        self._dic_parsers['util_resrcs'] = self._parse_resources
-        self._dic_parsers['dedi_resrcs'] = self._parse_resources
-        self._dic_parsers['cpuload'] = self._parse_cpuload
-        self._dic_parsers['partition'] = self._parse_first_trash_rest
-        self._dic_parsers['reservations'] = self._parse_reservations
+        self._dic_parsers = {
+            'state': self._parse_first_trash_rest,
+            'conf_resrcs': self._parse_resources,
+            'util_resrcs': self._parse_resources,
+            'dedi_resrcs': self._parse_resources,
+            'cpuload': self._parse_cpuload,
+            'partition': self._parse_first_trash_rest,
+            'reservations': self._parse_reservations,
+        }
 
     def parse_file(self, filename) -> None:
         """
@@ -253,33 +254,31 @@ class ChecknodeParser(object):
         '''
         if not self._lines:
             if self._debug:
-                sys.stderr.write('Error: _split_blocks_str: type(self._blocks_str)={}\n'.format(type(self._blocks_str)))
+                sys.stderr.write(
+                    f'Error: _split_blocks_str: type(self._blocks_str)={type(self._blocks_str)}\n'
+                )
             raise InputError('Expecting non-empty input; something has gone wrong')
 
-        self._dic_blocks = dict()
+        self._dic_blocks = {}
         for _line in self._lines:
             _match = re.match(r'^node\s+(?P<hostname>[\w\-]+)\s+.*', _line)
             if _match is not None:
-                _hostname = _match.group('hostname')
+                _hostname = _match['hostname']
                 self._dic_blocks[_hostname] = ''
-            elif _match is None:
-                self._dic_blocks[_hostname] += _line
             else:
-                print('Error: self._split_blocks_str: line: {0}'.format(_line), file=sys.stderr)
-
+                self._dic_blocks[_hostname] += _line
         self._blocks = ['node {0} {1}'.format(_k, _v) for _k, _v in self._dic_blocks.items()]
 
     def parse_ascii(self, output) -> None:
         """Parse output of checknode, and return a list of
         instances of BaseNode class"""
         # a block is checknode output for one node
-        self._nodes = list()
+        self._nodes = []
 
         self._split_blocks_str()
         for _block in self._blocks:
             if not _block: continue
-            _node = self.parse_one(_block)
-            if _node:
+            if _node := self.parse_one(_block):
                 self._nodes.append(_node)
 
     def parse_one(self, block='') -> ChecknodeBlock:
@@ -301,7 +300,7 @@ class ChecknodeParser(object):
         """
         if self._debug: print(block)
 
-        _dic = dict()
+        _dic = {}
         _exclude = ['Reservations', 'ALERT']
 
         # extract single-line key: value pairs
@@ -318,14 +317,14 @@ class ChecknodeParser(object):
         try:
             _host = re.match(self._reg_host, block)
             assert _host is not None
-            _dic['hostname'] = _host.group('hostname')
+            _dic['hostname'] = _host['hostname']
         except AssertionError:
             sys.stderr.write('Error: regex for "hostname" field failed\n')
             sys.stderr.write('block is: {0}\n'.format(block))
             sys.exit(_fail)
 
         try:
-            _trimmed_block = list()
+            _trimmed_block = []
             _lines = block.split('\n')
             for _line in _lines:
                 if not _line: continue
@@ -339,7 +338,7 @@ class ChecknodeParser(object):
 
             _rsrv = re.match(self._reg_rsrv, _trimmed_block)
             assert _rsrv is not None
-            _dic['reservations'] = _rsrv.group('reservations')
+            _dic['reservations'] = _rsrv['reservations']
         except AssertionError:
             sys.stderr.write('Error: regex for "Reservations" field failed; host={0}\n'.format(_dic['hostname']))
             sys.exit(_fail)
@@ -347,10 +346,10 @@ class ChecknodeParser(object):
         try:
             _alert = re.match(self._reg_alert, block)
             assert _alert is not None
-            if _alert.group('alert') is None:
-                _dic['alert'] = list()
+            if _alert['alert'] is None:
+                _dic['alert'] = []
             else:
-                _alerts = _alert.group('alert').split('\n')
+                _alerts = _alert['alert'].split('\n')
                 _dic['alert'] = [_alert.strip() for _alert in _alerts if _alert]
         except AssertionError:
             sys.stderr.write('Error: regex for "ALERT" field failed; host={0}\n'.format(_dic['hostname']))
@@ -405,16 +404,14 @@ class ChecknodeParser(object):
             keys and values are extracted from pairs that resemble "key: value".
             If the string cannot be matched, return None
         """
-        _matches = re.findall(self._reg_resrscs, resrcs)
-        dic = dict()
-        if _matches:
-            for _match in _matches:
-                key, val = _match.split(':')
-                val = int(val) if val.strip().isdigit() else val.strip()
-                dic[key.strip()] = val
-            return dic
-        else:
+        if not (_matches := re.findall(self._reg_resrscs, resrcs)):
             return None
+        dic = {}
+        for _match in _matches:
+            key, val = _match.split(':')
+            val = int(val) if val.strip().isdigit() else val.strip()
+            dic[key.strip()] = val
+        return dic
 
     def _parse_reservations(self, resrv) -> tuple:
         """
@@ -452,22 +449,21 @@ class ChecknodeParser(object):
                 walltime : str
         """
         resrv = resrv.strip()
-        dics = list()
+        dics = []
 
-        _matches = re.findall(self._reg_user_resrv, resrv)
-        if _matches:
+        if _matches := re.findall(self._reg_user_resrv, resrv):
             for _match in _matches:
-                dic = dict()
-                dic['jobid'] = _match[0]
-                dic['ppn'] = int(_match[1])
-                dic['job'] = _match[2]
-                dic['remaining_time'] = _match[3]
-                dic['elapsed_time'] = _match[4]
-                dic['walltime'] = _match[5]
+                dic = {
+                    'jobid': _match[0],
+                    'ppn': int(_match[1]),
+                    'job': _match[2],
+                    'remaining_time': _match[3],
+                    'elapsed_time': _match[4],
+                    'walltime': _match[5],
+                }
                 dics.append(dic)
 
-        _stnd_resrv = re.search(self._reg_stnd_resrv, resrv)
-        if _stnd_resrv:
+        if _stnd_resrv := re.search(self._reg_stnd_resrv, resrv):
             return (True, dics)
         else:
             return (False, dics)
@@ -489,7 +485,7 @@ class ChecknodeParser(object):
         try:
             _match = re.match(self._reg_first, line.strip())
             assert _match is not None
-            return _match.group('first')
+            return _match['first']
         except AssertionError:
             sys.stderr.write('_parse_first_trash_rest failed on: {0}\n'.format(line))
             sys.exit(_fail)
@@ -511,7 +507,7 @@ class ChecknodeParser(object):
         try:
             _match = re.match(self._reg_load, line)
             assert _match is not None
-            return float(_match.group('cpuload'))
+            return float(_match['cpuload'])
         except AssertionError:
             sys.stderr.write('_parse_cpuload failed on: {0}\n'.format(line))
             sys.exit(_fail)

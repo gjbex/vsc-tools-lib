@@ -48,20 +48,25 @@ def walltime2seconds(time_str):
     time_str = time_str.strip()
     match = re.match(r'^(\d+)$', time_str)
     if match:
-        return int(match.group(1))
+        return int(match[1])
     match = re.match(r'^(\d+):(\d{2})$', time_str)
-    if match and int(match.group(2)) < 60:
-        return 60*int(match.group(1)) + int(match.group(2))
+    if match and int(match[2]) < 60:
+        return 60 * int(match[1]) + int(match[2])
     match = re.match(r'^(\d+):(\d{2}):(\d{2})$', time_str)
-    if match and int(match.group(2)) < 60 and int(match.group(3)) < 60:
-        return (3600*int(match.group(1)) + 60*int(match.group(2)) +
-                int(match.group(3)))
+    if match and int(match[2]) < 60 and int(match[3]) < 60:
+        return (3600 * int(match[1]) + 60 * int(match[2]) + int(match[3]))
     match = re.match(r'^(\d+):(\d{2}):(\d{2}):(\d{2})$', time_str)
-    if match and (int(match.group(2)) < 24 and
-                  int(match.group(3)) < 60 and
-                  int(match.group(4)) < 60):
-        return (24*3600*int(match.group(1)) + 3600*int(match.group(2)) +
-                60*int(match.group(3)) + int(match.group(4)))
+    if (
+        match
+        and int(match[2]) < 24
+        and int(match[3]) < 60
+        and int(match[4]) < 60
+    ):
+        return (
+            24 * 3600 * int(match[1])
+            + 3600 * int(match[2])
+            + 60 * int(match[3])
+        ) + int(match[4])
     raise InvalidWalltimeError("'{0}' is invalid".format(time_str))
 
 def seconds2walltime(seconds):
@@ -78,9 +83,8 @@ def seconds2walltime(seconds):
     '''
     seconds = int(seconds)
     secs = seconds % 60
-    seconds = seconds//60
-    mins = seconds % 60
-    hours = seconds//60
+    seconds //= 60
+    hours, mins = divmod(seconds, 60)
     return '{h:02d}:{m:02d}:{s:02d}'.format(h=hours, m=mins, s=secs)
 
 def size2bytes(amount, order=None):
@@ -113,17 +117,13 @@ def size2bytes(amount, order=None):
     }
     if (type(amount) == str and ('b' in amount or 'w' in amount) and
         order is None):
-        match = re.match(r'(\d+)\s*([kmgt]?)(?:b|w)$', amount)
-        if match:
-            amount = match.group(1)
-            order = match.group(2)
+        if match := re.match(r'(\d+)\s*([kmgt]?)(?:b|w)$', amount):
+            amount = match[1]
+            order = match[2]
         else:
             raise InvalidSizeError("'{0}' is not an integer".format(amount))
     try:
-        if order:
-            return int(amount)*conversion[order]
-        else:
-            return int(amount)
+        return int(amount)*conversion[order] if order else int(amount)
     except ValueError:
         raise InvalidSizeError("'{0}' is not an integer".format(amount))
     except KeyError:
@@ -148,22 +148,19 @@ def bytes2size(bytes, unit, no_unit=False, fraction=False):
         'gb': 1024.0**3,
         'tb': 1024.0**4,
     }
-    if unit.lower() in conversion:
-        mem = bytes/conversion[unit.lower()]
-        if  fraction:
-            return '{0:.1f}{1}'.format(mem, '' if no_unit else unit)
-        else:
-            mem = int(math.ceil(mem))
-            return '{0:d}{1}'.format(mem, '' if no_unit else unit)
-    else:
+    if unit.lower() not in conversion:
         raise InvalidSizeError("'{0}' is not a valid unit".format(unit))
+    mem = bytes/conversion[unit.lower()]
+    if fraction:
+        return '{0:.1f}{1}'.format(mem, '' if no_unit else unit)
+    mem = int(math.ceil(mem))
+    return '{0:d}{1}'.format(mem, '' if no_unit else unit)
     
 
 def hostname2rackinfo(hostname):
     '''Determine rack number, IRU and node number from hostname'''
-    match = re.match(r'r(\d+)i(\d+)n(\d+)', hostname)
-    if match:
-        return int(match.group(1)), int(match.group(2)), int(match.group(3))
+    if match := re.match(r'r(\d+)i(\d+)n(\d+)', hostname):
+        return int(match[1]), int(match[2]), int(match[3])
     else:
         return None, None, None
 

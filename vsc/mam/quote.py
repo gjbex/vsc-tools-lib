@@ -27,8 +27,7 @@ class QuoteCalculator(object):
                                  n.partition_id = p.partition_id AND
                                  p.partition_name = ?''',
                     (partition, ))
-                for row in result:
-                    node_types.append(row[0])
+                node_types.extend(row[0] for row in result)
         return node_types
 
     def compute(self, job):

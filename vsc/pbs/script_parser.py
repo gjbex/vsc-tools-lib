@@ -55,9 +55,7 @@ class PbsScriptParser(EventLogger):
                 self.parse_pbs(line)
             else:
                 self.parse_script(line)
-        if self._state == 'start':
-            self.reg_event('no_script')
-        elif self._state == 'pbs':
+        if self._state in {'start', 'pbs'}:
             self.reg_event('no_script')
 
     @property
@@ -123,8 +121,7 @@ class PbsScriptParser(EventLogger):
         elif self.is_pbs(line):
             if self.is_indented_pbs(line):
                 self.reg_event('indented_pbs_dir')
-            match = self._pbs_extract_re.match(line)
-            if match:
+            if match := self._pbs_extract_re.match(line):
                 option = match.group(1)
                 if self._pbs_option_re.match(option):
                     self._pbs_option_parser.parse_args(option)

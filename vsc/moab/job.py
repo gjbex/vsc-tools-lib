@@ -98,16 +98,13 @@ class JobStatus(object):
 
     def __str__(self):
         '''Returns string representation of a job status'''
-        job_str = 'ID {0}:'.format(self.id)
-        job_str += '\n\tuser: {0}'.format(self.username)
+        job_str = 'ID {0}:'.format(self.id) + '\n\tuser: {0}'.format(self.username)
         job_str += '\n\tstate: {0}'.format(self.state)
         job_str += '\n\tprocs: {0}'.format(self.procs)
         if self.state == 'Running':
             job_str += '\n\tremaining: {0}'.format(self.remaining)
-        else:
-            job_str += '\n\twclimit: {0}'.format(self.wclimit)
-        if self.state == 'Running':
             job_str += '\n\tstarted: {0}'.format(self.starttime)
         else:
+            job_str += '\n\twclimit: {0}'.format(self.wclimit)
             job_str += '\n\tqueued: {0}'.format(self.queuetime)
         return job_str

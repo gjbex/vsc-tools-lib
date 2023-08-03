@@ -96,10 +96,7 @@ class PbsLogAnalysis(object):
         else:
             walltime = None
         spec_walltime = seconds2walltime(job.resource_spec('walltime'))
-        if job.exec_host:
-            hosts = ' '.join(list(job.exec_host.keys()))
-        else:
-            hosts = None
+        hosts = ' '.join(list(job.exec_host.keys())) if job.exec_host else None
         return PbsLogAnalysis.JobTuple(
                 start=start_time,
                 end=end_time,
@@ -122,8 +119,10 @@ class PbsLogAnalysis(object):
         inserted into a pandas data frame'''
         tuples = []
         if job.exec_host:
-            for host in sorted(job.exec_host.keys()):
-                tuples.append((job.job_id, host, job.exec_host[host]))
+            tuples.extend(
+                (job.job_id, host, job.exec_host[host])
+                for host in sorted(job.exec_host.keys())
+            )
         return tuples
 
     def _jobs_to_dataframes(self):

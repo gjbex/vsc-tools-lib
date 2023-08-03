@@ -55,17 +55,17 @@ class EventLogger(object):
     @property
     def nr_errors(self):
         '''return number of errors logged so far'''
-        nr_errors = 0
-        for event in self._events:
-            if self._event_defs[event['id']]['category'] == 'error':
-                nr_errors += 1
-        return nr_errors
+        return sum(
+            1
+            for event in self._events
+            if self._event_defs[event['id']]['category'] == 'error'
+        )
 
     @property
     def nr_warnings(self):
         '''return number of warnings logged so far'''
-        nr_warnings = 0
-        for event in self._events:
-            if self._event_defs[event['id']]['category'] == 'warning':
-                nr_warnings += 1
-        return nr_warnings
+        return sum(
+            1
+            for event in self._events
+            if self._event_defs[event['id']]['category'] == 'warning'
+        )

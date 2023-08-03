@@ -73,10 +73,7 @@ class PbsJobEvent(object):
 
     def info(self, key):
         '''return value in the event information for the specified key'''
-        if self.has_info(key):
-            return self._info[key]
-        else:
-            return None
+        return self._info[key] if self.has_info(key) else None
 
     def __str__(self):
         '''returns string representation of the event'''
@@ -113,7 +110,7 @@ class PbsJobEvent(object):
     def _parse_info(info_str):
         '''parse a job event info string into a dictionary'''
         key_value_strs = re.split(r'\s+', info_str)
-        info = dict()
+        info = {}
         for key_value_str in key_value_strs:
             if key_value_str:
                 key, value = key_value_str.split('=', 1)
@@ -135,7 +132,7 @@ class PbsJobEvent(object):
                 info[key] = size2bytes(info[key])
         key = 'exec_host'
         if key in info:
-            exec_host = dict()
+            exec_host = {}
             for exec_host_str in info[key].split('+'):
                 host, cores = exec_host_str.split('/')
                 exec_host[host] = cores

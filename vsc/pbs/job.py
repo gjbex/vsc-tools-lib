@@ -145,10 +145,7 @@ class PbsJob(object):
     def resource_spec(self, spec):
         '''returns the resource specification specified, None if that
            was not specified'''
-        if spec in self._resource_specs:
-            return self._resource_specs[spec]
-        else:
-            return None
+        return self._resource_specs[spec] if spec in self._resource_specs else None
 
     def add_resource_spec(self, key, value):
         self._resource_specs[key] = value
@@ -164,10 +161,7 @@ class PbsJob(object):
         return self._resources_used
 
     def resource_used(self, key):
-        if key in self._resources_used:
-            return self._resources_used[key]
-        else:
-            return None
+        return self._resources_used[key] if key in self._resources_used else None
 
     def add_resources_used(self, resources_used):
         '''Add resources to used list'''
@@ -292,28 +286,21 @@ class PbsJob(object):
 
     @property
     def end_event(self):
-        if self.has_end_event():
-            return self.events[-1]
-        else:
-            return None
+        return self.events[-1] if self.has_end_event() else None
 
     @property
     def start(self):
         '''return the start datetime of the job, None if not started'''
-        if self.has_start_event():
-            for event in self.events[::-1]:
-                if event.type == 'S':
-                    return event.time_stamp
-        else:
+        if not self.has_start_event():
             return None
+        for event in self.events[::-1]:
+            if event.type == 'S':
+                return event.time_stamp
 
     @property
     def end(self):
         '''return the end datetime of the job, None if not started'''
-        if self.has_end_event():
-            return self.events[-1].time_stamp
-        else:
-            return None
+        return self.events[-1].time_stamp if self.has_end_event() else None
 
     @property
     def queue_time(self):
@@ -356,24 +343,19 @@ class PbsJob(object):
     @property
     def walltime_used(self):
         '''return the walltime already used by the job, 0 if queued'''
-        if self.state == 'Q':
-            return 0
-        else:
-            return self.resource_used('walltime')
+        return 0 if self.state == 'Q' else self.resource_used('walltime')
 
     @property
     def walltime_remaining(self):
         ''' return walltime remaining for a job, requested walltime if queued'''
         if self.state == 'Q':
             return self.resource_spec('walltime')
-        else:
-            delta = self.resource_spec('walltime') - self.resource_used('walltime')
-            return delta if delta >= 0 else 0
+        delta = self.resource_spec('walltime') - self.resource_used('walltime')
+        return max(delta, 0)
 
     def attrs_to_str(self):
         '''return job attributes as a string, mainly for debug purposes'''
-        attr_str = ''
-        attr_str += "name = '{0}'".format(self.name)
+        attr_str = '' + "name = '{0}'".format(self.name)
         attr_str += "\nproject = '{0}'".format(self.project)
         attr_str += "\nresources:"
         for resource_name, resource_spec in list(self.resource_specs.items()):

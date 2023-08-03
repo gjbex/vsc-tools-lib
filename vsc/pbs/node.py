@@ -19,7 +19,7 @@ class NodeStatus(object):
         self._note = None
         self._memory = 0
         self._gpus = 0
-        self._gpu_status = list()
+        self._gpu_status = []
 
     @property
     def hostname(self):
@@ -71,10 +71,7 @@ class NodeStatus(object):
 
     def has_property(self, prop):
         '''returns True if the NodeStatus has the given property'''
-        if self._properties:
-            return prop in self._properties
-        else:
-            return False
+        return prop in self._properties if self._properties else False
 
     @property
     def ntype(self):
@@ -92,9 +89,8 @@ class NodeStatus(object):
         job_ids = set()
         if self.jobs:
             for job_id in self.jobs.values():
-                match = re.match(r'(\d+)', job_id)
-                if match:
-                    job_ids.add(match.group(1))
+                if match := re.match(r'(\d+)', job_id):
+                    job_ids.add(match[1])
         return job_ids
 
     @property
@@ -160,10 +156,7 @@ class NodeStatus(object):
     @property
     def gpu_states(self):
         '''returns a list of GPU states, empty if the system has none'''
-        states = list()
-        for status in self._gpu_status:
-            states.append(status['gpu_state'])
-        return states
+        return [status['gpu_state'] for status in self._gpu_status]
 
     def __str__(self):
         '''returns string representation for node status'''
